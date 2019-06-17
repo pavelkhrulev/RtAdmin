@@ -1,0 +1,113 @@
+﻿using Aktiv.RtAdmin.Properties;
+using Microsoft.Extensions.Logging;
+using Net.Pkcs11Interop.HighLevelAPI;
+using RutokenPkcs11Interop.HighLevelAPI;
+using System;
+using System.Collections.Concurrent;
+
+namespace Aktiv.RtAdmin
+{
+    public class CommandHandlerBuilder
+    {
+        private readonly ILogger logger;
+        private Slot slot;
+        private CommandLineOptions commandLineOptions;
+        private readonly TokenParams tokenParams;
+
+        private readonly ConcurrentQueue<Action> commands;
+
+        public CommandHandlerBuilder(ILogger<RtAdmin> logger, TokenParams tokenParams)
+        {
+            this.logger = logger;
+            this.tokenParams = tokenParams;
+
+            commands = new ConcurrentQueue<Action>();
+        }
+
+        public CommandHandlerBuilder ConfigureWith(Slot slot, CommandLineOptions options)
+        {
+            this.slot = slot;
+            this.commandLineOptions = options;
+
+            var tokenInfo = slot.GetTokenInfo();
+            tokenParams.TokenSerial = tokenInfo.SerialNumber;
+
+            var tokenExtendedInfo = slot.GetTokenInfoExtended();
+            tokenParams.MinAdminPinLenFromToken = tokenExtendedInfo.MinAdminPinLen;
+            tokenParams.MaxAdminPinLenFromToken = tokenExtendedInfo.MaxAdminPinLen;
+            tokenParams.MinUserPinLenFromToken = tokenExtendedInfo.MinUserPinLen;
+            tokenParams.MaxUserPinLenFromToken = tokenExtendedInfo.MaxUserPinLen;
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithFormat()
+        {
+            commands.Enqueue(() =>
+            {
+                var tokenInfo = slot.GetTokenInfo();
+
+                TokenFormatter.Format(slot,
+                                    commandLineOptions.AdminPin, commandLineOptions.AdminPin, commandLineOptions.UserPin,
+                                    commandLineOptions.TokenLabelUtf8,
+                                    commandLineOptions.PinChangePolicy,
+                                    commandLineOptions.MinAdminPinLength, commandLineOptions.MinUserPinLength,
+                                    commandLineOptions.MaxAdminPinAttempts, commandLineOptions.MaxUserPinAttempts, 0);
+
+                logger.LogInformation(string.Format(Resources.FormatTokenSuccess, tokenInfo.SerialNumber));
+            });
+            
+            return this;
+        }
+
+        public CommandHandlerBuilder WithNewAdminPin()
+        {
+            commands.Enqueue(() =>
+            {
+                tokenParams.NewAdminPin = GeneratePin(commandLineOptions.AdminPinLength);
+            });
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithNewUserPin()
+        {
+            commands.Enqueue(() =>
+            {
+                tokenParams.NewUserPin = GeneratePin(commandLineOptions.UserPinLength);
+            });
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithNewTokenName()
+        {
+            commands.Enqueue(() =>
+            {
+                TokenName.SetNew(slot, commandLineOptions.UserPin, commandLineOptions.TokenLabelUtf8);
+            });
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithGenerationActivationPassword()
+        {
+            
+            return this;
+        }
+
+        public void Execute()
+        {
+            foreach (var command in commands)
+            {
+                command?.Invoke();
+            }
+        }
+
+        private string GeneratePin(uint pinLength)
+        {
+            var tokenInfo = slot.GetTokenInfoExtended();
+            return PinGenerator.Generate(slot, tokenInfo.TokenType, pinLength, commandLineOptions.UTF8InsteadOfcp1251);
+        }
+    }
+}
