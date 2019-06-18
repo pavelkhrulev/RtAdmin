@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -35,8 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="nativeLib\windows-x86_64\rtpkcs11ecp.dll">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    <None Update="runtimes\$(Runtime)\native\$(NativeLibraryName)">
+      <Link>pkcs11NativeLib.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
