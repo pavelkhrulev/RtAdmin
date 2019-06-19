@@ -3,6 +3,7 @@ using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 using System;
 using System.Linq;
+using Aktiv.RtAdmin.Properties;
 
 namespace Aktiv.RtAdmin
 {
@@ -16,7 +17,7 @@ namespace Aktiv.RtAdmin
             this.pkcs11 = pkcs11 ?? throw new ArgumentNullException(nameof(pkcs11));
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-            this.logger.LogInformation($"{nameof(RutokenCore)} initialized");
+            this.logger.LogInformation(Resources.InitializedInfo);
         }
 
         public Slot WaitToken()

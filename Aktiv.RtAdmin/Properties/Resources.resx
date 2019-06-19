@@ -117,7 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdminPinOption" xml:space="preserve">
+    <value>Set Admin PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>
+  </data>
+  <data name="ChangeVolumeAttributesOption" xml:space="preserve">
+    <value>Change volume attributes. Id : volume id {1 - 9}, aR : access rights{ro, rw, hi, cd}, cT : change type { p - permanent, t - temporary }</value>
+  </data>
+  <data name="ConfigurationFilePathOption" xml:space="preserve">
+    <value>Configuration file path</value>
+  </data>
+  <data name="FormatTokenOption" xml:space="preserve">
+    <value>Format memory. If your device has built-in Flash memory you may specify Admin PIN, otherwise you may lose all data on it</value>
+  </data>
   <data name="FormatTokenSuccess" xml:space="preserve">
     <value>Formatting was successful. Token Id: 0x{0}</value>
+  </data>
+  <data name="FormatVolumeParamsOption" xml:space="preserve">
+    <value>Format volume. Id : volume id {1 - 9}, size : volume size in MB, owner : volume owner {a - administrator, u - user}, aR : access rights {ro, rw, hi, cd}. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence"</value>
+  </data>
+  <data name="GenerateRandomAdminPinOption" xml:space="preserve">
+    <value>Generate random Admin PIN code of specified length. If this command is used -a is ignored</value>
+  </data>
+  <data name="GenerateRandomUserPinOption" xml:space="preserve">
+    <value>Generate random User PIN code of specified length. If this command is used -u is ignored</value>
+  </data>
+  <data name="InitializedInfo" xml:space="preserve">
+    <value>Application was initialized</value>
+  </data>
+  <data name="LogFilePathOption" xml:space="preserve">
+    <value>Log file path</value>
+  </data>
+  <data name="LoginWithLocalPinOption" xml:space="preserve">
+    <value>PIN Login with local PIN. Id : local PIN id {1 - 9}, PIN : local PIN. In order to use local user set his new PIN preliminarily</value>
+  </data>
+  <data name="MaxAdminPinAttemptsOption" xml:space="preserve">
+    <value>Max PIN code attempts count for Admin PIN (count must be in the range from 3 to 10; default: 6)</value>
+  </data>
+  <data name="MaxUserPinAttemptsOption" xml:space="preserve">
+    <value>Max PIN code attempts count for User PIN (count must be in the range from 3 to 10; default: 6)</value>
+  </data>
+  <data name="MinAdminPinLengthOption" xml:space="preserve">
+    <value>Min Admin PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only)</value>
+  </data>
+  <data name="MinUserPinLengthOption" xml:space="preserve">
+    <value>Min User PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only)</value>
+  </data>
+  <data name="NativeLibraryPathOption" xml:space="preserve">
+    <value>Specify a native library to use</value>
+  </data>
+  <data name="OldAdminPinOption" xml:space="preserve">
+    <value>Old Admin PIN code. Must be specified for Admin PIN changing</value>
+  </data>
+  <data name="OldUserPinOption" xml:space="preserve">
+    <value>Old User PIN code. Must be specified for User PIN changing</value>
+  </data>
+  <data name="OneIterationOnlyOption" xml:space="preserve">
+    <value>Stop after one iteration</value>
+  </data>
+  <data name="PinChangePolicyOption" xml:space="preserve">
+    <value>PIN change policy N : { 1 - administrator (SO) can change user PIN | 2 - user can change user PIN | 3 - both } (default: 2)</value>
+  </data>
+  <data name="PinFilePathOption" xml:space="preserve">
+    <value>Load new PIN codes from specified file. Use ont PIN per line, \n is separator. -a -u -G -g commands are ignored</value>
+  </data>
+  <data name="SetLocalPinOption" xml:space="preserve">
+    <value>PIN Set local PIN. Id : local PIN id {1 - 9}, PIN : local PIN. You should use login with local PIN command to set local user PIN</value>
+  </data>
+  <data name="SetPin2ModeOption" xml:space="preserve">
+    <value>Activate setting PIN2 code (on the screen) mode. Must be specified for PIN2 changing. If not specified, the default value is used</value>
+  </data>
+  <data name="SmModeOption" xml:space="preserve">
+    <value>Set SM mode (only for Bluetooth token).  "N : " { 1 - Optional password | 2 - 1 password | 3 - 6 passwords }, mode { caps - only capital letters | digits - capital letters and digits }</value>
+  </data>
+  <data name="TokenLabelCp1251Option" xml:space="preserve">
+    <value>Use cp1251 for new device label</value>
+  </data>
+  <data name="TokenLabelUtf8Option" xml:space="preserve">
+    <value>Use UTF-8 for new device label</value>
+  </data>
+  <data name="UnblockPinsOption" xml:space="preserve">
+    <value>Unblock user and local PINs. You should use login with Admin PIN command to unblock user and local PINs</value>
+  </data>
+  <data name="UserPinOption" xml:space="preserve">
+    <value>Set User PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>
+  </data>
+  <data name="Utf8Option" xml:space="preserve">
+    <value>Use UTF-8 instead of cp1251 in PIN codes</value>
+  </data>
+  <data name="VolumeInfoParamsOption" xml:space="preserve">
+    <value>Get volume info. Id : volume id {1 - 9, a - all, sz - get flash size}</value>
   </data>
 </root>

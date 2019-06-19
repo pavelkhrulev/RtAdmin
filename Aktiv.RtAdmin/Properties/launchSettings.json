@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Aktiv.RtAdmin": {
-      "commandName": "Project",
-      "commandLineArgs": "-D New_token"
+      "commandName": "Project"
     }
   }
 }

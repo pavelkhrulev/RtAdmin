@@ -4,6 +4,10 @@ using Microsoft.Extensions.Logging;
 using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 using System;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using CommandLine.Text;
 
 namespace Aktiv.RtAdmin
 {
@@ -14,8 +18,26 @@ namespace Aktiv.RtAdmin
 
         static int Main(string[] args)
         {
-            Parser.Default.ParseArguments<CommandLineOptions>(args)
-                          .WithParsed(options =>
+            var arguments = Parser.Default.ParseArguments<CommandLineOptions>(args);
+
+            //arguments.WithNotParsed(errs =>
+            //{
+            //    var helpText = HelpText.AutoBuild(arguments, onError =>
+            //    {
+            //        var nHelpText = new HelpText(SentenceBuilder.Create(), "Ошибочка вышла!!!")
+            //        {
+            //            AdditionalNewLineAfterOption = false,
+            //            AddDashesToOption = true,
+            //            MaximumDisplayWidth = 4000
+            //        };
+            //        nHelpText.AddOptions(arguments);
+            //        return HelpText.DefaultParsingErrorsHandler(arguments, nHelpText);
+            //    },
+            //    onExample => onExample);
+            //    Console.Error.WriteLine(helpText);
+            //});
+
+            arguments.WithParsed(options =>
             {
                 serviceProvider = Startup.Configure(options.LogFilePath);
 
