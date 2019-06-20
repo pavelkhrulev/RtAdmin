@@ -201,6 +201,9 @@
   <data name="SmModeOption" xml:space="preserve">
     <value>Установить SM mode (только для Bluetooth токена) "N : " { 1 - опциональный пароль | 2 - 1 пароль | 3 - 6 паролей }, mode { caps - только заглавные буквы | digits - заглавные буквы и цифры }</value>
   </data>
+  <data name="TokenLabelChangeSuccess" xml:space="preserve">
+    <value>Метка токена успешно изменена</value>
+  </data>
   <data name="TokenLabelCp1251Option" xml:space="preserve">
     <value>Установить метку токена в кодировке Windows-1251</value>
   </data>

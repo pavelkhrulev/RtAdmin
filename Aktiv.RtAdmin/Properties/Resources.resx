@@ -189,6 +189,9 @@
   <data name="SmModeOption" xml:space="preserve">
     <value>Set SM mode (only for Bluetooth token).  "N : " { 1 - Optional password | 2 - 1 password | 3 - 6 passwords }, mode { caps - only capital letters | digits - capital letters and digits }</value>
   </data>
+  <data name="TokenLabelChangeSuccess" xml:space="preserve">
+    <value>Token label changed successfully</value>
+  </data>
   <data name="TokenLabelCp1251Option" xml:space="preserve">
     <value>Use cp1251 for new device label</value>
   </data>

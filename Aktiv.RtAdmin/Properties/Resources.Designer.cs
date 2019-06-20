@@ -277,6 +277,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Token label changed successfully.
+        /// </summary>
+        public static string TokenLabelChangeSuccess {
+            get {
+                return ResourceManager.GetString("TokenLabelChangeSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use cp1251 for new device label.
         /// </summary>
         public static string TokenLabelCp1251Option {

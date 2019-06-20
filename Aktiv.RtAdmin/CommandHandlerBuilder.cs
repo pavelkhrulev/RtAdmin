@@ -45,8 +45,6 @@ namespace Aktiv.RtAdmin
         {
             commands.Enqueue(() =>
             {
-                var tokenInfo = slot.GetTokenInfo();
-
                 TokenFormatter.Format(slot,
                                     commandLineOptions.AdminPin, commandLineOptions.AdminPin, commandLineOptions.UserPin,
                                     commandLineOptions.TokenLabelUtf8,
@@ -54,7 +52,7 @@ namespace Aktiv.RtAdmin
                                     commandLineOptions.MinAdminPinLength, commandLineOptions.MinUserPinLength,
                                     commandLineOptions.MaxAdminPinAttempts, commandLineOptions.MaxUserPinAttempts, 0);
 
-                logger.LogInformation(string.Format(Resources.FormatTokenSuccess, tokenInfo.SerialNumber));
+                logger.LogInformation(string.Format(Resources.FormatTokenSuccess, tokenParams.TokenSerial));
             });
             
             return this;
@@ -80,11 +78,27 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
-        public CommandHandlerBuilder WithNewTokenName()
+        public CommandHandlerBuilder WithNewUtf8TokenName()
         {
             commands.Enqueue(() =>
             {
-                TokenName.SetNew(slot, commandLineOptions.UserPin, commandLineOptions.TokenLabelUtf8);
+                TokenName.SetNew(slot, commandLineOptions.UserPin, 
+                    Helpers.StringToUtf8String(commandLineOptions.TokenLabelUtf8));
+
+                logger.LogInformation(string.Format(Resources.TokenLabelChangeSuccess, tokenParams.TokenSerial));
+            });
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithNewCp1251TokenName()
+        {
+            commands.Enqueue(() =>
+            {
+                TokenName.SetNew(slot, commandLineOptions.UserPin,
+                    Helpers.StringToCp1251String(commandLineOptions.TokenLabelCp1251));
+
+                logger.LogInformation(string.Format(Resources.TokenLabelChangeSuccess, tokenParams.TokenSerial));
             });
 
             return this;

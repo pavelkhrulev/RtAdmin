@@ -9,10 +9,30 @@ namespace Aktiv.RtAdmin
     {
         public static string UTF8ToCp1251(string sourceStr)
         {
-            Encoding utf8 = Encoding.UTF8;
-            Encoding win1251 = Encoding.GetEncoding("windows-1251");
-            byte[] utf8Bytes = utf8.GetBytes(sourceStr);
-            byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
+            var utf8 = Encoding.UTF8;
+            var win1251 = Encoding.GetEncoding("windows-1251");
+            var utf8Bytes = utf8.GetBytes(sourceStr);
+            var win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
+            return win1251.GetString(win1251Bytes);
+        }
+
+        public static string StringToUtf8String(string source)
+        {
+            var bytes = Encoding.Default.GetBytes(source);
+            var utf8 = Encoding.UTF8;
+
+            var utf8Bytes = Encoding.Convert(Encoding.Default, utf8, bytes);
+
+            return utf8.GetString(utf8Bytes);
+        }
+
+        public static string StringToCp1251String(string source)
+        {
+            var bytes = Encoding.Default.GetBytes(source);
+            var win1251 = Encoding.GetEncoding("windows-1251");
+
+            var win1251Bytes = Encoding.Convert(Encoding.Default, win1251, bytes);
+
             return win1251.GetString(win1251Bytes);
         }
 

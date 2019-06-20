@@ -70,9 +70,15 @@ namespace Aktiv.RtAdmin
                         }
 
                         if (!options.Format && 
+                            !string.IsNullOrWhiteSpace(options.TokenLabelCp1251))
+                        {
+                            commandHandlerBuilder.WithNewCp1251TokenName();
+                        }
+
+                        if (!options.Format &&
                             !string.IsNullOrWhiteSpace(options.TokenLabelUtf8))
                         {
-                            commandHandlerBuilder.WithNewTokenName();
+                            commandHandlerBuilder.WithNewUtf8TokenName();
                         }
 
                         if (options.Format)
