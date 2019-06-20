@@ -11,5 +11,7 @@
         public string NewAdminPin { get; set; }
 
         public string NewUserPin { get; set; }
+
+        public string TokenLabel { get; set; } = DefaultValues.TokenLabel;
     }
 }

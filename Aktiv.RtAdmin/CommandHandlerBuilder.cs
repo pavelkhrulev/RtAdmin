@@ -29,6 +29,16 @@ namespace Aktiv.RtAdmin
             this.slot = slot;
             this.commandLineOptions = options;
 
+            if (!string.IsNullOrWhiteSpace(commandLineOptions.TokenLabelCp1251))
+            {
+                tokenParams.TokenLabel = commandLineOptions.TokenLabelCp1251;
+            }
+
+            if (!string.IsNullOrWhiteSpace(commandLineOptions.TokenLabelUtf8))
+            {
+                tokenParams.TokenLabel = commandLineOptions.TokenLabelUtf8;
+            }
+
             var tokenInfo = slot.GetTokenInfo();
             tokenParams.TokenSerial = tokenInfo.SerialNumber;
 
@@ -47,7 +57,7 @@ namespace Aktiv.RtAdmin
             {
                 TokenFormatter.Format(slot,
                                     commandLineOptions.AdminPin, commandLineOptions.AdminPin, commandLineOptions.UserPin,
-                                    commandLineOptions.TokenLabelUtf8,
+                                    tokenParams.TokenLabel,
                                     commandLineOptions.PinChangePolicy,
                                     commandLineOptions.MinAdminPinLength, commandLineOptions.MinUserPinLength,
                                     commandLineOptions.MaxAdminPinAttempts, commandLineOptions.MaxUserPinAttempts, 0);
@@ -83,7 +93,7 @@ namespace Aktiv.RtAdmin
             commands.Enqueue(() =>
             {
                 TokenName.SetNew(slot, commandLineOptions.UserPin, 
-                    Helpers.StringToUtf8String(commandLineOptions.TokenLabelUtf8));
+                    Helpers.StringToUtf8String(tokenParams.TokenLabel));
 
                 logger.LogInformation(string.Format(Resources.TokenLabelChangeSuccess, tokenParams.TokenSerial));
             });
@@ -96,7 +106,7 @@ namespace Aktiv.RtAdmin
             commands.Enqueue(() =>
             {
                 TokenName.SetNew(slot, commandLineOptions.UserPin,
-                    Helpers.StringToCp1251String(commandLineOptions.TokenLabelCp1251));
+                    Helpers.StringToCp1251String(tokenParams.TokenLabel));
 
                 logger.LogInformation(string.Format(Resources.TokenLabelChangeSuccess, tokenParams.TokenSerial));
             });

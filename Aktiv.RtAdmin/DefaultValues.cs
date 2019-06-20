@@ -18,5 +18,7 @@ namespace Aktiv.RtAdmin
         public const string NativeLibraryPath = "rtPKCS11.dll";
 
         public const string LogFilePath = "rtadmin.exe.log";
+
+        public const string TokenLabel = "Rutoken";
     }
 }
