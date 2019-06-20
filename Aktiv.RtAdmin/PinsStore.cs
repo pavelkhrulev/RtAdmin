@@ -9,6 +9,8 @@ namespace Aktiv.RtAdmin
         // TODO: возможно тут надо BlockingCollection
         private Queue<string> pins;
 
+        public bool Initialized { get; private set; }
+
         public void Load(string pinsFilePath)
         {
             if (!File.Exists(pinsFilePath))
@@ -16,8 +18,8 @@ namespace Aktiv.RtAdmin
                 throw new FileNotFoundException("Нет файла", pinsFilePath);
             }
 
-            pins = new Queue<string>(
-                File.ReadAllLines(pinsFilePath));File.ReadAllLines(pinsFilePath);
+            pins = new Queue<string>(File.ReadAllLines(pinsFilePath));
+            Initialized = true;
         }
 
         public string GetNextPin()

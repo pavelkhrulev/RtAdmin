@@ -13,13 +13,15 @@ namespace Aktiv.RtAdmin
         private Slot slot;
         private CommandLineOptions commandLineOptions;
         private readonly TokenParams tokenParams;
+        private readonly PinsStore pinsStore;
 
         private readonly ConcurrentQueue<Action> commands;
 
-        public CommandHandlerBuilder(ILogger<RtAdmin> logger, TokenParams tokenParams)
+        public CommandHandlerBuilder(ILogger<RtAdmin> logger, TokenParams tokenParams, PinsStore pinsStore)
         {
             this.logger = logger;
             this.tokenParams = tokenParams;
+            this.pinsStore = pinsStore;
 
             commands = new ConcurrentQueue<Action>();
         }
@@ -68,11 +70,27 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
+        public CommandHandlerBuilder WithPinsFromStore()
+        {
+            commands.Enqueue(() =>
+            {
+                tokenParams.NewAdminPin = pinsStore.GetNextPin();
+                tokenParams.NewUserPin = pinsStore.GetNextPin();
+            });
+
+            return this;
+        }
+
         public CommandHandlerBuilder WithNewAdminPin()
         {
             commands.Enqueue(() =>
             {
-                tokenParams.NewAdminPin = GeneratePin(commandLineOptions.AdminPinLength);
+                if (!commandLineOptions.AdminPinLength.HasValue)
+                {
+                    throw new ArgumentNullException(nameof(commandLineOptions.AdminPinLength));
+                }
+
+                tokenParams.NewAdminPin = GeneratePin(commandLineOptions.AdminPinLength.Value);
             });
 
             return this;
@@ -82,7 +100,12 @@ namespace Aktiv.RtAdmin
         {
             commands.Enqueue(() =>
             {
-                tokenParams.NewUserPin = GeneratePin(commandLineOptions.UserPinLength);
+                if (!commandLineOptions.UserPinLength.HasValue)
+                {
+                    throw new ArgumentNullException(nameof(commandLineOptions.UserPinLength));
+                }
+
+                tokenParams.NewUserPin = GeneratePin(commandLineOptions.UserPinLength.Value);
             });
 
             return this;

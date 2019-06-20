@@ -43,11 +43,11 @@ namespace Aktiv.RtAdmin
 
                 var core = serviceProvider.GetService<RutokenCore>();
                 var logger = serviceProvider.GetService<ILogger<RtAdmin>>();
+                var pinsStore = serviceProvider.GetService<PinsStore>();
 
                 if (!string.IsNullOrWhiteSpace(options.PinFilePath))
                 {
-                    serviceProvider.GetService<PinsStore>()
-                                   .Load(options.PinFilePath);
+                    pinsStore.Load(options.PinFilePath);
                 }
 
                 try
@@ -59,12 +59,19 @@ namespace Aktiv.RtAdmin
                         var commandHandlerBuilder = serviceProvider.GetService<CommandHandlerBuilder>()
                                                                    .ConfigureWith(slot, options);
 
-                        if (options.AdminPinLength != 0)
+                        if (pinsStore.Initialized)
+                        {
+                            commandHandlerBuilder.WithPinsFromStore();
+                        }
+
+                        // TODO: length validation
+                        if (options.AdminPinLength.HasValue)
                         {
                             commandHandlerBuilder.WithNewAdminPin();
                         }
 
-                        if (options.UserPinLength != 0)
+                        // TODO: length validation
+                        if (options.UserPinLength.HasValue)
                         {
                             commandHandlerBuilder.WithNewUserPin();
                         }

@@ -10,10 +10,10 @@ namespace Aktiv.RtAdmin
         public bool Format { get; set; }
 
         [Option('G', HelpText = "GenerateRandomAdminPinOption", ResourceType = typeof(Properties.Resources))]
-        public uint AdminPinLength { get; set; }
+        public uint? AdminPinLength { get; set; }
 
         [Option('g', HelpText = "GenerateRandomUserPinOption", ResourceType = typeof(Properties.Resources))]
-        public uint UserPinLength { get; set; }
+        public uint? UserPinLength { get; set; }
 
         [Option('U', HelpText = "Utf8Option", ResourceType = typeof(Properties.Resources))]
         public bool UTF8InsteadOfcp1251 { get; set; }
