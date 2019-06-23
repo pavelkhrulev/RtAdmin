@@ -88,9 +88,19 @@ namespace Aktiv.RtAdmin
                             commandHandlerBuilder.WithNewUtf8TokenName();
                         }
 
+                        if (!options.Format)
+                        {
+                            commandHandlerBuilder.WithPinsChange();
+                        }
+
                         if (options.Format)
                         {
                             commandHandlerBuilder.WithFormat();
+                        }
+
+                        if (options.GenerateActivationPasswords != null)
+                        {
+                            commandHandlerBuilder.WithGenerationActivationPassword();
                         }
 
                         commandHandlerBuilder.Execute();

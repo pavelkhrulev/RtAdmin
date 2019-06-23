@@ -61,11 +61,56 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} : Generate activation passwords passed.
+        /// </summary>
+        public static string ActivationPasswordsWereGenerated {
+            get {
+                return ResourceManager.GetString("ActivationPasswordsWereGenerated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} : Admin PIN change failed. Enter admin PIN.
+        /// </summary>
+        public static string AdminPinChangeError {
+            get {
+                return ResourceManager.GetString("AdminPinChangeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set Admin PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used.
         /// </summary>
         public static string AdminPinOption {
             get {
                 return ResourceManager.GetString("AdminPinOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For changing admin PIN enter old admin PIN.
+        /// </summary>
+        public static string ChangeAdminPinOldPinError {
+            get {
+                return ResourceManager.GetString("ChangeAdminPinOldPinError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t change token label. Enter user PIN using -c.
+        /// </summary>
+        public static string ChangeTokenLabelPinError {
+            get {
+                return ResourceManager.GetString("ChangeTokenLabelPinError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For changing user PIN enter old user or admin PIN.
+        /// </summary>
+        public static string ChangeUserPinOldPinsError {
+            get {
+                return ResourceManager.GetString("ChangeUserPinOldPinsError", resourceCulture);
             }
         }
         
@@ -129,6 +174,42 @@ namespace Aktiv.RtAdmin.Properties {
         public static string GenerateRandomUserPinOption {
             get {
                 return ResourceManager.GetString("GenerateRandomUserPinOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} : Generating activation password(s).
+        /// </summary>
+        public static string GeneratingActivationPasswords {
+            get {
+                return ResourceManager.GetString("GeneratingActivationPasswords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entered Admin PIN is incorrect.
+        /// </summary>
+        public static string IncorrectAdminPin {
+            get {
+                return ResourceManager.GetString("IncorrectAdminPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entered PIN is incorrect.
+        /// </summary>
+        public static string IncorrectPin {
+            get {
+                return ResourceManager.GetString("IncorrectPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file contains incorrect number of PINs.
+        /// </summary>
+        public static string IncorrectPinCodesCount {
+            get {
+                return ResourceManager.GetString("IncorrectPinCodesCount", resourceCulture);
             }
         }
         
@@ -232,6 +313,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PIN changed successfully.
+        /// </summary>
+        public static string PinChangedSuccess {
+            get {
+                return ResourceManager.GetString("PinChangedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PIN change policy N : { 1 - administrator (SO) can change user PIN | 2 - user can change user PIN | 3 - both } (default: 2).
         /// </summary>
         public static string PinChangePolicyOption {
@@ -241,11 +331,56 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PIN-code file not found.
+        /// </summary>
+        public static string PinCodesFileNotFound {
+            get {
+                return ResourceManager.GetString("PinCodesFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Load new PIN codes from specified file. Use ont PIN per line, \n is separator. -a -u -G -g commands are ignored.
         /// </summary>
         public static string PinFilePathOption {
             get {
                 return ResourceManager.GetString("PinFilePathOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN length and allowed PIN length mismatch. Min admin PIN length: {0}, max admin PIN length: {1}, min user PIN length: {2}, max user PIN length: {3}.
+        /// </summary>
+        public static string PinLengthMismatch {
+            get {
+                return ResourceManager.GetString("PinLengthMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN-codes from file ended.
+        /// </summary>
+        public static string PinsEnded {
+            get {
+                return ResourceManager.GetString("PinsEnded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New random Admin PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}.
+        /// </summary>
+        public static string RandomAdminPinLengthMismatch {
+            get {
+                return ResourceManager.GetString("RandomAdminPinLengthMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New random User PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}.
+        /// </summary>
+        public static string RandomUserPinLengthMismatch {
+            get {
+                return ResourceManager.GetString("RandomUserPinLengthMismatch", resourceCulture);
             }
         }
         
@@ -309,6 +444,33 @@ namespace Aktiv.RtAdmin.Properties {
         public static string UnblockPinsOption {
             get {
                 return ResourceManager.GetString("UnblockPinsOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} : User PIN change failed. Enter admin pin according to user PIN change policy on token.
+        /// </summary>
+        public static string UserPinChangeAdminPinError {
+            get {
+                return ResourceManager.GetString("UserPinChangeAdminPinError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} : User PIN change failed. Enter user PIN or admin PIN according to user PIN change policy on token.
+        /// </summary>
+        public static string UserPinChangeError {
+            get {
+                return ResourceManager.GetString("UserPinChangeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} : User PIN change failed. Enter user pin according to user PIN change policy on token.
+        /// </summary>
+        public static string UserPinChangeUserPinError {
+            get {
+                return ResourceManager.GetString("UserPinChangeUserPinError", resourceCulture);
             }
         }
         

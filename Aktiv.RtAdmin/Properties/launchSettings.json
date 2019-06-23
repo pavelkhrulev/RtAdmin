@@ -1,7 +1,8 @@
 {
   "profiles": {
     "Aktiv.RtAdmin": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "-s 1 caps -o 87654321"
     }
   }
 }

@@ -24,16 +24,16 @@ namespace Aktiv.RtAdmin
         [Option('D', HelpText = "TokenLabelUtf8Option", ResourceType = typeof(Properties.Resources))]
         public string TokenLabelUtf8 { get; set; }
 
-        [Option('o', Default = DefaultValues.AdminPin, HelpText = "OldAdminPinOption", ResourceType = typeof(Properties.Resources))]
+        [Option('o', HelpText = "OldAdminPinOption", ResourceType = typeof(Properties.Resources))]
         public string OldAdminPin { get; set; }
 
-        [Option('c', Default = DefaultValues.UserPin, HelpText = "OldUserPinOption", ResourceType = typeof(Properties.Resources))]
+        [Option('c', HelpText = "OldUserPinOption", ResourceType = typeof(Properties.Resources))]
         public string OldUserPin { get; set; }
 
-        [Option('a', Default = DefaultValues.AdminPin, HelpText = "AdminPinOption", ResourceType = typeof(Properties.Resources))]
+        [Option('a', HelpText = "AdminPinOption", ResourceType = typeof(Properties.Resources))]
         public string AdminPin { get; set; }
 
-        [Option('u', Default = DefaultValues.UserPin, HelpText = "UserPinOption", ResourceType = typeof(Properties.Resources))]
+        [Option('u', HelpText = "UserPinOption", ResourceType = typeof(Properties.Resources))]
         public string UserPin { get; set; }
 
         [Option('t', HelpText = "SetPin2ModeOption", ResourceType = typeof(Properties.Resources))]
@@ -73,7 +73,7 @@ namespace Aktiv.RtAdmin
         public RutokenFlag PinChangePolicy { get; set; }
 
         [Option('s', HelpText = "SmModeOption", ResourceType = typeof(Properties.Resources))]
-        public IEnumerable<string> SmMode { get; set; }
+        public IEnumerable<string> GenerateActivationPasswords { get; set; }
 
         [Option('F', HelpText = "FormatVolumeParamsOption", ResourceType = typeof(Properties.Resources))]
         public IEnumerable<string> FormatVolumeParams { get; set; }

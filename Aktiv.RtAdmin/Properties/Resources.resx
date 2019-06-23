@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActivationPasswordsWereGenerated" xml:space="preserve">
+    <value>{0} : Generate activation passwords passed</value>
+  </data>
+  <data name="AdminPinChangeError" xml:space="preserve">
+    <value>{0} : Admin PIN change failed. Enter admin PIN</value>
+  </data>
   <data name="AdminPinOption" xml:space="preserve">
     <value>Set Admin PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>
+  </data>
+  <data name="ChangeAdminPinOldPinError" xml:space="preserve">
+    <value>For changing admin PIN enter old admin PIN</value>
+  </data>
+  <data name="ChangeTokenLabelPinError" xml:space="preserve">
+    <value>Can't change token label. Enter user PIN using -c</value>
+  </data>
+  <data name="ChangeUserPinOldPinsError" xml:space="preserve">
+    <value>For changing user PIN enter old user or admin PIN</value>
   </data>
   <data name="ChangeVolumeAttributesOption" xml:space="preserve">
     <value>Change volume attributes. Id : volume id {1 - 9}, aR : access rights{ro, rw, hi, cd}, cT : change type { p - permanent, t - temporary }</value>
@@ -140,6 +155,18 @@
   </data>
   <data name="GenerateRandomUserPinOption" xml:space="preserve">
     <value>Generate random User PIN code of specified length. If this command is used -u is ignored</value>
+  </data>
+  <data name="GeneratingActivationPasswords" xml:space="preserve">
+    <value>{0} : Generating activation password(s)</value>
+  </data>
+  <data name="IncorrectAdminPin" xml:space="preserve">
+    <value>Entered Admin PIN is incorrect</value>
+  </data>
+  <data name="IncorrectPin" xml:space="preserve">
+    <value>Entered PIN is incorrect</value>
+  </data>
+  <data name="IncorrectPinCodesCount" xml:space="preserve">
+    <value>The file contains incorrect number of PINs</value>
   </data>
   <data name="InitializedInfo" xml:space="preserve">
     <value>Application was initialized</value>
@@ -174,11 +201,29 @@
   <data name="OneIterationOnlyOption" xml:space="preserve">
     <value>Stop after one iteration</value>
   </data>
+  <data name="PinChangedSuccess" xml:space="preserve">
+    <value>PIN changed successfully</value>
+  </data>
   <data name="PinChangePolicyOption" xml:space="preserve">
     <value>PIN change policy N : { 1 - administrator (SO) can change user PIN | 2 - user can change user PIN | 3 - both } (default: 2)</value>
   </data>
+  <data name="PinCodesFileNotFound" xml:space="preserve">
+    <value>PIN-code file not found</value>
+  </data>
   <data name="PinFilePathOption" xml:space="preserve">
     <value>Load new PIN codes from specified file. Use ont PIN per line, \n is separator. -a -u -G -g commands are ignored</value>
+  </data>
+  <data name="PinLengthMismatch" xml:space="preserve">
+    <value>PIN length and allowed PIN length mismatch. Min admin PIN length: {0}, max admin PIN length: {1}, min user PIN length: {2}, max user PIN length: {3}</value>
+  </data>
+  <data name="PinsEnded" xml:space="preserve">
+    <value>PIN-codes from file ended</value>
+  </data>
+  <data name="RandomAdminPinLengthMismatch" xml:space="preserve">
+    <value>New random Admin PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}</value>
+  </data>
+  <data name="RandomUserPinLengthMismatch" xml:space="preserve">
+    <value>New random User PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}</value>
   </data>
   <data name="SetLocalPinOption" xml:space="preserve">
     <value>PIN Set local PIN. Id : local PIN id {1 - 9}, PIN : local PIN. You should use login with local PIN command to set local user PIN</value>
@@ -200,6 +245,15 @@
   </data>
   <data name="UnblockPinsOption" xml:space="preserve">
     <value>Unblock user and local PINs. You should use login with Admin PIN command to unblock user and local PINs</value>
+  </data>
+  <data name="UserPinChangeAdminPinError" xml:space="preserve">
+    <value>{0} : User PIN change failed. Enter admin pin according to user PIN change policy on token</value>
+  </data>
+  <data name="UserPinChangeError" xml:space="preserve">
+    <value>{0} : User PIN change failed. Enter user PIN or admin PIN according to user PIN change policy on token</value>
+  </data>
+  <data name="UserPinChangeUserPinError" xml:space="preserve">
+    <value>{0} : User PIN change failed. Enter user pin according to user PIN change policy on token</value>
   </data>
   <data name="UserPinOption" xml:space="preserve">
     <value>Set User PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>

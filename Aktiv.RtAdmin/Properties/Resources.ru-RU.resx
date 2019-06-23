@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActivationPasswordsWereGenerated" xml:space="preserve">
+    <value>{0} : Пароли активации сгенерированы</value>
+  </data>
+  <data name="AdminPinChangeError" xml:space="preserve">
+    <value>{0} : Ошибка при изменении PIN-кода администратора. Введите PIN-код администратора, используя параметр -o</value>
+  </data>
   <data name="AdminPinOption" xml:space="preserve">
     <value>Устанавливаемый PIN-код администратора. Параметр должен использоваться при изменении PIN-кода администратора. Если значение параметра не установлен, то будет использовано значение по умолчанию (87654321)</value>
+  </data>
+  <data name="ChangeAdminPinOldPinError" xml:space="preserve">
+    <value>Для изменения PIN-кода администратора необходимо ввести текущий PIN-код администратора, используя параметр -o</value>
+  </data>
+  <data name="ChangeTokenLabelPinError" xml:space="preserve">
+    <value>Невозможно изменить имя токена. Введите PIN-код пользователя, используя параметр -c</value>
+  </data>
+  <data name="ChangeUserPinOldPinsError" xml:space="preserve">
+    <value>Для изменения PIN-кода пользователя необходимо ввести текущий PIN-код администратора или пользователя, используя параметр -o или -c</value>
   </data>
   <data name="ChangeVolumeAttributesOption" xml:space="preserve">
     <value>Изменение прав доступа.
@@ -147,6 +162,18 @@
   </data>
   <data name="GenerateRandomUserPinOption" xml:space="preserve">
     <value>Генерировать PIN-код пользователя установленной длины (8-32) (используется при форматировании). При использовании этого параметра параметр -u игнорируется</value>
+  </data>
+  <data name="GeneratingActivationPasswords" xml:space="preserve">
+    <value>{0} : Генерация паролей активации</value>
+  </data>
+  <data name="IncorrectAdminPin" xml:space="preserve">
+    <value>Введен некорректный PIN-код администратора</value>
+  </data>
+  <data name="IncorrectPin" xml:space="preserve">
+    <value>Введен некорректный PIN-код</value>
+  </data>
+  <data name="IncorrectPinCodesCount" xml:space="preserve">
+    <value>Файл содержит некорректное число PIN-кодов</value>
   </data>
   <data name="InitializedInfo" xml:space="preserve">
     <value>Приложение инициализировано</value>
@@ -183,12 +210,30 @@
   <data name="OneIterationOnlyOption" xml:space="preserve">
     <value>Ограничение количества выполняемых итераций до одной</value>
   </data>
+  <data name="PinChangedSuccess" xml:space="preserve">
+    <value>PIN-код успешно изменен</value>
+  </data>
   <data name="PinChangePolicyOption" xml:space="preserve">
     <value>Политика смены PIN-кода пользователя (кто может менять PIN-код:
 1 – администратор, 2 – пользователь, 3 – пользователь и администратор)</value>
   </data>
+  <data name="PinCodesFileNotFound" xml:space="preserve">
+    <value>Файл, содежащий PIN-коды, не найден</value>
+  </data>
   <data name="PinFilePathOption" xml:space="preserve">
     <value>Загрузка значений пар PIN-кодов из файла, находящегося по пути, указанного в значении параметра. В файле каждому PIN-коду соответствует отдельная строка. При использовании данного параметра параметры -a -u -G -g игнорируются</value>
+  </data>
+  <data name="PinLengthMismatch" xml:space="preserve">
+    <value>Несоответствие длины введенного PIN-кода и разрешенной длины PIN-кода. Минимальная длина PIN-кода администратора: {0}, максимальная длина PIN-кода администратора: {1}, минимальная длина PIN-кода пользователя {2}, максимальная длина PIN-кода пользователя: {3}</value>
+  </data>
+  <data name="PinsEnded" xml:space="preserve">
+    <value>PIN-коды из файла закончились</value>
+  </data>
+  <data name="RandomAdminPinLengthMismatch" xml:space="preserve">
+    <value>Несоответствие длины запрашиваемого случайного PIN-кода администратора и разрешенной длины PIN-кода. Минимальная длина PIN-кода: {0}, максимальная длина PIN-кода: {1}</value>
+  </data>
+  <data name="RandomUserPinLengthMismatch" xml:space="preserve">
+    <value>Несоответствие длины запрашиваемого случайного PIN-кода пользователя и разрешенной длины PIN-кода. Минимальная длина PIN-кода: {0}, максимальная длина PIN-кода: {1}</value>
   </data>
   <data name="SetLocalPinOption" xml:space="preserve">
     <value>Устанавливаемый PIN-код локального пользователя
@@ -212,6 +257,15 @@
   </data>
   <data name="UnblockPinsOption" xml:space="preserve">
     <value>Разблокировать локальные PIN-коды и PIN-код пользователя. Для использования этого параметра необходим логин с текущим PIN-кодом администратора</value>
+  </data>
+  <data name="UserPinChangeAdminPinError" xml:space="preserve">
+    <value>{0} : Ошибка при изменении PIN-кода пользователя. Введите PIN-код администратора согласно политике изменения PIN-кода, используя параметр -o</value>
+  </data>
+  <data name="UserPinChangeError" xml:space="preserve">
+    <value>{0} : Ошибка при изменении PIN-кода пользователя. Введите PIN-код пользователя или администратора согласно политике изменения PIN-кода, используя параметр -c или -o</value>
+  </data>
+  <data name="UserPinChangeUserPinError" xml:space="preserve">
+    <value>{0} : Ошибка при изменении PIN-кода пользователя. Введите PIN-код пользователя согласно политике изменения PIN-кода, используя параметр -c</value>
   </data>
   <data name="UserPinOption" xml:space="preserve">
     <value>Устанавливаемый PIN-код пользователя. Параметр должен использоваться при изменении PIN-кода пользователя. Если значение параметра не установлено, то будет использовано значение по умолчанию (12345678)</value>
