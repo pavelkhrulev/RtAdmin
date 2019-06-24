@@ -285,4 +285,7 @@
   <data name="Pin2SetSuccess" xml:space="preserve">
     <value>{0} : Запрос на установку PIN2 на PINPad отправлен</value>
   </data>
+  <data name="PinUnlockSuccess" xml:space="preserve">
+    <value>{0} : PIN-код успешно разблокирован</value>
+  </data>
 </root>

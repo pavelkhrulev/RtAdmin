@@ -385,6 +385,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} : Unblock PIN passed.
+        /// </summary>
+        public static string PinUnlockSuccess {
+            get {
+                return ResourceManager.GetString("PinUnlockSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New random Admin PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}.
         /// </summary>
         public static string RandomAdminPinLengthMismatch {

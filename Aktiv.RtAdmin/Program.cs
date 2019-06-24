@@ -113,6 +113,15 @@ namespace Aktiv.RtAdmin
                             commandHandlerBuilder.WithNewPin2();
                         }
 
+                        // TODO: ulInitParamsSizeFormat
+                        // TODO: ulVolumeCredentialsSize
+                        // TODO: ulVolumeIDToShowInfo
+
+                        if (options.UnblockPins)
+                        {
+                            commandHandlerBuilder.WithPinsUnblock();
+                        }
+
                         commandHandlerBuilder.Execute();
 
                         if (options.OneIterationOnly)

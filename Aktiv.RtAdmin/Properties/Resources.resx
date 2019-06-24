@@ -270,4 +270,7 @@
   <data name="Pin2SetSuccess" xml:space="preserve">
     <value>{0}: PIN2 PINPad set request has been successfully sent</value>
   </data>
+  <data name="PinUnlockSuccess" xml:space="preserve">
+    <value>{0} : Unblock PIN passed</value>
+  </data>
 </root>

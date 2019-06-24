@@ -369,6 +369,18 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
+        public CommandHandlerBuilder WithPinsUnblock()
+        {
+            _commands.Enqueue(() =>
+            {
+                PinUnlocker.Unlock(_slot, PinCodeOwner.Admin, _tokenParams.OldAdminPin.Value);
+
+                _logger.LogInformation(string.Format(Resources.PinUnlockSuccess, _tokenParams.TokenSerial));
+            });
+
+            return this;
+        }
+
         public void Execute()
         {
             // Валидация введенных новых пин-кодов
