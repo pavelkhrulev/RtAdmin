@@ -223,6 +223,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} : Local PIN has been successfully set.
+        /// </summary>
+        public static string LocalPinSetSuccess {
+            get {
+                return ResourceManager.GetString("LocalPinSetSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log file path.
         /// </summary>
         public static string LogFilePathOption {
@@ -309,6 +318,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string OneIterationOnlyOption {
             get {
                 return ResourceManager.GetString("OneIterationOnlyOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: PIN2 PINPad set request has been successfully sent.
+        /// </summary>
+        public static string Pin2SetSuccess {
+            get {
+                return ResourceManager.GetString("Pin2SetSuccess", resourceCulture);
             }
         }
         

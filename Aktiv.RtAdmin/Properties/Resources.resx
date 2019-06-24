@@ -264,4 +264,10 @@
   <data name="VolumeInfoParamsOption" xml:space="preserve">
     <value>Get volume info. Id : volume id {1 - 9, a - all, sz - get flash size}</value>
   </data>
+  <data name="LocalPinSetSuccess" xml:space="preserve">
+    <value>{0} : Local PIN has been successfully set</value>
+  </data>
+  <data name="Pin2SetSuccess" xml:space="preserve">
+    <value>{0}: PIN2 PINPad set request has been successfully sent</value>
+  </data>
 </root>

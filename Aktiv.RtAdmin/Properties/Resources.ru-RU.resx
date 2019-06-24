@@ -279,4 +279,10 @@
 [1-8 - атрибуты конкретного раздела]
 [sz - объем памяти]</value>
   </data>
+  <data name="LocalPinSetSuccess" xml:space="preserve">
+    <value>{0} : PIN-код локального пользователя успешно установлен</value>
+  </data>
+  <data name="Pin2SetSuccess" xml:space="preserve">
+    <value>{0} : Запрос на установку PIN2 на PINPad отправлен</value>
+  </data>
 </root>

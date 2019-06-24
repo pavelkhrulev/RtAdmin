@@ -98,9 +98,19 @@ namespace Aktiv.RtAdmin
                             commandHandlerBuilder.WithFormat();
                         }
 
-                        if (options.GenerateActivationPasswords != null)
+                        if (options.GenerateActivationPasswords.Any())
                         {
                             commandHandlerBuilder.WithGenerationActivationPassword();
+                        }
+
+                        if (options.SetLocalPin.Any())
+                        {
+                            commandHandlerBuilder.WithNewLocalPin();
+                        }
+
+                        if (options.SetPin2Mode)
+                        {
+                            commandHandlerBuilder.WithNewPin2();
                         }
 
                         commandHandlerBuilder.Execute();

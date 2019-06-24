@@ -17,13 +17,16 @@ namespace Aktiv.RtAdmin
         private CommandLineOptions _commandLineOptions;
         private readonly TokenParams _tokenParams;
         private readonly PinsStore _pinsStore;
+        private readonly VolumeOwnersStore _volumeOwnersStore;
         private readonly ConcurrentQueue<Action> _commands;
 
-        public CommandHandlerBuilder(ILogger<RtAdmin> logger, TokenParams tokenParams, PinsStore pinsStore)
+        public CommandHandlerBuilder(ILogger<RtAdmin> logger, TokenParams tokenParams,
+            PinsStore pinsStore, VolumeOwnersStore volumeOwnersStore)
         {
             _logger = logger;
             _tokenParams = tokenParams;
             _pinsStore = pinsStore;
+            _volumeOwnersStore = volumeOwnersStore;
 
             _commands = new ConcurrentQueue<Action>();
         }
@@ -325,6 +328,47 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
+        public CommandHandlerBuilder WithNewLocalPin()
+        {
+            _commands.Enqueue(() =>
+            {
+                var commandParams = _commandLineOptions.SetLocalPin.ToList();
+                if (commandParams.Count != 2)
+                {
+                    // TODO: в ресурсы
+                    throw new ArgumentException("Неверное число аргументов для установки локального PIN-кода");
+                }
+
+                if (!_volumeOwnersStore.TryGetOwnerId(commandParams[0], out var localIdToCreate))
+                {
+                    // TODO: в ресурсы
+                    throw new ArgumentException("Неверный идентификатор локального пользователя");
+                }
+
+                var localPin = commandParams[1];
+
+                LocalPinChanger.Change(_slot, _tokenParams.NewUserPin.EnteredByUser ?
+                    _tokenParams.NewUserPin.Value : _tokenParams.OldUserPin.Value,
+                    localPin, localIdToCreate);
+
+                _logger.LogInformation(string.Format(Resources.LocalPinSetSuccess, _tokenParams.TokenSerial));
+            });
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithNewPin2()
+        {
+            _commands.Enqueue(() =>
+            {
+                LocalPinChanger.Change(_slot, null, null, _volumeOwnersStore.GetPin2Id());
+
+                _logger.LogInformation(string.Format(Resources.Pin2SetSuccess, _tokenParams.TokenSerial));
+            });
+
+            return this;
+        }
+
         public void Execute()
         {
             // Валидация введенных новых пин-кодов
@@ -339,18 +383,6 @@ namespace Aktiv.RtAdmin
                 throw new InvalidOperationException(string.Format(Resources.PinLengthMismatch, 
                     _tokenParams.MinAdminPinLenFromToken, _tokenParams.MaxAdminPinLenFromToken, 
                     _tokenParams.MinUserPinLenFromToken, _tokenParams.MaxUserPinLenFromToken));
-            }
-
-            if (!_commandLineOptions.Format && _tokenParams.NewUserPin.EnteredByUser && 
-                (!_tokenParams.OldUserPin.EnteredByUser || !_tokenParams.OldAdminPin.EnteredByUser)) // TODO: здесь в исходной программе было &&
-            {
-                throw new InvalidOperationException(Resources.ChangeUserPinOldPinsError);
-            }
-
-            if (!_commandLineOptions.Format && _tokenParams.NewAdminPin.EnteredByUser && 
-                !_tokenParams.OldAdminPin.EnteredByUser)
-            {
-                throw new InvalidOperationException(Resources.ChangeAdminPinOldPinError);
             }
 
             foreach (var command in _commands)
