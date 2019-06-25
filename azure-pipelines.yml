@@ -1,33 +1,40 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
+- master
 - develop
 
-pool:
-  vmImage: 'windows-latest'
-
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  sdk_version: 3.0.100-preview6-012264
+  projectFolder: Aktiv.RtAdmin
+  mainProjectPath: ./$(projectFolder)/$(projectFolder).csproj
 
-steps:
-- task: NuGetToolInstaller@0
+jobs:
+- job: 'osx'
+  pool:
+    vmImage: macOS-10.13
+  steps:
+  - task: DotNetCoreInstaller@0
+    displayName: 'Use .NET Core sdk $(sdk_version)'
+    inputs:
+      version: $(sdk_version)
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: custom
+      projects: ./**/*.csproj
+      custom: restore
+      arguments: '-r osx-x64'
+  
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build Release'
+    inputs:
+      projects: $(mainProjectPath)
+      arguments: '-r osx-x64 -c Release'
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet publish'
+    inputs:
+      command: publish
+      projects: $(mainProjectPath)
+      arguments: '-r osx-x64 --self-contained -o $(Build.StagingDirectory)'
+      zipAfterPublish: false
