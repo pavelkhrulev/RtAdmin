@@ -1,6 +1,7 @@
 trigger:
 - master
 - develop
+- azure-pipelines
 
 variables:
   sdk_version: 3.0.100-preview6-012264
