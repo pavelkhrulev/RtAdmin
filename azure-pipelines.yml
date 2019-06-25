@@ -43,3 +43,9 @@ jobs:
       arguments: '-c Release -r osx-x64 --self-contained -o $(Build.StagingDirectory)'
       zipAfterPublish: false
       publishWebProjects: false
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Pipeline Artifact'
+    inputs:
+      artifactName: 'osx-x64'
+      targetPath: '$(Build.StagingDirectory)'
