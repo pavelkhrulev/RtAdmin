@@ -22,7 +22,7 @@ jobs:
     displayName: 'dotnet restore'
     inputs:
       command: custom
-      projects: ./**/*.csproj
+      projects: $(mainProjectPath)
       custom: restore
       arguments: '-r osx-x64'
   
