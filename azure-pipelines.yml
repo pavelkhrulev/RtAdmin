@@ -8,6 +8,8 @@ variables:
   projectFolder: Aktiv.RtAdmin
   mainProjectPath: ./$(projectFolder)/$(projectFolder).csproj
 
+name: $(date:yyyy.MM.dd)$(rev:.rr)
+
 jobs:
 - job: 'osx'
   pool:
@@ -48,4 +50,86 @@ jobs:
     displayName: 'Publish Pipeline Artifact'
     inputs:
       artifactName: 'osx-x64'
+      targetPath: '$(Build.StagingDirectory)'
+
+- job: 'windows_x64'
+  pool:
+    vmImage: windows-2019
+  steps:
+  - checkout: self
+    submodules: true
+
+  - task: DotNetCoreInstaller@0
+    displayName: 'Use .NET Core sdk $(sdk_version)'
+    inputs:
+      version: $(sdk_version)
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: custom
+      projects: $(mainProjectPath)
+      custom: restore
+      arguments: '-r win-x64'
+  
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build Release'
+    inputs:
+      projects: $(mainProjectPath)
+      arguments: '-r win-x64 -c Release'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet publish'
+    inputs:
+      command: publish
+      projects: $(mainProjectPath)
+      arguments: '-c Release -r win-x64 --self-contained -o $(Build.StagingDirectory)'
+      zipAfterPublish: false
+      publishWebProjects: false
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Pipeline Artifact'
+    inputs:
+      artifactName: 'win-x64'
+      targetPath: '$(Build.StagingDirectory)'
+
+- job: 'linux_x64'
+  pool:
+    vmImage: ubuntu-16.04
+  steps:
+  - checkout: self
+    submodules: true
+
+  - task: DotNetCoreInstaller@0
+    displayName: 'Use .NET Core sdk $(sdk_version)'
+    inputs:
+      version: $(sdk_version)
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: custom
+      projects: $(mainProjectPath)
+      custom: restore
+      arguments: '-r linux-x64'
+  
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build Release'
+    inputs:
+      projects: $(mainProjectPath)
+      arguments: '-r linux-x64 -c Release'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet publish'
+    inputs:
+      command: publish
+      projects: $(mainProjectPath)
+      arguments: '-c Release -r linux-x64 --self-contained -o $(Build.StagingDirectory)'
+      zipAfterPublish: false
+      publishWebProjects: false
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Pipeline Artifact'
+    inputs:
+      artifactName: 'linux-x64'
       targetPath: '$(Build.StagingDirectory)'
