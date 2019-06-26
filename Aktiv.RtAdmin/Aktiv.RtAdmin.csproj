@@ -5,6 +5,9 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyName>rtadmin</AssemblyName>
     <NeutralLanguage>en</NeutralLanguage>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishSingleFile>true</PublishSingleFile>
   </PropertyGroup>
 
   <ItemGroup>
