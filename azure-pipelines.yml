@@ -42,7 +42,7 @@ jobs:
     inputs:
       command: publish
       projects: $(mainProjectPath)
-      arguments: '-c Release -r osx-x64 --self-contained /p:PublishSingleFile=true /p:PublishTrimmed=true -o $(Build.StagingDirectory)' 
+      arguments: '-c Release -r osx-x64 --self-contained -o $(Build.StagingDirectory)' 
       zipAfterPublish: false
       publishWebProjects: false
 
@@ -83,7 +83,7 @@ jobs:
     inputs:
       command: publish
       projects: $(mainProjectPath)
-      arguments: '-c Release -r win-x64 --self-contained /p:PublishSingleFile=true /p:PublishTrimmed=true -o $(Build.StagingDirectory)'
+      arguments: '-c Release -r win-x64 --self-contained -o $(Build.StagingDirectory)'
       zipAfterPublish: false
       publishWebProjects: false
 
@@ -124,7 +124,7 @@ jobs:
     inputs:
       command: publish
       projects: $(mainProjectPath)
-      arguments: '-c Release -r linux-x64 --self-contained /p:PublishSingleFile=true /p:PublishTrimmed=true -o $(Build.StagingDirectory)'
+      arguments: '-c Release -r linux-x64 --self-contained -o $(Build.StagingDirectory)'
       zipAfterPublish: false
       publishWebProjects: false
 
