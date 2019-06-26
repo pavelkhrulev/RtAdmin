@@ -2,3 +2,5 @@
 * смены метки токена
 * PIN-кодов и их параметров
 * управления разделами Flash-памяти.
+
+[![Build Status](https://dev.azure.com/pahan4igg/Aktiv.RtAdmin/_apis/build/status/pavelkhrulev.RtAdmin?branchName=azure-pipelines&jobName=osx)](https://dev.azure.com/pahan4igg/Aktiv.RtAdmin/_build/latest?definitionId=1&branchName=azure-pipelines)
