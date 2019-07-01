@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActivationPasswordsWereGenerated" xml:space="preserve">
-    <value>{0} : Generate activation passwords passed</value>
+    <value>Generate activation passwords passed</value>
   </data>
   <data name="AdminPinChangeError" xml:space="preserve">
-    <value>{0} : Admin PIN change failed. Enter admin PIN</value>
+    <value>Admin PIN change failed. Enter admin PIN</value>
   </data>
   <data name="AdminPinOption" xml:space="preserve">
     <value>Set Admin PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>
@@ -145,7 +145,7 @@
     <value>Format memory. If your device has built-in Flash memory you may specify Admin PIN, otherwise you may lose all data on it</value>
   </data>
   <data name="FormatTokenSuccess" xml:space="preserve">
-    <value>Formatting was successful. Token Id: 0x{0}</value>
+    <value>Formatting was successful</value>
   </data>
   <data name="FormatVolumeParamsOption" xml:space="preserve">
     <value>Format volume. Id : volume id {1 - 9}, size : volume size in MB, owner : volume owner {a - administrator, u - user}, aR : access rights {ro, rw, hi, cd}. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence"</value>
@@ -157,7 +157,7 @@
     <value>Generate random User PIN code of specified length. If this command is used -u is ignored</value>
   </data>
   <data name="GeneratingActivationPasswords" xml:space="preserve">
-    <value>{0} : Generating activation password(s)</value>
+    <value>Generating activation password(s)</value>
   </data>
   <data name="IncorrectAdminPin" xml:space="preserve">
     <value>Entered Admin PIN is incorrect</value>
@@ -247,13 +247,13 @@
     <value>Unblock user and local PINs. You should use login with Admin PIN command to unblock user and local PINs</value>
   </data>
   <data name="UserPinChangeAdminPinError" xml:space="preserve">
-    <value>{0} : User PIN change failed. Enter admin pin according to user PIN change policy on token</value>
+    <value>User PIN change failed. Enter admin pin according to user PIN change policy on token</value>
   </data>
   <data name="UserPinChangeError" xml:space="preserve">
-    <value>{0} : User PIN change failed. Enter user PIN or admin PIN according to user PIN change policy on token</value>
+    <value>User PIN change failed. Enter user PIN or admin PIN according to user PIN change policy on token</value>
   </data>
   <data name="UserPinChangeUserPinError" xml:space="preserve">
-    <value>{0} : User PIN change failed. Enter user pin according to user PIN change policy on token</value>
+    <value>User PIN change failed. Enter user pin according to user PIN change policy on token</value>
   </data>
   <data name="UserPinOption" xml:space="preserve">
     <value>Set User PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>
@@ -265,12 +265,36 @@
     <value>Get volume info. Id : volume id {1 - 9, a - all, sz - get flash size}</value>
   </data>
   <data name="LocalPinSetSuccess" xml:space="preserve">
-    <value>{0} : Local PIN has been successfully set</value>
+    <value>Local PIN has been successfully set</value>
   </data>
   <data name="Pin2SetSuccess" xml:space="preserve">
-    <value>{0}: PIN2 PINPad set request has been successfully sent</value>
+    <value>PIN2 PINPad set request has been successfully sent</value>
   </data>
   <data name="PinUnlockSuccess" xml:space="preserve">
-    <value>{0} : Unblock PIN passed</value>
+    <value>Unblock PIN passed</value>
+  </data>
+  <data name="WaitingNextToken" xml:space="preserve">
+    <value>Next token... (Or press Ctrl+C)</value>
+  </data>
+  <data name="FormatError" xml:space="preserve">
+    <value>Formatting error</value>
+  </data>
+  <data name="FormatFailed" xml:space="preserve">
+    <value>Format failed : {0} : {1} : SM mode = {2}</value>
+  </data>
+  <data name="FormatPassed" xml:space="preserve">
+    <value>Format passed : {0} : {1} : SM mode = {2}</value>
+  </data>
+  <data name="PKCS11Error" xml:space="preserve">
+    <value>Internal error: PKCS#11 library code:</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>Token Id</value>
+  </data>
+  <data name="TokenParamsNotSet" xml:space="preserve">
+    <value>Token params were not set</value>
+  </data>
+  <data name="UnhandledError" xml:space="preserve">
+    <value>Unhandled error:</value>
   </data>
 </root>

@@ -10,6 +10,8 @@ namespace Aktiv.RtAdmin
         public ulong MaxAdminPinLenFromToken { get; set; }
         public string TokenSerial { get; set; }
 
+        public string TokenSerialDecimal { get; set; }
+
         public PinCode OldAdminPin { get; set; }
 
         public PinCode OldUserPin { get; set; }

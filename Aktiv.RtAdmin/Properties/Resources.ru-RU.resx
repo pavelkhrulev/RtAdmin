@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActivationPasswordsWereGenerated" xml:space="preserve">
-    <value>{0} : Пароли активации сгенерированы</value>
+    <value>Пароли активации сгенерированы</value>
   </data>
   <data name="AdminPinChangeError" xml:space="preserve">
-    <value>{0} : Ошибка при изменении PIN-кода администратора. Введите PIN-код администратора, используя параметр -o</value>
+    <value>Ошибка при изменении PIN-кода администратора. Введите PIN-код администратора, используя параметр -o</value>
   </data>
   <data name="AdminPinOption" xml:space="preserve">
     <value>Устанавливаемый PIN-код администратора. Параметр должен использоваться при изменении PIN-кода администратора. Если значение параметра не установлен, то будет использовано значение по умолчанию (87654321)</value>
@@ -148,7 +148,7 @@
     <value>Форматировать токен. Если устройство имеет встроенную флеш-память, вы можете установить PIN-код администратора, иначе данные могут быть утеряны</value>
   </data>
   <data name="FormatTokenSuccess" xml:space="preserve">
-    <value>Форматирование успешно завершено. Id токена: 0x{0}</value>
+    <value>Форматирование успешно завершено</value>
   </data>
   <data name="FormatVolumeParamsOption" xml:space="preserve">
     <value>Разбиение Flash-памяти на разделы (форматирование)Форматирование удалит всю информацию с Flash-памяти. Сделайте копию важной информации - после форматирования ее будет невозможно восстановить.  Один параметр используется для одного раздела. Чтобы создать много разделов используется последовательность команд -F.
@@ -164,7 +164,7 @@
     <value>Генерировать PIN-код пользователя установленной длины (8-32) (используется при форматировании). При использовании этого параметра параметр -u игнорируется</value>
   </data>
   <data name="GeneratingActivationPasswords" xml:space="preserve">
-    <value>{0} : Генерация паролей активации</value>
+    <value>Генерация паролей активации</value>
   </data>
   <data name="IncorrectAdminPin" xml:space="preserve">
     <value>Введен некорректный PIN-код администратора</value>
@@ -259,13 +259,13 @@
     <value>Разблокировать локальные PIN-коды и PIN-код пользователя. Для использования этого параметра необходим логин с текущим PIN-кодом администратора</value>
   </data>
   <data name="UserPinChangeAdminPinError" xml:space="preserve">
-    <value>{0} : Ошибка при изменении PIN-кода пользователя. Введите PIN-код администратора согласно политике изменения PIN-кода, используя параметр -o</value>
+    <value>Ошибка при изменении PIN-кода пользователя. Введите PIN-код администратора согласно политике изменения PIN-кода, используя параметр -o</value>
   </data>
   <data name="UserPinChangeError" xml:space="preserve">
-    <value>{0} : Ошибка при изменении PIN-кода пользователя. Введите PIN-код пользователя или администратора согласно политике изменения PIN-кода, используя параметр -c или -o</value>
+    <value>Ошибка при изменении PIN-кода пользователя. Введите PIN-код пользователя или администратора согласно политике изменения PIN-кода, используя параметр -c или -o</value>
   </data>
   <data name="UserPinChangeUserPinError" xml:space="preserve">
-    <value>{0} : Ошибка при изменении PIN-кода пользователя. Введите PIN-код пользователя согласно политике изменения PIN-кода, используя параметр -c</value>
+    <value>Ошибка при изменении PIN-кода пользователя. Введите PIN-код пользователя согласно политике изменения PIN-кода, используя параметр -c</value>
   </data>
   <data name="UserPinOption" xml:space="preserve">
     <value>Устанавливаемый PIN-код пользователя. Параметр должен использоваться при изменении PIN-кода пользователя. Если значение параметра не установлено, то будет использовано значение по умолчанию (12345678)</value>
@@ -280,12 +280,36 @@
 [sz - объем памяти]</value>
   </data>
   <data name="LocalPinSetSuccess" xml:space="preserve">
-    <value>{0} : PIN-код локального пользователя успешно установлен</value>
+    <value>PIN-код локального пользователя успешно установлен</value>
   </data>
   <data name="Pin2SetSuccess" xml:space="preserve">
-    <value>{0} : Запрос на установку PIN2 на PINPad отправлен</value>
+    <value>Запрос на установку PIN2 на PINPad отправлен</value>
   </data>
   <data name="PinUnlockSuccess" xml:space="preserve">
-    <value>{0} : PIN-код успешно разблокирован</value>
+    <value>PIN-код успешно разблокирован</value>
+  </data>
+  <data name="FormatError" xml:space="preserve">
+    <value>Ошибка при форматировании</value>
+  </data>
+  <data name="FormatFailed" xml:space="preserve">
+    <value>Форматирование закончено с ошибкой  : {0} : {1} : SM режим = {2}</value>
+  </data>
+  <data name="FormatPassed" xml:space="preserve">
+    <value>Форматирование закончено : {0} : {1} : SM режим = {2}</value>
+  </data>
+  <data name="PKCS11Error" xml:space="preserve">
+    <value>Внутренняя ошибка: PKCS#11 код ошибки:</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>Id токена</value>
+  </data>
+  <data name="TokenParamsNotSet" xml:space="preserve">
+    <value>Параметры токена не были установлены</value>
+  </data>
+  <data name="UnhandledError" xml:space="preserve">
+    <value>Непредвиденная ошибка:</value>
+  </data>
+  <data name="WaitingNextToken" xml:space="preserve">
+    <value>Ожидание следующего токена... (или нажмите Ctrl-C для выхода)</value>
   </data>
 </root>

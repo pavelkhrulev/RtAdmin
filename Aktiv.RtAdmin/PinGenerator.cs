@@ -19,57 +19,54 @@ namespace Aktiv.RtAdmin
 
         public static string Generate(Slot slot, RutokenType tokenType, uint pinLength, bool utf8)
         {
-            using (var session = slot.OpenSession(SessionType.ReadOnly))
+            using var session = slot.OpenSession(SessionType.ReadOnly);
+
+            var pin = new byte[pinLength];
+
+            for (var i = 0; i < pinLength; ++i)
             {
-                var pin = new byte[pinLength];
+                var random = session.GenerateRandom(2);
 
-                for (var i = 0; i < pinLength; ++i)
+                switch (true)
                 {
-                    var random = session.GenerateRandom(2);
-
-                    switch (true)
+                    case var _ when tokenType == RutokenType.PINPAD_FAMILY:
                     {
-                        case var _ when tokenType == RutokenType.PINPAD_FAMILY:
-                        {
-                            pin[i] = (byte)(random[1] % 10 + 0x30);
-                            break;
-                        }
-                        case var _ when utf8 && random[0] != 0 && (i + 1 < pinLength):
-                        {
-                            random[1] = (byte)(random[1] % 64 + 0x10);
+                        pin[i] = (byte)(random[1] % 10 + 0x30);
+                        break;
+                    }
+                    case var _ when utf8 && random[0] != 0 && (i + 1 < pinLength):
+                    {
+                        random[1] = (byte)(random[1] % 64 + 0x10);
 
-                            if (random[1] >= 64)
-                            {
-                                pin[i++] = 0xd1;
-                            }
-                            else
-                            {
-                                pin[i++] = 0xd0;
-                            }
-
-                            pin[i] = (byte)(random[1] & 0x3F | 0x80);
-                            break;
-                        }
-                        default:
+                        if (random[1] >= 64)
                         {
-                            pin[i] = oneByteLetters[random[1] % oneByteLetters.Length];
-                            break;
+                            pin[i++] = 0xd1;
                         }
+                        else
+                        {
+                            pin[i++] = 0xd0;
+                        }
+
+                        pin[i] = (byte)(random[1] & 0x3F | 0x80);
+                        break;
+                    }
+                    default:
+                    {
+                        pin[i] = oneByteLetters[random[1] % oneByteLetters.Length];
+                        break;
                     }
                 }
-
-                if (utf8)
-                {
-                    return ConvertUtils.BytesToUtf8String(pin);
-                }
-                else
-                {
-                    var win1251 = System.Text.Encoding.GetEncoding("windows-1251");
-                    return win1251.GetString(pin);
-                }
-
-                // TODO: close session
             }
+
+            if (utf8)
+            {
+                return ConvertUtils.BytesToUtf8String(pin);
+            }
+
+            var win1251 = System.Text.Encoding.GetEncoding("windows-1251");
+            return win1251.GetString(pin);
+
+            // TODO: close session
         }
     }
 }

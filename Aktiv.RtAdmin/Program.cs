@@ -5,6 +5,7 @@ using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 using System;
 using System.Linq;
+using Aktiv.RtAdmin.Properties;
 
 namespace Aktiv.RtAdmin
 {
@@ -41,6 +42,7 @@ namespace Aktiv.RtAdmin
                 var core = serviceProvider.GetService<RutokenCore>();
                 var logger = serviceProvider.GetService<ILogger<RtAdmin>>();
                 var pinsStore = serviceProvider.GetService<PinsStore>();
+                var logMessageBuilder = serviceProvider.GetService<LogMessageBuilder>();
 
                 if (!string.IsNullOrWhiteSpace(options.PinFilePath))
                 {
@@ -49,9 +51,20 @@ namespace Aktiv.RtAdmin
 
                 try
                 {
+                    var initialSlots = core.GetInitialSlots();
+
+                    if (!initialSlots.Any())
+                    {
+                        logger.LogInformation(Resources.WaitingNextToken);
+
+                    }
+
                     while (true)
                     {
-                        var slot = core.WaitToken();
+                        if (!initialSlots.TryPop(out var slot))
+                        {
+                            slot = core.WaitToken();
+                        }
 
                         var commandHandlerBuilder = serviceProvider.GetService<CommandHandlerBuilder>()
                                                                    .ConfigureWith(slot, options);
@@ -125,7 +138,7 @@ namespace Aktiv.RtAdmin
                             commandHandlerBuilder.WithChangeVolumeAttributes();
                         }
 
-                        if (options.VolumeInfoParams.Any())
+                        if (!string.IsNullOrWhiteSpace(options.VolumeInfoParams))
                         {
                             commandHandlerBuilder.WithShowVolumeInfoParams();
                         }
@@ -141,18 +154,20 @@ namespace Aktiv.RtAdmin
                         {
                             break;
                         }
+
+                        logger.LogInformation(Resources.WaitingNextToken);
                     }
 
                     retCode = (int)CKR.CKR_OK;
                 }
                 catch (Pkcs11Exception ex)
                 {
-                    logger.LogError($"Operation failed [Method: {ex.Method}, RV: {ex.RV}]");
+                    logger.LogError(logMessageBuilder.WithPKCS11Error(ex.RV));
                     retCode = (int)ex.RV;
                 }
                 catch (Exception ex)
                 {
-                    logger.LogError($"Operation failed [Message: {ex.Message}]");
+                    logger.LogError(logMessageBuilder.WithUnhandledError(ex.Message));
                     retCode = -1;
                 }
                 finally

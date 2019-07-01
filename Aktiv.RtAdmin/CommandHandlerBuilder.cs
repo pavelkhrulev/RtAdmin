@@ -20,14 +20,16 @@ namespace Aktiv.RtAdmin
         private readonly PinsStore _pinsStore;
         private readonly VolumeOwnersStore _volumeOwnersStore;
         private readonly ConcurrentQueue<Action> _commands;
+        private readonly LogMessageBuilder _logMessageBuilder;
 
         public CommandHandlerBuilder(ILogger<RtAdmin> logger, TokenParams tokenParams,
-            PinsStore pinsStore, VolumeOwnersStore volumeOwnersStore)
+            PinsStore pinsStore, VolumeOwnersStore volumeOwnersStore, LogMessageBuilder logMessageBuilder)
         {
             _logger = logger;
             _tokenParams = tokenParams;
             _pinsStore = pinsStore;
             _volumeOwnersStore = volumeOwnersStore;
+            _logMessageBuilder = logMessageBuilder;
 
             _commands = new ConcurrentQueue<Action>();
         }
@@ -49,6 +51,7 @@ namespace Aktiv.RtAdmin
 
             var tokenInfo = slot.GetTokenInfo();
             _tokenParams.TokenSerial = tokenInfo.SerialNumber;
+            _tokenParams.TokenSerialDecimal = Convert.ToInt64(_tokenParams.TokenSerial, 16).ToString();
 
             var tokenExtendedInfo = slot.GetTokenInfoExtended();
 
@@ -84,15 +87,26 @@ namespace Aktiv.RtAdmin
         {
             _commands.Enqueue(() =>
             {
-                TokenFormatter.Format(_slot,
-                                    _tokenParams.OldAdminPin.Value, _tokenParams.NewAdminPin.Value,
-                                    _tokenParams.NewUserPin.Value,
-                                    _tokenParams.TokenLabel,
-                                    _commandLineOptions.PinChangePolicy,
-                                    _commandLineOptions.MinAdminPinLength, _commandLineOptions.MinUserPinLength,
-                                    _commandLineOptions.MaxAdminPinAttempts, _commandLineOptions.MaxUserPinAttempts, 0);
+                try
+                {
+                    // TODO: SM Mode
+                    TokenFormatter.Format(_slot,
+                        _tokenParams.OldAdminPin.Value, _tokenParams.NewAdminPin.Value,
+                        _tokenParams.NewUserPin.Value,
+                        _tokenParams.TokenLabel,
+                        _commandLineOptions.PinChangePolicy,
+                        _commandLineOptions.MinAdminPinLength, _commandLineOptions.MinUserPinLength,
+                        _commandLineOptions.MaxAdminPinAttempts, _commandLineOptions.MaxUserPinAttempts, 0);
 
-                _logger.LogInformation(string.Format(Resources.FormatTokenSuccess, _tokenParams.TokenSerial));
+                    _logger.LogInformation(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatTokenSuccess));
+                    _logger.LogInformation(_logMessageBuilder.WithFormatResult(Resources.FormatPassed));
+                }
+                catch
+                {
+                    _logger.LogError(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatError));
+                    _logger.LogError(_logMessageBuilder.WithFormatResult(Resources.FormatFailed));
+                    throw;
+                }
             });
             
             return this;
@@ -166,7 +180,7 @@ namespace Aktiv.RtAdmin
                 TokenName.SetNew(_slot, _tokenParams.OldUserPin.Value, 
                     Helpers.StringToUtf8String(_tokenParams.TokenLabel));
 
-                _logger.LogInformation(string.Format(Resources.TokenLabelChangeSuccess, _tokenParams.TokenSerial));
+                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.TokenLabelChangeSuccess));
             });
 
             return this;
@@ -184,7 +198,7 @@ namespace Aktiv.RtAdmin
                 TokenName.SetNew(_slot, _tokenParams.OldUserPin.Value,
                     Helpers.StringToCp1251String(_tokenParams.TokenLabel));
 
-                _logger.LogInformation(string.Format(Resources.TokenLabelChangeSuccess, _tokenParams.TokenSerial));
+                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.TokenLabelChangeSuccess));
             });
 
             return this;
@@ -210,8 +224,7 @@ namespace Aktiv.RtAdmin
                         else
                         {
                             // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                            throw new InvalidOperationException(
-                                string.Format(Resources.UserPinChangeAdminPinError, _tokenParams.TokenSerial));
+                            throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeAdminPinError));
                         }
                     }
                     else if (!_tokenParams.AdminCanChangeUserPin && _tokenParams.UserCanChangeUserPin)
@@ -226,8 +239,7 @@ namespace Aktiv.RtAdmin
                         else
                         {
                             // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                            throw new InvalidOperationException(
-                                string.Format(Resources.UserPinChangeUserPinError, _tokenParams.TokenSerial));
+                            throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeUserPinError));
                         }
                     }
                     else if (_tokenParams.AdminCanChangeUserPin && _tokenParams.UserCanChangeUserPin)
@@ -253,8 +265,7 @@ namespace Aktiv.RtAdmin
                         else
                         {
                             // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                            throw new InvalidOperationException(
-                                string.Format(Resources.UserPinChangeError, _tokenParams.TokenSerial));
+                            throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeError));
                         }
                     }
                 }
@@ -272,8 +283,7 @@ namespace Aktiv.RtAdmin
                     else
                     {
                         // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                        throw new InvalidOperationException(
-                            string.Format(Resources.AdminPinChangeError, _tokenParams.TokenSerial));
+                        throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.AdminPinChangeError));
                     }
                 }
             });
@@ -316,14 +326,14 @@ namespace Aktiv.RtAdmin
                     throw new ArgumentException("Неверный набор символов");
                 }
 
-                _logger.LogInformation(string.Format(Resources.GeneratingActivationPasswords, _tokenParams.TokenSerial));
+                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.GeneratingActivationPasswords));
 
                 foreach (var password in ActivationPasswordGenerator.Generate(_slot, _tokenParams.OldAdminPin.Value, characterSet, smMode))
                 {
                     _logger.LogInformation(Encoding.UTF8.GetString(password));
                 }
 
-                _logger.LogInformation(string.Format(Resources.ActivationPasswordsWereGenerated, _tokenParams.TokenSerial));
+                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.ActivationPasswordsWereGenerated));
             });
 
             return this;
@@ -352,7 +362,7 @@ namespace Aktiv.RtAdmin
                     _tokenParams.NewUserPin.Value : _tokenParams.OldUserPin.Value,
                     localPin, localIdToCreate);
 
-                _logger.LogInformation(string.Format(Resources.LocalPinSetSuccess, _tokenParams.TokenSerial));
+                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.LocalPinSetSuccess));
             });
 
             return this;
@@ -397,7 +407,7 @@ namespace Aktiv.RtAdmin
             {
                 LocalPinChanger.Change(_slot, null, null, _volumeOwnersStore.GetPin2Id());
 
-                _logger.LogInformation(string.Format(Resources.Pin2SetSuccess, _tokenParams.TokenSerial));
+                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.Pin2SetSuccess));
             });
 
             return this;
@@ -459,7 +469,7 @@ namespace Aktiv.RtAdmin
             {
                 PinUnlocker.Unlock(_slot, PinCodeOwner.Admin, _tokenParams.OldAdminPin.Value);
 
-                _logger.LogInformation(string.Format(Resources.PinUnlockSuccess, _tokenParams.TokenSerial));
+                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.PinUnlockSuccess));
             });
 
             return this;

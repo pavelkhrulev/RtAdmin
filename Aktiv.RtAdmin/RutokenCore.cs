@@ -1,24 +1,21 @@
-﻿using Microsoft.Extensions.Logging;
-using Net.Pkcs11Interop.Common;
+﻿using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using Aktiv.RtAdmin.Properties;
 
 namespace Aktiv.RtAdmin
 {
     public class RutokenCore
     {
         private readonly Pkcs11 _pkcs11;
-        private readonly ILogger _logger;
 
-        public RutokenCore(Pkcs11 pkcs11, ILogger<RtAdmin> logger)
+        public RutokenCore(Pkcs11 pkcs11)
         {
             _pkcs11 = pkcs11 ?? throw new ArgumentNullException(nameof(pkcs11));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-
-            _logger.LogInformation(Resources.InitializedInfo);
         }
+
+        public Stack<Slot> GetInitialSlots() => new Stack<Slot>(_pkcs11.GetSlotList(SlotsType.WithTokenPresent));
 
         public Slot WaitToken()
         {

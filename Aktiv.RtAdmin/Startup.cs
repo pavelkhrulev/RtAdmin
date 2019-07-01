@@ -31,7 +31,7 @@ namespace Aktiv.RtAdmin
             // TODO: проверка на существование пути
             if (string.IsNullOrWhiteSpace(logFilePath))
             {
-                loggerConfiguration.WriteTo.Console();
+                loggerConfiguration.WriteTo.Console(outputTemplate: "{Message:lj}{NewLine}{Exception}");
             }
             else
             {
@@ -51,7 +51,8 @@ namespace Aktiv.RtAdmin
                 .AddSingleton<PinsStore>()
                 .AddSingleton<VolumeOwnersStore>()
                 .AddTransient<RutokenCore>()
-                .AddTransient<TokenParams>()
+                .AddScoped<TokenParams>()
+                .AddScoped<LogMessageBuilder>()
                 .AddTransient<CommandHandlerBuilder>()
                 .BuildServiceProvider();
         }

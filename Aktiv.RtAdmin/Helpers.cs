@@ -1,7 +1,6 @@
-﻿using Net.Pkcs11Interop.Common;
-using Net.Pkcs11Interop.HighLevelAPI;
-using System;
+﻿using System;
 using System.Text;
+using RutokenPkcs11Interop.Helpers;
 
 namespace Aktiv.RtAdmin
 {
@@ -34,29 +33,6 @@ namespace Aktiv.RtAdmin
             var win1251Bytes = Encoding.Convert(Encoding.Default, win1251, bytes);
 
             return win1251.GetString(win1251Bytes);
-        }
-
-        public static Slot GetUsableSlot(Pkcs11 pkcs11)
-        {
-            // Получить список слотов c подключенными токенами
-            var slots = pkcs11.GetSlotList(SlotsType.WithTokenPresent);
-
-            // Проверить, что слоты найдены
-            if (slots == null)
-            {
-                throw new NullReferenceException("No available slots");
-            }
-
-            // Проверить, что число слотов больше 0
-            if (slots.Count <= 0 )
-            {
-                throw new InvalidOperationException("No available slots");
-            }
-
-            // Получить первый доступный слот
-            var slot = slots[0];
-
-            return slot;
         }
 
         public static void PrintByteArray(byte[] array)

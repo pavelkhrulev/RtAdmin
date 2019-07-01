@@ -61,7 +61,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} : Generate activation passwords passed.
+        ///   Looks up a localized string similar to Generate activation passwords passed.
         /// </summary>
         public static string ActivationPasswordsWereGenerated {
             get {
@@ -70,7 +70,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} : Admin PIN change failed. Enter admin PIN.
+        ///   Looks up a localized string similar to Admin PIN change failed. Enter admin PIN.
         /// </summary>
         public static string AdminPinChangeError {
             get {
@@ -133,6 +133,33 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Formatting error.
+        /// </summary>
+        public static string FormatError {
+            get {
+                return ResourceManager.GetString("FormatError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Format failed : {0} : {1} : SM mode = {2}.
+        /// </summary>
+        public static string FormatFailed {
+            get {
+                return ResourceManager.GetString("FormatFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Format passed : {0} : {1} : SM mode = {2}.
+        /// </summary>
+        public static string FormatPassed {
+            get {
+                return ResourceManager.GetString("FormatPassed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Format memory. If your device has built-in Flash memory you may specify Admin PIN, otherwise you may lose all data on it.
         /// </summary>
         public static string FormatTokenOption {
@@ -142,7 +169,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formatting was successful. Token Id: 0x{0}.
+        ///   Looks up a localized string similar to Formatting was successful.
         /// </summary>
         public static string FormatTokenSuccess {
             get {
@@ -178,7 +205,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} : Generating activation password(s).
+        ///   Looks up a localized string similar to Generating activation password(s).
         /// </summary>
         public static string GeneratingActivationPasswords {
             get {
@@ -223,7 +250,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} : Local PIN has been successfully set.
+        ///   Looks up a localized string similar to Local PIN has been successfully set.
         /// </summary>
         public static string LocalPinSetSuccess {
             get {
@@ -322,7 +349,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}: PIN2 PINPad set request has been successfully sent.
+        ///   Looks up a localized string similar to PIN2 PINPad set request has been successfully sent.
         /// </summary>
         public static string Pin2SetSuccess {
             get {
@@ -385,11 +412,20 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} : Unblock PIN passed.
+        ///   Looks up a localized string similar to Unblock PIN passed.
         /// </summary>
         public static string PinUnlockSuccess {
             get {
                 return ResourceManager.GetString("PinUnlockSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internal error: PKCS#11 library code:.
+        /// </summary>
+        public static string PKCS11Error {
+            get {
+                return ResourceManager.GetString("PKCS11Error", resourceCulture);
             }
         }
         
@@ -439,6 +475,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Token Id.
+        /// </summary>
+        public static string TokenId {
+            get {
+                return ResourceManager.GetString("TokenId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Token label changed successfully.
         /// </summary>
         public static string TokenLabelChangeSuccess {
@@ -466,6 +511,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Token params were not set.
+        /// </summary>
+        public static string TokenParamsNotSet {
+            get {
+                return ResourceManager.GetString("TokenParamsNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unblock user and local PINs. You should use login with Admin PIN command to unblock user and local PINs.
         /// </summary>
         public static string UnblockPinsOption {
@@ -475,7 +529,16 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} : User PIN change failed. Enter admin pin according to user PIN change policy on token.
+        ///   Looks up a localized string similar to Unhandled error:.
+        /// </summary>
+        public static string UnhandledError {
+            get {
+                return ResourceManager.GetString("UnhandledError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User PIN change failed. Enter admin pin according to user PIN change policy on token.
         /// </summary>
         public static string UserPinChangeAdminPinError {
             get {
@@ -484,7 +547,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} : User PIN change failed. Enter user PIN or admin PIN according to user PIN change policy on token.
+        ///   Looks up a localized string similar to User PIN change failed. Enter user PIN or admin PIN according to user PIN change policy on token.
         /// </summary>
         public static string UserPinChangeError {
             get {
@@ -493,7 +556,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} : User PIN change failed. Enter user pin according to user PIN change policy on token.
+        ///   Looks up a localized string similar to User PIN change failed. Enter user pin according to user PIN change policy on token.
         /// </summary>
         public static string UserPinChangeUserPinError {
             get {
@@ -525,6 +588,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string VolumeInfoParamsOption {
             get {
                 return ResourceManager.GetString("VolumeInfoParamsOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next token... (Or press Ctrl+C).
+        /// </summary>
+        public static string WaitingNextToken {
+            get {
+                return ResourceManager.GetString("WaitingNextToken", resourceCulture);
             }
         }
     }

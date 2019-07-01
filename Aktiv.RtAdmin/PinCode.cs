@@ -36,5 +36,7 @@ namespace Aktiv.RtAdmin
         public ulong Length => Value != null ? (ulong) Value?.Length : default;
 
         public bool EnteredByUser { get; }
+
+        public override string ToString() => Value;
     }
 }
