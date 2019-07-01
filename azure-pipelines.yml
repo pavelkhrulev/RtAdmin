@@ -1,33 +1,135 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
+- master
 - develop
-
-pool:
-  vmImage: 'windows-latest'
+- azure-pipelines
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  sdk_version: 3.0.100-preview6-012264
+  projectFolder: Aktiv.RtAdmin
+  mainProjectPath: ./$(projectFolder)/$(projectFolder).csproj
 
-steps:
-- task: NuGetToolInstaller@0
+name: $(date:yyyy.MM.dd)$(rev:.rr)
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+jobs:
+- job: 'osx'
+  pool:
+    vmImage: macOS-10.13
+  steps:
+  - checkout: self
+    submodules: true
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: DotNetCoreInstaller@0
+    displayName: 'Use .NET Core sdk $(sdk_version)'
+    inputs:
+      version: $(sdk_version)
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: custom
+      projects: $(mainProjectPath)
+      custom: restore
+      arguments: '-r osx-x64'
+  
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build Release'
+    inputs:
+      projects: $(mainProjectPath)
+      arguments: '-r osx-x64 -c Release'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet publish'
+    inputs:
+      command: publish
+      projects: $(mainProjectPath)
+      arguments: '-c Release -r osx-x64 --self-contained -o $(Build.StagingDirectory)' 
+      zipAfterPublish: false
+      publishWebProjects: false
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Pipeline Artifact'
+    inputs:
+      artifactName: 'osx-x64'
+      targetPath: '$(Build.StagingDirectory)'
+
+- job: 'windows_x64'
+  pool:
+    vmImage: windows-2019
+  steps:
+  - checkout: self
+    submodules: true
+
+  - task: DotNetCoreInstaller@0
+    displayName: 'Use .NET Core sdk $(sdk_version)'
+    inputs:
+      version: $(sdk_version)
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: custom
+      projects: $(mainProjectPath)
+      custom: restore
+      arguments: '-r win-x64'
+  
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build Release'
+    inputs:
+      projects: $(mainProjectPath)
+      arguments: '-r win-x64 -c Release'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet publish'
+    inputs:
+      command: publish
+      projects: $(mainProjectPath)
+      arguments: '-c Release -r win-x64 --self-contained -o $(Build.StagingDirectory)'
+      zipAfterPublish: false
+      publishWebProjects: false
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Pipeline Artifact'
+    inputs:
+      artifactName: 'win-x64'
+      targetPath: '$(Build.StagingDirectory)'
+
+- job: 'linux_x64'
+  pool:
+    vmImage: ubuntu-16.04
+  steps:
+  - checkout: self
+    submodules: true
+
+  - task: DotNetCoreInstaller@0
+    displayName: 'Use .NET Core sdk $(sdk_version)'
+    inputs:
+      version: $(sdk_version)
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: custom
+      projects: $(mainProjectPath)
+      custom: restore
+      arguments: '-r linux-x64'
+  
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build Release'
+    inputs:
+      projects: $(mainProjectPath)
+      arguments: '-r linux-x64 -c Release'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet publish'
+    inputs:
+      command: publish
+      projects: $(mainProjectPath)
+      arguments: '-c Release -r linux-x64 --self-contained -o $(Build.StagingDirectory)'
+      zipAfterPublish: false
+      publishWebProjects: false
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Pipeline Artifact'
+    inputs:
+      artifactName: 'linux-x64'
+      targetPath: '$(Build.StagingDirectory)'
