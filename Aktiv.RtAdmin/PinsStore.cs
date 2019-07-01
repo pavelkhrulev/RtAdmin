@@ -28,7 +28,7 @@ namespace Aktiv.RtAdmin
             Initialized = true;
         }
 
-        public string GetNextPin()
+        public string GetNext()
         {
             if (_pins.TryDequeue(out var pin))
             {

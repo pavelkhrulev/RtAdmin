@@ -49,6 +49,7 @@ namespace Aktiv.RtAdmin
                 .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
                 .AddSingleton(s => new Pkcs11(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), GetNativeLibraryName()), AppType.MultiThreaded))
                 .AddSingleton<PinsStore>()
+                .AddSingleton<ConfigLinesStore>()
                 .AddSingleton<VolumeOwnersStore>()
                 .AddTransient<RutokenCore>()
                 .AddScoped<TokenParams>()

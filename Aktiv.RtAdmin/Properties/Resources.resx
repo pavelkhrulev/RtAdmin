@@ -276,6 +276,12 @@
   <data name="WaitingNextToken" xml:space="preserve">
     <value>Next token... (Or press Ctrl+C)</value>
   </data>
+  <data name="ConfigFileIsEmpty" xml:space="preserve">
+    <value>Config file is empty</value>
+  </data>
+  <data name="ConfigFileNotFound" xml:space="preserve">
+    <value>Config file not found</value>
+  </data>
   <data name="FormatError" xml:space="preserve">
     <value>Formatting error</value>
   </data>

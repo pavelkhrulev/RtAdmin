@@ -124,6 +124,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Config file is empty.
+        /// </summary>
+        public static string ConfigFileIsEmpty {
+            get {
+                return ResourceManager.GetString("ConfigFileIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Config file not found.
+        /// </summary>
+        public static string ConfigFileNotFound {
+            get {
+                return ResourceManager.GetString("ConfigFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration file path.
         /// </summary>
         public static string ConfigurationFilePathOption {

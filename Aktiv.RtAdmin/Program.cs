@@ -42,11 +42,18 @@ namespace Aktiv.RtAdmin
                 var core = serviceProvider.GetService<RutokenCore>();
                 var logger = serviceProvider.GetService<ILogger<RtAdmin>>();
                 var pinsStore = serviceProvider.GetService<PinsStore>();
+                var configLinesStore = serviceProvider.GetService<ConfigLinesStore>();
                 var logMessageBuilder = serviceProvider.GetService<LogMessageBuilder>();
 
                 if (!string.IsNullOrWhiteSpace(options.PinFilePath))
                 {
                     pinsStore.Load(options.PinFilePath);
+                }
+
+                if (!string.IsNullOrWhiteSpace(options.ConfigurationFilePath))
+                {
+                    configLinesStore.Load(options.ConfigurationFilePath);
+                    Main(configLinesStore.GetNext().Split(" "));
                 }
 
                 try
@@ -56,7 +63,6 @@ namespace Aktiv.RtAdmin
                     if (!initialSlots.Any())
                     {
                         logger.LogInformation(Resources.WaitingNextToken);
-
                     }
 
                     while (true)
