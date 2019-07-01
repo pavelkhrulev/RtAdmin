@@ -4,6 +4,7 @@ using Net.Pkcs11Interop.HighLevelAPI;
 using RutokenPkcs11Interop.HighLevelAPI;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RutokenPkcs11Interop.Common;
@@ -357,6 +358,39 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
+        public CommandHandlerBuilder WithUsingLocalPin()
+        {
+            _commands.Enqueue(() =>
+            {
+                var commandParams = _commandLineOptions.LoginWithLocalPin.ToList();
+                if (commandParams.Count % 2 != 0)
+                {
+                    // TODO: в ресурсы
+                    throw new ArgumentException("Неверное число аргументов для использования локального PIN-кода");
+                }
+
+                _tokenParams.LocalUserPins = new Dictionary<uint, string>();
+
+                // TODO: вынести в фабрику
+                for (var i = 0; i < commandParams.Count; i+=2)
+                {
+                    var localPinParams = commandParams.Skip(i).Take(2).ToList();
+
+                    if (!_volumeOwnersStore.TryGetOwnerId(localPinParams[0], out var localId))
+                    {
+                        // TODO: в ресурсы
+                        throw new ArgumentException("Неверный идентификатор локального пользователя");
+                    }
+
+                    var localPin = localPinParams[1];
+
+                    _tokenParams.LocalUserPins.Add(localId, localPin);
+                }
+            });
+
+            return this;
+        }
+
         public CommandHandlerBuilder WithNewPin2()
         {
             _commands.Enqueue(() =>
@@ -364,6 +398,56 @@ namespace Aktiv.RtAdmin
                 LocalPinChanger.Change(_slot, null, null, _volumeOwnersStore.GetPin2Id());
 
                 _logger.LogInformation(string.Format(Resources.Pin2SetSuccess, _tokenParams.TokenSerial));
+            });
+
+            return this;
+        }
+
+
+        public CommandHandlerBuilder WithDriveFormat()
+        {
+            _commands.Enqueue(() =>
+            {
+                DriveFormat.Format(_slot, 
+                    _tokenParams.NewAdminPin.EnteredByUser ?
+                        _tokenParams.NewAdminPin.Value :
+                        _tokenParams.OldAdminPin.Value,
+                        VolumeInfosFactory.Create(_commandLineOptions.FormatVolumeParams).ToList()
+                    );
+
+                _logger.LogInformation("Флешка отформатирована");
+            });
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithChangeVolumeAttributes()
+        {
+            _commands.Enqueue(() =>
+            {
+                var volumesInfo = _slot.GetVolumesInfo();
+
+                VolumeAttributeChanger.Change(_slot,
+                    ChangeVolumeAttributesParamsFactory.Create(
+                        _commandLineOptions.ChangeVolumeAttributes,
+                        volumesInfo,
+                        _tokenParams));
+
+                _logger.LogInformation("Аттрибуты раздела изменены");
+            });
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithShowVolumeInfoParams()
+        {
+            _commands.Enqueue(() =>
+            {
+                
+                var volumesInfo = _slot.GetVolumesInfo();
+                var driveSize = _slot.GetDriveSize();
+
+                _logger.LogInformation("Аттрибуты раздела");
             });
 
             return this;

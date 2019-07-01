@@ -4,10 +4,7 @@ using Microsoft.Extensions.Logging;
 using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 using System;
-using System.Globalization;
 using System.Linq;
-using System.Threading;
-using CommandLine.Text;
 
 namespace Aktiv.RtAdmin
 {
@@ -113,9 +110,25 @@ namespace Aktiv.RtAdmin
                             commandHandlerBuilder.WithNewPin2();
                         }
 
-                        // TODO: ulInitParamsSizeFormat
-                        // TODO: ulVolumeCredentialsSize
-                        // TODO: ulVolumeIDToShowInfo
+                        if (options.FormatVolumeParams.Any())
+                        {
+                            commandHandlerBuilder.WithDriveFormat();
+                        }
+
+                        if (options.LoginWithLocalPin.Any())
+                        {
+                            commandHandlerBuilder.WithUsingLocalPin();
+                        }
+
+                        if (options.ChangeVolumeAttributes.Any())
+                        {
+                            commandHandlerBuilder.WithChangeVolumeAttributes();
+                        }
+
+                        if (options.VolumeInfoParams.Any())
+                        {
+                            commandHandlerBuilder.WithShowVolumeInfoParams();
+                        }
 
                         if (options.UnblockPins)
                         {

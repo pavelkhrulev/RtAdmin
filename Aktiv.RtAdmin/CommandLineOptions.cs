@@ -82,7 +82,7 @@ namespace Aktiv.RtAdmin
         public IEnumerable<string> ChangeVolumeAttributes { get; set; }
 
         [Option('i', HelpText = "VolumeInfoParamsOption", ResourceType = typeof(Properties.Resources))]
-        public IEnumerable<string> VolumeInfoParams { get; set; }
+        public string VolumeInfoParams { get; set; }
 
         [Option('O', HelpText = "LoginWithLocalPinOption", ResourceType = typeof(Properties.Resources))]
         public IEnumerable<string> LoginWithLocalPin { get; set; }

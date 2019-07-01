@@ -1,4 +1,4 @@
-﻿using RutokenPkcs11Interop.Common;
+﻿using System.Collections.Generic;
 
 namespace Aktiv.RtAdmin
 {
@@ -17,6 +17,8 @@ namespace Aktiv.RtAdmin
         public PinCode NewAdminPin { get; set; }
 
         public PinCode NewUserPin { get; set; }
+
+        public Dictionary<uint, string> LocalUserPins { get; set; }
 
         public string TokenLabel { get; set; } = DefaultValues.TokenLabel;
 
