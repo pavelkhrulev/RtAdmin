@@ -12,6 +12,8 @@ namespace Aktiv.RtAdmin
     {
         public PinCode(PinCodeOwner owner)
         {
+            Owner = owner;
+
             switch (owner)
             {
                 case PinCodeOwner.Admin:
@@ -25,11 +27,14 @@ namespace Aktiv.RtAdmin
             }
         }
 
-        public PinCode(string pinCode)
+        public PinCode(PinCodeOwner owner, string pinCode)
         {
+            Owner = owner;
             Value = pinCode;
             EnteredByUser = true;
         }
+
+        public PinCodeOwner Owner { get; }
 
         public string Value { get; }
 

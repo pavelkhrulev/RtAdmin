@@ -11,7 +11,7 @@ namespace Aktiv.RtAdmin
     public static class ActivationPasswordGenerator
     {
         public static IEnumerable<byte[]> Generate(Slot slot, string adminPin, 
-            ActivationPasswordCharacterSet characterSet, ulong smMode)
+            ActivationPasswordCharacterSet characterSet, uint smMode)
         {
             using var session = slot.OpenSession(SessionType.ReadWrite);
 

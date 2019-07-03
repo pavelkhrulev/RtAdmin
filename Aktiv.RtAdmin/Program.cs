@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Aktiv.RtAdmin.Properties;
 
@@ -11,39 +12,43 @@ namespace Aktiv.RtAdmin
 {
     public class RtAdmin
     {
-        private static IServiceProvider serviceProvider;
-        private static int retCode;
+        private static IServiceProvider _serviceProvider;
+        private static int _retCode;
+
+        private static readonly Dictionary<Predicate<CommandLineOptions>, Action<CommandHandlerBuilder>> _optionsMapping =
+            new Dictionary<Predicate<CommandLineOptions>, Action<CommandHandlerBuilder>>
+            {
+                {options => options.AdminPinLength.HasValue, builder => builder.WithNewAdminPin()},
+                {options => options.UserPinLength.HasValue, builder => builder.WithNewUserPin()},
+                {options => !options.Format &&
+                            !string.IsNullOrWhiteSpace(options.TokenLabelCp1251), builder => builder.WithNewCp1251TokenName()},
+                {options => !options.Format &&
+                            !string.IsNullOrWhiteSpace(options.TokenLabelUtf8), builder => builder.WithNewUtf8TokenName()},
+                {options => !options.Format, builder => builder.WithPinsChange()},
+                {options => options.Format, builder => builder.WithFormat()},
+                {options => options.GenerateActivationPasswords.Any(), builder => builder.WithGenerationActivationPassword()},
+                {options => options.SetLocalPin.Any(), builder => builder.WithNewLocalPin()},
+                {options => options.SetPin2Mode, builder => builder.WithNewPin2()},
+                {options => options.FormatVolumeParams.Any(), builder => builder.WithDriveFormat()},
+                {options => options.LoginWithLocalPin.Any(), builder => builder.WithUsingLocalPin()},
+                {options => options.ChangeVolumeAttributes.Any(), builder => builder.WithChangeVolumeAttributes()},
+                {options => !string.IsNullOrWhiteSpace(options.VolumeInfoParams), builder => builder.WithShowVolumeInfoParams()},
+                {options => options.UnblockPins, builder => builder.WithPinsUnblock()},
+            };
 
         static int Main(string[] args)
         {
             var arguments = Parser.Default.ParseArguments<CommandLineOptions>(args);
 
-            //arguments.WithNotParsed(errs =>
-            //{
-            //    var helpText = HelpText.AutoBuild(arguments, onError =>
-            //    {
-            //        var nHelpText = new HelpText(SentenceBuilder.Create(), "Ошибочка вышла!!!")
-            //        {
-            //            AdditionalNewLineAfterOption = false,
-            //            AddDashesToOption = true,
-            //            MaximumDisplayWidth = 4000
-            //        };
-            //        nHelpText.AddOptions(arguments);
-            //        return HelpText.DefaultParsingErrorsHandler(arguments, nHelpText);
-            //    },
-            //    onExample => onExample);
-            //    Console.Error.WriteLine(helpText);
-            //});
-
             arguments.WithParsed(options =>
             {
-                serviceProvider = Startup.Configure(options.LogFilePath);
+                _serviceProvider = Startup.Configure(options.LogFilePath);
 
-                var core = serviceProvider.GetService<RutokenCore>();
-                var logger = serviceProvider.GetService<ILogger<RtAdmin>>();
-                var pinsStore = serviceProvider.GetService<PinsStore>();
-                var configLinesStore = serviceProvider.GetService<ConfigLinesStore>();
-                var logMessageBuilder = serviceProvider.GetService<LogMessageBuilder>();
+                var core = _serviceProvider.GetService<RutokenCore>();
+                var logger = _serviceProvider.GetService<ILogger<RtAdmin>>();
+                var pinsStore = _serviceProvider.GetService<PinsStore>();
+                var configLinesStore = _serviceProvider.GetService<ConfigLinesStore>();
+                var logMessageBuilder = _serviceProvider.GetService<LogMessageBuilder>();
 
                 if (!string.IsNullOrWhiteSpace(options.PinFilePath))
                 {
@@ -72,86 +77,20 @@ namespace Aktiv.RtAdmin
                             slot = core.WaitToken();
                         }
 
-                        var commandHandlerBuilder = serviceProvider.GetService<CommandHandlerBuilder>()
-                                                                   .ConfigureWith(slot, options);
+                        var commandHandlerBuilder = _serviceProvider.GetService<CommandHandlerBuilder>()
+                                                                    .ConfigureWith(slot, options);
 
                         if (pinsStore.Initialized)
                         {
                             commandHandlerBuilder.WithPinsFromStore();
                         }
 
-                        // TODO: length validation
-                        if (options.AdminPinLength.HasValue)
+                        foreach (var (key, value) in _optionsMapping)
                         {
-                            commandHandlerBuilder.WithNewAdminPin();
-                        }
-
-                        // TODO: length validation
-                        if (options.UserPinLength.HasValue)
-                        {
-                            commandHandlerBuilder.WithNewUserPin();
-                        }
-
-                        if (!options.Format && 
-                            !string.IsNullOrWhiteSpace(options.TokenLabelCp1251))
-                        {
-                            commandHandlerBuilder.WithNewCp1251TokenName();
-                        }
-
-                        if (!options.Format &&
-                            !string.IsNullOrWhiteSpace(options.TokenLabelUtf8))
-                        {
-                            commandHandlerBuilder.WithNewUtf8TokenName();
-                        }
-
-                        if (!options.Format)
-                        {
-                            commandHandlerBuilder.WithPinsChange();
-                        }
-
-                        if (options.Format)
-                        {
-                            commandHandlerBuilder.WithFormat();
-                        }
-
-                        if (options.GenerateActivationPasswords.Any())
-                        {
-                            commandHandlerBuilder.WithGenerationActivationPassword();
-                        }
-
-                        if (options.SetLocalPin.Any())
-                        {
-                            commandHandlerBuilder.WithNewLocalPin();
-                        }
-
-                        if (options.SetPin2Mode)
-                        {
-                            commandHandlerBuilder.WithNewPin2();
-                        }
-
-                        if (options.FormatVolumeParams.Any())
-                        {
-                            commandHandlerBuilder.WithDriveFormat();
-                        }
-
-                        if (options.LoginWithLocalPin.Any())
-                        {
-                            commandHandlerBuilder.WithUsingLocalPin();
-                        }
-
-                        if (options.ChangeVolumeAttributes.Any())
-                        {
-                            commandHandlerBuilder.WithChangeVolumeAttributes();
-                        }
-
-                        if (!string.IsNullOrWhiteSpace(options.VolumeInfoParams))
-                        {
-                            commandHandlerBuilder.WithShowVolumeInfoParams();
-                        }
-
-                        if (options.UnblockPins)
-                        {
-                            commandHandlerBuilder.WithPinsUnblock();
+                            if (key.Invoke(options))
+                            {
+                                value.Invoke(commandHandlerBuilder);
+                            }
                         }
 
                         commandHandlerBuilder.Execute();
@@ -164,17 +103,17 @@ namespace Aktiv.RtAdmin
                         logger.LogInformation(Resources.WaitingNextToken);
                     }
 
-                    retCode = (int)CKR.CKR_OK;
+                    _retCode = (int)CKR.CKR_OK;
                 }
                 catch (Pkcs11Exception ex)
                 {
                     logger.LogError(logMessageBuilder.WithPKCS11Error(ex.RV));
-                    retCode = (int)ex.RV;
+                    _retCode = (int)ex.RV;
                 }
                 catch (Exception ex)
                 {
                     logger.LogError(logMessageBuilder.WithUnhandledError(ex.Message));
-                    retCode = -1;
+                    _retCode = -1;
                 }
                 finally
                 {
@@ -182,20 +121,20 @@ namespace Aktiv.RtAdmin
                 }
             });
 
-            return retCode;
+            return _retCode;
         }
 
         private static void DisposeServices()
         {
-            if (serviceProvider == null)
+            if (_serviceProvider == null)
             {
                 return;
             }
 
-            var pkcs11 = serviceProvider.GetService<Pkcs11>();
+            var pkcs11 = _serviceProvider.GetService<Pkcs11>();
             pkcs11.Dispose();
 
-            if (serviceProvider is IDisposable disposable)
+            if (_serviceProvider is IDisposable disposable)
             {
                 disposable.Dispose();
             }

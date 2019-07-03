@@ -16,13 +16,19 @@ namespace Aktiv.RtAdmin
             uint minAdminPinLength, uint minUserPinLength, uint maxAdminAttempts, uint maxUserAttempts, 
             uint smMode)
         {
-            var rutokenInitParam = new RutokenInitParam(newAdminPin, newUserPin,
-            tokenLabel, 
-            new List<RutokenFlag> { policy }, 
-            minAdminPinLength, minUserPinLength,
-            maxAdminAttempts, maxUserAttempts, smMode);
+            // TODO: params.UseRepairMode = 1;// nikita.  now use repair mode WO admin pin
+            //	/* temporary solution: old library (v1.2.5.x) needs old_so_pin to be not nullptr, and its length not to be null (PKCSECP-708)
+            //so we just pass dummy old_so_pin. the correct behavior is formatting with UseRepairMode = 1 regardless of PIN. */
 
-            // TODO: check old token
+            //if (NULL == old_so_pin || 0 == strlen(old_so_pin))
+            //    old_so_pin = "0";
+
+            var rutokenInitParam = new RutokenInitParam(
+                newAdminPin, newUserPin,
+                tokenLabel,
+                new List<RutokenFlag> { policy },
+                minAdminPinLength, minUserPinLength,
+                maxAdminAttempts, maxUserAttempts, smMode);
 
             try
             {
@@ -32,7 +38,7 @@ namespace Aktiv.RtAdmin
             }
             catch (Pkcs11Exception ex) when (ex.RV == CKR.CKR_PIN_INCORRECT)
             {
-                throw new InvalidOperationException(Resources.IncorrectPin);
+                throw new CKRException(ex.RV, Resources.IncorrectPin);
             }
         }
     }

@@ -7,6 +7,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Net.Pkcs11Interop.Common;
 using RutokenPkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
@@ -55,20 +56,26 @@ namespace Aktiv.RtAdmin
 
             var tokenExtendedInfo = slot.GetTokenInfoExtended();
 
+            _tokenParams.TokenType = tokenExtendedInfo.TokenType;
+            // TODO: всегда ли тут разделитель точка?
+            _tokenParams.HardwareMajorVersion = !string.IsNullOrWhiteSpace(tokenInfo.HardwareVersion) ?
+                uint.Parse(tokenInfo.HardwareVersion.Substring(0, tokenInfo.HardwareVersion.IndexOf(".", StringComparison.OrdinalIgnoreCase))) :
+                default;
+
             _tokenParams.OldUserPin = !string.IsNullOrWhiteSpace(_commandLineOptions.OldUserPin) ? 
-                new PinCode(_commandLineOptions.OldUserPin) : 
+                new PinCode(PinCodeOwner.User, _commandLineOptions.OldUserPin) : 
                 new PinCode(PinCodeOwner.User);
 
             _tokenParams.OldAdminPin = !string.IsNullOrWhiteSpace(_commandLineOptions.OldAdminPin) ?
-                new PinCode(_commandLineOptions.OldAdminPin) :
+                new PinCode(PinCodeOwner.Admin, _commandLineOptions.OldAdminPin) :
                 new PinCode(PinCodeOwner.Admin);
 
             _tokenParams.NewUserPin = !string.IsNullOrWhiteSpace(_commandLineOptions.UserPin) ?
-                new PinCode(_commandLineOptions.UserPin) :
+                new PinCode(PinCodeOwner.User, _commandLineOptions.UserPin) :
                 new PinCode(PinCodeOwner.User);
 
             _tokenParams.NewAdminPin = !string.IsNullOrWhiteSpace(_commandLineOptions.AdminPin) ?
-                new PinCode(_commandLineOptions.AdminPin) :
+                new PinCode(PinCodeOwner.Admin, _commandLineOptions.AdminPin) :
                 new PinCode(PinCodeOwner.Admin);
 
             // TODO: сделать helper для битовых масок
@@ -89,14 +96,26 @@ namespace Aktiv.RtAdmin
             {
                 try
                 {
-                    // TODO: SM Mode
+                    if (_tokenParams.TokenType == RutokenType.RUTOKEN &&
+                        _tokenParams.HardwareMajorVersion == DefaultValues.RutokenS_InvalidHardwareMajorVersion)
+                    {
+                        throw new CKRException(CKR.CKR_GENERAL_ERROR);
+                    }
+
+                    var minAdminPinLength = _tokenParams.TokenType == RutokenType.RUTOKEN
+                        ? DefaultValues.MinAdminPinLength
+                        : _commandLineOptions.MinAdminPinLength;
+                    var minUserPinLength = _tokenParams.TokenType == RutokenType.RUTOKEN
+                        ? DefaultValues.MinUserPinLength
+                        : _commandLineOptions.MinUserPinLength;
+
                     TokenFormatter.Format(_slot,
                         _tokenParams.OldAdminPin.Value, _tokenParams.NewAdminPin.Value,
                         _tokenParams.NewUserPin.Value,
                         _tokenParams.TokenLabel,
                         _commandLineOptions.PinChangePolicy,
-                        _commandLineOptions.MinAdminPinLength, _commandLineOptions.MinUserPinLength,
-                        _commandLineOptions.MaxAdminPinAttempts, _commandLineOptions.MaxUserPinAttempts, 0);
+                        minAdminPinLength, minUserPinLength,
+                        _commandLineOptions.MaxAdminPinAttempts, _commandLineOptions.MaxUserPinAttempts, _tokenParams.SmMode);
 
                     _logger.LogInformation(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatTokenSuccess));
                     _logger.LogInformation(_logMessageBuilder.WithFormatResult(Resources.FormatPassed));
@@ -116,8 +135,8 @@ namespace Aktiv.RtAdmin
         {
             _commands.Enqueue(() =>
             {
-                _tokenParams.NewAdminPin = new PinCode(_pinsStore.GetNext());
-                _tokenParams.NewUserPin = new PinCode(_pinsStore.GetNext());
+                _tokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, _pinsStore.GetNext());
+                _tokenParams.NewUserPin = new PinCode(PinCodeOwner.User, _pinsStore.GetNext());
             });
 
             return this;
@@ -139,7 +158,7 @@ namespace Aktiv.RtAdmin
                         _tokenParams.MinAdminPinLenFromToken, _tokenParams.MaxAdminPinLenFromToken));
                 }
 
-                _tokenParams.NewAdminPin = new PinCode(GeneratePin(_commandLineOptions.AdminPinLength.Value));
+                _tokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, GeneratePin(_commandLineOptions.AdminPinLength.Value));
             });
 
             return this;
@@ -161,7 +180,7 @@ namespace Aktiv.RtAdmin
                         _tokenParams.MinUserPinLenFromToken, _tokenParams.MaxUserPinLenFromToken));
                 }
 
-                _tokenParams.NewUserPin = new PinCode(GeneratePin(_commandLineOptions.UserPinLength.Value));
+                _tokenParams.NewUserPin = new PinCode(PinCodeOwner.User, GeneratePin(_commandLineOptions.UserPinLength.Value));
             });
 
             return this;
@@ -206,85 +225,79 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithPinsChange()
         {
-            // TODO: добавить логирование
+            void ChangeUserPin(PinCode ownerPinCode)
+            {
+                if (ownerPinCode.EnteredByUser)
+                {
+                    if (ownerPinCode.Owner == PinCodeOwner.Admin)
+                    {
+                        PinChanger.ChangeUserPinByAdmin(_slot,
+                            ownerPinCode.Value,
+                            _tokenParams.NewUserPin.Value);
+                    }
+                    else
+                    {
+                        PinChanger.Change(_slot,
+                            ownerPinCode.Value, _tokenParams.NewUserPin.Value,
+                            PinCodeOwner.User);
+                    }
+
+                    _logger.LogInformation(Resources.PinChangedSuccess);
+                }
+                else
+                {
+                    // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
+                    if (ownerPinCode.Owner == PinCodeOwner.Admin)
+                    {
+                        throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeAdminPinError));
+                        throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeError));
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeUserPinError));
+                    }
+                }
+            }
+
+            void ChangeAdminPin()
+            {
+                if (_tokenParams.OldAdminPin.EnteredByUser)
+                {
+                    PinChanger.Change(_slot,
+                        _tokenParams.OldAdminPin.Value, _tokenParams.NewAdminPin.Value,
+                        PinCodeOwner.User);
+
+                    _logger.LogInformation(Resources.PinChangedSuccess);
+                }
+                else
+                {
+                    // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
+                    throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.AdminPinChangeError));
+                }
+            }
+
             _commands.Enqueue(() =>
             {
                 if (_tokenParams.NewUserPin.EnteredByUser)
                 {
-                    if (_tokenParams.AdminCanChangeUserPin && !_tokenParams.UserCanChangeUserPin)
+                    switch (_tokenParams)
                     {
-                        if (_tokenParams.OldAdminPin.EnteredByUser)
+                        case var _ when _tokenParams.AdminCanChangeUserPin:
                         {
-                            PinChanger.ChangeUserPinByAdmin(_slot,
-                                _tokenParams.OldAdminPin.Value,
-                                _tokenParams.NewUserPin.Value);
-
-                            _logger.LogInformation(Resources.PinChangedSuccess);
+                            ChangeUserPin(_tokenParams.OldAdminPin);
+                            break;
                         }
-                        else
+                        case var _ when !_tokenParams.AdminCanChangeUserPin && _tokenParams.UserCanChangeUserPin:
                         {
-                            // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                            throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeAdminPinError));
-                        }
-                    }
-                    else if (!_tokenParams.AdminCanChangeUserPin && _tokenParams.UserCanChangeUserPin)
-                    {
-                        if (_tokenParams.OldUserPin.EnteredByUser)
-                        {
-                            PinChanger.Change(_slot, 
-                                _tokenParams.OldUserPin.Value, _tokenParams.NewUserPin.Value, 
-                                PinCodeOwner.User);
-                            _logger.LogInformation(Resources.PinChangedSuccess);
-                        }
-                        else
-                        {
-                            // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                            throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeUserPinError));
-                        }
-                    }
-                    else if (_tokenParams.AdminCanChangeUserPin && _tokenParams.UserCanChangeUserPin)
-                    {
-                        if (_tokenParams.OldAdminPin.EnteredByUser ||
-                            _tokenParams.OldUserPin.EnteredByUser)
-                        {
-                            if (_tokenParams.OldAdminPin.EnteredByUser)
-                            {
-                                PinChanger.ChangeUserPinByAdmin(_slot,
-                                    _tokenParams.OldAdminPin.Value,
-                                    _tokenParams.NewUserPin.Value);
-                            }
-                            else
-                            {
-                                PinChanger.Change(_slot,
-                                    _tokenParams.OldUserPin.Value, _tokenParams.NewUserPin.Value,
-                                    PinCodeOwner.User);
-                            }
-
-                            _logger.LogInformation(Resources.PinChangedSuccess);
-                        }
-                        else
-                        {
-                            // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                            throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeError));
+                            ChangeUserPin(_tokenParams.OldUserPin);
+                            break;
                         }
                     }
                 }
 
                 if (_tokenParams.NewAdminPin.EnteredByUser)
                 {
-                    if (_tokenParams.OldAdminPin.EnteredByUser)
-                    {
-                        PinChanger.Change(_slot,
-                            _tokenParams.OldAdminPin.Value, _tokenParams.NewAdminPin.Value,
-                            PinCodeOwner.User);
-
-                        _logger.LogInformation(Resources.PinChangedSuccess);
-                    }
-                    else
-                    {
-                        // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                        throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.AdminPinChangeError));
-                    }
+                    ChangeAdminPin();
                 }
             });
 
@@ -302,9 +315,9 @@ namespace Aktiv.RtAdmin
                     throw new ArgumentException("Неверное число аргументов для генерации паролей активации");
                 }
 
-                var smMode = ulong.Parse(commandParams[0]);
+                _tokenParams.SmMode = uint.Parse(commandParams[0]);
 
-                if (smMode < 1 || smMode > 3)
+                if (_tokenParams.SmMode < 1 || _tokenParams.SmMode > 3)
                 {
                     // TODO: в ресурсы
                     throw new ArgumentException("Invalid SM mode! It must be from 1 to 3");
@@ -328,7 +341,7 @@ namespace Aktiv.RtAdmin
 
                 _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.GeneratingActivationPasswords));
 
-                foreach (var password in ActivationPasswordGenerator.Generate(_slot, _tokenParams.OldAdminPin.Value, characterSet, smMode))
+                foreach (var password in ActivationPasswordGenerator.Generate(_slot, _tokenParams.OldAdminPin.Value, characterSet, _tokenParams.SmMode))
                 {
                     _logger.LogInformation(Encoding.UTF8.GetString(password));
                 }

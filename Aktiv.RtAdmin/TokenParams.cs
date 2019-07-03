@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using RutokenPkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
 {
@@ -27,5 +28,11 @@ namespace Aktiv.RtAdmin
         public bool AdminCanChangeUserPin { get; set; }
 
         public bool UserCanChangeUserPin { get; set; }
+
+        public uint SmMode { get; set; }
+
+        public RutokenType TokenType { get; set; }
+
+        public uint HardwareMajorVersion { get; set; }
     }
 }
