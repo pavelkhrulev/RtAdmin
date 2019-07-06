@@ -121,7 +121,7 @@
     <value>Пароли активации сгенерированы</value>
   </data>
   <data name="AdminPinChangeError" xml:space="preserve">
-    <value>Ошибка при изменении PIN-кода администратора. Введите PIN-код администратора, используя параметр -o</value>
+    <value>Введите {0}</value>
   </data>
   <data name="AdminPinOption" xml:space="preserve">
     <value>Устанавливаемый PIN-код администратора. Параметр должен использоваться при изменении PIN-кода администратора. Если значение параметра не установлен, то будет использовано значение по умолчанию (87654321)</value>
@@ -258,14 +258,8 @@
   <data name="UnblockPinsOption" xml:space="preserve">
     <value>Разблокировать локальные PIN-коды и PIN-код пользователя. Для использования этого параметра необходим логин с текущим PIN-кодом администратора</value>
   </data>
-  <data name="UserPinChangeAdminPinError" xml:space="preserve">
-    <value>Ошибка при изменении PIN-кода пользователя. Введите PIN-код администратора согласно политике изменения PIN-кода, используя параметр -o</value>
-  </data>
   <data name="UserPinChangeError" xml:space="preserve">
-    <value>Ошибка при изменении PIN-кода пользователя. Введите PIN-код пользователя или администратора согласно политике изменения PIN-кода, используя параметр -c или -o</value>
-  </data>
-  <data name="UserPinChangeUserPinError" xml:space="preserve">
-    <value>Ошибка при изменении PIN-кода пользователя. Введите PIN-код пользователя согласно политике изменения PIN-кода, используя параметр -c</value>
+    <value>Введите {0} согласно политике изменения PIN-кода</value>
   </data>
   <data name="UserPinOption" xml:space="preserve">
     <value>Устанавливаемый PIN-код пользователя. Параметр должен использоваться при изменении PIN-кода пользователя. Если значение параметра не установлено, то будет использовано значение по умолчанию (12345678)</value>
@@ -317,5 +311,32 @@
   </data>
   <data name="WaitingNextToken" xml:space="preserve">
     <value>Ожидание следующего токена... (или нажмите Ctrl-C для выхода)</value>
+  </data>
+  <data name="AdminPinOwner" xml:space="preserve">
+    <value>Администраторский</value>
+  </data>
+  <data name="PinChangeByAdmin" xml:space="preserve">
+    <value>Администратором</value>
+  </data>
+  <data name="PinChangeFailed" xml:space="preserve">
+    <value>{0} PIN-код не был изменен (ошибка)</value>
+  </data>
+  <data name="PinChangePassed" xml:space="preserve">
+    <value>{0} PIN-код изменен {1} : {2}</value>
+  </data>
+  <data name="UserPinOwner" xml:space="preserve">
+    <value>Пользовательский</value>
+  </data>
+  <data name="AdminPin" xml:space="preserve">
+    <value>PIN-код администратора</value>
+  </data>
+  <data name="ChangingPinError" xml:space="preserve">
+    <value>Ошибка при изменении PIN-кода</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>или</value>
+  </data>
+  <data name="UserPin" xml:space="preserve">
+    <value>PIN-код пользователя</value>
   </data>
 </root>

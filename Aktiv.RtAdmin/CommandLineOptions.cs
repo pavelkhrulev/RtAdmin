@@ -70,7 +70,7 @@ namespace Aktiv.RtAdmin
         public uint MaxUserPinAttempts { get; set; }
 
         [Option('p', Default = DefaultValues.PinChangePolicy, HelpText = "PinChangePolicyOption", ResourceType = typeof(Properties.Resources))]
-        public RutokenFlag PinChangePolicy { get; set; }
+        public UserPinChangePolicy PinChangePolicy { get; set; }
 
         [Option('s', HelpText = "SmModeOption", ResourceType = typeof(Properties.Resources))]
         public IEnumerable<string> GenerateActivationPasswords { get; set; }

@@ -17,7 +17,7 @@ namespace Aktiv.RtAdmin
         public const uint RutokenS_MinUserPinLength = 1;
         public const uint RutokenS_InvalidHardwareMajorVersion = 1;
 
-        public const RutokenFlag PinChangePolicy = RutokenFlag.UserChangeUserPin;
+        public const UserPinChangePolicy PinChangePolicy = UserPinChangePolicy.ByUser;
 
         public const string NativeLibraryPath = "rtPKCS11.dll";
 

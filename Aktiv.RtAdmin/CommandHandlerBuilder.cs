@@ -79,9 +79,11 @@ namespace Aktiv.RtAdmin
                 new PinCode(PinCodeOwner.Admin);
 
             // TODO: сделать helper для битовых масок
-            _tokenParams.AdminCanChangeUserPin = (tokenExtendedInfo.Flags & (ulong)RutokenFlag.AdminChangeUserPin) == (ulong)RutokenFlag.AdminChangeUserPin;
-            _tokenParams.UserCanChangeUserPin = (tokenExtendedInfo.Flags & (ulong)RutokenFlag.UserChangeUserPin) == (ulong)RutokenFlag.UserChangeUserPin;
-            
+            var adminCanChangeUserPin = (tokenExtendedInfo.Flags & (ulong)RutokenFlag.AdminChangeUserPin) == (ulong)RutokenFlag.AdminChangeUserPin;
+            var userCanChangeUserPin = (tokenExtendedInfo.Flags & (ulong)RutokenFlag.UserChangeUserPin) == (ulong)RutokenFlag.UserChangeUserPin;
+
+            _tokenParams.UserPinChangePolicy = UserPinChangePolicyFactory.Create(userCanChangeUserPin, adminCanChangeUserPin);
+
             _tokenParams.MinAdminPinLenFromToken = tokenExtendedInfo.MinAdminPinLen;
             _tokenParams.MaxAdminPinLenFromToken = tokenExtendedInfo.MaxAdminPinLen;
             _tokenParams.MinUserPinLenFromToken = tokenExtendedInfo.MinUserPinLen;
@@ -113,7 +115,7 @@ namespace Aktiv.RtAdmin
                         _tokenParams.OldAdminPin.Value, _tokenParams.NewAdminPin.Value,
                         _tokenParams.NewUserPin.Value,
                         _tokenParams.TokenLabel,
-                        _commandLineOptions.PinChangePolicy,
+                        (RutokenFlag)_commandLineOptions.PinChangePolicy,
                         minAdminPinLength, minUserPinLength,
                         _commandLineOptions.MaxAdminPinAttempts, _commandLineOptions.MaxUserPinAttempts, _tokenParams.SmMode);
 
@@ -229,33 +231,46 @@ namespace Aktiv.RtAdmin
             {
                 if (ownerPinCode.EnteredByUser)
                 {
-                    if (ownerPinCode.Owner == PinCodeOwner.Admin)
-                    {
-                        PinChanger.ChangeUserPinByAdmin(_slot,
-                            ownerPinCode.Value,
-                            _tokenParams.NewUserPin.Value);
-                    }
-                    else
-                    {
-                        PinChanger.Change(_slot,
-                            ownerPinCode.Value, _tokenParams.NewUserPin.Value,
-                            PinCodeOwner.User);
-                    }
+                    var changeBy = string.Empty;
 
-                    _logger.LogInformation(Resources.PinChangedSuccess);
+                    try
+                    {
+                        if (ownerPinCode.Owner == PinCodeOwner.Admin)
+                        {
+                            PinChanger.ChangeUserPinByAdmin(_slot,
+                                ownerPinCode.Value,
+                                _tokenParams.NewUserPin.Value);
+                            changeBy = Resources.PinChangeByAdmin;
+                        }
+                        else
+                        {
+                            PinChanger.Change(_slot,
+                                ownerPinCode.Value,
+                                _tokenParams.NewUserPin.Value,
+                                PinCodeOwner.User);
+                        }
+
+                        _logger.LogInformation(_logMessageBuilder.WithTokenId(
+                            string.Format(Resources.PinChangePassed, Resources.UserPinOwner,
+                                changeBy,
+                                ownerPinCode.Value,
+                                _tokenParams.NewUserPin.Value)));
+                        _logger.LogInformation(Resources.PinChangedSuccess);
+                    }
+                    catch
+                    {
+                        _logger.LogInformation(Resources.ChangingPinError);
+                        _logger.LogInformation(_logMessageBuilder.WithTokenId(
+                                                   string.Format(Resources.PinChangeFailed, Resources.UserPinOwner)) +
+                                                   $"{changeBy} : {ownerPinCode.Value} : {_tokenParams.NewUserPin.Value}");
+                        throw;
+                    }
                 }
                 else
                 {
-                    // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                    if (ownerPinCode.Owner == PinCodeOwner.Admin)
-                    {
-                        throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeAdminPinError));
-                        throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeError));
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.UserPinChangeUserPinError));
-                    }
+                    _logger.LogError(_logMessageBuilder.WithTokenId(
+                        string.Format(Resources.PinChangeFailed, Resources.UserPinOwner)));
+                    _logger.LogError(_logMessageBuilder.WithPolicyDescription(_tokenParams.UserPinChangePolicy));
                 }
             }
 
@@ -263,16 +278,33 @@ namespace Aktiv.RtAdmin
             {
                 if (_tokenParams.OldAdminPin.EnteredByUser)
                 {
-                    PinChanger.Change(_slot,
-                        _tokenParams.OldAdminPin.Value, _tokenParams.NewAdminPin.Value,
-                        PinCodeOwner.User);
+                    try
+                    {
+                        PinChanger.Change(_slot,
+                            _tokenParams.OldAdminPin.Value, _tokenParams.NewAdminPin.Value,
+                            PinCodeOwner.Admin);
 
-                    _logger.LogInformation(Resources.PinChangedSuccess);
+                        _logger.LogInformation(_logMessageBuilder.WithTokenId(
+                            string.Format(Resources.PinChangePassed, Resources.AdminPinOwner,
+                                string.Empty,
+                                _tokenParams.OldAdminPin.Value,
+                                _tokenParams.NewAdminPin.Value)));
+                        _logger.LogInformation(Resources.PinChangedSuccess);
+                    }
+                    catch
+                    {
+                        _logger.LogInformation(Resources.ChangingPinError);
+                        _logger.LogInformation(_logMessageBuilder.WithTokenId(
+                                                   string.Format(Resources.PinChangeFailed, Resources.AdminPinOwner)) +
+                                               $" : { _tokenParams.OldAdminPin.Value} : {_tokenParams.NewAdminPin.Value}");
+                        throw;
+                    }
                 }
                 else
                 {
-                    // TODO: сделать общие ошибки, подменяя слова пользователя или администратора
-                    throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.AdminPinChangeError));
+                    _logger.LogError(_logMessageBuilder.WithTokenId(
+                        string.Format(Resources.PinChangeFailed, Resources.AdminPinOwner)));
+                    _logger.LogError(string.Format(Resources.AdminPinChangeError, Resources.AdminPin));
                 }
             }
 
@@ -280,16 +312,31 @@ namespace Aktiv.RtAdmin
             {
                 if (_tokenParams.NewUserPin.EnteredByUser)
                 {
-                    switch (_tokenParams)
+                    switch (_tokenParams.UserPinChangePolicy)
                     {
-                        case var _ when _tokenParams.AdminCanChangeUserPin:
+                        case UserPinChangePolicy.ByUser:
+                        {
+                            ChangeUserPin(_tokenParams.OldUserPin);
+                            break;
+                        }
+
+                        case UserPinChangePolicy.ByAdmin:
                         {
                             ChangeUserPin(_tokenParams.OldAdminPin);
                             break;
                         }
-                        case var _ when !_tokenParams.AdminCanChangeUserPin && _tokenParams.UserCanChangeUserPin:
+
+                        case UserPinChangePolicy.ByUserOrAdmin:
                         {
-                            ChangeUserPin(_tokenParams.OldUserPin);
+                            if (_tokenParams.OldAdminPin.EnteredByUser)
+                            {
+                                ChangeUserPin(_tokenParams.OldAdminPin);
+                            }
+                            else
+                            {
+                                ChangeUserPin(_tokenParams.OldUserPin);
+                            }
+
                             break;
                         }
                     }

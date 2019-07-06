@@ -25,9 +25,7 @@ namespace Aktiv.RtAdmin
 
         public string TokenLabel { get; set; } = DefaultValues.TokenLabel;
 
-        public bool AdminCanChangeUserPin { get; set; }
-
-        public bool UserCanChangeUserPin { get; set; }
+        public UserPinChangePolicy UserPinChangePolicy { get; set; }
 
         public uint SmMode { get; set; }
 

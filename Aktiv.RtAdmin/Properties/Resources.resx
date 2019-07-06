@@ -121,7 +121,7 @@
     <value>Generate activation passwords passed</value>
   </data>
   <data name="AdminPinChangeError" xml:space="preserve">
-    <value>Admin PIN change failed. Enter admin PIN</value>
+    <value>Enter {0}</value>
   </data>
   <data name="AdminPinOption" xml:space="preserve">
     <value>Set Admin PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>
@@ -246,14 +246,8 @@
   <data name="UnblockPinsOption" xml:space="preserve">
     <value>Unblock user and local PINs. You should use login with Admin PIN command to unblock user and local PINs</value>
   </data>
-  <data name="UserPinChangeAdminPinError" xml:space="preserve">
-    <value>User PIN change failed. Enter admin pin according to user PIN change policy on token</value>
-  </data>
-  <data name="UserPinChangeError" xml:space="preserve">
-    <value>User PIN change failed. Enter user PIN or admin PIN according to user PIN change policy on token</value>
-  </data>
-  <data name="UserPinChangeUserPinError" xml:space="preserve">
-    <value>User PIN change failed. Enter user pin according to user PIN change policy on token</value>
+  <data name="UserPinChangePolicyError" xml:space="preserve">
+    <value>Enter {0} according to user PIN change policy on token</value>
   </data>
   <data name="UserPinOption" xml:space="preserve">
     <value>Set User PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>
@@ -302,5 +296,32 @@
   </data>
   <data name="UnhandledError" xml:space="preserve">
     <value>Unhandled error:</value>
+  </data>
+  <data name="AdminPinOwner" xml:space="preserve">
+    <value>admin</value>
+  </data>
+  <data name="PinChangeByAdmin" xml:space="preserve">
+    <value>by admin</value>
+  </data>
+  <data name="PinChangeFailed" xml:space="preserve">
+    <value>{0} pin change failed</value>
+  </data>
+  <data name="PinChangePassed" xml:space="preserve">
+    <value>{0} pin change {1} passed : {2} : {3}</value>
+  </data>
+  <data name="UserPinOwner" xml:space="preserve">
+    <value>user</value>
+  </data>
+  <data name="AdminPin" xml:space="preserve">
+    <value>admin PIN</value>
+  </data>
+  <data name="ChangingPinError" xml:space="preserve">
+    <value>Changing PIN error</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="UserPin" xml:space="preserve">
+    <value>user PIN</value>
   </data>
 </root>

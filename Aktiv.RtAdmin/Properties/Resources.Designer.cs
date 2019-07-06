@@ -70,7 +70,16 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Admin PIN change failed. Enter admin PIN.
+        ///   Looks up a localized string similar to admin PIN.
+        /// </summary>
+        public static string AdminPin {
+            get {
+                return ResourceManager.GetString("AdminPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter {0}.
         /// </summary>
         public static string AdminPinChangeError {
             get {
@@ -84,6 +93,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string AdminPinOption {
             get {
                 return ResourceManager.GetString("AdminPinOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to admin.
+        /// </summary>
+        public static string AdminPinOwner {
+            get {
+                return ResourceManager.GetString("AdminPinOwner", resourceCulture);
             }
         }
         
@@ -120,6 +138,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string ChangeVolumeAttributesOption {
             get {
                 return ResourceManager.GetString("ChangeVolumeAttributesOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changing PIN error.
+        /// </summary>
+        public static string ChangingPinError {
+            get {
+                return ResourceManager.GetString("ChangingPinError", resourceCulture);
             }
         }
         
@@ -367,6 +394,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to or.
+        /// </summary>
+        public static string Or {
+            get {
+                return ResourceManager.GetString("Or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PIN2 PINPad set request has been successfully sent.
         /// </summary>
         public static string Pin2SetSuccess {
@@ -376,11 +412,38 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to by admin.
+        /// </summary>
+        public static string PinChangeByAdmin {
+            get {
+                return ResourceManager.GetString("PinChangeByAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PIN changed successfully.
         /// </summary>
         public static string PinChangedSuccess {
             get {
                 return ResourceManager.GetString("PinChangedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} pin change failed.
+        /// </summary>
+        public static string PinChangeFailed {
+            get {
+                return ResourceManager.GetString("PinChangeFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} pin change {1} passed : {2} : {3}.
+        /// </summary>
+        public static string PinChangePassed {
+            get {
+                return ResourceManager.GetString("PinChangePassed", resourceCulture);
             }
         }
         
@@ -556,29 +619,20 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User PIN change failed. Enter admin pin according to user PIN change policy on token.
+        ///   Looks up a localized string similar to user PIN.
         /// </summary>
-        public static string UserPinChangeAdminPinError {
+        public static string UserPin {
             get {
-                return ResourceManager.GetString("UserPinChangeAdminPinError", resourceCulture);
+                return ResourceManager.GetString("UserPin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User PIN change failed. Enter user PIN or admin PIN according to user PIN change policy on token.
+        ///   Looks up a localized string similar to Enter {0} according to user PIN change policy on token.
         /// </summary>
-        public static string UserPinChangeError {
+        public static string UserPinChangePolicyError {
             get {
-                return ResourceManager.GetString("UserPinChangeError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User PIN change failed. Enter user pin according to user PIN change policy on token.
-        /// </summary>
-        public static string UserPinChangeUserPinError {
-            get {
-                return ResourceManager.GetString("UserPinChangeUserPinError", resourceCulture);
+                return ResourceManager.GetString("UserPinChangePolicyError", resourceCulture);
             }
         }
         
@@ -588,6 +642,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string UserPinOption {
             get {
                 return ResourceManager.GetString("UserPinOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to user.
+        /// </summary>
+        public static string UserPinOwner {
+            get {
+                return ResourceManager.GetString("UserPinOwner", resourceCulture);
             }
         }
         
