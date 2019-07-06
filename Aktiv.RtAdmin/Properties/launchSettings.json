@@ -2,7 +2,7 @@
   "profiles": {
     "Aktiv.RtAdmin": {
       "commandName": "Project",
-      "commandLineArgs": "-f -G 10 -g 10"
+      "commandLineArgs": "-f"
     }
   }
 }

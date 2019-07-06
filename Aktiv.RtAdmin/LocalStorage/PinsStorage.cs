@@ -9,7 +9,7 @@ namespace Aktiv.RtAdmin
             base(Resources.PinCodesFileNotFound, Resources.PinCodesFileIsEmpty, Resources.PinCodesFilePinsHaveEnded)
         { }
 
-        protected override void Validate()
+        protected override void ValidateAfterLoad()
         {
             if (Entities.Count % 2 != 0)
             {

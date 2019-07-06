@@ -342,7 +342,34 @@
   <data name="PinCodesFileIsEmpty" xml:space="preserve">
     <value>Файл, содержащий PIN-коды, пустой</value>
   </data>
+  <data name="ActivationPasswordInvalidCharacterSet" xml:space="preserve">
+    <value>Некорректный набор символов для генерации паролей активации. Значение должно быть "caps" или "digits"</value>
+  </data>
+  <data name="ActivationPasswordInvalidCommandParamsCount" xml:space="preserve">
+    <value>Некорректное число параметров командной строки для генерации паролей активации. Должно быть передано два параметра</value>
+  </data>
+  <data name="ActivationPasswordInvalidSmMode" xml:space="preserve">
+    <value>Некорректное значение режима SM. Значение должно быть в диапазоне от 1-го до 3-х</value>
+  </data>
   <data name="ConfigFileLinesHaveEnded" xml:space="preserve">
     <value>Строки конфигурации закончились</value>
+  </data>
+  <data name="InvalidMaxAdminPinRetryCount" xml:space="preserve">
+    <value>Некорректное максимальное количество попыток ввода PIN-кода администратора. Значение должно быть в диапазоне от 3-х до 31-го</value>
+  </data>
+  <data name="InvalidMaxUserPinRetryCount" xml:space="preserve">
+    <value>Некорректное максимальное количество попыток ввода PIN-кода пользователя. Значение должно быть в диапазоне от 1-го до 31-го</value>
+  </data>
+  <data name="InvalidMinimalAdminPinLength" xml:space="preserve">
+    <value>Некорректная минимальная длина PIN-кода администратора. Значение должно быть в диапазоне от 1-го до 31-го</value>
+  </data>
+  <data name="InvalidMinimalUserPinLength" xml:space="preserve">
+    <value>Некорректная минимальная длина PIN-кода пользователя. Значение должно быть в диапазоне от 1-го до 31-го</value>
+  </data>
+  <data name="InvalidPolicyValue" xml:space="preserve">
+    <value>Некорректное значение политики смены PIN-кода пользователя. Значение должно быть в диапазоне от 1-го до 3-х</value>
+  </data>
+  <data name="PinLengthMismatchBeforeFormat" xml:space="preserve">
+    <value>Несоответствие длины введенного PIN-кода и разрешенной длины PIN-кода. Длина PIN-кода должна быть в диапазоне от 1 до 31. По умолчанию минимальная длина - 6</value>
   </data>
 </root>

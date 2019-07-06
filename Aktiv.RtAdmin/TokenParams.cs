@@ -29,6 +29,8 @@ namespace Aktiv.RtAdmin
 
         public uint SmMode { get; set; }
 
+        public ActivationPasswordCharacterSet CharacterSet { get; set; }
+
         public RutokenType TokenType { get; set; }
 
         public uint HardwareMajorVersion { get; set; }

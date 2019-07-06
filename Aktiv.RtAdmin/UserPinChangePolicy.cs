@@ -1,9 +1,8 @@
 ﻿using System;
-using Aktiv.RtAdmin.Properties;
 
 namespace Aktiv.RtAdmin
 {
-    public enum UserPinChangePolicy
+    public enum UserPinChangePolicy : uint
     {
         ByUser = 1,
         ByAdmin = 2,

@@ -61,6 +61,33 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid character set for generation activation passwords. It must be &quot;caps&quot; or &quot;digits&quot;.
+        /// </summary>
+        public static string ActivationPasswordInvalidCharacterSet {
+            get {
+                return ResourceManager.GetString("ActivationPasswordInvalidCharacterSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid command params for generation activation passwords. It must be 2 command line params.
+        /// </summary>
+        public static string ActivationPasswordInvalidCommandParamsCount {
+            get {
+                return ResourceManager.GetString("ActivationPasswordInvalidCommandParamsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid SM mode. It must be from 1 to 3.
+        /// </summary>
+        public static string ActivationPasswordInvalidSmMode {
+            get {
+                return ResourceManager.GetString("ActivationPasswordInvalidSmMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate activation passwords passed.
         /// </summary>
         public static string ActivationPasswordsWereGenerated {
@@ -295,6 +322,51 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid max Admin PIN retry count. It must be in the range from 3 to 10.
+        /// </summary>
+        public static string InvalidMaxAdminPinRetryCount {
+            get {
+                return ResourceManager.GetString("InvalidMaxAdminPinRetryCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid max User PIN retry count. It must be in the range from 1 to 10.
+        /// </summary>
+        public static string InvalidMaxUserPinRetryCount {
+            get {
+                return ResourceManager.GetString("InvalidMaxUserPinRetryCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid minimal admin PIN length. It must be from 1 to 31 symbols.
+        /// </summary>
+        public static string InvalidMinimalAdminPinLength {
+            get {
+                return ResourceManager.GetString("InvalidMinimalAdminPinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid minimal user PIN length. It must be from 1 to 31 symbols.
+        /// </summary>
+        public static string InvalidMinimalUserPinLength {
+            get {
+                return ResourceManager.GetString("InvalidMinimalUserPinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid policy value. It must be from 1 to 3.
+        /// </summary>
+        public static string InvalidPolicyValue {
+            get {
+                return ResourceManager.GetString("InvalidPolicyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Local PIN has been successfully set.
         /// </summary>
         public static string LocalPinSetSuccess {
@@ -507,6 +579,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string PinLengthMismatch {
             get {
                 return ResourceManager.GetString("PinLengthMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN length and allowed PIN length mismatch. Length must be in the range from 1 to 31; default: 6.
+        /// </summary>
+        public static string PinLengthMismatchBeforeFormat {
+            get {
+                return ResourceManager.GetString("PinLengthMismatchBeforeFormat", resourceCulture);
             }
         }
         

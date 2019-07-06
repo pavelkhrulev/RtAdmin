@@ -26,7 +26,7 @@ namespace Aktiv.RtAdmin
                             !string.IsNullOrWhiteSpace(options.TokenLabelUtf8), builder => builder.WithNewUtf8TokenName()},
                 {options => !options.Format, builder => builder.WithPinsChange()},
                 {options => options.Format, builder => builder.WithFormat()},
-                {options => options.GenerateActivationPasswords.Any(), builder => builder.WithGenerationActivationPassword()},
+                {options => options.Format && options.GenerateActivationPasswords.Any(), builder => builder.WithGenerationActivationPassword()},
                 {options => options.SetLocalPin.Any(), builder => builder.WithNewLocalPin()},
                 {options => options.SetPin2Mode, builder => builder.WithNewPin2()},
                 {options => options.FormatVolumeParams.Any(), builder => builder.WithDriveFormat()},

@@ -1,14 +1,14 @@
 ﻿using Aktiv.RtAdmin.Properties;
 using Microsoft.Extensions.Logging;
+using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
+using RutokenPkcs11Interop.Common;
 using RutokenPkcs11Interop.HighLevelAPI;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Net.Pkcs11Interop.Common;
-using RutokenPkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
 {
@@ -21,6 +21,7 @@ namespace Aktiv.RtAdmin
         private readonly PinsStorage _pinsStorage;
         private readonly VolumeOwnersStore _volumeOwnersStore;
         private readonly ConcurrentQueue<Action> _commands;
+        private readonly ConcurrentQueue<Action> _prerequisites;
         private readonly LogMessageBuilder _logMessageBuilder;
 
         public CommandHandlerBuilder(ILogger<RtAdmin> logger, TokenParams tokenParams,
@@ -33,6 +34,7 @@ namespace Aktiv.RtAdmin
             _logMessageBuilder = logMessageBuilder;
 
             _commands = new ConcurrentQueue<Action>();
+            _prerequisites = new ConcurrentQueue<Action>();
         }
 
         public CommandHandlerBuilder ConfigureWith(Slot slot, CommandLineOptions options)
@@ -94,6 +96,12 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithFormat()
         {
+            _prerequisites.Enqueue(() =>
+            {
+                ValidateFormatTokenParams();
+                ValidatePinsLengthBeforeFormat();
+            });
+
             _commands.Enqueue(() =>
             {
                 try
@@ -146,21 +154,12 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithNewAdminPin()
         {
+            _prerequisites.Enqueue(ValidatePinsLengthBeforeAdminPinGeneration);
+
             _commands.Enqueue(() =>
             {
-                if (!_commandLineOptions.AdminPinLength.HasValue)
-                {
-                    throw new ArgumentNullException(nameof(_commandLineOptions.AdminPinLength));
-                }
-
-                if (_commandLineOptions.AdminPinLength < _tokenParams.MinAdminPinLenFromToken ||
-                    _commandLineOptions.AdminPinLength > _tokenParams.MaxAdminPinLenFromToken)
-                {
-                    throw new InvalidOperationException(string.Format(Resources.RandomAdminPinLengthMismatch, 
-                        _tokenParams.MinAdminPinLenFromToken, _tokenParams.MaxAdminPinLenFromToken));
-                }
-
-                _tokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, GeneratePin(_commandLineOptions.AdminPinLength.Value));
+                _tokenParams.NewAdminPin =
+                    new PinCode(PinCodeOwner.Admin, GeneratePin(_commandLineOptions.AdminPinLength.Value));
             });
 
             return this;
@@ -168,21 +167,12 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithNewUserPin()
         {
+            _prerequisites.Enqueue(ValidatePinsLengthBeforeUserPinGeneration);
+
             _commands.Enqueue(() =>
             {
-                if (!_commandLineOptions.UserPinLength.HasValue)
-                {
-                    throw new ArgumentNullException(nameof(_commandLineOptions.UserPinLength));
-                }
-
-                if (_commandLineOptions.UserPinLength < _tokenParams.MinUserPinLenFromToken ||
-                    _commandLineOptions.UserPinLength > _tokenParams.MaxUserPinLenFromToken)
-                {
-                    throw new InvalidOperationException(string.Format(Resources.RandomUserPinLengthMismatch,
-                        _tokenParams.MinUserPinLenFromToken, _tokenParams.MaxUserPinLenFromToken));
-                }
-
-                _tokenParams.NewUserPin = new PinCode(PinCodeOwner.User, GeneratePin(_commandLineOptions.UserPinLength.Value));
+                _tokenParams.NewUserPin = 
+                    new PinCode(PinCodeOwner.User, GeneratePin(_commandLineOptions.UserPinLength.Value));
             });
 
             return this;
@@ -308,6 +298,8 @@ namespace Aktiv.RtAdmin
                 }
             }
 
+            _prerequisites.Enqueue(ValidatePinsLengthBeforePinsChange);
+
             _commands.Enqueue(() =>
             {
                 if (_tokenParams.NewUserPin.EnteredByUser)
@@ -353,42 +345,16 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithGenerationActivationPassword()
         {
+            _prerequisites.Enqueue(ValidateGenerateActivationPasswordParams);
+
             _commands.Enqueue(() =>
             {
-                var commandParams = _commandLineOptions.GenerateActivationPasswords.ToList();
-                if (commandParams.Count != 2)
-                {
-                    // TODO: в ресурсы
-                    throw new ArgumentException("Неверное число аргументов для генерации паролей активации");
-                }
-
-                _tokenParams.SmMode = uint.Parse(commandParams[0]);
-
-                if (_tokenParams.SmMode < 1 || _tokenParams.SmMode > 3)
-                {
-                    // TODO: в ресурсы
-                    throw new ArgumentException("Invalid SM mode! It must be from 1 to 3");
-                }
-
-                var symbolsMode = commandParams[1];
-                ActivationPasswordCharacterSet characterSet;
-                if (string.Equals(symbolsMode, "caps", StringComparison.OrdinalIgnoreCase))
-                {
-                    characterSet = ActivationPasswordCharacterSet.CapsOnly;
-                }
-                else if (string.Equals(symbolsMode, "digits", StringComparison.OrdinalIgnoreCase))
-                {
-                    characterSet = ActivationPasswordCharacterSet.CapsAndDigits;
-                }
-                else
-                {
-                    // TODO: в ресурсы
-                    throw new ArgumentException("Неверный набор символов");
-                }
-
                 _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.GeneratingActivationPasswords));
 
-                foreach (var password in ActivationPasswordGenerator.Generate(_slot, _tokenParams.OldAdminPin.Value, characterSet, _tokenParams.SmMode))
+                foreach (var password in ActivationPasswordGenerator.Generate(_slot, 
+                                                                              _tokenParams.OldAdminPin.Value, 
+                                                                              _tokenParams.CharacterSet,
+                                                                              _tokenParams.SmMode))
                 {
                     _logger.LogInformation(Encoding.UTF8.GetString(password));
                 }
@@ -473,7 +439,6 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
-
         public CommandHandlerBuilder WithDriveFormat()
         {
             _commands.Enqueue(() =>
@@ -535,25 +500,140 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
-        public void Execute()
+        private void ValidateFormatTokenParams()
         {
-            // Валидация введенных новых пин-кодов
-            // TODO: вынести отсюда куда-то в другое место
-            if ((_tokenParams.NewAdminPin.EnteredByUser &&
-                    (_tokenParams.NewAdminPin.Length < _tokenParams.MinAdminPinLenFromToken) ||
-                     _tokenParams.NewAdminPin.Length > _tokenParams.MaxAdminPinLenFromToken) ||
-                _tokenParams.NewUserPin.EnteredByUser &&
-                    (_tokenParams.NewUserPin.Length < _tokenParams.MinUserPinLenFromToken) ||
-                    _tokenParams.NewUserPin.Length > _tokenParams.MaxUserPinLenFromToken)
+            if (_commandLineOptions.MinUserPinLength < DefaultValues.MinAllowedMinimalUserPinLength ||
+                _commandLineOptions.MinUserPinLength > DefaultValues.MaxAllowedMinimalUserPinLength)
             {
-                throw new InvalidOperationException(string.Format(Resources.PinLengthMismatch, 
-                    _tokenParams.MinAdminPinLenFromToken, _tokenParams.MaxAdminPinLenFromToken, 
+                throw new ArgumentException(Resources.InvalidMinimalUserPinLength);
+            }
+
+            if (_commandLineOptions.MinAdminPinLength < DefaultValues.MinAllowedMinimalAdminPinLength ||
+                _commandLineOptions.MinAdminPinLength > DefaultValues.MaxAllowedMinimalAdminPinLength)
+            {
+                throw new ArgumentException(Resources.InvalidMinimalAdminPinLength);
+            }
+
+            if (_commandLineOptions.MaxUserPinAttempts < DefaultValues.MinAllowedMaxUserPinAttempts ||
+                _commandLineOptions.MaxUserPinAttempts > DefaultValues.MaxAllowedMaxUserPinAttempts)
+            {
+                throw new ArgumentException(Resources.InvalidMaxUserPinRetryCount);
+            }
+
+            if (_commandLineOptions.MaxAdminPinAttempts < DefaultValues.MinAllowedMaxAdminPinAttempts ||
+                _commandLineOptions.MaxAdminPinAttempts > DefaultValues.MaxAllowedMaxAdminPinAttempts)
+            {
+                throw new ArgumentException(Resources.InvalidMaxAdminPinRetryCount);
+            }
+
+            if (!Enum.IsDefined(typeof(UserPinChangePolicy), _commandLineOptions.PinChangePolicy))
+            {
+                throw new ArgumentException(Resources.InvalidPolicyValue);
+            }
+        }
+
+        private void ValidateGenerateActivationPasswordParams()
+        {
+            var commandParams = _commandLineOptions.GenerateActivationPasswords.ToList();
+            if (commandParams.Count != DefaultValues.GenerateActivationPasswordCommandParamsCount)
+            {
+                throw new ArgumentException(Resources.ActivationPasswordInvalidCommandParamsCount);
+            }
+
+            if (!(uint.TryParse(commandParams[0], out var smMode)))
+            {
+                throw new ArgumentException(Resources.ActivationPasswordInvalidSmMode);
+            }
+
+            if (smMode < DefaultValues.MinAllowedSmMode ||
+                smMode > DefaultValues.MaxAllowedSmMode)
+            {
+                throw new ArgumentException(Resources.ActivationPasswordInvalidSmMode);
+            }
+
+            var symbolsMode = commandParams[1];
+            if (string.Equals(symbolsMode, DefaultValues.CapsCharacterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                _tokenParams.CharacterSet = ActivationPasswordCharacterSet.CapsOnly;
+            }
+            else if (string.Equals(symbolsMode, DefaultValues.DigitsCharacterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                _tokenParams.CharacterSet = ActivationPasswordCharacterSet.CapsAndDigits;
+            }
+            else
+            {
+                throw new ArgumentException(Resources.ActivationPasswordInvalidCharacterSet);
+            }
+
+            _tokenParams.SmMode = smMode;
+        }
+
+        private void ValidatePinsLengthBeforeFormat()
+        {
+            if ((_tokenParams.NewAdminPin.EnteredByUser &&
+                 _tokenParams.NewAdminPin.Length < _commandLineOptions.MinAdminPinLength) ||
+                (_tokenParams.NewUserPin.EnteredByUser &&
+                _tokenParams.NewUserPin.Length < _commandLineOptions.MinUserPinLength))
+            {
+                throw new ArgumentException(string.Format(Resources.PinLengthMismatchBeforeFormat,
+                    _tokenParams.MinAdminPinLenFromToken, _tokenParams.MaxAdminPinLenFromToken,
+                    _tokenParams.MinUserPinLenFromToken, _tokenParams.MaxUserPinLenFromToken));
+            }
+        }
+
+        private void ValidatePinsLengthBeforePinsChange()
+        {
+            if ((_tokenParams.NewAdminPin.EnteredByUser &&
+                 (_tokenParams.NewAdminPin.Length < _tokenParams.MinAdminPinLenFromToken) ||
+                 _tokenParams.NewAdminPin.Length > _tokenParams.MaxAdminPinLenFromToken) ||
+                _tokenParams.NewUserPin.EnteredByUser &&
+                (_tokenParams.NewUserPin.Length < _tokenParams.MinUserPinLenFromToken) ||
+                _tokenParams.NewUserPin.Length > _tokenParams.MaxUserPinLenFromToken)
+            {
+                throw new ArgumentException(string.Format(Resources.PinLengthMismatch,
+                    _tokenParams.MinAdminPinLenFromToken, _tokenParams.MaxAdminPinLenFromToken,
                     _tokenParams.MinUserPinLenFromToken, _tokenParams.MaxUserPinLenFromToken));
             }
 
-            foreach (var command in _commands)
+            if (_tokenParams.NewUserPin.EnteredByUser && (!_tokenParams.OldUserPin.EnteredByUser ||
+                                                          !_tokenParams.OldAdminPin.EnteredByUser))
             {
-                command?.Invoke();
+                throw new ArgumentException(Resources.ChangeUserPinOldPinsError);
+            }
+
+            if (_tokenParams.NewAdminPin.EnteredByUser && !_tokenParams.OldAdminPin.EnteredByUser)
+            {
+                throw new ArgumentException(Resources.ChangeAdminPinOldPinError);
+            }
+        }
+
+        private void ValidatePinsLengthBeforeAdminPinGeneration()
+        {
+            if ((_commandLineOptions.AdminPinLength.HasValue &&
+                (_commandLineOptions.AdminPinLength < _tokenParams.MinAdminPinLenFromToken) ||
+                 _commandLineOptions.AdminPinLength > _tokenParams.MaxAdminPinLenFromToken))
+            {
+                throw new ArgumentException(string.Format(Resources.RandomAdminPinLengthMismatch,
+                    _tokenParams.MinAdminPinLenFromToken, _tokenParams.MaxAdminPinLenFromToken));
+            }
+        }
+
+        private void ValidatePinsLengthBeforeUserPinGeneration()
+        {
+            if ((_commandLineOptions.UserPinLength.HasValue &&
+                 (_commandLineOptions.UserPinLength < _tokenParams.MinUserPinLenFromToken) ||
+                 _commandLineOptions.UserPinLength > _tokenParams.MaxUserPinLenFromToken))
+            {
+                throw new ArgumentException(string.Format(Resources.RandomUserPinLengthMismatch,
+                    _tokenParams.MinUserPinLenFromToken, _tokenParams.MaxUserPinLenFromToken));
+            }
+        }
+
+        public void Execute()
+        {
+            foreach (var action in _prerequisites.Concat(_commands))
+            {
+                action?.Invoke();
             }
         }
 

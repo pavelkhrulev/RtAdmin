@@ -1,5 +1,4 @@
 ﻿using CommandLine;
-using RutokenPkcs11Interop.Common;
 using System.Collections.Generic;
 
 namespace Aktiv.RtAdmin
@@ -57,21 +56,6 @@ namespace Aktiv.RtAdmin
         [Option('z', HelpText = "NativeLibraryPathOption", ResourceType = typeof(Properties.Resources))]
         public string NativeLibraryPath { get; set; }
 
-        [Option('M', Default = DefaultValues.MinAdminPinLength, HelpText = "MinAdminPinLengthOption", ResourceType = typeof(Properties.Resources))]
-        public uint MinAdminPinLength { get; set; }
-
-        [Option('m', Default = DefaultValues.MinUserPinLength, HelpText = "MinUserPinLengthOption", ResourceType = typeof(Properties.Resources))]
-        public uint MinUserPinLength { get; set; }
-
-        [Option('R', Default = DefaultValues.MaxAdminPinAttempts, HelpText = "MaxAdminPinAttemptsOption", ResourceType = typeof(Properties.Resources))]
-        public uint MaxAdminPinAttempts { get; set; }
-
-        [Option('r', Default = DefaultValues.MaxUserPinAttempts, HelpText = "MaxUserPinAttemptsOption", ResourceType = typeof(Properties.Resources))]
-        public uint MaxUserPinAttempts { get; set; }
-
-        [Option('p', Default = DefaultValues.PinChangePolicy, HelpText = "PinChangePolicyOption", ResourceType = typeof(Properties.Resources))]
-        public UserPinChangePolicy PinChangePolicy { get; set; }
-
         [Option('s', HelpText = "SmModeOption", ResourceType = typeof(Properties.Resources))]
         public IEnumerable<string> GenerateActivationPasswords { get; set; }
 
@@ -89,5 +73,22 @@ namespace Aktiv.RtAdmin
 
         [Option('B', HelpText = "SetLocalPinOption", ResourceType = typeof(Properties.Resources))]
         public IEnumerable<string> SetLocalPin { get; set; }
+
+        #region Format options
+        [Option('M', Default = DefaultValues.MinAdminPinLength, HelpText = "MinAdminPinLengthOption", ResourceType = typeof(Properties.Resources))]
+        public uint MinAdminPinLength { get; set; }
+
+        [Option('m', Default = DefaultValues.MinUserPinLength, HelpText = "MinUserPinLengthOption", ResourceType = typeof(Properties.Resources))]
+        public uint MinUserPinLength { get; set; }
+
+        [Option('R', Default = DefaultValues.MaxAdminPinAttempts, HelpText = "MaxAdminPinAttemptsOption", ResourceType = typeof(Properties.Resources))]
+        public uint MaxAdminPinAttempts { get; set; }
+
+        [Option('r', Default = DefaultValues.MaxUserPinAttempts, HelpText = "MaxUserPinAttemptsOption", ResourceType = typeof(Properties.Resources))]
+        public uint MaxUserPinAttempts { get; set; }
+
+        [Option('p', Default = DefaultValues.PinChangePolicy, HelpText = "PinChangePolicyOption", ResourceType = typeof(Properties.Resources))]
+        public uint PinChangePolicy { get; set; }
+        #endregion
     }
 }

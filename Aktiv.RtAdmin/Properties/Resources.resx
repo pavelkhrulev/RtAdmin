@@ -327,7 +327,34 @@
   <data name="PinCodesFileIsEmpty" xml:space="preserve">
     <value>PIN-codes file file is empty</value>
   </data>
+  <data name="ActivationPasswordInvalidCharacterSet" xml:space="preserve">
+    <value>Invalid character set for generation activation passwords. It must be "caps" or "digits"</value>
+  </data>
+  <data name="ActivationPasswordInvalidCommandParamsCount" xml:space="preserve">
+    <value>Invalid command params for generation activation passwords. It must be 2 command line params</value>
+  </data>
+  <data name="ActivationPasswordInvalidSmMode" xml:space="preserve">
+    <value>Invalid SM mode. It must be from 1 to 3</value>
+  </data>
   <data name="ConfigFileLinesHaveEnded" xml:space="preserve">
     <value>Config lines have ended</value>
+  </data>
+  <data name="InvalidMaxAdminPinRetryCount" xml:space="preserve">
+    <value>Invalid max Admin PIN retry count. It must be in the range from 3 to 10</value>
+  </data>
+  <data name="InvalidMaxUserPinRetryCount" xml:space="preserve">
+    <value>Invalid max User PIN retry count. It must be in the range from 1 to 10</value>
+  </data>
+  <data name="InvalidMinimalAdminPinLength" xml:space="preserve">
+    <value>Invalid minimal admin PIN length. It must be from 1 to 31 symbols</value>
+  </data>
+  <data name="InvalidMinimalUserPinLength" xml:space="preserve">
+    <value>Invalid minimal user PIN length. It must be from 1 to 31 symbols</value>
+  </data>
+  <data name="InvalidPolicyValue" xml:space="preserve">
+    <value>Invalid policy value. It must be from 1 to 3</value>
+  </data>
+  <data name="PinLengthMismatchBeforeFormat" xml:space="preserve">
+    <value>PIN length and allowed PIN length mismatch. Length must be in the range from 1 to 31; default: 6</value>
   </data>
 </root>

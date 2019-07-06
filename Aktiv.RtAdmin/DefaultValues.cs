@@ -24,5 +24,23 @@ namespace Aktiv.RtAdmin
         public const string LogFilePath = "rtadmin.exe.log";
 
         public const string TokenLabel = "Rutoken";
+
+        public const int MinAllowedMinimalUserPinLength = 1;
+        public const int MinAllowedMinimalAdminPinLength = 1;
+        public const int MaxAllowedMinimalUserPinLength = 31;
+        public const int MaxAllowedMinimalAdminPinLength = 31;
+
+        public const int MinAllowedMaxUserPinAttempts = 1;
+        public const int MinAllowedMaxAdminPinAttempts = 3;
+        public const int MaxAllowedMaxUserPinAttempts = 10;
+        public const int MaxAllowedMaxAdminPinAttempts = 10;
+
+        public const int GenerateActivationPasswordCommandParamsCount = 2;
+
+        public const int MinAllowedSmMode = 1;
+        public const int MaxAllowedSmMode = 3;
+
+        public const string CapsCharacterSet = "caps";
+        public const string DigitsCharacterSet = "digits";
     }
 }

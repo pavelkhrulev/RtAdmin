@@ -45,7 +45,7 @@ namespace Aktiv.RtAdmin
 
         public string GetNext()
         {
-            if (_entities.TryDequeue(out var entity))
+            if (Entities.TryDequeue(out var entity))
             {
                 return entity;
             }
