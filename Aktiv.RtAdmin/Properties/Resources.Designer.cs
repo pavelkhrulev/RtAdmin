@@ -160,6 +160,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Config lines have ended.
+        /// </summary>
+        public static string ConfigFileLinesHaveEnded {
+            get {
+                return ResourceManager.GetString("ConfigFileLinesHaveEnded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Config file not found.
         /// </summary>
         public static string ConfigFileNotFound {
@@ -273,15 +282,6 @@ namespace Aktiv.RtAdmin.Properties {
         public static string IncorrectPin {
             get {
                 return ResourceManager.GetString("IncorrectPin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The file contains incorrect number of PINs.
-        /// </summary>
-        public static string IncorrectPinCodesCount {
-            get {
-                return ResourceManager.GetString("IncorrectPinCodesCount", resourceCulture);
             }
         }
         
@@ -457,11 +457,38 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PIN-code file not found.
+        ///   Looks up a localized string similar to PIN-codes file contains incorrect number of PINs.
+        /// </summary>
+        public static string PinCodesFileIncorrectLinesCount {
+            get {
+                return ResourceManager.GetString("PinCodesFileIncorrectLinesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN-codes file file is empty.
+        /// </summary>
+        public static string PinCodesFileIsEmpty {
+            get {
+                return ResourceManager.GetString("PinCodesFileIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN-codes file not found.
         /// </summary>
         public static string PinCodesFileNotFound {
             get {
                 return ResourceManager.GetString("PinCodesFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN-codes from file have ended.
+        /// </summary>
+        public static string PinCodesFilePinsHaveEnded {
+            get {
+                return ResourceManager.GetString("PinCodesFilePinsHaveEnded", resourceCulture);
             }
         }
         
@@ -480,15 +507,6 @@ namespace Aktiv.RtAdmin.Properties {
         public static string PinLengthMismatch {
             get {
                 return ResourceManager.GetString("PinLengthMismatch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to PIN-codes from file ended.
-        /// </summary>
-        public static string PinsEnded {
-            get {
-                return ResourceManager.GetString("PinsEnded", resourceCulture);
             }
         }
         

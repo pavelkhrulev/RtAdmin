@@ -18,17 +18,17 @@ namespace Aktiv.RtAdmin
         private Slot _slot;
         private CommandLineOptions _commandLineOptions;
         private readonly TokenParams _tokenParams;
-        private readonly PinsStore _pinsStore;
+        private readonly PinsStorage _pinsStorage;
         private readonly VolumeOwnersStore _volumeOwnersStore;
         private readonly ConcurrentQueue<Action> _commands;
         private readonly LogMessageBuilder _logMessageBuilder;
 
         public CommandHandlerBuilder(ILogger<RtAdmin> logger, TokenParams tokenParams,
-            PinsStore pinsStore, VolumeOwnersStore volumeOwnersStore, LogMessageBuilder logMessageBuilder)
+            PinsStorage pinsStorage, VolumeOwnersStore volumeOwnersStore, LogMessageBuilder logMessageBuilder)
         {
             _logger = logger;
             _tokenParams = tokenParams;
-            _pinsStore = pinsStore;
+            _pinsStorage = pinsStorage;
             _volumeOwnersStore = volumeOwnersStore;
             _logMessageBuilder = logMessageBuilder;
 
@@ -105,10 +105,10 @@ namespace Aktiv.RtAdmin
                     }
 
                     var minAdminPinLength = _tokenParams.TokenType == RutokenType.RUTOKEN
-                        ? DefaultValues.MinAdminPinLength
+                        ? DefaultValues.RutokenS_MinAdminPinLength
                         : _commandLineOptions.MinAdminPinLength;
                     var minUserPinLength = _tokenParams.TokenType == RutokenType.RUTOKEN
-                        ? DefaultValues.MinUserPinLength
+                        ? DefaultValues.RutokenS_MinUserPinLength
                         : _commandLineOptions.MinUserPinLength;
 
                     TokenFormatter.Format(_slot,
@@ -137,8 +137,8 @@ namespace Aktiv.RtAdmin
         {
             _commands.Enqueue(() =>
             {
-                _tokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, _pinsStore.GetNext());
-                _tokenParams.NewUserPin = new PinCode(PinCodeOwner.User, _pinsStore.GetNext());
+                _tokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, _pinsStorage.GetNext());
+                _tokenParams.NewUserPin = new PinCode(PinCodeOwner.User, _pinsStorage.GetNext());
             });
 
             return this;

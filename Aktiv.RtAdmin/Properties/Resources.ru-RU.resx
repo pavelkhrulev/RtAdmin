@@ -172,7 +172,7 @@
   <data name="IncorrectPin" xml:space="preserve">
     <value>Введен некорректный PIN-код</value>
   </data>
-  <data name="IncorrectPinCodesCount" xml:space="preserve">
+  <data name="PinCodesFileIncorrectLinesCount" xml:space="preserve">
     <value>Файл содержит некорректное число PIN-кодов</value>
   </data>
   <data name="InitializedInfo" xml:space="preserve">
@@ -218,7 +218,7 @@
 1 – администратор, 2 – пользователь, 3 – пользователь и администратор)</value>
   </data>
   <data name="PinCodesFileNotFound" xml:space="preserve">
-    <value>Файл, содежащий PIN-коды, не найден</value>
+    <value>Файл, содержащий PIN-коды, не найден</value>
   </data>
   <data name="PinFilePathOption" xml:space="preserve">
     <value>Загрузка значений пар PIN-кодов из файла, находящегося по пути, указанного в значении параметра. В файле каждому PIN-коду соответствует отдельная строка. При использовании данного параметра параметры -a -u -G -g игнорируются</value>
@@ -226,7 +226,7 @@
   <data name="PinLengthMismatch" xml:space="preserve">
     <value>Несоответствие длины введенного PIN-кода и разрешенной длины PIN-кода. Минимальная длина PIN-кода администратора: {0}, максимальная длина PIN-кода администратора: {1}, минимальная длина PIN-кода пользователя {2}, максимальная длина PIN-кода пользователя: {3}</value>
   </data>
-  <data name="PinsEnded" xml:space="preserve">
+  <data name="PinCodesFilePinsHaveEnded" xml:space="preserve">
     <value>PIN-коды из файла закончились</value>
   </data>
   <data name="RandomAdminPinLengthMismatch" xml:space="preserve">
@@ -338,5 +338,11 @@
   </data>
   <data name="UserPin" xml:space="preserve">
     <value>PIN-код пользователя</value>
+  </data>
+  <data name="PinCodesFileIsEmpty" xml:space="preserve">
+    <value>Файл, содержащий PIN-коды, пустой</value>
+  </data>
+  <data name="ConfigFileLinesHaveEnded" xml:space="preserve">
+    <value>Строки конфигурации закончились</value>
   </data>
 </root>

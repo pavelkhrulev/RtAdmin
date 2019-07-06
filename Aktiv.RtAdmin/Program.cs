@@ -46,8 +46,8 @@ namespace Aktiv.RtAdmin
 
                 var core = _serviceProvider.GetService<RutokenCore>();
                 var logger = _serviceProvider.GetService<ILogger<RtAdmin>>();
-                var pinsStore = _serviceProvider.GetService<PinsStore>();
-                var configLinesStore = _serviceProvider.GetService<ConfigLinesStore>();
+                var pinsStore = _serviceProvider.GetService<PinsStorage>();
+                var configLinesStore = _serviceProvider.GetService<ConfigLinesStorage>();
                 var logMessageBuilder = _serviceProvider.GetService<LogMessageBuilder>();
 
                 if (!string.IsNullOrWhiteSpace(options.PinFilePath))

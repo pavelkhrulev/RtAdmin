@@ -165,8 +165,8 @@
   <data name="IncorrectPin" xml:space="preserve">
     <value>Entered PIN is incorrect</value>
   </data>
-  <data name="IncorrectPinCodesCount" xml:space="preserve">
-    <value>The file contains incorrect number of PINs</value>
+  <data name="PinCodesFileIncorrectLinesCount" xml:space="preserve">
+    <value>PIN-codes file contains incorrect number of PINs</value>
   </data>
   <data name="InitializedInfo" xml:space="preserve">
     <value>Application was initialized</value>
@@ -208,7 +208,7 @@
     <value>PIN change policy N : { 1 - administrator (SO) can change user PIN | 2 - user can change user PIN | 3 - both } (default: 2)</value>
   </data>
   <data name="PinCodesFileNotFound" xml:space="preserve">
-    <value>PIN-code file not found</value>
+    <value>PIN-codes file not found</value>
   </data>
   <data name="PinFilePathOption" xml:space="preserve">
     <value>Load new PIN codes from specified file. Use ont PIN per line, \n is separator. -a -u -G -g commands are ignored</value>
@@ -216,8 +216,8 @@
   <data name="PinLengthMismatch" xml:space="preserve">
     <value>PIN length and allowed PIN length mismatch. Min admin PIN length: {0}, max admin PIN length: {1}, min user PIN length: {2}, max user PIN length: {3}</value>
   </data>
-  <data name="PinsEnded" xml:space="preserve">
-    <value>PIN-codes from file ended</value>
+  <data name="PinCodesFilePinsHaveEnded" xml:space="preserve">
+    <value>PIN-codes from file have ended</value>
   </data>
   <data name="RandomAdminPinLengthMismatch" xml:space="preserve">
     <value>New random Admin PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}</value>
@@ -323,5 +323,11 @@
   </data>
   <data name="UserPin" xml:space="preserve">
     <value>user PIN</value>
+  </data>
+  <data name="PinCodesFileIsEmpty" xml:space="preserve">
+    <value>PIN-codes file file is empty</value>
+  </data>
+  <data name="ConfigFileLinesHaveEnded" xml:space="preserve">
+    <value>Config lines have ended</value>
   </data>
 </root>
