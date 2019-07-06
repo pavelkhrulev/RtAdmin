@@ -119,6 +119,8 @@ namespace Aktiv.RtAdmin
                         ? DefaultValues.RutokenS_MinUserPinLength
                         : _commandLineOptions.MinUserPinLength;
 
+                    TokenBlock.Block(_slot, _tokenParams.TokenType);
+
                     TokenFormatter.Format(_slot,
                         _tokenParams.OldAdminPin.Value, _tokenParams.NewAdminPin.Value,
                         _tokenParams.NewUserPin.Value,
