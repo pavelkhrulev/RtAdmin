@@ -17,7 +17,7 @@ namespace Aktiv.RtAdmin.Operations
             }
             catch (Pkcs11Exception ex) when (ex.RV == CKR.CKR_PIN_INCORRECT)
             {
-                throw new InvalidOperationException(Resources.IncorrectPin);
+                throw new CKRException(ex.RV, Resources.IncorrectPin);
             }
 
             try

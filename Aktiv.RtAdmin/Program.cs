@@ -110,6 +110,11 @@ namespace Aktiv.RtAdmin
                     logger.LogError(logMessageBuilder.WithPKCS11Error(ex.RV));
                     _retCode = (int)ex.RV;
                 }
+                catch (CKRException ex)
+                {
+                    logger.LogError(ex.Message);
+                    _retCode = (int)ex.ReturnCode;
+                }
                 catch (Exception ex)
                 {
                     logger.LogError(logMessageBuilder.WithUnhandledError(ex.Message));
