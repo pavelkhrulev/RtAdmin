@@ -112,6 +112,12 @@ namespace Aktiv.RtAdmin
                         throw new CKRException(CKR.CKR_GENERAL_ERROR);
                     }
 
+                    if (_commandLineOptions.ExcludedTokens.Contains(_runtimeTokenParams.TokenSerial, StringComparer.OrdinalIgnoreCase) ||
+                        _commandLineOptions.ExcludedTokens.Contains(_runtimeTokenParams.TokenSerialDecimal, StringComparer.OrdinalIgnoreCase))
+                    {
+                        return;
+                    }
+
                     var minAdminPinLength = _runtimeTokenParams.TokenType == RutokenType.RUTOKEN
                         ? DefaultValues.RutokenS_MinAdminPinLength
                         : _commandLineOptions.MinAdminPinLength;

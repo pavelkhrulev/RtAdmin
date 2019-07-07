@@ -89,6 +89,9 @@ namespace Aktiv.RtAdmin
 
         [Option('p', Default = DefaultValues.PinChangePolicy, HelpText = "PinChangePolicyOption", ResourceType = typeof(Properties.Resources))]
         public uint PinChangePolicy { get; set; }
+
+        [Option('E', HelpText = "ExcludedTokensOption", ResourceType = typeof(Properties.Resources))]
+        public IReadOnlyCollection<string> ExcludedTokens { get; set; }
         #endregion
     }
 }

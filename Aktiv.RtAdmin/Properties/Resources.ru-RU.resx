@@ -372,4 +372,7 @@
   <data name="PinLengthMismatchBeforeFormat" xml:space="preserve">
     <value>Несоответствие длины введенного PIN-кода и разрешенной длины PIN-кода. Длина PIN-кода должна быть в диапазоне от 1 до 31. По умолчанию минимальная длина - 6</value>
   </data>
+  <data name="ExcludedTokensOption" xml:space="preserve">
+    <value>Исключенные токены при поточном форматировании [серийные номера токенов в формате: 46bc3390 или 932436970]</value>
+  </data>
 </root>

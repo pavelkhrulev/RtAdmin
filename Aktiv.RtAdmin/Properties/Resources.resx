@@ -357,4 +357,7 @@
   <data name="PinLengthMismatchBeforeFormat" xml:space="preserve">
     <value>PIN length and allowed PIN length mismatch. Length must be in the range from 1 to 31; default: 6</value>
   </data>
+  <data name="ExcludedTokensOption" xml:space="preserve">
+    <value>Excluded tokens while stream formatting [token ids in specified format: 46bc3390 or 932436970]</value>
+  </data>
 </root>

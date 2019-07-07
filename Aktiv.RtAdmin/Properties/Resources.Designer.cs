@@ -214,6 +214,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Excluded tokens while stream formatting [token ids in specified format: 46bc3390 or 932436970].
+        /// </summary>
+        public static string ExcludedTokensOption {
+            get {
+                return ResourceManager.GetString("ExcludedTokensOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Formatting error.
         /// </summary>
         public static string FormatError {
