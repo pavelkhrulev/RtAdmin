@@ -52,7 +52,7 @@ namespace Aktiv.RtAdmin
                 .AddSingleton<ConfigLinesStorage>()
                 .AddSingleton<VolumeOwnersStore>()
                 .AddTransient<RutokenCore>()
-                .AddScoped<TokenParams>()
+                .AddScoped<RuntimeTokenParams>()
                 .AddScoped<LogMessageBuilder>()
                 .AddTransient<CommandHandlerBuilder>()
                 .BuildServiceProvider();

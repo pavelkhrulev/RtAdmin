@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Net.Pkcs11Interop.Common;
 using System.Collections.Generic;
 using System.Linq;
-using Net.Pkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
 {

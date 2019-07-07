@@ -31,7 +31,7 @@ namespace Aktiv.RtAdmin
         public static IEnumerable<ChangeVolumeAttributesParams> Create(
             IEnumerable<string> changeParams,
             IEnumerable<VolumeInfoExtended> volumeInfos,
-            TokenParams tokenParams)
+            RuntimeTokenParams runtimeTokenParams)
         {
             var changeParamsList = changeParams.ToList();
             var volumeInfosList = volumeInfos.ToList();
@@ -58,17 +58,17 @@ namespace Aktiv.RtAdmin
                 switch (volumeInfo.VolumeOwner)
                 {
                     case CKU.CKU_SO:
-                        ownerPin = tokenParams.NewAdminPin.EnteredByUser
-                            ? tokenParams.NewAdminPin.Value
-                            : tokenParams.OldAdminPin.Value;
+                        ownerPin = runtimeTokenParams.NewAdminPin.EnteredByUser
+                            ? runtimeTokenParams.NewAdminPin.Value
+                            : runtimeTokenParams.OldAdminPin.Value;
                         break;
                     case CKU.CKU_USER:
-                        ownerPin = tokenParams.NewUserPin.EnteredByUser
-                            ? tokenParams.NewUserPin.Value
-                            : tokenParams.OldUserPin.Value;
+                        ownerPin = runtimeTokenParams.NewUserPin.EnteredByUser
+                            ? runtimeTokenParams.NewUserPin.Value
+                            : runtimeTokenParams.OldUserPin.Value;
                         break;
                     case CKU.CKU_CONTEXT_SPECIFIC:
-                        tokenParams.LocalUserPins.TryGetValue((uint)volumeInfo.VolumeOwner, out ownerPin);
+                        runtimeTokenParams.LocalUserPins.TryGetValue((uint)volumeInfo.VolumeOwner, out ownerPin);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

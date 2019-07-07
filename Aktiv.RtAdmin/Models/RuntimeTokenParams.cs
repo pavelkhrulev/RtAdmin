@@ -3,7 +3,7 @@ using RutokenPkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
 {
-    public class TokenParams
+    public class RuntimeTokenParams
     {
         public ulong MinUserPinLenFromToken { get; set; }
         public ulong MaxUserPinLenFromToken { get; set; }

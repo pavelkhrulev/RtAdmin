@@ -4,7 +4,7 @@ using RutokenPkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
 {
-    public static class TokenBlock
+    public static class PinBlocker
     {
         private const string _wrongPin1 = "1234567890123456789012345678901";
         private const string _wrongPin1_RutokenS = "1234567890123456789012345678901";

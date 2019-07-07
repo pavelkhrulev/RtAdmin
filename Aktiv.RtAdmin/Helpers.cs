@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using RutokenPkcs11Interop.Helpers;
 
 namespace Aktiv.RtAdmin
 {

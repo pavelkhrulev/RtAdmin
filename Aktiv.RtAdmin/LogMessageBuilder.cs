@@ -6,19 +6,19 @@ namespace Aktiv.RtAdmin
 {
     public class LogMessageBuilder
     {
-        private readonly TokenParams _tokenParams;
+        private readonly RuntimeTokenParams _runtimeTokenParams;
 
-        public LogMessageBuilder(TokenParams tokenParams)
+        public LogMessageBuilder(RuntimeTokenParams runtimeTokenParams)
         {
-            _tokenParams = tokenParams ?? 
-                           throw new ArgumentNullException(nameof(tokenParams), Resources.TokenParamsNotSet);
+            _runtimeTokenParams = runtimeTokenParams ?? 
+                           throw new ArgumentNullException(nameof(runtimeTokenParams), Resources.TokenParamsNotSet);
         }
 
         public string WithTokenId(string message) => 
-            $"0x{_tokenParams.TokenSerial} / {_tokenParams.TokenSerialDecimal} : {message}";
+            $"0x{_runtimeTokenParams.TokenSerial} / {_runtimeTokenParams.TokenSerialDecimal} : {message}";
 
         public string WithTokenIdSuffix(string message) =>
-            $"{message}. {Resources.TokenId}: 0x{_tokenParams.TokenSerial}";
+            $"{message}. {Resources.TokenId}: 0x{_runtimeTokenParams.TokenSerial}";
 
         public string WithPKCS11Error(CKR code) => $"{Resources.PKCS11Error} 0x{code:X}";
 
@@ -26,7 +26,7 @@ namespace Aktiv.RtAdmin
 
         public string WithFormatResult(string message) =>
             string.Format(WithTokenId(message),
-                _tokenParams.NewAdminPin, _tokenParams.NewUserPin, _tokenParams.SmMode);
+                _runtimeTokenParams.NewAdminPin, _runtimeTokenParams.NewUserPin, _runtimeTokenParams.SmMode);
 
         public string WithPolicyDescription(UserPinChangePolicy policy)
         {

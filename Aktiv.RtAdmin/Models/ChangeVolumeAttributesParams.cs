@@ -1,6 +1,5 @@
 ﻿using Net.Pkcs11Interop.Common;
 using RutokenPkcs11Interop.Common;
-using RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
