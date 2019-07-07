@@ -71,7 +71,7 @@ namespace Aktiv.RtAdmin
             {
                 return "librtpkcs11ecp.so";
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 return "librtpkcs11ecp.dylib";
             }
