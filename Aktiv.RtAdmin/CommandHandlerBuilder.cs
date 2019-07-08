@@ -186,7 +186,7 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
-        public CommandHandlerBuilder WithNewUtf8TokenName()
+        public CommandHandlerBuilder WithNewTokenName()
         {
             _commands.Enqueue(() =>
             {
@@ -197,25 +197,7 @@ namespace Aktiv.RtAdmin
                 }
 
                 TokenNameSetter.Set(_slot, _runtimeTokenParams.OldUserPin.Value, 
-                    Helpers.StringToUtf8String(_runtimeTokenParams.TokenLabel));
-
-                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.TokenLabelChangeSuccess));
-            });
-
-            return this;
-        }
-
-        public CommandHandlerBuilder WithNewCp1251TokenName()
-        {
-            _commands.Enqueue(() =>
-            {
-                if (!_runtimeTokenParams.OldUserPin.EnteredByUser)
-                {
-                    throw new InvalidOperationException(Resources.ChangeTokenLabelPinError);
-                }
-
-                TokenNameSetter.Set(_slot, _runtimeTokenParams.OldUserPin.Value,
-                    Helpers.StringToCp1251String(_runtimeTokenParams.TokenLabel));
+                    _runtimeTokenParams.TokenLabel);
 
                 _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.TokenLabelChangeSuccess));
             });

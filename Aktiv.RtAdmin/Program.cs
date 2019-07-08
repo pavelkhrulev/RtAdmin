@@ -21,9 +21,9 @@ namespace Aktiv.RtAdmin
                 {options => options.AdminPinLength.HasValue, builder => builder.WithNewAdminPin()},
                 {options => options.UserPinLength.HasValue, builder => builder.WithNewUserPin()},
                 {options => !options.Format &&
-                            !string.IsNullOrWhiteSpace(options.TokenLabelCp1251), builder => builder.WithNewCp1251TokenName()},
+                            !string.IsNullOrWhiteSpace(options.TokenLabelCp1251), builder => builder.WithNewTokenName()},
                 {options => !options.Format &&
-                            !string.IsNullOrWhiteSpace(options.TokenLabelUtf8), builder => builder.WithNewUtf8TokenName()},
+                            !string.IsNullOrWhiteSpace(options.TokenLabelUtf8), builder => builder.WithNewTokenName()},
                 {options => !options.Format, builder => builder.WithPinsChange()},
                 {options => options.Format, builder => builder.WithFormat()},
                 {options => options.Format && options.GenerateActivationPasswords.Any(), builder => builder.WithGenerationActivationPassword()},
