@@ -38,5 +38,7 @@ namespace Aktiv.RtAdmin
         public uint HardwareMajorVersion { get; set; }
 
         public uint LocalIdToCreate { get; set; }
+
+        public bool FlashMemoryAvailable { get; set; }
     }
 }

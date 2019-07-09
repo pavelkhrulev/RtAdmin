@@ -402,4 +402,19 @@
   <data name="PinUnlockFailed" xml:space="preserve">
     <value>Не удалось разблокировать PIN-код</value>
   </data>
+  <data name="DriveFormatVolumeCreateFailed" xml:space="preserve">
+    <value>Не удалось создать раздел</value>
+  </data>
+  <data name="VolumeAccessModeChangeFailed" xml:space="preserve">
+    <value>Не удалось изменить права доступа на раздел</value>
+  </data>
+  <data name="VolumeAccessModeChangeSuccess" xml:space="preserve">
+    <value>Права доступа на раздел успешно изменены</value>
+  </data>
+  <data name="VolumeOwnersStoreNotSet" xml:space="preserve">
+    <value>Не установлено хранилище идентификаторов локальных пользователей</value>
+  </data>
+  <data name="FlashMemoryNotAvailable" xml:space="preserve">
+    <value>Токен не имеет флеш-памяти</value>
+  </data>
 </root>

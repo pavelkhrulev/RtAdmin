@@ -1,6 +1,6 @@
-﻿using Net.Pkcs11Interop.Common;
+﻿using Aktiv.RtAdmin.Models;
+using Net.Pkcs11Interop.Common;
 using RutokenPkcs11Interop.Common;
-using RutokenPkcs11Interop.HighLevelAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +20,27 @@ namespace Aktiv.RtAdmin
                 {"cd", FlashAccessMode.Cdrom}
             };
 
-        private static readonly Dictionary<string, CKU> _ownersMap =
-            new Dictionary<string, CKU>
+        private static readonly Dictionary<string, uint> _ownersMap =
+            new Dictionary<string, uint>
             {
-                {"u", CKU.CKU_USER},
-                {"a", CKU.CKU_SO}
+                {"a", (uint)CKU.CKU_SO},
+                {"u", (uint)CKU.CKU_USER},
+                {"l3", 0x3},
+                {"l4", 0x4},
+                {"l5", 0x5},
+                {"l6", 0x6},
+                {"l7", 0x7},
+                {"l8", 0x8},
+                {"l9", 0x9}
             };
 
-        public static IEnumerable<VolumeFormatInfoExtended> Create(IEnumerable<string> formatParams)
+        public static IEnumerable<VolumeInfo> Create(IEnumerable<string> formatParams)
         {
             var formatParamsList = formatParams.ToList();
 
             if (formatParamsList.Count % _volumeParamsCount != 0)
             {
+                // TODO: брать из ресурсов
                 throw new ArgumentException("Неверное число параметров");
             }
 
@@ -40,11 +48,18 @@ namespace Aktiv.RtAdmin
             {
                 // TODO: error handling
                 var volumeParams = formatParamsList.Skip(i).Take(_volumeParamsCount).ToList();
+                uint.TryParse(volumeParams[0], out var volumeId);
                 ulong.TryParse(volumeParams[1], out var volumeSize);
                 _ownersMap.TryGetValue(volumeParams[2], out var owner);
                 _accessModesMap.TryGetValue(volumeParams[3], out var accessMode);
 
-                yield return new VolumeFormatInfoExtended(volumeSize, accessMode, owner, 0);
+                yield return new VolumeInfo
+                {
+                    Id = volumeId,
+                    Size = volumeSize,
+                    AccessMode = accessMode,
+                    Owner = owner
+                };
             }
         }
     }

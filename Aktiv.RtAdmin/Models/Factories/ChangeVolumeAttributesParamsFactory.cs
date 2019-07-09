@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Net.Pkcs11Interop.Common;
+﻿using Net.Pkcs11Interop.Common;
 using RutokenPkcs11Interop.Common;
 using RutokenPkcs11Interop.HighLevelAPI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Aktiv.RtAdmin
 {
@@ -11,7 +11,7 @@ namespace Aktiv.RtAdmin
     {
         private const int _changeParamsCount = 3;
 
-        // TODO: вынести этот словарь в одно место из фабрик
+        // TODO: вынести это в store
         private static readonly Dictionary<string, FlashAccessMode> _accessModesMap =
             new Dictionary<string, FlashAccessMode>
             {
@@ -88,6 +88,20 @@ namespace Aktiv.RtAdmin
                     Permanent = permanent
                 };
             }
+        }
+
+        // TODO: вынести это в store
+        public static string GetAccessModeDescription(FlashAccessMode accessMode)
+        {
+            return _accessModesMap.ContainsValue(accessMode) ?
+                _accessModesMap.Single(x => x.Value == accessMode).Key : "--";
+        }
+
+        // TODO: вынести это в store
+        public static string GetPermanentStateDescription(bool state)
+        {
+            return _permanentStateMap.ContainsValue(state) ?
+                _permanentStateMap.Single(x => x.Value == state).Key : "--";
         }
     }
 }

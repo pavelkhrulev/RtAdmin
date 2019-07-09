@@ -97,6 +97,8 @@ namespace Aktiv.RtAdmin
             _runtimeTokenParams.MinUserPinLenFromToken = tokenExtendedInfo.MinUserPinLen;
             _runtimeTokenParams.MaxUserPinLenFromToken = tokenExtendedInfo.MaxUserPinLen;
 
+            _runtimeTokenParams.FlashMemoryAvailable = Convert.ToBoolean(tokenExtendedInfo.Flags & (uint) RutokenFlag.HasFlashDrive);
+
             return this;
         }
 
@@ -478,16 +480,31 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithDriveFormat()
         {
+            _prerequisites.Enqueue(CanUseFlashMemoryOperation);
+
             _commands.Enqueue(() =>
             {
-                DriveFormatter.Format(_slot, 
-                    _runtimeTokenParams.NewAdminPin.EnteredByUser ?
-                        _runtimeTokenParams.NewAdminPin.Value :
-                        _runtimeTokenParams.OldAdminPin.Value,
-                        VolumeInfosFactory.Create(_commandLineOptions.FormatVolumeParams).ToList()
-                    );
+                try
+                {
+                    var volumeInfos = VolumeInfosFactory.Create(_commandLineOptions.FormatVolumeParams)
+                                                        .ToList();
 
-                _logger.LogInformation("Флешка отформатирована");
+                    DriveFormatter.Format(_slot,
+                        _runtimeTokenParams.NewAdminPin.EnteredByUser ?
+                            _runtimeTokenParams.NewAdminPin.Value :
+                            _runtimeTokenParams.OldAdminPin.Value,
+                        volumeInfos.Select(x => (VolumeFormatInfoExtended)x));
+
+                    foreach (var volumeInfo in volumeInfos)
+                    {
+                        _logger.LogInformation(_logMessageBuilder.WithVolumeInfo(volumeInfo));
+                    }
+                }
+                catch
+                {
+                    _logger.LogError(_logMessageBuilder.WithTokenId(Resources.DriveFormatVolumeCreateFailed));
+                    throw;
+                }
             });
 
             return this;
@@ -495,17 +512,30 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithChangeVolumeAttributes()
         {
+            _prerequisites.Enqueue(CanUseFlashMemoryOperation);
+
             _commands.Enqueue(() =>
             {
-                var volumesInfo = _slot.GetVolumesInfo();
+                try
+                {
+                    var volumesInfos = _slot.GetVolumesInfo();
+                    var volumeAttributes = ChangeVolumeAttributesParamsFactory.Create(
+                                                _commandLineOptions.ChangeVolumeAttributes,
+                                                volumesInfos,
+                                                _runtimeTokenParams).ToList();
 
-                VolumeAttributeChanger.Change(_slot,
-                    ChangeVolumeAttributesParamsFactory.Create(
-                        _commandLineOptions.ChangeVolumeAttributes,
-                        volumesInfo,
-                        _runtimeTokenParams));
+                    VolumeAttributeChanger.Change(_slot, volumeAttributes);
 
-                _logger.LogInformation("Аттрибуты раздела изменены");
+                    foreach (var attributes in volumeAttributes)
+                    {
+                        _logger.LogInformation(_logMessageBuilder.WithVolumeInfo(attributes));
+                    }
+                }
+                catch
+                {
+                    _logger.LogError(_logMessageBuilder.WithTokenId(Resources.VolumeAccessModeChangeFailed));
+                    throw;
+                }
             });
 
             return this;
@@ -513,6 +543,8 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithShowVolumeInfoParams()
         {
+            _prerequisites.Enqueue(CanUseFlashMemoryOperation);
+
             _commands.Enqueue(() =>
             {
                 
@@ -523,6 +555,14 @@ namespace Aktiv.RtAdmin
             });
 
             return this;
+        }
+
+        private void CanUseFlashMemoryOperation()
+        {
+            if (!_runtimeTokenParams.FlashMemoryAvailable)
+            {
+                throw new InvalidOperationException(Resources.FlashMemoryNotAvailable);
+            }
         }
 
         public void Execute()

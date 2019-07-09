@@ -214,11 +214,38 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Volume create failed.
+        /// </summary>
+        public static string DriveFormatVolumeCreateFailed {
+            get {
+                return ResourceManager.GetString("DriveFormatVolumeCreateFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume create passed.
+        /// </summary>
+        public static string DriveFormatVolumeCreateSuccess {
+            get {
+                return ResourceManager.GetString("DriveFormatVolumeCreateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Excluded tokens while stream formatting [token ids in specified format: 46bc3390 or 932436970].
         /// </summary>
         public static string ExcludedTokensOption {
             get {
                 return ResourceManager.GetString("ExcludedTokensOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token has no flash memory.
+        /// </summary>
+        public static string FlashMemoryNotAvailable {
+            get {
+                return ResourceManager.GetString("FlashMemoryNotAvailable", resourceCulture);
             }
         }
         
@@ -853,11 +880,38 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Volume access mode change failed.
+        /// </summary>
+        public static string VolumeAccessModeChangeFailed {
+            get {
+                return ResourceManager.GetString("VolumeAccessModeChangeFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume access mode change passed.
+        /// </summary>
+        public static string VolumeAccessModeChangeSuccess {
+            get {
+                return ResourceManager.GetString("VolumeAccessModeChangeSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get volume info. Id : volume id {1 - 9, a - all, sz - get flash size}.
         /// </summary>
         public static string VolumeInfoParamsOption {
             get {
                 return ResourceManager.GetString("VolumeInfoParamsOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume owners store is not set.
+        /// </summary>
+        public static string VolumeOwnersStoreNotSet {
+            get {
+                return ResourceManager.GetString("VolumeOwnersStoreNotSet", resourceCulture);
             }
         }
         

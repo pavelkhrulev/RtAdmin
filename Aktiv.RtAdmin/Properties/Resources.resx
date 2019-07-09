@@ -387,4 +387,22 @@
   <data name="PinUnlockFailed" xml:space="preserve">
     <value>Unblock PIN failed</value>
   </data>
+  <data name="DriveFormatVolumeCreateFailed" xml:space="preserve">
+    <value>Volume create failed</value>
+  </data>
+  <data name="DriveFormatVolumeCreateSuccess" xml:space="preserve">
+    <value>Volume create passed</value>
+  </data>
+  <data name="FlashMemoryNotAvailable" xml:space="preserve">
+    <value>Token has no flash memory</value>
+  </data>
+  <data name="VolumeAccessModeChangeFailed" xml:space="preserve">
+    <value>Volume access mode change failed</value>
+  </data>
+  <data name="VolumeAccessModeChangeSuccess" xml:space="preserve">
+    <value>Volume access mode change passed</value>
+  </data>
+  <data name="VolumeOwnersStoreNotSet" xml:space="preserve">
+    <value>Volume owners store is not set</value>
+  </data>
 </root>

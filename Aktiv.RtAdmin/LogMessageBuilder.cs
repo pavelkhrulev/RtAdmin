@@ -1,17 +1,23 @@
 ﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
+using RutokenPkcs11Interop.HighLevelAPI;
 using System;
+using Aktiv.RtAdmin.Models;
 
 namespace Aktiv.RtAdmin
 {
     public class LogMessageBuilder
     {
         private readonly RuntimeTokenParams _runtimeTokenParams;
+        private readonly VolumeOwnersStore _volumeOwnersStore;
 
-        public LogMessageBuilder(RuntimeTokenParams runtimeTokenParams)
+        public LogMessageBuilder(RuntimeTokenParams runtimeTokenParams,
+            VolumeOwnersStore volumeOwnersStore)
         {
             _runtimeTokenParams = runtimeTokenParams ?? 
                            throw new ArgumentNullException(nameof(runtimeTokenParams), Resources.TokenParamsNotSet);
+            _volumeOwnersStore = volumeOwnersStore ??
+                           throw new ArgumentNullException(nameof(volumeOwnersStore), Resources.TokenParamsNotSet);
         }
 
         public string WithTokenId(string message) => 
@@ -51,6 +57,40 @@ namespace Aktiv.RtAdmin
             }
 
             return string.Format(Resources.UserPinChangePolicyError, policyDescription);
+        }
+
+        public string WithVolumeInfo(VolumeInfoExtended volumeInfo, 
+            bool withPassedMark = true)
+        {
+            var passedMark = withPassedMark ? 
+                $"{Resources.DriveFormatVolumeCreateSuccess} :" : string.Empty;
+
+            return $"{WithTokenId(passedMark)} " +
+                   $"{volumeInfo.VolumeId} " +
+                   $"{volumeInfo.VolumeSize} " +
+                   $"{_volumeOwnersStore.GetVolumeOwnerById((uint)volumeInfo.VolumeOwner)} " +
+                   $"{ChangeVolumeAttributesParamsFactory.GetAccessModeDescription(volumeInfo.AccessMode)}";
+        }
+
+        public string WithVolumeInfo(VolumeInfo volumeInfo,
+            bool withPassedMark = true)
+        {
+            var passedMark = withPassedMark ?
+                $"{Resources.DriveFormatVolumeCreateSuccess} :" : string.Empty;
+
+            return $"{WithTokenId(passedMark)} " +
+                   $"{volumeInfo.Id} " +
+                   $"{volumeInfo.Size} " +
+                   $"{_volumeOwnersStore.GetVolumeOwnerById(volumeInfo.Owner)} " +
+                   $"{ChangeVolumeAttributesParamsFactory.GetAccessModeDescription(volumeInfo.AccessMode)}";
+        }
+
+        public string WithVolumeInfo(ChangeVolumeAttributesParams volumeParams)
+        {
+            return $"{WithTokenId(Resources.VolumeAccessModeChangeSuccess)} : " +
+                   $"{volumeParams.VolumeId} " +
+                   $"{ChangeVolumeAttributesParamsFactory.GetAccessModeDescription(volumeParams.AccessMode)} " +
+                   $"{ChangeVolumeAttributesParamsFactory.GetPermanentStateDescription(volumeParams.Permanent)}";
         }
     }
 }
