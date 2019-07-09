@@ -129,7 +129,7 @@
   <data name="ChangeAdminPinOldPinError" xml:space="preserve">
     <value>Для изменения PIN-кода администратора необходимо ввести текущий PIN-код администратора, используя параметр -o</value>
   </data>
-  <data name="ChangeTokenLabelPinError" xml:space="preserve">
+  <data name="TokenLabelPinError" xml:space="preserve">
     <value>Невозможно изменить имя токена. Введите PIN-код пользователя, используя параметр -c</value>
   </data>
   <data name="ChangeUserPinOldPinsError" xml:space="preserve">
@@ -273,7 +273,7 @@
 [1-8 - атрибуты конкретного раздела]
 [sz - объем памяти]</value>
   </data>
-  <data name="LocalPinSetSuccess" xml:space="preserve">
+  <data name="NewLocalPinSetSuccess" xml:space="preserve">
     <value>PIN-код локального пользователя успешно установлен</value>
   </data>
   <data name="Pin2SetSuccess" xml:space="preserve">
@@ -374,5 +374,32 @@
   </data>
   <data name="ExcludedTokensOption" xml:space="preserve">
     <value>Исключенные токены при поточном форматировании [серийные номера токенов в формате: 46bc3390 или 932436970]</value>
+  </data>
+  <data name="TokenLabelChangeFailed" xml:space="preserve">
+    <value>Не удалось установить метку токена</value>
+  </data>
+  <data name="PinGenerationError" xml:space="preserve">
+    <value>Ошибка при генерации PIN-кода. Используйте другой токен</value>
+  </data>
+  <data name="PinGenerationFailed" xml:space="preserve">
+    <value>Не удалось сгенерировать PIN-код. Токен был пропущен</value>
+  </data>
+  <data name="ActivationPasswordsGenerationFailed" xml:space="preserve">
+    <value>Не удалось сгенерировать пароли активации</value>
+  </data>
+  <data name="NewLocalPinInvalidCommandParamsCount" xml:space="preserve">
+    <value>Некорректное число параметров командной строки для использования локального PIN-кода. Должно быть передано два параметра</value>
+  </data>
+  <data name="NewLocalPinInvalidOwnerId" xml:space="preserve">
+    <value>Неверный идентификатор локального пользователя</value>
+  </data>
+  <data name="NewLocalPinSetFailed" xml:space="preserve">
+    <value>Не удалось установить локальный PIN-код</value>
+  </data>
+  <data name="Pin2SetFailed" xml:space="preserve">
+    <value>Ошибка при отправке запроса на установку PIN2 на PINPad</value>
+  </data>
+  <data name="PinUnlockFailed" xml:space="preserve">
+    <value>Не удалось разблокировать PIN-код</value>
   </data>
 </root>

@@ -129,7 +129,7 @@
   <data name="ChangeAdminPinOldPinError" xml:space="preserve">
     <value>For changing admin PIN enter old admin PIN</value>
   </data>
-  <data name="ChangeTokenLabelPinError" xml:space="preserve">
+  <data name="TokenLabelPinError" xml:space="preserve">
     <value>Can't change token label. Enter user PIN using -c</value>
   </data>
   <data name="ChangeUserPinOldPinsError" xml:space="preserve">
@@ -258,7 +258,7 @@
   <data name="VolumeInfoParamsOption" xml:space="preserve">
     <value>Get volume info. Id : volume id {1 - 9, a - all, sz - get flash size}</value>
   </data>
-  <data name="LocalPinSetSuccess" xml:space="preserve">
+  <data name="NewLocalPinSetSuccess" xml:space="preserve">
     <value>Local PIN has been successfully set</value>
   </data>
   <data name="Pin2SetSuccess" xml:space="preserve">
@@ -359,5 +359,32 @@
   </data>
   <data name="ExcludedTokensOption" xml:space="preserve">
     <value>Excluded tokens while stream formatting [token ids in specified format: 46bc3390 or 932436970]</value>
+  </data>
+  <data name="TokenLabelChangeFailed" xml:space="preserve">
+    <value>Can't change token label</value>
+  </data>
+  <data name="PinGenerationError" xml:space="preserve">
+    <value>Can't generate pin. Change Token</value>
+  </data>
+  <data name="PinGenerationFailed" xml:space="preserve">
+    <value>Can't generate pin. This token was skipped</value>
+  </data>
+  <data name="ActivationPasswordsGenerationFailed" xml:space="preserve">
+    <value>Generate activation passwords failed</value>
+  </data>
+  <data name="NewLocalPinInvalidCommandParamsCount" xml:space="preserve">
+    <value>Invalid command params for using local PIN. It must be 2 command line params</value>
+  </data>
+  <data name="NewLocalPinInvalidOwnerId" xml:space="preserve">
+    <value>Invalid local user id</value>
+  </data>
+  <data name="NewLocalPinSetFailed" xml:space="preserve">
+    <value>Failed to set local PIN</value>
+  </data>
+  <data name="Pin2SetFailed" xml:space="preserve">
+    <value>Error while sending request for setting PIN2 PINPad</value>
+  </data>
+  <data name="PinUnlockFailed" xml:space="preserve">
+    <value>Unblock PIN failed</value>
   </data>
 </root>

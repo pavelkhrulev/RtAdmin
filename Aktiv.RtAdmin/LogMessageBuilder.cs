@@ -1,6 +1,6 @@
-﻿using System;
-using Aktiv.RtAdmin.Properties;
+﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
+using System;
 
 namespace Aktiv.RtAdmin
 {

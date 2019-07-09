@@ -1,6 +1,6 @@
 ﻿using Net.Pkcs11Interop.Common;
 
-namespace Aktiv.RtAdmin.Operations
+namespace Aktiv.RtAdmin
 {
     public class BaseTokenOperationParams
     {

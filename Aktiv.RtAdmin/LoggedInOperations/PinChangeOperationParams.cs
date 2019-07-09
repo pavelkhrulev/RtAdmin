@@ -1,6 +1,4 @@
-﻿using Aktiv.RtAdmin.Operations;
-
-namespace Aktiv.RtAdmin
+﻿namespace Aktiv.RtAdmin
 {
     public class PinChangeOperationParams : BaseTokenOperationParams
     {

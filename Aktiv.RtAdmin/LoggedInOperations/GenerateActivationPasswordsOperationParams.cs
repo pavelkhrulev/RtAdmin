@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using Aktiv.RtAdmin.Operations;
-using RutokenPkcs11Interop.Common;
+﻿using RutokenPkcs11Interop.Common;
+using System.Collections.Generic;
 
 namespace Aktiv.RtAdmin
 {

@@ -19,6 +19,11 @@
     <Product>rtAdmin утилита администрирования</Product>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Aktiv.RtPkcs11Ecp.Natives" Version="1.0.0" />
     <PackageReference Include="Aktiv.RutokenPkcs11Interop" Version="2.0.1" />
@@ -51,9 +56,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="pinsstore.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="runtimes\$(Runtime)\native\$(NativeLibraryName)">
       <Link>pkcs11NativeLib.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

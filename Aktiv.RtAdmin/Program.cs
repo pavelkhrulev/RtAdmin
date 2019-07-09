@@ -1,4 +1,5 @@
-﻿using CommandLine;
+﻿using Aktiv.RtAdmin.Properties;
+using CommandLine;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Net.Pkcs11Interop.Common;
@@ -6,7 +7,6 @@ using Net.Pkcs11Interop.HighLevelAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Aktiv.RtAdmin.Properties;
 
 namespace Aktiv.RtAdmin
 {
@@ -18,8 +18,8 @@ namespace Aktiv.RtAdmin
         private static readonly Dictionary<Predicate<CommandLineOptions>, Action<CommandHandlerBuilder>> _optionsMapping =
             new Dictionary<Predicate<CommandLineOptions>, Action<CommandHandlerBuilder>>
             {
-                {options => options.AdminPinLength.HasValue, builder => builder.WithNewAdminPin()},
-                {options => options.UserPinLength.HasValue, builder => builder.WithNewUserPin()},
+                {options => options.AdminPinLength.HasValue, builder => builder.WithNewlyGeneratedPin(PinCodeOwner.Admin)},
+                {options => options.UserPinLength.HasValue, builder => builder.WithNewlyGeneratedPin(PinCodeOwner.User)},
                 {options => !options.Format &&
                             !string.IsNullOrWhiteSpace(options.TokenLabelCp1251), builder => builder.WithNewTokenName()},
                 {options => !options.Format &&
@@ -33,7 +33,7 @@ namespace Aktiv.RtAdmin
                 {options => options.LoginWithLocalPin.Any(), builder => builder.WithUsingLocalPin()},
                 {options => options.ChangeVolumeAttributes.Any(), builder => builder.WithChangeVolumeAttributes()},
                 {options => !string.IsNullOrWhiteSpace(options.VolumeInfoParams), builder => builder.WithShowVolumeInfoParams()},
-                {options => options.UnblockPins, builder => builder.WithPinsUnblock()},
+                {options => options.UnblockPins, builder => builder.WithPinsUnblock()}
             };
 
         static int Main(string[] args)
@@ -44,7 +44,7 @@ namespace Aktiv.RtAdmin
             {
                 _serviceProvider = Startup.Configure(options.LogFilePath);
 
-                var core = _serviceProvider.GetService<RutokenCore>();
+                var core = _serviceProvider.GetService<TokenSlot>();
                 var logger = _serviceProvider.GetService<ILogger<RtAdmin>>();
                 var pinsStore = _serviceProvider.GetService<PinsStorage>();
                 var configLinesStore = _serviceProvider.GetService<ConfigLinesStorage>();
@@ -93,7 +93,14 @@ namespace Aktiv.RtAdmin
                             }
                         }
 
-                        commandHandlerBuilder.Execute();
+                        try
+                        {
+                            commandHandlerBuilder.Execute();
+                        }
+                        catch (TokenMustBeChangedException)
+                        {
+                            // ignored (перейти к следующему токену)
+                        }
 
                         if (options.OneIterationOnly)
                         {

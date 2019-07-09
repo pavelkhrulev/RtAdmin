@@ -1,4 +1,4 @@
-﻿using Aktiv.RtAdmin.Operations;
+﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 using RutokenPkcs11Interop.HighLevelAPI;
@@ -19,7 +19,16 @@ namespace Aktiv.RtAdmin
         }
 
         public static void ChangeLocalPin(Slot slot,
-            string userPin, string localPin, uint localPinId) =>
-            slot.SetLocalPIN(userPin, localPin, localPinId);
+            string userPin, string localPin, uint localPinId)
+        {
+            try
+            {
+                slot.SetLocalPIN(userPin, localPin, localPinId);
+            }
+            catch (Pkcs11Exception ex) when (ex.RV == CKR.CKR_PIN_INCORRECT)
+            {
+                throw new CKRException(ex.RV, Resources.IncorrectPin);
+            }
+        }
     }
 }

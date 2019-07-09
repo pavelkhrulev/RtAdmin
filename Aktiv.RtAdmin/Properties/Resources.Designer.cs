@@ -88,6 +88,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate activation passwords failed.
+        /// </summary>
+        public static string ActivationPasswordsGenerationFailed {
+            get {
+                return ResourceManager.GetString("ActivationPasswordsGenerationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate activation passwords passed.
         /// </summary>
         public static string ActivationPasswordsWereGenerated {
@@ -138,15 +147,6 @@ namespace Aktiv.RtAdmin.Properties {
         public static string ChangeAdminPinOldPinError {
             get {
                 return ResourceManager.GetString("ChangeAdminPinOldPinError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t change token label. Enter user PIN using -c.
-        /// </summary>
-        public static string ChangeTokenLabelPinError {
-            get {
-                return ResourceManager.GetString("ChangeTokenLabelPinError", resourceCulture);
             }
         }
         
@@ -376,15 +376,6 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Local PIN has been successfully set.
-        /// </summary>
-        public static string LocalPinSetSuccess {
-            get {
-                return ResourceManager.GetString("LocalPinSetSuccess", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Log file path.
         /// </summary>
         public static string LogFilePathOption {
@@ -448,6 +439,42 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid command params for using local PIN. It must be 2 command line params.
+        /// </summary>
+        public static string NewLocalPinInvalidCommandParamsCount {
+            get {
+                return ResourceManager.GetString("NewLocalPinInvalidCommandParamsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid local user id.
+        /// </summary>
+        public static string NewLocalPinInvalidOwnerId {
+            get {
+                return ResourceManager.GetString("NewLocalPinInvalidOwnerId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to set local PIN.
+        /// </summary>
+        public static string NewLocalPinSetFailed {
+            get {
+                return ResourceManager.GetString("NewLocalPinSetFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local PIN has been successfully set.
+        /// </summary>
+        public static string NewLocalPinSetSuccess {
+            get {
+                return ResourceManager.GetString("NewLocalPinSetSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Old Admin PIN code. Must be specified for Admin PIN changing.
         /// </summary>
         public static string OldAdminPinOption {
@@ -480,6 +507,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string Or {
             get {
                 return ResourceManager.GetString("Or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while sending request for setting PIN2 PINPad.
+        /// </summary>
+        public static string Pin2SetFailed {
+            get {
+                return ResourceManager.GetString("Pin2SetFailed", resourceCulture);
             }
         }
         
@@ -583,6 +619,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t generate pin. Change Token.
+        /// </summary>
+        public static string PinGenerationError {
+            get {
+                return ResourceManager.GetString("PinGenerationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t generate pin. This token was skipped.
+        /// </summary>
+        public static string PinGenerationFailed {
+            get {
+                return ResourceManager.GetString("PinGenerationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PIN length and allowed PIN length mismatch. Min admin PIN length: {0}, max admin PIN length: {1}, min user PIN length: {2}, max user PIN length: {3}.
         /// </summary>
         public static string PinLengthMismatch {
@@ -597,6 +651,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string PinLengthMismatchBeforeFormat {
             get {
                 return ResourceManager.GetString("PinLengthMismatchBeforeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unblock PIN failed.
+        /// </summary>
+        public static string PinUnlockFailed {
+            get {
+                return ResourceManager.GetString("PinUnlockFailed", resourceCulture);
             }
         }
         
@@ -673,6 +736,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t change token label.
+        /// </summary>
+        public static string TokenLabelChangeFailed {
+            get {
+                return ResourceManager.GetString("TokenLabelChangeFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Token label changed successfully.
         /// </summary>
         public static string TokenLabelChangeSuccess {
@@ -687,6 +759,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string TokenLabelCp1251Option {
             get {
                 return ResourceManager.GetString("TokenLabelCp1251Option", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t change token label. Enter user PIN using -c.
+        /// </summary>
+        public static string TokenLabelPinError {
+            get {
+                return ResourceManager.GetString("TokenLabelPinError", resourceCulture);
             }
         }
         

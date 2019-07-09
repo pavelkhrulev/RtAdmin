@@ -6,16 +6,11 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using RutokenPkcs11Interop;
 
 namespace Aktiv.RtAdmin
 {
     public static class Startup
     {
-#if DEBUG
-#else
-        private const string pkcs11NativeLibraryName = "pkcs11NativeLib.dll";
-#endif
         public static IServiceProvider Configure(string logFilePath)
         {
             ConfigureLogger(logFilePath);
@@ -24,9 +19,8 @@ namespace Aktiv.RtAdmin
 
         private static void ConfigureLogger(string logFilePath)
         {
-            var loggerConfiguration = new LoggerConfiguration()
-                .MinimumLevel
-                .Debug();
+            var loggerConfiguration = new LoggerConfiguration().MinimumLevel
+                                                               .Debug();
 
             // TODO: проверка на существование пути
             if (string.IsNullOrWhiteSpace(logFilePath))
@@ -51,7 +45,7 @@ namespace Aktiv.RtAdmin
                 .AddSingleton<PinsStorage>()
                 .AddSingleton<ConfigLinesStorage>()
                 .AddSingleton<VolumeOwnersStore>()
-                .AddTransient<RutokenCore>()
+                .AddTransient<TokenSlot>()
                 .AddScoped<RuntimeTokenParams>()
                 .AddScoped<LogMessageBuilder>()
                 .AddTransient<CommandHandlerBuilder>()

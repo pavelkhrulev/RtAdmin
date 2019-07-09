@@ -1,6 +1,4 @@
-﻿using RutokenPkcs11Interop.Common;
-
-namespace Aktiv.RtAdmin
+﻿namespace Aktiv.RtAdmin
 {
     public static class DefaultValues
     {
@@ -36,6 +34,7 @@ namespace Aktiv.RtAdmin
         public const int MaxAllowedMaxAdminPinAttempts = 10;
 
         public const int GenerateActivationPasswordCommandParamsCount = 2;
+        public const int NewLocalPinCommandParamsCount = 2;
 
         public const int MinAllowedSmMode = 1;
         public const int MaxAllowedSmMode = 3;

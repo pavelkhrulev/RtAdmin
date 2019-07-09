@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Aktiv.RtAdmin.Operations;
-using Net.Pkcs11Interop.HighLevelAPI;
+﻿using Net.Pkcs11Interop.HighLevelAPI;
 using RutokenPkcs11Interop.Common;
 using RutokenPkcs11Interop.HighLevelAPI;
+using System.Collections.Generic;
 
 namespace Aktiv.RtAdmin
 {

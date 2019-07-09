@@ -1,9 +1,8 @@
 ﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
-using System;
 
-namespace Aktiv.RtAdmin.Operations
+namespace Aktiv.RtAdmin
 {
     public abstract class BaseTokenOperation<T> where T : BaseTokenOperationParams
     {

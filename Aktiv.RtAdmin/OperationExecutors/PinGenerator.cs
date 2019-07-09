@@ -17,7 +17,7 @@ namespace Aktiv.RtAdmin
             0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, (byte)'\0',
         };
 
-        public static string Generate(Slot slot, RutokenType tokenType, uint pinLength, bool utf8)
+        public static string Generate(Slot slot, RutokenType tokenType, uint pinLength)
         {
             using var session = slot.OpenSession(SessionType.ReadOnly);
 
@@ -34,7 +34,7 @@ namespace Aktiv.RtAdmin
                         pin[i] = (byte)(random[1] % 10 + 0x30);
                         break;
                     }
-                    case var _ when utf8 && random[0] != 0 && (i + 1 < pinLength):
+                    case var _ when random[0] != 0 && (i + 1 < pinLength):
                     {
                         random[1] = (byte)(random[1] % 64 + 0x10);
 
@@ -58,15 +58,7 @@ namespace Aktiv.RtAdmin
                 }
             }
 
-            if (utf8)
-            {
-                return ConvertUtils.BytesToUtf8String(pin);
-            }
-
-            var win1251 = System.Text.Encoding.GetEncoding("windows-1251");
-            return win1251.GetString(pin);
-
-            // TODO: close session
+            return ConvertUtils.BytesToUtf8String(pin);
         }
     }
 }

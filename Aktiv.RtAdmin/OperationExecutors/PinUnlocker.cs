@@ -1,5 +1,4 @@
-﻿using Aktiv.RtAdmin.Operations;
-using Net.Pkcs11Interop.Common;
+﻿using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
