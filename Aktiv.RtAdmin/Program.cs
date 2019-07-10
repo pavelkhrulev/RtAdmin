@@ -36,9 +36,73 @@ namespace Aktiv.RtAdmin
                 {options => options.UnblockPins, builder => builder.WithPinsUnblock()}
             };
 
+        /// <summary>
+        /// Так как на данный момент библиотека для парсинга входных параметров
+        /// не умеет обрабатывать повторяющиеся с одним ключем параметры,
+        /// а времени на ее доработку нет, то делаем костыль для
+        /// замены нескольких повторяющихся параметров (-F, -C или -O)
+        /// </summary>
+        // TODO: адский костыль
+        private static void EditCommandLineArgs(IList<string> args)
+        {
+            ReorderArguments(args, "-F");
+            ReorderArguments(args, "-C");
+            ReorderArguments(args, "-O");
+        }
+
+        private static void ReorderArguments(IList<string> args, string optionKey)
+        {
+            var optionParams = new List<string>();
+            var canSaveParams = false;
+
+            var toBeRemoved = new List<int>();
+
+            for (var index = 0; index < args.Count; index++)
+            {
+                var token = args[index];
+                if (string.Equals(token, optionKey))
+                {
+                    toBeRemoved.Add(index);
+                    canSaveParams = true;
+                    continue;
+                }
+
+                if (!canSaveParams)
+                {
+                    continue;
+                }
+
+                if (token.StartsWith("-"))
+                {
+                    canSaveParams = false;
+                    continue;
+                }
+
+                toBeRemoved.Add(index);
+                optionParams.Add(token);
+            }
+
+            if (toBeRemoved.Any())
+            {
+                foreach (var remove in toBeRemoved.OrderByDescending(v => v))
+                {
+                    args.RemoveAt(remove);
+                }
+
+                args.Add(optionKey);
+                foreach (var param in optionParams)
+                {
+                    args.Add(param);
+                }
+            }
+        }
+
         static int Main(string[] args)
         {
-            var arguments = Parser.Default.ParseArguments<CommandLineOptions>(args);
+            var argsList = args.ToList();
+            EditCommandLineArgs(argsList);
+
+            var arguments = Parser.Default.ParseArguments<CommandLineOptions>(argsList);
 
             arguments.WithParsed(options =>
             {

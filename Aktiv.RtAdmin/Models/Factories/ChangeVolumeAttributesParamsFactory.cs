@@ -4,6 +4,7 @@ using RutokenPkcs11Interop.HighLevelAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Aktiv.RtAdmin.Properties;
 
 namespace Aktiv.RtAdmin
 {
@@ -51,7 +52,7 @@ namespace Aktiv.RtAdmin
                 var volumeInfo = volumeInfosList.SingleOrDefault(x => x.VolumeId == volumeId);
                 if (volumeInfo == null)
                 {
-                    throw new InvalidOperationException($"Раздел с id {volumeId} не найден");
+                    throw new ArgumentException(Resources.VolumeInfoInvalidVolumeId);
                 }
 
                 string ownerPin;
@@ -67,11 +68,17 @@ namespace Aktiv.RtAdmin
                             ? runtimeTokenParams.NewUserPin.Value
                             : runtimeTokenParams.OldUserPin.Value;
                         break;
-                    case CKU.CKU_CONTEXT_SPECIFIC:
-                        runtimeTokenParams.LocalUserPins.TryGetValue((uint)volumeInfo.VolumeOwner, out ownerPin);
-                        break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        if (runtimeTokenParams.LocalUserPins == null)
+                        {
+                            throw new InvalidOperationException("Не установлен PIN-код локального пользователя");
+                        }
+                        if (!(runtimeTokenParams.LocalUserPins.TryGetValue((uint) volumeInfo.VolumeOwner, out ownerPin)))
+                        {
+                            throw new InvalidOperationException("Неверный владелец раздела");
+                        }
+                        
+                        break;
                 }
 
                 if (string.IsNullOrEmpty(ownerPin))

@@ -519,15 +519,14 @@ namespace Aktiv.RtAdmin
                 try
                 {
                     var volumesInfos = _slot.GetVolumesInfo();
-                    var volumeAttributes = ChangeVolumeAttributesParamsFactory.Create(
+                    var volumeAttributesList = ChangeVolumeAttributesParamsFactory.Create(
                                                 _commandLineOptions.ChangeVolumeAttributes,
                                                 volumesInfos,
                                                 _runtimeTokenParams).ToList();
 
-                    VolumeAttributeChanger.Change(_slot, volumeAttributes);
-
-                    foreach (var attributes in volumeAttributes)
+                    foreach (var attributes in volumeAttributesList)
                     {
+                        VolumeAttributeChanger.Change(_slot, attributes);
                         _logger.LogInformation(_logMessageBuilder.WithVolumeInfo(attributes));
                     }
                 }
