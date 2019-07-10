@@ -405,4 +405,19 @@
   <data name="VolumeOwnersStoreNotSet" xml:space="preserve">
     <value>Volume owners store is not set</value>
   </data>
+  <data name="TotalDriveSize" xml:space="preserve">
+    <value>Total disk size</value>
+  </data>
+  <data name="TotalDriveSizeFailed" xml:space="preserve">
+    <value>Error while getting total disk size</value>
+  </data>
+  <data name="VolumeInfoGettingFailed" xml:space="preserve">
+    <value>Error while getting volumes info</value>
+  </data>
+  <data name="VolumeInfoInvalidVolumeId" xml:space="preserve">
+    <value>Invalid volume id</value>
+  </data>
+  <data name="VolumeInfoNotFound" xml:space="preserve">
+    <value>Volume with specified id not found</value>
+  </data>
 </root>

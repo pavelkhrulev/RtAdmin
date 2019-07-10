@@ -92,5 +92,11 @@ namespace Aktiv.RtAdmin
                    $"{ChangeVolumeAttributesParamsFactory.GetAccessModeDescription(volumeParams.AccessMode)} " +
                    $"{ChangeVolumeAttributesParamsFactory.GetPermanentStateDescription(volumeParams.Permanent)}";
         }
+
+        public string WithDriveSize(ulong driveSize)
+        {
+            return $"{WithTokenId(Resources.TotalDriveSize)} : " +
+                   $"{driveSize}";
+        }
     }
 }

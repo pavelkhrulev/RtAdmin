@@ -817,6 +817,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total disk size.
+        /// </summary>
+        public static string TotalDriveSize {
+            get {
+                return ResourceManager.GetString("TotalDriveSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while getting total disk size.
+        /// </summary>
+        public static string TotalDriveSizeFailed {
+            get {
+                return ResourceManager.GetString("TotalDriveSizeFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unblock user and local PINs. You should use login with Admin PIN command to unblock user and local PINs.
         /// </summary>
         public static string UnblockPinsOption {
@@ -894,6 +912,33 @@ namespace Aktiv.RtAdmin.Properties {
         public static string VolumeAccessModeChangeSuccess {
             get {
                 return ResourceManager.GetString("VolumeAccessModeChangeSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while getting volumes info.
+        /// </summary>
+        public static string VolumeInfoGettingFailed {
+            get {
+                return ResourceManager.GetString("VolumeInfoGettingFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid volume id.
+        /// </summary>
+        public static string VolumeInfoInvalidVolumeId {
+            get {
+                return ResourceManager.GetString("VolumeInfoInvalidVolumeId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume with specified id not found.
+        /// </summary>
+        public static string VolumeInfoNotFound {
+            get {
+                return ResourceManager.GetString("VolumeInfoNotFound", resourceCulture);
             }
         }
         

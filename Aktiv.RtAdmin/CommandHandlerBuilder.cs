@@ -545,13 +545,55 @@ namespace Aktiv.RtAdmin
         {
             _prerequisites.Enqueue(CanUseFlashMemoryOperation);
 
+            // Todo: отрефакторить
             _commands.Enqueue(() =>
             {
-                
-                var volumesInfo = _slot.GetVolumesInfo();
-                var driveSize = _slot.GetDriveSize();
-
-                _logger.LogInformation("Аттрибуты раздела");
+                if (_commandLineOptions.VolumeInfoParams == "sz")
+                {
+                    try
+                    {
+                        var driveSize = _slot.GetDriveSize();
+                        _logger.LogInformation(_logMessageBuilder.WithDriveSize(driveSize));
+                    }
+                    catch
+                    {
+                        _logger.LogError(_logMessageBuilder.WithTokenId(Resources.TotalDriveSizeFailed));
+                        throw;
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        var volumesInfo = _slot.GetVolumesInfo();
+                        if (_commandLineOptions.VolumeInfoParams == "a")
+                        {
+                            foreach (var volumeInfo in volumesInfo)
+                            {
+                                _logger.LogInformation(_logMessageBuilder.WithVolumeInfo(volumeInfo, false));
+                            }
+                        }
+                        else
+                        {
+                            if (uint.TryParse(_commandLineOptions.VolumeInfoParams, out var volumeId))
+                            {
+                                var volumeInfo = volumesInfo.FirstOrDefault(x => x.VolumeId == volumeId);
+                                _logger.LogInformation(volumeInfo != null
+                                    ? _logMessageBuilder.WithVolumeInfo(volumeInfo, false)
+                                    : _logMessageBuilder.WithTokenId(Resources.VolumeInfoNotFound));
+                            }
+                            else
+                            {
+                                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.VolumeInfoInvalidVolumeId));
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        _logger.LogError(_logMessageBuilder.WithTokenId(Resources.VolumeInfoGettingFailed));
+                        throw;
+                    }
+                }
             });
 
             return this;

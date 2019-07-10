@@ -417,4 +417,19 @@
   <data name="FlashMemoryNotAvailable" xml:space="preserve">
     <value>Токен не имеет флеш-памяти</value>
   </data>
+  <data name="TotalDriveSize" xml:space="preserve">
+    <value>Общий объем памяти</value>
+  </data>
+  <data name="TotalDriveSizeFailed" xml:space="preserve">
+    <value>Не удалось получить общий объем памяти</value>
+  </data>
+  <data name="VolumeInfoGettingFailed" xml:space="preserve">
+    <value>Ошибка при получении информации о разделах</value>
+  </data>
+  <data name="VolumeInfoInvalidVolumeId" xml:space="preserve">
+    <value>Неверный id раздела</value>
+  </data>
+  <data name="VolumeInfoNotFound" xml:space="preserve">
+    <value>Раздел с заданным идентификатором не найден</value>
+  </data>
 </root>
