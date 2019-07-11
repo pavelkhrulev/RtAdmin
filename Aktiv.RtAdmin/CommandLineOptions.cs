@@ -14,9 +14,6 @@ namespace Aktiv.RtAdmin
         [Option('g', HelpText = "GenerateRandomUserPinOption", ResourceType = typeof(Properties.Resources))]
         public uint? UserPinLength { get; set; }
 
-        [Option('U', HelpText = "Utf8Option", ResourceType = typeof(Properties.Resources))]
-        public bool UTF8InsteadOfcp1251 { get; set; }
-
         [Option('L', HelpText = "TokenLabelCp1251Option", ResourceType = typeof(Properties.Resources))]
         public string TokenLabelCp1251 { get; set; }
 
@@ -92,6 +89,11 @@ namespace Aktiv.RtAdmin
 
         [Option('E', HelpText = "ExcludedTokensOption", ResourceType = typeof(Properties.Resources))]
         public IReadOnlyCollection<string> ExcludedTokens { get; set; }
+        #endregion
+
+        #region Obsolete
+        [Option('U', HelpText = "Utf8Option", ResourceType = typeof(Properties.Resources))]
+        public bool UTF8InsteadOfcp1251 { get; set; }
         #endregion
     }
 }

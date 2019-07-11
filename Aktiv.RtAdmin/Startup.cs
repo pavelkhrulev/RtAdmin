@@ -12,10 +12,11 @@ namespace Aktiv.RtAdmin
 {
     public static class Startup
     {
-        public static IServiceProvider Configure(string logFilePath)
+        public static IServiceProvider Configure(string logFilePath, 
+            string nativeLibraryPath)
         {
             ConfigureLogger(logFilePath);
-            return RegisterServices();
+            return RegisterServices(nativeLibraryPath);
         }
 
         private static void ConfigureLogger(string logFilePath)
@@ -36,13 +37,18 @@ namespace Aktiv.RtAdmin
             Log.Logger = loggerConfiguration.CreateLogger();
         }
 
-        private static IServiceProvider RegisterServices()
+        private static IServiceProvider RegisterServices(string nativeLibraryPath)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            // TODO: check file existance
+            var nativeLibraryPathIsUse = !string.IsNullOrWhiteSpace(nativeLibraryPath)
+                ? nativeLibraryPath
+                : Path.Combine(
+                    Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+                    GetNativeLibraryName());
 
             return new ServiceCollection()
                 .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
-                .AddSingleton(s => new Pkcs11(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), GetNativeLibraryName()), AppType.MultiThreaded))
+                .AddSingleton(s => new Pkcs11(nativeLibraryPathIsUse, AppType.MultiThreaded))
                 .AddSingleton<PinsStorage>()
                 .AddSingleton<ConfigLinesStorage>()
                 .AddSingleton<VolumeOwnersStore>()

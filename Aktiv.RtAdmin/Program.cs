@@ -106,7 +106,7 @@ namespace Aktiv.RtAdmin
 
             arguments.WithParsed(options =>
             {
-                _serviceProvider = Startup.Configure(options.LogFilePath);
+                _serviceProvider = Startup.Configure(options.LogFilePath, options.NativeLibraryPath);
 
                 var core = _serviceProvider.GetService<TokenSlot>();
                 var logger = _serviceProvider.GetService<ILogger<RtAdmin>>();
