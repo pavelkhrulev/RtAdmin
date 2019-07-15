@@ -104,8 +104,7 @@ namespace Aktiv.RtAdmin
 
                 if (shouldShowVersion)
                 {
-                    var executablePath =
-                        $"{AppDomain.CurrentDomain.BaseDirectory}{Assembly.GetExecutingAssembly().GetName().Name}.exe";
+                    var executablePath = Process.GetCurrentProcess().MainModule.FileName;
                     Console.WriteLine($@"{executablePath} {FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion}");
 
                     throw new AppMustBeClosedException();
@@ -159,8 +158,7 @@ namespace Aktiv.RtAdmin
 
         private static void ShowHelp(OptionSet optionSet)
         {
-            var executablePath =
-                $"{AppDomain.CurrentDomain.BaseDirectory}{Assembly.GetExecutingAssembly().GetName().Name}.exe";
+            var executablePath = Process.GetCurrentProcess().MainModule.FileName;
 
             Console.WriteLine($@"{Resources.Usage} {executablePath} OPTIONS");
 
