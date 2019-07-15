@@ -144,6 +144,10 @@ namespace Aktiv.RtAdmin
                         case "-p":
                             options.PinChangePolicy = (uint)DefaultValues.PinChangePolicy;
                             break;
+
+                        case "-l":
+                            options.LogFilePath = DefaultValues.LogFilePath;
+                            break;
                     }
                 }
                 else

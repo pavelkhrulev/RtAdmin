@@ -453,4 +453,31 @@
   <data name="ShowVersion" xml:space="preserve">
     <value>Show application version</value>
   </data>
+  <data name="ChangeVolumeAttributesInvalidCommandParamsCount" xml:space="preserve">
+    <value>Invalid command params count for changing volume attributes. It must be 3</value>
+  </data>
+  <data name="ChangeVolumeAttributesInvalidPermanentState" xml:space="preserve">
+    <value>Invalid permanent state</value>
+  </data>
+  <data name="ChangeVolumeAttributesNeedSetLocalPin" xml:space="preserve">
+    <value>Need to set local user pin</value>
+  </data>
+  <data name="FormatDriveInvalidAccessMode" xml:space="preserve">
+    <value>Invalid access mode</value>
+  </data>
+  <data name="FormatDriveInvalidCommandParamsCount" xml:space="preserve">
+    <value>Invalid command params count for drive formatting. It must be 4</value>
+  </data>
+  <data name="FormatDriveInvalidVolumeSize" xml:space="preserve">
+    <value>Invalid volume size</value>
+  </data>
+  <data name="IncorrectOsVersion" xml:space="preserve">
+    <value>Incorrect OS version</value>
+  </data>
+  <data name="InvalidUserPinChangePolicy" xml:space="preserve">
+    <value>Invalid user pin change policy</value>
+  </data>
+  <data name="VolumeAttributesStoreNotSet" xml:space="preserve">
+    <value>Volume attributes store is not set</value>
+  </data>
 </root>

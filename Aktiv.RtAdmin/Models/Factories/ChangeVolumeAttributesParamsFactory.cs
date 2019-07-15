@@ -1,10 +1,9 @@
-﻿using Net.Pkcs11Interop.Common;
-using RutokenPkcs11Interop.Common;
+﻿using Aktiv.RtAdmin.Properties;
+using Net.Pkcs11Interop.Common;
 using RutokenPkcs11Interop.HighLevelAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Aktiv.RtAdmin.Properties;
 
 namespace Aktiv.RtAdmin
 {
@@ -12,24 +11,8 @@ namespace Aktiv.RtAdmin
     {
         private const int _changeParamsCount = 3;
 
-        // TODO: вынести это в store
-        private static readonly Dictionary<string, FlashAccessMode> _accessModesMap =
-            new Dictionary<string, FlashAccessMode>
-            {
-                {"ro", FlashAccessMode.Readonly},
-                {"rw", FlashAccessMode.Readwrite},
-                {"hi", FlashAccessMode.Hidden},
-                {"cd", FlashAccessMode.Cdrom}
-            };
-
-        private static readonly Dictionary<string, bool> _permanentStateMap =
-            new Dictionary<string, bool>
-            {
-                {"p", true},
-                {"t", false},
-            };
-
         public static IEnumerable<ChangeVolumeAttributesParams> Create(
+            VolumeAttributesStore volumeAttributesStore,
             IEnumerable<string> changeParams,
             IEnumerable<VolumeInfoExtended> volumeInfos,
             RuntimeTokenParams runtimeTokenParams)
@@ -39,16 +22,28 @@ namespace Aktiv.RtAdmin
 
             if (changeParamsList.Count % _changeParamsCount != 0)
             {
-                throw new ArgumentException("Неверное число параметров");
+                throw new ArgumentException(Resources.ChangeVolumeAttributesInvalidCommandParamsCount);
             }
 
             for (var i = 0; i < changeParamsList.Count; i += _changeParamsCount)
             {
-                // TODO: error handling
                 var volumeParams = changeParamsList.Skip(i).Take(_changeParamsCount).ToList();
-                ulong.TryParse(volumeParams[0], out var volumeId);
-                _accessModesMap.TryGetValue(volumeParams[1], out var accessMode);
-                _permanentStateMap.TryGetValue(volumeParams[2], out var permanent);
+
+                if (!(uint.TryParse(volumeParams[0], out var volumeId)))
+                {
+                    throw new ArgumentException(Resources.VolumeInfoInvalidVolumeId);
+                }
+
+                if (!volumeAttributesStore.TryGetAccessMode(volumeParams[1], out var accessMode))
+                {
+                    throw new ArgumentException(Resources.FormatDriveInvalidAccessMode);
+                }
+
+                if (!volumeAttributesStore.TryGetPermanentState(volumeParams[2], out var permanent))
+                {
+                    throw new ArgumentException(Resources.ChangeVolumeAttributesInvalidPermanentState);
+                }
+
                 var volumeInfo = volumeInfosList.SingleOrDefault(x => x.VolumeId == volumeId);
                 if (volumeInfo == null)
                 {
@@ -71,19 +66,14 @@ namespace Aktiv.RtAdmin
                     default:
                         if (runtimeTokenParams.LocalUserPins == null)
                         {
-                            throw new InvalidOperationException("Не установлен PIN-код локального пользователя");
+                            throw new InvalidOperationException(Resources.ChangeVolumeAttributesNeedSetLocalPin);
                         }
                         if (!(runtimeTokenParams.LocalUserPins.TryGetValue((uint) volumeInfo.VolumeOwner, out ownerPin)))
                         {
-                            throw new InvalidOperationException("Неверный владелец раздела");
+                            throw new InvalidOperationException(Resources.NewLocalPinInvalidOwnerId);
                         }
                         
                         break;
-                }
-
-                if (string.IsNullOrEmpty(ownerPin))
-                {
-                    throw new InvalidOperationException("PIN-код не установлен");
                 }
 
                 yield return new ChangeVolumeAttributesParams
@@ -95,20 +85,6 @@ namespace Aktiv.RtAdmin
                     Permanent = permanent
                 };
             }
-        }
-
-        // TODO: вынести это в store
-        public static string GetAccessModeDescription(FlashAccessMode accessMode)
-        {
-            return _accessModesMap.ContainsValue(accessMode) ?
-                _accessModesMap.Single(x => x.Value == accessMode).Key : "--";
-        }
-
-        // TODO: вынести это в store
-        public static string GetPermanentStateDescription(bool state)
-        {
-            return _permanentStateMap.ContainsValue(state) ?
-                _permanentStateMap.Single(x => x.Value == state).Key : "--";
         }
     }
 }

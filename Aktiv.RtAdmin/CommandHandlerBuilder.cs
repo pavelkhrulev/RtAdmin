@@ -18,6 +18,7 @@ namespace Aktiv.RtAdmin
         private readonly RuntimeTokenParams _runtimeTokenParams;
         private readonly PinsStorage _pinsStorage;
         private readonly VolumeOwnersStore _volumeOwnersStore;
+        private readonly VolumeAttributesStore _volumeAttributesStore;
         private readonly ConcurrentQueue<Action> _commands;
         private readonly ConcurrentQueue<Action> _prerequisites;
         private readonly LogMessageBuilder _logMessageBuilder;
@@ -27,12 +28,14 @@ namespace Aktiv.RtAdmin
         private CommandLineOptionsValidator _validator;
 
         public CommandHandlerBuilder(ILogger<RtAdmin> logger, RuntimeTokenParams runtimeTokenParams,
-            PinsStorage pinsStorage, VolumeOwnersStore volumeOwnersStore, LogMessageBuilder logMessageBuilder)
+            PinsStorage pinsStorage, VolumeOwnersStore volumeOwnersStore, VolumeAttributesStore volumeAttributesStore,
+            LogMessageBuilder logMessageBuilder)
         {
             _logger = logger;
             _runtimeTokenParams = runtimeTokenParams;
             _pinsStorage = pinsStorage;
             _volumeOwnersStore = volumeOwnersStore;
+            _volumeAttributesStore = volumeAttributesStore;
             _logMessageBuilder = logMessageBuilder;
 
             _commands = new ConcurrentQueue<Action>();
@@ -419,7 +422,6 @@ namespace Aktiv.RtAdmin
 
                 _runtimeTokenParams.LocalUserPins = new Dictionary<uint, string>();
 
-                // TODO: вынести в фабрику
                 for (var i = 0; i < commandParams.Count; i+=2)
                 {
                     var localPinParams = commandParams.Skip(i).Take(2).ToList();
@@ -486,8 +488,10 @@ namespace Aktiv.RtAdmin
             {
                 try
                 {
-                    var volumeInfos = VolumeInfosFactory.Create(_commandLineOptions.FormatVolumeParams)
-                                                        .ToList();
+                    var volumeInfos = FormatVolumeInfosFactory.Create(
+                            _volumeOwnersStore,
+                            _volumeAttributesStore, 
+                            _commandLineOptions.FormatVolumeParams).ToList();
 
                     DriveFormatter.Format(_slot,
                         _runtimeTokenParams.NewAdminPin.EnteredByUser ?
@@ -520,6 +524,7 @@ namespace Aktiv.RtAdmin
                 {
                     var volumesInfos = _slot.GetVolumesInfo();
                     var volumeAttributesList = ChangeVolumeAttributesParamsFactory.Create(
+                                                _volumeAttributesStore,
                                                 _commandLineOptions.ChangeVolumeAttributes,
                                                 volumesInfos,
                                                 _runtimeTokenParams).ToList();

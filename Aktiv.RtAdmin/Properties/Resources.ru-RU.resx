@@ -465,4 +465,31 @@
   <data name="Usage" xml:space="preserve">
     <value>Использование:</value>
   </data>
+  <data name="ChangeVolumeAttributesInvalidCommandParamsCount" xml:space="preserve">
+    <value>Некорректное число параметров командной строки для изменения атрибутов раздела. Должно быть передано три параметра</value>
+  </data>
+  <data name="ChangeVolumeAttributesInvalidPermanentState" xml:space="preserve">
+    <value>Некорректный параметр долговременности изменений</value>
+  </data>
+  <data name="ChangeVolumeAttributesNeedSetLocalPin" xml:space="preserve">
+    <value>Необходимо установить PIN локального пользователя</value>
+  </data>
+  <data name="FormatDriveInvalidAccessMode" xml:space="preserve">
+    <value>Некорректные права доступа</value>
+  </data>
+  <data name="FormatDriveInvalidCommandParamsCount" xml:space="preserve">
+    <value>Некорректное число параметров командной строки для форматирования флеш-памяти. Должно быть передано четыре параметра</value>
+  </data>
+  <data name="FormatDriveInvalidVolumeSize" xml:space="preserve">
+    <value>Некорректный размер раздела</value>
+  </data>
+  <data name="IncorrectOsVersion" xml:space="preserve">
+    <value>Некорректная версия ОС</value>
+  </data>
+  <data name="InvalidUserPinChangePolicy" xml:space="preserve">
+    <value>Некорректная политика изменения PIN-кода пользователя</value>
+  </data>
+  <data name="VolumeAttributesStoreNotSet" xml:space="preserve">
+    <value>Не установлено хранилище аттрибутов разделов флеш-памяти</value>
+  </data>
 </root>

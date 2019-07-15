@@ -19,11 +19,11 @@
 
         public const UserPinChangePolicy PinChangePolicy = UserPinChangePolicy.ByUser;
 
-        public const string NativeLibraryPath = "rtPKCS11.dll";
-
         public const string LogFilePath = "rtadmin.exe.log";
 
         public const string TokenLabel = "Rutoken";
+
+        public const string LogTemplate = "{Message:lj}{NewLine}{Exception}";
 
         public const int MinAllowedMinimalUserPinLength = 1;
         public const int MinAllowedMinimalAdminPinLength = 1;

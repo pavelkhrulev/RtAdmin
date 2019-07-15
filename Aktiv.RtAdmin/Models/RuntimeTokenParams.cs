@@ -6,9 +6,13 @@ namespace Aktiv.RtAdmin
     public class RuntimeTokenParams
     {
         public ulong MinUserPinLenFromToken { get; set; }
+
         public ulong MaxUserPinLenFromToken { get; set; }
+
         public ulong MinAdminPinLenFromToken { get; set; }
+
         public ulong MaxAdminPinLenFromToken { get; set; }
+
         public string TokenSerial { get; set; }
 
         public string TokenSerialDecimal { get; set; }

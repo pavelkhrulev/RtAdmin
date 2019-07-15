@@ -2,7 +2,6 @@
 using Net.Pkcs11Interop.Common;
 using RutokenPkcs11Interop.HighLevelAPI;
 using System;
-using Aktiv.RtAdmin.Models;
 
 namespace Aktiv.RtAdmin
 {
@@ -10,14 +9,18 @@ namespace Aktiv.RtAdmin
     {
         private readonly RuntimeTokenParams _runtimeTokenParams;
         private readonly VolumeOwnersStore _volumeOwnersStore;
+        private readonly VolumeAttributesStore _volumeAttributesStore;
 
         public LogMessageBuilder(RuntimeTokenParams runtimeTokenParams,
-            VolumeOwnersStore volumeOwnersStore)
+            VolumeOwnersStore volumeOwnersStore,
+            VolumeAttributesStore volumeAttributesStore)
         {
             _runtimeTokenParams = runtimeTokenParams ?? 
                            throw new ArgumentNullException(nameof(runtimeTokenParams), Resources.TokenParamsNotSet);
             _volumeOwnersStore = volumeOwnersStore ??
-                           throw new ArgumentNullException(nameof(volumeOwnersStore), Resources.TokenParamsNotSet);
+                           throw new ArgumentNullException(nameof(volumeOwnersStore), Resources.VolumeOwnersStoreNotSet);
+            _volumeAttributesStore = volumeAttributesStore ??
+                                 throw new ArgumentNullException(nameof(volumeAttributesStore), Resources.VolumeAttributesStoreNotSet);
         }
 
         public string WithTokenId(string message) => 
@@ -69,7 +72,7 @@ namespace Aktiv.RtAdmin
                    $"{volumeInfo.VolumeId} " +
                    $"{volumeInfo.VolumeSize} " +
                    $"{_volumeOwnersStore.GetVolumeOwnerById((uint)volumeInfo.VolumeOwner)} " +
-                   $"{ChangeVolumeAttributesParamsFactory.GetAccessModeDescription(volumeInfo.AccessMode)}";
+                   $"{_volumeAttributesStore.GetAccessModeDescription(volumeInfo.AccessMode)}";
         }
 
         public string WithVolumeInfo(VolumeInfo volumeInfo,
@@ -82,15 +85,15 @@ namespace Aktiv.RtAdmin
                    $"{volumeInfo.Id} " +
                    $"{volumeInfo.Size} " +
                    $"{_volumeOwnersStore.GetVolumeOwnerById(volumeInfo.Owner)} " +
-                   $"{ChangeVolumeAttributesParamsFactory.GetAccessModeDescription(volumeInfo.AccessMode)}";
+                   $"{_volumeAttributesStore.GetAccessModeDescription(volumeInfo.AccessMode)}";
         }
 
         public string WithVolumeInfo(ChangeVolumeAttributesParams volumeParams)
         {
             return $"{WithTokenId(Resources.VolumeAccessModeChangeSuccess)} : " +
                    $"{volumeParams.VolumeId} " +
-                   $"{ChangeVolumeAttributesParamsFactory.GetAccessModeDescription(volumeParams.AccessMode)} " +
-                   $"{ChangeVolumeAttributesParamsFactory.GetPermanentStateDescription(volumeParams.Permanent)}";
+                   $"{_volumeAttributesStore.GetAccessModeDescription(volumeParams.AccessMode)} " +
+                   $"{_volumeAttributesStore.GetPermanentStateDescription(volumeParams.Permanent)}";
         }
 
         public string WithDriveSize(ulong driveSize)

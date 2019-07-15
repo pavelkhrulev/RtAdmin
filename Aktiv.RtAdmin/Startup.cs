@@ -5,13 +5,14 @@ using Serilog;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
+using Aktiv.RtAdmin.Properties;
 using RutokenPkcs11Interop;
 
 namespace Aktiv.RtAdmin
 {
     public static class Startup
     {
+
         public static IServiceProvider Configure(string logFilePath, 
             string nativeLibraryPath)
         {
@@ -24,14 +25,13 @@ namespace Aktiv.RtAdmin
             var loggerConfiguration = new LoggerConfiguration().MinimumLevel
                                                                .Debug();
 
-            // TODO: проверка на существование пути
             if (string.IsNullOrWhiteSpace(logFilePath))
             {
-                loggerConfiguration.WriteTo.Console(outputTemplate: "{Message:lj}{NewLine}{Exception}");
+                loggerConfiguration.WriteTo.Console(outputTemplate: DefaultValues.LogTemplate);
             }
             else
             {
-                loggerConfiguration.WriteTo.File(logFilePath);
+                loggerConfiguration.WriteTo.File(logFilePath, outputTemplate: DefaultValues.LogTemplate);
             }
 
             Log.Logger = loggerConfiguration.CreateLogger();
@@ -39,8 +39,8 @@ namespace Aktiv.RtAdmin
 
         private static IServiceProvider RegisterServices(string nativeLibraryPath)
         {
-            // TODO: check file existance
-            var nativeLibraryPathIsUse = !string.IsNullOrWhiteSpace(nativeLibraryPath)
+            var nativeLibraryPathIsUse = !string.IsNullOrWhiteSpace(nativeLibraryPath) &&
+                                         File.Exists(nativeLibraryPath)
                 ? nativeLibraryPath
                 : Path.Combine(
                     Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
@@ -52,6 +52,7 @@ namespace Aktiv.RtAdmin
                 .AddSingleton<PinsStorage>()
                 .AddSingleton<ConfigLinesStorage>()
                 .AddSingleton<VolumeOwnersStore>()
+                .AddSingleton<VolumeAttributesStore>()
                 .AddTransient<TokenSlot>()
                 .AddScoped<RuntimeTokenParams>()
                 .AddScoped<LogMessageBuilder>()
@@ -77,7 +78,7 @@ namespace Aktiv.RtAdmin
                 return "librtpkcs11ecp.dylib";
             }
 
-            throw new InvalidOperationException("Incorrect OS version");
+            throw new InvalidOperationException(Resources.IncorrectOsVersion);
 #endif
         }
     }

@@ -2,12 +2,6 @@
 
 namespace Aktiv.RtAdmin
 {
-    public enum PinCodeOwner
-    {
-        Admin,
-        User
-    }
-
     public class PinCode
     {
         public PinCode(PinCodeOwner owner)
@@ -23,7 +17,7 @@ namespace Aktiv.RtAdmin
                     Value = DefaultValues.UserPin;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(owner), owner, "Incorrect PIN-code owner");
+                    throw new ArgumentOutOfRangeException(nameof(owner));
             }
         }
 

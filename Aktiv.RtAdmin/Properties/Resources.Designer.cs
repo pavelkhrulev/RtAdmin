@@ -160,6 +160,33 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid command params count for changing volume attributes. It must be 3.
+        /// </summary>
+        public static string ChangeVolumeAttributesInvalidCommandParamsCount {
+            get {
+                return ResourceManager.GetString("ChangeVolumeAttributesInvalidCommandParamsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid permanent state.
+        /// </summary>
+        public static string ChangeVolumeAttributesInvalidPermanentState {
+            get {
+                return ResourceManager.GetString("ChangeVolumeAttributesInvalidPermanentState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Need to set local user pin.
+        /// </summary>
+        public static string ChangeVolumeAttributesNeedSetLocalPin {
+            get {
+                return ResourceManager.GetString("ChangeVolumeAttributesNeedSetLocalPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change volume attributes. Id : volume id {1 - 9}, aR : access rights{ro, rw, hi, cd}, cT : change type { p - permanent, t - temporary }.
         /// </summary>
         public static string ChangeVolumeAttributesOption {
@@ -304,6 +331,33 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid access mode.
+        /// </summary>
+        public static string FormatDriveInvalidAccessMode {
+            get {
+                return ResourceManager.GetString("FormatDriveInvalidAccessMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid command params count for drive formatting. It must be 4.
+        /// </summary>
+        public static string FormatDriveInvalidCommandParamsCount {
+            get {
+                return ResourceManager.GetString("FormatDriveInvalidCommandParamsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid volume size.
+        /// </summary>
+        public static string FormatDriveInvalidVolumeSize {
+            get {
+                return ResourceManager.GetString("FormatDriveInvalidVolumeSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Formatting error.
         /// </summary>
         public static string FormatError {
@@ -403,6 +457,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect OS version.
+        /// </summary>
+        public static string IncorrectOsVersion {
+            get {
+                return ResourceManager.GetString("IncorrectOsVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Entered PIN is incorrect.
         /// </summary>
         public static string IncorrectPin {
@@ -462,6 +525,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string InvalidPolicyValue {
             get {
                 return ResourceManager.GetString("InvalidPolicyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid user pin change policy.
+        /// </summary>
+        public static string InvalidUserPinChangePolicy {
+            get {
+                return ResourceManager.GetString("InvalidUserPinChangePolicy", resourceCulture);
             }
         }
         
@@ -1011,6 +1083,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string VolumeAccessModeChangeSuccess {
             get {
                 return ResourceManager.GetString("VolumeAccessModeChangeSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume attributes store is not set.
+        /// </summary>
+        public static string VolumeAttributesStoreNotSet {
+            get {
+                return ResourceManager.GetString("VolumeAttributesStoreNotSet", resourceCulture);
             }
         }
         

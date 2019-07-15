@@ -46,17 +46,17 @@ namespace Aktiv.RtAdmin
 
         public bool OneIterationOnly { get; set; }
 
-        public ICollection<string> GenerateActivationPasswords { get; private set; }
+        public ICollection<string> GenerateActivationPasswords { get; }
 
-        public ICollection<string> FormatVolumeParams { get; private set; }
+        public ICollection<string> FormatVolumeParams { get; }
 
-        public ICollection<string> ChangeVolumeAttributes { get; private set; }
+        public ICollection<string> ChangeVolumeAttributes { get; }
 
         public string VolumeInfoParams { get; set; }
 
-        public ICollection<string> LoginWithLocalPin { get; private set; }
+        public ICollection<string> LoginWithLocalPin { get; }
 
-        public ICollection<string> SetLocalPin { get; private set; }
+        public ICollection<string> SetLocalPin { get; }
 
         #region Format options
 
@@ -70,7 +70,7 @@ namespace Aktiv.RtAdmin
 
         public uint PinChangePolicy { get; set; } = (uint)DefaultValues.PinChangePolicy;
 
-        public ICollection<string> ExcludedTokens { get; set; }
+        public ICollection<string> ExcludedTokens { get; }
         #endregion
 
         #region Obsolete

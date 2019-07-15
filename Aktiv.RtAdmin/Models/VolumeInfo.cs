@@ -2,7 +2,7 @@
 using RutokenPkcs11Interop.Common;
 using RutokenPkcs11Interop.HighLevelAPI;
 
-namespace Aktiv.RtAdmin.Models
+namespace Aktiv.RtAdmin
 {
     public class VolumeInfo
     {
@@ -11,9 +11,7 @@ namespace Aktiv.RtAdmin.Models
         public FlashAccessMode AccessMode { get; set; }
         public uint Owner { get; set; }
 
-        public static implicit operator VolumeFormatInfoExtended(VolumeInfo volumeInfo)
-        {
-            return new VolumeFormatInfoExtended(volumeInfo.Size, volumeInfo.AccessMode, (CKU)volumeInfo.Owner, 0);
-        }
+        public static implicit operator VolumeFormatInfoExtended(VolumeInfo volumeInfo) => 
+            new VolumeFormatInfoExtended(volumeInfo.Size, volumeInfo.AccessMode, (CKU)volumeInfo.Owner, 0);
     }
 }
