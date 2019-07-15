@@ -232,6 +232,60 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to change Admin PIN.
+        /// </summary>
+        public static string ExampleChangeAdminPin {
+            get {
+                return ResourceManager.GetString("ExampleChangeAdminPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to change Admin PIN, use default new Admin PIN.
+        /// </summary>
+        public static string ExampleChangeAdminPinWithDefault {
+            get {
+                return ResourceManager.GetString("ExampleChangeAdminPinWithDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to change User PIN.
+        /// </summary>
+        public static string ExampleChangeUserPin {
+            get {
+                return ResourceManager.GetString("ExampleChangeUserPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to formatting token with generation Admin PIN with length 10 and default User PIN.
+        /// </summary>
+        public static string ExampleFormatWithAdminPinGeneration {
+            get {
+                return ResourceManager.GetString("ExampleFormatWithAdminPinGeneration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to formatting token with default PIN codes (Admin 87654321, User 12345678).
+        /// </summary>
+        public static string ExampleFormatWithDefaultPins {
+            get {
+                return ResourceManager.GetString("ExampleFormatWithDefaultPins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Examples:.
+        /// </summary>
+        public static string Examples {
+            get {
+                return ResourceManager.GetString("Examples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Excluded tokens while stream formatting [token ids in specified format: 46bc3390 or 932436970].
         /// </summary>
         public static string ExcludedTokensOption {
@@ -327,6 +381,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string GeneratingActivationPasswords {
             get {
                 return ResourceManager.GetString("GeneratingActivationPasswords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Illegal options.
+        /// </summary>
+        public static string IllegalOptions {
+            get {
+                return ResourceManager.GetString("IllegalOptions", resourceCulture);
             }
         }
         
@@ -525,6 +588,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string OneIterationOnlyOption {
             get {
                 return ResourceManager.GetString("OneIterationOnlyOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options:.
+        /// </summary>
+        public static string Options {
+            get {
+                return ResourceManager.GetString("Options", resourceCulture);
             }
         }
         
@@ -745,6 +817,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show help message.
+        /// </summary>
+        public static string ShowHelp {
+            get {
+                return ResourceManager.GetString("ShowHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show application version.
+        /// </summary>
+        public static string ShowVersion {
+            get {
+                return ResourceManager.GetString("ShowVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set SM mode (only for Bluetooth token).  &quot;N : &quot; { 1 - Optional password | 2 - 1 password | 3 - 6 passwords }, mode { caps - only capital letters | digits - capital letters and digits }.
         /// </summary>
         public static string SmModeOption {
@@ -849,6 +939,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string UnhandledError {
             get {
                 return ResourceManager.GetString("UnhandledError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage:.
+        /// </summary>
+        public static string Usage {
+            get {
+                return ResourceManager.GetString("Usage", resourceCulture);
             }
         }
         

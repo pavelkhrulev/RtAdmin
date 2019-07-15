@@ -11,6 +11,8 @@
         public const uint MinAdminPinLength = 6;
         public const uint MinUserPinLength = 6;
 
+        public const uint RandomPinLength = 8;
+
         public const uint RutokenS_MinAdminPinLength = 1;
         public const uint RutokenS_MinUserPinLength = 1;
         public const uint RutokenS_InvalidHardwareMajorVersion = 1;

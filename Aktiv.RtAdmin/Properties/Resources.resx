@@ -420,4 +420,37 @@
   <data name="VolumeInfoNotFound" xml:space="preserve">
     <value>Volume with specified id not found</value>
   </data>
+  <data name="IllegalOptions" xml:space="preserve">
+    <value>Illegal options</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options:</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Usage:</value>
+  </data>
+  <data name="ExampleChangeAdminPin" xml:space="preserve">
+    <value>change Admin PIN</value>
+  </data>
+  <data name="ExampleChangeAdminPinWithDefault" xml:space="preserve">
+    <value>change Admin PIN, use default new Admin PIN</value>
+  </data>
+  <data name="ExampleChangeUserPin" xml:space="preserve">
+    <value>change User PIN</value>
+  </data>
+  <data name="ExampleFormatWithAdminPinGeneration" xml:space="preserve">
+    <value>formatting token with generation Admin PIN with length 10 and default User PIN</value>
+  </data>
+  <data name="ExampleFormatWithDefaultPins" xml:space="preserve">
+    <value>formatting token with default PIN codes (Admin 87654321, User 12345678)</value>
+  </data>
+  <data name="Examples" xml:space="preserve">
+    <value>Examples:</value>
+  </data>
+  <data name="ShowHelp" xml:space="preserve">
+    <value>Show help message</value>
+  </data>
+  <data name="ShowVersion" xml:space="preserve">
+    <value>Show application version</value>
+  </data>
 </root>

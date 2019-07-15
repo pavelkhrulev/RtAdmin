@@ -432,4 +432,37 @@
   <data name="VolumeInfoNotFound" xml:space="preserve">
     <value>Раздел с заданным идентификатором не найден</value>
   </data>
+  <data name="IllegalOptions" xml:space="preserve">
+    <value>Переданы недопустимые параметры</value>
+  </data>
+  <data name="ExampleChangeAdminPin" xml:space="preserve">
+    <value>изменить PIN-код администратора</value>
+  </data>
+  <data name="ExampleChangeAdminPinWithDefault" xml:space="preserve">
+    <value>изменить PIN-код администратора на PIN-код администратора по умолчанию</value>
+  </data>
+  <data name="ExampleChangeUserPin" xml:space="preserve">
+    <value>изменить PIN-код пользователя</value>
+  </data>
+  <data name="ExampleFormatWithAdminPinGeneration" xml:space="preserve">
+    <value>форматировать токен с генерацией PIN-кода администратора длиной 10 символов и PIN-кодом пользователя по умолчанию</value>
+  </data>
+  <data name="ExampleFormatWithDefaultPins" xml:space="preserve">
+    <value>форматировать токен с PIN-кодами по умолчанию (PIN-код администратора 87654321, PIN-код пользователя 12345678)</value>
+  </data>
+  <data name="Examples" xml:space="preserve">
+    <value>Примеры:</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Параметры:</value>
+  </data>
+  <data name="ShowHelp" xml:space="preserve">
+    <value>Показать возможные параметры и примеры</value>
+  </data>
+  <data name="ShowVersion" xml:space="preserve">
+    <value>Показать версию приложения</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Использование:</value>
+  </data>
 </root>

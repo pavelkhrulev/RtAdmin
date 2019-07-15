@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.28917.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aktiv.RtAdmin", "Aktiv.RtAdmin\Aktiv.RtAdmin.csproj", "{CAC44CC4-F26A-4E5B-B7C7-E05A1917673C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandLine", "commandline\src\CommandLine\CommandLine.csproj", "{6387784A-846C-4FB1-ABEA-50EE16543869}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{CAC44CC4-F26A-4E5B-B7C7-E05A1917673C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAC44CC4-F26A-4E5B-B7C7-E05A1917673C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAC44CC4-F26A-4E5B-B7C7-E05A1917673C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6387784A-846C-4FB1-ABEA-50EE16543869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6387784A-846C-4FB1-ABEA-50EE16543869}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6387784A-846C-4FB1-ABEA-50EE16543869}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6387784A-846C-4FB1-ABEA-50EE16543869}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
