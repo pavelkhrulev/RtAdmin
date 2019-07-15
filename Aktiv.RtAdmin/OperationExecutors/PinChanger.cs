@@ -30,5 +30,17 @@ namespace Aktiv.RtAdmin
                 throw new CKRException(ex.RV, Resources.IncorrectPin);
             }
         }
+
+        public static void ChangePin2(Slot slot, uint pinId)
+        {
+            try
+            {
+                slot.SetPIN2(pinId);
+            }
+            catch (Pkcs11Exception ex) when (ex.RV == CKR.CKR_PIN_INCORRECT)
+            {
+                throw new CKRException(ex.RV, Resources.IncorrectPin);
+            }
+        }
     }
 }

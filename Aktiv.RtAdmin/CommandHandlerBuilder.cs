@@ -444,9 +444,7 @@ namespace Aktiv.RtAdmin
             {
                 try
                 {
-                    // TODO: доделать RutokenPKCS11Interop,
-                    // чтобы можно было корректно обрабатывать пустые пины
-                    PinChanger.ChangeLocalPin(_slot, null, null, _volumeOwnersStore.GetPin2Id());
+                    PinChanger.ChangePin2(_slot, _volumeOwnersStore.GetPin2Id());
 
                     _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.Pin2SetSuccess));
                 }
