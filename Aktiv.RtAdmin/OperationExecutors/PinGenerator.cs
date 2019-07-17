@@ -1,4 +1,5 @@
-﻿using Net.Pkcs11Interop.Common;
+﻿using System.Text;
+using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 using RutokenPkcs11Interop.Common;
 
@@ -14,51 +15,30 @@ namespace Aktiv.RtAdmin
             0x55, 0x56, 0x57, 0x58, 0x59, 0x5A,
             0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6A, //small en
 		    0x6B, 0x6C, 0x6D, 0x6E, 0x6F, 0x70, 0x71, 0x72, 0x73, 0x74,
-            0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, (byte)'\0',
+            0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x00,
         };
 
         public static string Generate(Slot slot, RutokenType tokenType, uint pinLength)
         {
             using var session = slot.OpenSession(SessionType.ReadOnly);
 
-            var pin = new byte[pinLength];
+            var pin = new byte[pinLength+1];
 
-            for (var i = 0; i < pinLength; ++i)
+            for (var i = 0; i < pinLength; i++)
             {
                 var random = session.GenerateRandom(2);
 
-                switch (true)
+                if (tokenType == RutokenType.PINPAD_FAMILY)
                 {
-                    case var _ when tokenType == RutokenType.PINPAD_FAMILY:
-                    {
-                        pin[i] = (byte)(random[1] % 10 + 0x30);
-                        break;
-                    }
-                    case var _ when random[0] != 0 && (i + 1 < pinLength):
-                    {
-                        random[1] = (byte)(random[1] % 64 + 0x10);
-
-                        if (random[1] >= 64)
-                        {
-                            pin[i++] = 0xd1;
-                        }
-                        else
-                        {
-                            pin[i++] = 0xd0;
-                        }
-
-                        pin[i] = (byte)(random[1] & 0x3F | 0x80);
-                        break;
-                    }
-                    default:
-                    {
-                        pin[i] = oneByteLetters[random[1] % oneByteLetters.Length];
-                        break;
-                    }
+                    pin[i] = (byte)(random[1] % 10 + 0x30);
+                }
+                else
+                {
+                    pin[i] = oneByteLetters[random[1] % oneByteLetters.Length];
                 }
             }
 
-            return ConvertUtils.BytesToUtf8String(pin);
+            return Encoding.ASCII.GetString(pin);
         }
     }
 }
