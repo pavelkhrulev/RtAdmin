@@ -118,6 +118,11 @@ jobs:
       zipAfterPublish: false
       publishWebProjects: false
 
+  - task: Bash@3
+    inputs:
+        targetType: 'inline'
+        script: 'chmod +x $(Build.StagingDirectory)/Aktiv.RtAdmin/rtadmin'
+      
   - task: PublishPipelineArtifact@0
     displayName: 'Publish Pipeline Artifact'
     inputs:
