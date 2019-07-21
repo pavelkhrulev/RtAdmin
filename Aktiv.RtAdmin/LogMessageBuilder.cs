@@ -31,7 +31,7 @@ namespace Aktiv.RtAdmin
 
         public string WithPKCS11Error(CKR code) => $"{Resources.PKCS11Error} 0x{code:X}";
 
-        public string WithUnhandledError(string message) => $"{Resources.UnhandledError} {message}";
+        public string WithUnhandledError(string message) => $"{message}";
 
         public string WithFormatResult(string message) =>
             string.Format(WithTokenId(message),
