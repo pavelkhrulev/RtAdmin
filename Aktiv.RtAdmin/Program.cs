@@ -63,7 +63,7 @@ namespace Aktiv.RtAdmin
             if (!string.IsNullOrWhiteSpace(options.ConfigurationFilePath))
             {
                 configLinesStore.Load(options.ConfigurationFilePath);
-                Main(configLinesStore.GetNext().Split(" "));
+                return Main(configLinesStore.GetNext().Split(" "));
             }
 
             try

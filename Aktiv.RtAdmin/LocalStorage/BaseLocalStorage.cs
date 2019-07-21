@@ -26,12 +26,14 @@ namespace Aktiv.RtAdmin
 
         public void Load(string storageFilePath)
         {
-            if (!File.Exists(storageFilePath))
+            var filePath = Path.GetFullPath(storageFilePath);
+
+            if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException(_fileNotFoundMessage, storageFilePath);
+                throw new FileNotFoundException(_fileNotFoundMessage, filePath);
             }
 
-            Entities = new Queue<string>(File.ReadAllLines(storageFilePath));
+            Entities = new Queue<string>(File.ReadAllLines(filePath));
 
             if (Entities.Count == 0)
             {
