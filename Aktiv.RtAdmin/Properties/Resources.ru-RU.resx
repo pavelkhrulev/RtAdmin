@@ -492,4 +492,7 @@
   <data name="VolumeAttributesStoreNotSet" xml:space="preserve">
     <value>Не установлено хранилище аттрибутов разделов флеш-памяти</value>
   </data>
+  <data name="ShouldSetFormatOption" xml:space="preserve">
+    <value>Необходимо установить параметр для форматирования токена -f</value>
+  </data>
 </root>

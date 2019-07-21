@@ -2,7 +2,7 @@
   "profiles": {
     "Aktiv.RtAdmin": {
       "commandName": "Project",
-      "commandLineArgs": "-t"
+      "commandLineArgs": "--version"
     }
   }
 }

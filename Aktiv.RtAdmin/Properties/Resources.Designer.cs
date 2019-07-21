@@ -889,6 +889,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Need to set formatting option -f.
+        /// </summary>
+        public static string ShouldSetFormatOption {
+            get {
+                return ResourceManager.GetString("ShouldSetFormatOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show help message.
         /// </summary>
         public static string ShowHelp {

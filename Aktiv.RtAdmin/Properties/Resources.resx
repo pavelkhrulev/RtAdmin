@@ -480,4 +480,7 @@
   <data name="VolumeAttributesStoreNotSet" xml:space="preserve">
     <value>Volume attributes store is not set</value>
   </data>
+  <data name="ShouldSetFormatOption" xml:space="preserve">
+    <value>Need to set formatting option -f</value>
+  </data>
 </root>

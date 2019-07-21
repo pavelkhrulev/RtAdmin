@@ -17,6 +17,7 @@ namespace Aktiv.RtAdmin
             var currentParameter = string.Empty;
             var shouldShowHelp = false;
             var shouldShowVersion = false;
+            var showSetFormatOption = false;
             var set = new OptionSet
             {
                 {"f", Resources.FormatTokenOption, v => { options.Format = v != null; }},
@@ -37,18 +38,18 @@ namespace Aktiv.RtAdmin
                 {"q", Resources.OneIterationOnlyOption, v => { options.OneIterationOnly = v != null; }},
                 {"i=", Resources.VolumeInfoParamsOption, v => { options.VolumeInfoParams = v; }},
 
-                {"M=", Resources.MinAdminPinLengthOption, (uint v) => { options.MinAdminPinLength = v; }},
-                {"m=", Resources.MinUserPinLengthOption, (uint v) => { options.MinUserPinLength = v; }},
-                {"R=", Resources.MaxAdminPinAttemptsOption, (uint v) => { options.MaxAdminPinAttempts = v; }},
-                {"r=", Resources.MaxUserPinAttemptsOption, (uint v) => { options.MaxUserPinAttempts = v; }},
-                {"p=", Resources.PinChangePolicyOption, (uint v) => { options.PinChangePolicy = v; }},
+                {"M=", Resources.MinAdminPinLengthOption, (uint v) => { options.MinAdminPinLength = v; showSetFormatOption = true; }},
+                {"m=", Resources.MinUserPinLengthOption, (uint v) => { options.MinUserPinLength = v; showSetFormatOption = true; }},
+                {"R=", Resources.MaxAdminPinAttemptsOption, (uint v) => { options.MaxAdminPinAttempts = v; showSetFormatOption = true; }},
+                {"r=", Resources.MaxUserPinAttemptsOption, (uint v) => { options.MaxUserPinAttempts = v; showSetFormatOption = true; }},
+                {"p=", Resources.PinChangePolicyOption, (uint v) => { options.PinChangePolicy = v; showSetFormatOption = true; }},
 
                 {"s", Resources.SmModeOption, v => currentParameter = "s"},
                 {"F", Resources.FormatVolumeParamsOption, v => currentParameter = "F"},
                 {"C", Resources.ChangeVolumeAttributesOption, v => currentParameter = "C"},
                 {"O", Resources.LoginWithLocalPinOption, v => currentParameter = "O"},
                 {"B", Resources.SetLocalPinOption, v => currentParameter = "B"},
-                {"E", Resources.ExcludedTokensOption, v => currentParameter = "E"},
+                {"E", Resources.ExcludedTokensOption, v => { currentParameter = "E"; showSetFormatOption = true; }},
 
                 {"U", Resources.Utf8Option, v => { options.UTF8InsteadOfcp1251 = v != null; }},
 
@@ -82,81 +83,90 @@ namespace Aktiv.RtAdmin
                 }}
             };
 
+            if (!args.Any())
+            {
+                ShowHelp(set);
+            }
+
             try
             {
-                if (!args.Any())
-                {
-                    ShowHelp(set);
-                }
-
                 set.Parse(args);
-
-                if (extraOptions.Any())
-                {
-                    Console.WriteLine($@"{Resources.IllegalOptions}: {string.Join(',', extraOptions)}");
-                    ShowHelp(set);
-                }
-
-                if (shouldShowHelp)
-                {
-                    ShowHelp(set);
-                }
-
-                if (shouldShowVersion)
-                {
-                    var executablePath = Process.GetCurrentProcess().MainModule.FileName;
-                    Console.WriteLine($@"{executablePath} {FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion}");
-
-                    throw new AppMustBeClosedException();
-                }
             }
-            catch (OptionException e)
+            catch (OptionException e) when (e.Message.Contains("missing required", StringComparison.OrdinalIgnoreCase))
             {
-                if (e.Message.Contains("missing required", StringComparison.OrdinalIgnoreCase))
+                switch (e.OptionName)
                 {
-                    switch (e.OptionName)
-                    {
-                        case "-G":
-                            options.AdminPinLength = DefaultValues.RandomPinLength;
-                            break;
-                        case "-g":
-                            options.UserPinLength = DefaultValues.RandomPinLength;
-                            break;
-                        case "-a":
-                            options.AdminPin = DefaultValues.AdminPin;
-                            break;
-                        case "-u":
-                            options.UserPin = DefaultValues.UserPin;
-                            break;
+                    case "-G":
+                        options.AdminPinLength = DefaultValues.RandomPinLength;
+                        break;
+                    case "-g":
+                        options.UserPinLength = DefaultValues.RandomPinLength;
+                        break;
+                    case "-a":
+                        options.AdminPin = DefaultValues.AdminPin;
+                        break;
+                    case "-u":
+                        options.UserPin = DefaultValues.UserPin;
+                        break;
 
-                        case "-M":
-                            options.MinAdminPinLength = DefaultValues.MinAdminPinLength;
-                            break;
-                        case "-m":
-                            options.MinUserPinLength = DefaultValues.MinUserPinLength;
-                            break;
-                        case "-R":
-                            options.MaxAdminPinAttempts = DefaultValues.MaxAdminPinAttempts;
-                            break;
-                        case "-r":
-                            options.MaxUserPinAttempts = DefaultValues.MaxUserPinAttempts;
-                            break;
-                        case "-p":
-                            options.PinChangePolicy = (uint)DefaultValues.PinChangePolicy;
-                            break;
+                    case "-M":
+                        options.MinAdminPinLength = DefaultValues.MinAdminPinLength;
+                        showSetFormatOption = true;
+                        break;
+                    case "-m":
+                        options.MinUserPinLength = DefaultValues.MinUserPinLength;
+                        showSetFormatOption = true;
+                        break;
+                    case "-R":
+                        options.MaxAdminPinAttempts = DefaultValues.MaxAdminPinAttempts;
+                        showSetFormatOption = true;
+                        break;
+                    case "-r":
+                        options.MaxUserPinAttempts = DefaultValues.MaxUserPinAttempts;
+                        showSetFormatOption = true;
+                        break;
+                    case "-p":
+                        options.PinChangePolicy = (uint) DefaultValues.PinChangePolicy;
+                        showSetFormatOption = true;
+                        break;
 
-                        case "-l":
-                            options.LogFilePath = DefaultValues.LogFilePath;
-                            break;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine(e.Message);
-                    ShowHelp(set);
+                    case "-l":
+                        options.LogFilePath = DefaultValues.LogFilePath;
+                        break;
                 }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                ShowHelp(set);
+            }
 
+            if (extraOptions.Any())
+            {
+                Console.WriteLine($@"{Resources.IllegalOptions}: {string.Join(',', extraOptions)}");
+                ShowHelp(set);
+            }
+
+            if (shouldShowHelp)
+            {
+                ShowHelp(set);
+            }
+
+            if (showSetFormatOption && !options.Format)
+            {
+                Console.WriteLine(Resources.ShouldSetFormatOption);
+
+                throw new AppMustBeClosedException();
+            }
+
+            if (shouldShowVersion)
+            {
+                var executablePath = Process.GetCurrentProcess().MainModule.FileName;
+                Console.WriteLine($@"{executablePath} {FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion}");
+
+                throw new AppMustBeClosedException();
+            }
+            
             return options;
         }
 
