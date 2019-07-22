@@ -164,8 +164,8 @@ namespace Aktiv.RtAdmin
         {
             _commands.Enqueue(() =>
             {
-                _runtimeTokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, _pinsStorage.GetNext());
                 _runtimeTokenParams.NewUserPin = new PinCode(PinCodeOwner.User, _pinsStorage.GetNext());
+                _runtimeTokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, _pinsStorage.GetNext());
             });
 
             return this;
