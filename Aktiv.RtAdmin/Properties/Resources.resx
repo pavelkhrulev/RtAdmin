@@ -136,7 +136,10 @@
     <value>For changing user PIN enter old user or admin PIN</value>
   </data>
   <data name="ChangeVolumeAttributesOption" xml:space="preserve">
-    <value>Change volume attributes. Id : volume id {1 - 9}, aR : access rights{ro, rw, hi, cd}, cT : change type { p - permanent, t - temporary }</value>
+    <value>Change volume attributes. 
+[Volume id: (1 - 9)]
+[Access rights: (ro, rw, hi, cd)]
+[Change type: (p - permanent, t - temporary)]</value>
   </data>
   <data name="ConfigurationFilePathOption" xml:space="preserve">
     <value>Configuration file path</value>
@@ -148,7 +151,11 @@
     <value>Formatting was successful</value>
   </data>
   <data name="FormatVolumeParamsOption" xml:space="preserve">
-    <value>Format volume. Id : volume id {1 - 9}, size : volume size in MB, owner : volume owner {a - administrator, u - user}, aR : access rights {ro, rw, hi, cd}. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence"</value>
+    <value>Format volume. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence.
+[Volume id: (1 - 9)]
+[Volume size: volume size in MB]
+[Volume owner: (a - administrator, u - user, l3-l9 - local user)]
+[Access rights: (ro, rw, hi, cd)]</value>
   </data>
   <data name="GenerateRandomAdminPinOption" xml:space="preserve">
     <value>Generate random Admin PIN code of specified length. If this command is used -a is ignored</value>
@@ -175,7 +182,9 @@
     <value>Log file path</value>
   </data>
   <data name="LoginWithLocalPinOption" xml:space="preserve">
-    <value>PIN Login with local PIN. Id : local PIN id {1 - 9}, PIN : local PIN. In order to use local user set his new PIN preliminarily</value>
+    <value>PIN Login with local PIN. In order to use local user set his new PIN preliminarily.
+[Id: local PIN id (l3 - l9)]
+[PIN: local PIN]</value>
   </data>
   <data name="MaxAdminPinAttemptsOption" xml:space="preserve">
     <value>Max PIN code attempts count for Admin PIN (count must be in the range from 3 to 10; default: 6)</value>
@@ -205,7 +214,8 @@
     <value>PIN changed successfully</value>
   </data>
   <data name="PinChangePolicyOption" xml:space="preserve">
-    <value>PIN change policy N : { 1 - administrator (SO) can change user PIN | 2 - user can change user PIN | 3 - both } (default: 2)</value>
+    <value>Set PIN change policy. Default value - 2.
+[(1 - administrator (SO) can change user PIN), (2 - user can change user PIN), (3 - both)]</value>
   </data>
   <data name="PinCodesFileNotFound" xml:space="preserve">
     <value>PIN-codes file not found</value>
@@ -226,13 +236,17 @@
     <value>New random User PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}</value>
   </data>
   <data name="SetLocalPinOption" xml:space="preserve">
-    <value>PIN Set local PIN. Id : local PIN id {1 - 9}, PIN : local PIN. You should use login with local PIN command to set local user PIN</value>
+    <value>Set local PIN.
+[Id: local PIN id (l3 - l9)]
+[PIN: local PIN]</value>
   </data>
   <data name="SetPin2ModeOption" xml:space="preserve">
     <value>Activate setting PIN2 code (on the screen) mode. Must be specified for PIN2 changing. If not specified, the default value is used</value>
   </data>
   <data name="SmModeOption" xml:space="preserve">
-    <value>Set SM mode (only for Bluetooth token).  "N : " { 1 - Optional password | 2 - 1 password | 3 - 6 passwords }, mode { caps - only capital letters | digits - capital letters and digits }</value>
+    <value>Set SM mode (only for Bluetooth token).
+[Passwords: (1 - optional password), (2 - 1 password), (3 - 6 passwords)] 
+[Mode: (caps - only capital letters), (digits - capital letters and digits)]</value>
   </data>
   <data name="TokenLabelChangeSuccess" xml:space="preserve">
     <value>Token label changed successfully</value>
@@ -256,7 +270,8 @@
     <value>Use UTF-8 instead of cp1251 in PIN codes</value>
   </data>
   <data name="VolumeInfoParamsOption" xml:space="preserve">
-    <value>Get volume info. Id : volume id {1 - 9, a - all, sz - get flash size}</value>
+    <value>Get volumes or drive info.
+[Parameter: (volume id: 1 - 9), (all volumes: a), (flash size: sz)]</value>
   </data>
   <data name="NewLocalPinSetSuccess" xml:space="preserve">
     <value>Local PIN has been successfully set</value>

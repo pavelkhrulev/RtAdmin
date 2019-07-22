@@ -187,7 +187,10 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change volume attributes. Id : volume id {1 - 9}, aR : access rights{ro, rw, hi, cd}, cT : change type { p - permanent, t - temporary }.
+        ///   Looks up a localized string similar to Change volume attributes. 
+        ///[Volume id: (1 - 9)]
+        ///[Access rights: (ro, rw, hi, cd)]
+        ///[Change type: (p - permanent, t - temporary)].
         /// </summary>
         public static string ChangeVolumeAttributesOption {
             get {
@@ -403,7 +406,11 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format volume. Id : volume id {1 - 9}, size : volume size in MB, owner : volume owner {a - administrator, u - user}, aR : access rights {ro, rw, hi, cd}. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence&quot;.
+        ///   Looks up a localized string similar to Format volume. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence.
+        ///[Volume id: (1 - 9)]
+        ///[Volume size: volume size in MB]
+        ///[Volume owner: (a - administrator, u - user, l3-l9 - local user)]
+        ///[Access rights: (ro, rw, hi, cd)].
         /// </summary>
         public static string FormatVolumeParamsOption {
             get {
@@ -547,7 +554,9 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PIN Login with local PIN. Id : local PIN id {1 - 9}, PIN : local PIN. In order to use local user set his new PIN preliminarily.
+        ///   Looks up a localized string similar to PIN Login with local PIN. In order to use local user set his new PIN preliminarily.
+        ///[Id: local PIN id (l3 - l9)]
+        ///[PIN: local PIN].
         /// </summary>
         public static string LoginWithLocalPinOption {
             get {
@@ -736,7 +745,8 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PIN change policy N : { 1 - administrator (SO) can change user PIN | 2 - user can change user PIN | 3 - both } (default: 2).
+        ///   Looks up a localized string similar to Set PIN change policy. Default value - 2.
+        ///[(1 - administrator (SO) can change user PIN), (2 - user can change user PIN), (3 - both)].
         /// </summary>
         public static string PinChangePolicyOption {
             get {
@@ -871,7 +881,9 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PIN Set local PIN. Id : local PIN id {1 - 9}, PIN : local PIN. You should use login with local PIN command to set local user PIN.
+        ///   Looks up a localized string similar to Set local PIN.
+        ///[Id: local PIN id (l3 - l9)]
+        ///[PIN: local PIN].
         /// </summary>
         public static string SetLocalPinOption {
             get {
@@ -916,7 +928,9 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set SM mode (only for Bluetooth token).  &quot;N : &quot; { 1 - Optional password | 2 - 1 password | 3 - 6 passwords }, mode { caps - only capital letters | digits - capital letters and digits }.
+        ///   Looks up a localized string similar to Set SM mode (only for Bluetooth token).
+        ///[Passwords: (1 - optional password), (2 - 1 password), (3 - 6 passwords)] 
+        ///[Mode: (caps - only capital letters), (digits - capital letters and digits)].
         /// </summary>
         public static string SmModeOption {
             get {
@@ -1132,7 +1146,8 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get volume info. Id : volume id {1 - 9, a - all, sz - get flash size}.
+        ///   Looks up a localized string similar to Get volumes or drive info.
+        ///[Parameter: (volume id: 1 - 9), (all volumes: a), (flash size: sz)].
         /// </summary>
         public static string VolumeInfoParamsOption {
             get {

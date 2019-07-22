@@ -112,7 +112,7 @@ namespace Aktiv.RtAdmin
                         break;
                     }
 
-                    logger.LogInformation(Resources.WaitingNextToken);
+                    Console.WriteLine(Resources.WaitingNextToken);
                 }
 
                 _retCode = (int)CKR.CKR_OK;
