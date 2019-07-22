@@ -146,12 +146,12 @@ namespace Aktiv.RtAdmin
                         minAdminPinLength, minUserPinLength,
                         _commandLineOptions.MaxAdminPinAttempts, _commandLineOptions.MaxUserPinAttempts, _runtimeTokenParams.SmMode);
 
-                    _logger.LogInformation(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatTokenSuccess));
+                    Console.WriteLine(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatTokenSuccess));
                     _logger.LogInformation(_logMessageBuilder.WithFormatResult(Resources.FormatPassed));
                 }
                 catch
                 {
-                    _logger.LogError(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatError));
+                    Console.Error.WriteLine(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatError));
                     _logger.LogError(_logMessageBuilder.WithFormatResult(Resources.FormatFailed));
                     throw;
                 }
@@ -203,7 +203,7 @@ namespace Aktiv.RtAdmin
                 }
                 catch
                 {
-                    _logger.LogError(Resources.PinGenerationError);
+                    Console.Error.WriteLine(Resources.PinGenerationError);
                     _logger.LogError(_logMessageBuilder.WithTokenId(Resources.PinGenerationFailed));
 
                     throw new TokenMustBeChangedException();
@@ -259,16 +259,16 @@ namespace Aktiv.RtAdmin
                                 ownerPinCode.Value, _runtimeTokenParams.NewUserPin.Value, CKU.CKU_USER);
                         }
 
+                        Console.WriteLine(Resources.PinChangedSuccess);
                         _logger.LogInformation(_logMessageBuilder.WithTokenId(
                             string.Format(Resources.PinChangePassed, Resources.UserPinOwner,
                                 changeBy,
                                 ownerPinCode.Value,
                                 _runtimeTokenParams.NewUserPin.Value)));
-                        _logger.LogInformation(Resources.PinChangedSuccess);
                     }
                     catch
                     {
-                        _logger.LogError(Resources.ChangingPinError);
+                        Console.Error.WriteLine(Resources.ChangingPinError);
                         _logger.LogError(_logMessageBuilder.WithTokenId(
                                                    string.Format(Resources.PinChangeFailed, Resources.UserPinOwner)) +
                                                    $"{changeBy} : {ownerPinCode.Value} : {_runtimeTokenParams.NewUserPin.Value}");
@@ -279,7 +279,7 @@ namespace Aktiv.RtAdmin
                 {
                     _logger.LogError(_logMessageBuilder.WithTokenId(
                         string.Format(Resources.PinChangeFailed, Resources.UserPinOwner)));
-                    _logger.LogError(_logMessageBuilder.WithPolicyDescription(_runtimeTokenParams.UserPinChangePolicy));
+                    throw new ArgumentException(_logMessageBuilder.WithPolicyDescription(_runtimeTokenParams.UserPinChangePolicy));
                 }
             }
 
@@ -292,16 +292,16 @@ namespace Aktiv.RtAdmin
                         PinChanger.Change<PinChangeOperation>(_slot,
                             _runtimeTokenParams.OldAdminPin.Value, _runtimeTokenParams.NewAdminPin.Value, CKU.CKU_SO);
 
+                        Console.WriteLine(Resources.PinChangedSuccess);
                         _logger.LogInformation(_logMessageBuilder.WithTokenId(
                             string.Format(Resources.PinChangePassed, Resources.AdminPinOwner,
                                 string.Empty,
                                 _runtimeTokenParams.OldAdminPin.Value,
                                 _runtimeTokenParams.NewAdminPin.Value)));
-                        _logger.LogInformation(Resources.PinChangedSuccess);
                     }
                     catch
                     {
-                        _logger.LogError(Resources.ChangingPinError);
+                        Console.WriteLine(Resources.ChangingPinError);
                         _logger.LogError(_logMessageBuilder.WithTokenId(
                                                    string.Format(Resources.PinChangeFailed, Resources.AdminPinOwner)) +
                                                $" : { _runtimeTokenParams.OldAdminPin.Value} : {_runtimeTokenParams.NewAdminPin.Value}");
@@ -312,7 +312,7 @@ namespace Aktiv.RtAdmin
                 {
                     _logger.LogError(_logMessageBuilder.WithTokenId(
                         string.Format(Resources.PinChangeFailed, Resources.AdminPinOwner)));
-                    _logger.LogError(string.Format(Resources.AdminPinChangeError, Resources.AdminPin));
+                    throw new ArgumentException(string.Format(Resources.AdminPinChangeError, Resources.AdminPin));
                 }
             }
 

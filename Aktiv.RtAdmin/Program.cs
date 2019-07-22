@@ -50,7 +50,6 @@ namespace Aktiv.RtAdmin
             _serviceProvider = Startup.Configure(options.LogFilePath, options.NativeLibraryPath);
 
             var core = _serviceProvider.GetService<TokenSlot>();
-            var logger = _serviceProvider.GetService<ILogger<RtAdmin>>();
             var pinsStore = _serviceProvider.GetService<PinsStorage>();
             var configLinesStore = _serviceProvider.GetService<ConfigLinesStorage>();
             var logMessageBuilder = _serviceProvider.GetService<LogMessageBuilder>();
@@ -72,7 +71,7 @@ namespace Aktiv.RtAdmin
 
                 if (!initialSlots.Any())
                 {
-                    logger.LogInformation(Resources.WaitingNextToken);
+                    Console.WriteLine(Resources.WaitingNextToken);
                 }
 
                 while (true)
@@ -119,17 +118,17 @@ namespace Aktiv.RtAdmin
             }
             catch (Pkcs11Exception ex)
             {
-                logger.LogError(logMessageBuilder.WithPKCS11Error(ex.RV));
+                Console.Error.WriteLine(logMessageBuilder.WithPKCS11Error(ex.RV));
                 _retCode = (int)ex.RV;
             }
             catch (CKRException ex)
             {
-                logger.LogError(ex.Message);
+                Console.Error.WriteLine(ex.Message);
                 _retCode = (int)ex.ReturnCode;
             }
             catch (Exception ex)
             {
-                logger.LogError(logMessageBuilder.WithUnhandledError(ex.Message));
+                Console.Error.WriteLine(logMessageBuilder.WithUnhandledError(ex.Message));
                 _retCode = -1;
             }
             finally
