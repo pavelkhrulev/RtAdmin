@@ -107,10 +107,35 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithFormat()
         {
+            if (_commandLineOptions.ExcludedTokens.Contains($"0x{_runtimeTokenParams.TokenSerial}", StringComparer.OrdinalIgnoreCase) ||
+                _commandLineOptions.ExcludedTokens.Contains(_runtimeTokenParams.TokenSerialDecimal, StringComparer.OrdinalIgnoreCase))
+            {
+                return this;
+            }
+
             _prerequisites.Enqueue(() =>
             {
-                _validator.ValidateFormatTokenParams();
-                _validator.ValidatePinsLengthBeforeFormat();
+                if (_pinsStorage.Initialized)
+                {
+                    _runtimeTokenParams.NewUserPin = new PinCode(PinCodeOwner.User, _pinsStorage.GetNext());
+                    _runtimeTokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, _pinsStorage.GetNext());
+                }
+
+                try
+                {
+                    _validator.ValidateFormatTokenParams();
+                    _validator.ValidatePinsLengthBeforeFormat();
+                }
+                catch (ArgumentException e)
+                {
+                    if (_pinsStorage.Initialized && _pinsStorage.CanGetNext)
+                    {
+                        Console.WriteLine(e.Message);
+                        throw new TokenMustBeChangedException();
+                    }
+
+                    throw;
+                }
             });
 
             _commands.Enqueue(() =>
@@ -121,12 +146,6 @@ namespace Aktiv.RtAdmin
                         _runtimeTokenParams.HardwareMajorVersion == DefaultValues.RutokenS_InvalidHardwareMajorVersion)
                     {
                         throw new CKRException(CKR.CKR_GENERAL_ERROR);
-                    }
-
-                    if (_commandLineOptions.ExcludedTokens.Contains(_runtimeTokenParams.TokenSerial, StringComparer.OrdinalIgnoreCase) ||
-                        _commandLineOptions.ExcludedTokens.Contains(_runtimeTokenParams.TokenSerialDecimal, StringComparer.OrdinalIgnoreCase))
-                    {
-                        return;
                     }
 
                     var minAdminPinLength = _runtimeTokenParams.TokenType == RutokenType.RUTOKEN
@@ -155,19 +174,14 @@ namespace Aktiv.RtAdmin
                     _logger.LogError(_logMessageBuilder.WithFormatResult(Resources.FormatFailed));
                     throw;
                 }
+
+                if (_pinsStorage.Initialized && !_pinsStorage.CanGetNext)
+                {
+                    Console.WriteLine(Resources.PinCodesFilePinsHaveEnded);
+                    throw new AppMustBeClosedException(0);
+                }
             });
             
-            return this;
-        }
-
-        public CommandHandlerBuilder WithPinsFromStore()
-        {
-            _commands.Enqueue(() =>
-            {
-                _runtimeTokenParams.NewUserPin = new PinCode(PinCodeOwner.User, _pinsStorage.GetNext());
-                _runtimeTokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, _pinsStorage.GetNext());
-            });
-
             return this;
         }
 
@@ -271,7 +285,7 @@ namespace Aktiv.RtAdmin
                         Console.Error.WriteLine(Resources.ChangingPinError);
                         _logger.LogError(_logMessageBuilder.WithTokenId(
                                                    string.Format(Resources.PinChangeFailed, Resources.UserPinOwner)) +
-                                                   $"{changeBy} : {ownerPinCode.Value} : {_runtimeTokenParams.NewUserPin.Value}");
+                                                   $" {changeBy} : {ownerPinCode.Value} : {_runtimeTokenParams.NewUserPin.Value}");
                         throw;
                     }
                 }
@@ -279,7 +293,9 @@ namespace Aktiv.RtAdmin
                 {
                     _logger.LogError(_logMessageBuilder.WithTokenId(
                         string.Format(Resources.PinChangeFailed, Resources.UserPinOwner)));
-                    throw new ArgumentException(_logMessageBuilder.WithPolicyDescription(_runtimeTokenParams.UserPinChangePolicy));
+                    Console.Error.WriteLine(_logMessageBuilder.WithPolicyDescription(_runtimeTokenParams.UserPinChangePolicy));
+
+                    throw new TokenMustBeChangedException();
                 }
             }
 
@@ -491,10 +507,12 @@ namespace Aktiv.RtAdmin
                             _volumeAttributesStore, 
                             _commandLineOptions.FormatVolumeParams).ToList();
 
-                    DriveFormatter.Format(_slot,
-                        _runtimeTokenParams.NewAdminPin.EnteredByUser ?
-                            _runtimeTokenParams.NewAdminPin.Value :
-                            _runtimeTokenParams.OldAdminPin.Value,
+                    if (!_runtimeTokenParams.OldAdminPin.EnteredByUser)
+                    {
+                        Console.WriteLine(Resources.DefaultAdminPinWillBeUsed);
+                    }
+
+                    DriveFormatter.Format(_slot, _runtimeTokenParams.OldAdminPin.Value,
                         volumeInfos.Select(x => (VolumeFormatInfoExtended)x));
 
                     foreach (var volumeInfo in volumeInfos)
@@ -577,7 +595,7 @@ namespace Aktiv.RtAdmin
                         }
                         else
                         {
-                            if (uint.TryParse(_commandLineOptions.VolumeInfoParams, out var volumeId))
+                            if (uint.TryParse(_commandLineOptions.VolumeInfoParams, out var volumeId) && (volumeId >= 1 && volumeId <= 8))
                             {
                                 var volumeInfo = volumesInfo.FirstOrDefault(x => x.VolumeId == volumeId);
                                 _logger.LogInformation(volumeInfo != null
@@ -586,7 +604,7 @@ namespace Aktiv.RtAdmin
                             }
                             else
                             {
-                                _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.VolumeInfoInvalidVolumeId));
+                                throw new InvalidOperationException(_logMessageBuilder.WithTokenId(Resources.VolumeInfoInvalidVolumeId));
                             }
                         }
                     }

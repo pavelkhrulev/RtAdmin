@@ -46,6 +46,21 @@ namespace Aktiv.RtAdmin
                     Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
                     GetNativeLibraryName());
 
+            try
+            {
+                using (_ = new Pkcs11(nativeLibraryPathIsUse, AppType.MultiThreaded)) ;
+            }
+            catch (UnmanagedException)
+            {
+                Console.WriteLine(Resources.NativeLibraryFileInvalid);
+                throw new AppMustBeClosedException(-1);
+            }
+            catch (LibraryArchitectureException)
+            {
+                Console.WriteLine(Resources.NativeLibraryFileInvalid);
+                throw new AppMustBeClosedException(-1);
+            }
+
             return new ServiceCollection()
                 .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
                 .AddSingleton(s => new Pkcs11(nativeLibraryPathIsUse, AppType.MultiThreaded))
@@ -58,6 +73,7 @@ namespace Aktiv.RtAdmin
                 .AddScoped<LogMessageBuilder>()
                 .AddTransient<CommandHandlerBuilder>()
                 .BuildServiceProvider();
+            
         }
 
         private static string GetNativeLibraryName()

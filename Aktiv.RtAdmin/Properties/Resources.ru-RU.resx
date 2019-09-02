@@ -136,7 +136,7 @@
     <value>Для изменения PIN-кода пользователя необходимо ввести текущий PIN-код администратора или пользователя, используя параметр -o или -c</value>
   </data>
   <data name="ChangeVolumeAttributesOption" xml:space="preserve">
-    <value>Изменение прав доступа.
+    <value>Изменение прав доступа. Для изменения прав используется PIN-код владельца раздела. Если PIN-код не указан, а владельцем раздела является администратор или пользователь, то будет использован PIN-код по умолчанию. Если владельцем раздела является локальный пользователь, а его PIN-код не был указан с использованием команды -O, то произойдет ошибка.
 [идентификатор раздела (1-8)]
 [новые права доступа: ro, rw, hi, cd]
 [долговременность: p - постоянное изменение, t - временное]</value>
@@ -151,7 +151,7 @@
     <value>Форматирование успешно завершено</value>
   </data>
   <data name="FormatVolumeParamsOption" xml:space="preserve">
-    <value>Разбиение Flash-памяти на разделы (форматирование)Форматирование удалит всю информацию с Flash-памяти. Сделайте копию важной информации - после форматирования ее будет невозможно восстановить.  Один параметр используется для одного раздела. Чтобы создать много разделов используется последовательность команд -F.
+    <value>Разбиение Flash-памяти на разделы (форматирование). Форматирование удалит всю информацию с Flash-памяти. Сделайте копию важной информации - после форматирования ее будет невозможно восстановить.  Один параметр используется для одного раздела. Чтобы создать много разделов используется последовательность команд -F. Для создания раздела необходим PIN-код администратора. Если он не указан, то будет использован PIN-код по умолчанию.
 [идентификатор раздела (1-8)] 
 [размер в Мб] 
 [владелец: a - администратор, u - пользователь, l3-l9 - локальный пользователь]
@@ -312,19 +312,19 @@
     <value>Непредвиденная ошибка:</value>
   </data>
   <data name="WaitingNextToken" xml:space="preserve">
-    <value>Ожидание следующего токена... (или нажмите Ctrl-C для выхода)</value>
+    <value>Ожидание следующего токена... (или нажмите "q" для выхода)</value>
   </data>
   <data name="AdminPinOwner" xml:space="preserve">
     <value>Администраторский</value>
   </data>
   <data name="PinChangeByAdmin" xml:space="preserve">
-    <value>Администратором</value>
+    <value>администратором</value>
   </data>
   <data name="PinChangeFailed" xml:space="preserve">
     <value>{0} PIN-код не был изменен (ошибка)</value>
   </data>
   <data name="PinChangePassed" xml:space="preserve">
-    <value>{0} PIN-код изменен {1} : {2}</value>
+    <value>{0} PIN-код изменен {1} : {2} : {3}</value>
   </data>
   <data name="UserPinOwner" xml:space="preserve">
     <value>Пользовательский</value>
@@ -357,10 +357,10 @@
     <value>Строки конфигурации закончились</value>
   </data>
   <data name="InvalidMaxAdminPinRetryCount" xml:space="preserve">
-    <value>Некорректное максимальное количество попыток ввода PIN-кода администратора. Значение должно быть в диапазоне от 3-х до 31-го</value>
+    <value>Некорректное максимальное количество попыток ввода PIN-кода администратора. Значение должно быть в диапазоне от 3-х до 10-ти</value>
   </data>
   <data name="InvalidMaxUserPinRetryCount" xml:space="preserve">
-    <value>Некорректное максимальное количество попыток ввода PIN-кода пользователя. Значение должно быть в диапазоне от 1-го до 31-го</value>
+    <value>Некорректное максимальное количество попыток ввода PIN-кода пользователя. Значение должно быть в диапазоне от 1-го до 10-ти</value>
   </data>
   <data name="InvalidMinimalAdminPinLength" xml:space="preserve">
     <value>Некорректная минимальная длина PIN-кода администратора. Значение должно быть в диапазоне от 1-го до 31-го</value>
@@ -375,7 +375,7 @@
     <value>Несоответствие длины введенного PIN-кода и разрешенной длины PIN-кода. Длина PIN-кода должна быть в диапазоне от 1 до 31. По умолчанию минимальная длина - 6</value>
   </data>
   <data name="ExcludedTokensOption" xml:space="preserve">
-    <value>Исключенные токены при поточном форматировании [серийные номера токенов в формате: 46bc3390 или 932436970]</value>
+    <value>Исключенные токены при поточном форматировании [серийные номера токенов в формате: 0x46bc3390 или 932436970]. В качестве разделителя серийных номеров использовать пробел. Также можно использовать опцию -E на каждый серийный номер.</value>
   </data>
   <data name="TokenLabelChangeFailed" xml:space="preserve">
     <value>Не удалось установить метку токена</value>
@@ -496,5 +496,47 @@
   </data>
   <data name="ShouldSetFormatOption" xml:space="preserve">
     <value>Необходимо установить параметр для форматирования токена -f</value>
+  </data>
+  <data name="DriveFormatVolumeCreateSuccess" xml:space="preserve">
+    <value>Успешно создан раздел</value>
+  </data>
+  <data name="UserPinChangePolicyError" xml:space="preserve">
+    <value>Введите {0} в соответствии с политикой изменения PIN-кода пользователя</value>
+  </data>
+  <data name="DefaultAdminPinWillBeUsed" xml:space="preserve">
+    <value>Будет использован PIN-код администратора по умолчанию</value>
+  </data>
+  <data name="DefaultUserPinWillBeUsed" xml:space="preserve">
+    <value>Будет использован PIN-код пользователя по умолчанию</value>
+  </data>
+  <data name="IncorrectVolumeOwnerPin" xml:space="preserve">
+    <value>Некорректный PIN-код владельца раздела</value>
+  </data>
+  <data name="PinCodesFileNameEmpty" xml:space="preserve">
+    <value>Имя файла, содержащего PIN-коды, должно быть установлено</value>
+  </data>
+  <data name="TokenLabelEmpty" xml:space="preserve">
+    <value>Метка токена должна быть установлена</value>
+  </data>
+  <data name="VolumeInfoEmpty" xml:space="preserve">
+    <value>Для опции -i должен быть указан аргумент</value>
+  </data>
+  <data name="ExcludedTokenSerialEmpty" xml:space="preserve">
+    <value>Серийный номер исключаемого токена должен быть установлен в ожидаемом формате (пр.: 0x46bc3390 или 932436970)</value>
+  </data>
+  <data name="ArgumentMustBeIntegerType" xml:space="preserve">
+    <value>Аргумент опции "-{0}" должен быть числом</value>
+  </data>
+  <data name="ConfigurationFileEmpty" xml:space="preserve">
+    <value>Файл конфигурации должен быть установлен</value>
+  </data>
+  <data name="NativeLibraryFileEmpty" xml:space="preserve">
+    <value>Файл нативной библиотеки должен быть установлен</value>
+  </data>
+  <data name="NativeLibraryFileInvalid" xml:space="preserve">
+    <value>Невозможно открыть нативную библиотеку по указанному пути</value>
+  </data>
+  <data name="NativeLibraryFileNotExist" xml:space="preserve">
+    <value>Файл нативной библиотеки не существует по указанному пути</value>
   </data>
 </root>

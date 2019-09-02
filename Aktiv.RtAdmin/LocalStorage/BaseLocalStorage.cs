@@ -22,6 +22,8 @@ namespace Aktiv.RtAdmin
 
         public bool Initialized { get; private set; }
 
+        public bool CanGetNext { get; private set; }
+
         protected Queue<string> Entities { get; private set; }
 
         public void Load(string storageFilePath)
@@ -42,6 +44,7 @@ namespace Aktiv.RtAdmin
 
             ValidateAfterLoad();
 
+            CanGetNext = true;
             Initialized = true;
         }
 
@@ -49,6 +52,9 @@ namespace Aktiv.RtAdmin
         {
             if (Entities.TryDequeue(out var entity))
             {
+                if (Entities.Count == 0)
+                    CanGetNext = false;
+
                 return entity;
             }
 

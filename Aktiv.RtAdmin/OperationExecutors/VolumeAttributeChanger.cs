@@ -21,7 +21,7 @@ namespace Aktiv.RtAdmin
             }
             catch (Pkcs11Exception ex) when (ex.RV == CKR.CKR_PIN_INCORRECT)
             {
-                throw new CKRException(ex.RV, Resources.IncorrectPin);
+                throw new CKRException(ex.RV, Resources.IncorrectVolumeOwnerPin);
             }
         }
     }

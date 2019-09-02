@@ -136,7 +136,7 @@
     <value>For changing user PIN enter old user or admin PIN</value>
   </data>
   <data name="ChangeVolumeAttributesOption" xml:space="preserve">
-    <value>Change volume attributes. 
+    <value>Change volume attributes. For changing volume attributes volume owner PIN is used. If owner is user or admin while PIN isn't set, default PIN will be used. If owner is local user while local user PIN isn't set with -O option, error will be occured.
 [Volume id: (1 - 9)]
 [Access rights: (ro, rw, hi, cd)]
 [Change type: (p - permanent, t - temporary)]</value>
@@ -151,7 +151,7 @@
     <value>Formatting was successful</value>
   </data>
   <data name="FormatVolumeParamsOption" xml:space="preserve">
-    <value>Format volume. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence.
+    <value>Format volume. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence. For partition creation admin PIN is used. If it isn't set, default admin PIN will be used.
 [Volume id: (1 - 9)]
 [Volume size: volume size in MB]
 [Volume owner: (a - administrator, u - user, l3-l9 - local user)]
@@ -283,7 +283,7 @@
     <value>Unblock PIN passed</value>
   </data>
   <data name="WaitingNextToken" xml:space="preserve">
-    <value>Next token... (Or press Ctrl+C)</value>
+    <value>Next token... (Or press "q")</value>
   </data>
   <data name="ConfigFileIsEmpty" xml:space="preserve">
     <value>Config file is empty</value>
@@ -373,7 +373,7 @@
     <value>PIN length and allowed PIN length mismatch. Length must be in the range from 1 to 31; default: 6</value>
   </data>
   <data name="ExcludedTokensOption" xml:space="preserve">
-    <value>Excluded tokens while stream formatting [token ids in specified format: 46bc3390 or 932436970]</value>
+    <value>Excluded tokens while stream formatting [token ids in specified format: 0x46bc3390 or 932436970]. Use space as  serial numbers separator or use option -E for each serial number</value>
   </data>
   <data name="TokenLabelChangeFailed" xml:space="preserve">
     <value>Can't change token label</value>
@@ -497,5 +497,41 @@
   </data>
   <data name="ShouldSetFormatOption" xml:space="preserve">
     <value>Need to set formatting option -f</value>
+  </data>
+  <data name="DefaultAdminPinWillBeUsed" xml:space="preserve">
+    <value>Default admin PIN will be used</value>
+  </data>
+  <data name="DefaultUserPinWillBeUsed" xml:space="preserve">
+    <value>Default user PIN will be used</value>
+  </data>
+  <data name="IncorrectVolumeOwnerPin" xml:space="preserve">
+    <value>Incorrect volume owner PIN</value>
+  </data>
+  <data name="PinCodesFileNameEmpty" xml:space="preserve">
+    <value>Pin codes file name should be set</value>
+  </data>
+  <data name="TokenLabelEmpty" xml:space="preserve">
+    <value>Token label should be set</value>
+  </data>
+  <data name="VolumeInfoEmpty" xml:space="preserve">
+    <value>For -i argument should be set</value>
+  </data>
+  <data name="ExcludedTokenSerialEmpty" xml:space="preserve">
+    <value>Excluded token serial number should be set in specified format (ex.: 0x46bc3390 or 932436970)</value>
+  </data>
+  <data name="ArgumentMustBeIntegerType" xml:space="preserve">
+    <value>Option "-{0}" argument should be a number</value>
+  </data>
+  <data name="ConfigurationFileEmpty" xml:space="preserve">
+    <value>Configuration file should be set</value>
+  </data>
+  <data name="NativeLibraryFileEmpty" xml:space="preserve">
+    <value>Native library file should be set</value>
+  </data>
+  <data name="NativeLibraryFileInvalid" xml:space="preserve">
+    <value>Unable to open native library at the specified path</value>
+  </data>
+  <data name="NativeLibraryFileNotExist" xml:space="preserve">
+    <value>Native library file doesn't exist at the specified path</value>
   </data>
 </root>

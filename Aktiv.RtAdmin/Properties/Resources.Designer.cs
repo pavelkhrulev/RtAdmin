@@ -142,6 +142,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Option &quot;-{0}&quot; argument should be a number.
+        /// </summary>
+        public static string ArgumentMustBeIntegerType {
+            get {
+                return ResourceManager.GetString("ArgumentMustBeIntegerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to For changing admin PIN enter old admin PIN.
         /// </summary>
         public static string ChangeAdminPinOldPinError {
@@ -187,7 +196,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change volume attributes. 
+        ///   Looks up a localized string similar to Change volume attributes. For changing volume attributes volume owner PIN is used. If owner is user or admin while PIN isn&apos;t set, default PIN will be used. If owner is local user while local user PIN isn&apos;t set with -O option, error will be occured.
         ///[Volume id: (1 - 9)]
         ///[Access rights: (ro, rw, hi, cd)]
         ///[Change type: (p - permanent, t - temporary)].
@@ -235,11 +244,38 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configuration file should be set.
+        /// </summary>
+        public static string ConfigurationFileEmpty {
+            get {
+                return ResourceManager.GetString("ConfigurationFileEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration file path.
         /// </summary>
         public static string ConfigurationFilePathOption {
             get {
                 return ResourceManager.GetString("ConfigurationFilePathOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default admin PIN will be used.
+        /// </summary>
+        public static string DefaultAdminPinWillBeUsed {
+            get {
+                return ResourceManager.GetString("DefaultAdminPinWillBeUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default user PIN will be used.
+        /// </summary>
+        public static string DefaultUserPinWillBeUsed {
+            get {
+                return ResourceManager.GetString("DefaultUserPinWillBeUsed", resourceCulture);
             }
         }
         
@@ -316,7 +352,16 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excluded tokens while stream formatting [token ids in specified format: 46bc3390 or 932436970].
+        ///   Looks up a localized string similar to Excluded token serial number should be set in specified format (ex.: 0x46bc3390 or 932436970).
+        /// </summary>
+        public static string ExcludedTokenSerialEmpty {
+            get {
+                return ResourceManager.GetString("ExcludedTokenSerialEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excluded tokens while stream formatting [token ids in specified format: 0x46bc3390 or 932436970]. Use space as  serial numbers separator or use option -E for each serial number.
         /// </summary>
         public static string ExcludedTokensOption {
             get {
@@ -406,7 +451,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format volume. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence.
+        ///   Looks up a localized string similar to Format volume. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence. For partition creation admin PIN is used. If it isn&apos;t set, default admin PIN will be used.
         ///[Volume id: (1 - 9)]
         ///[Volume size: volume size in MB]
         ///[Volume owner: (a - administrator, u - user, l3-l9 - local user)]
@@ -478,6 +523,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string IncorrectPin {
             get {
                 return ResourceManager.GetString("IncorrectPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect volume owner PIN.
+        /// </summary>
+        public static string IncorrectVolumeOwnerPin {
+            get {
+                return ResourceManager.GetString("IncorrectVolumeOwnerPin", resourceCulture);
             }
         }
         
@@ -597,6 +651,33 @@ namespace Aktiv.RtAdmin.Properties {
         public static string MinUserPinLengthOption {
             get {
                 return ResourceManager.GetString("MinUserPinLengthOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Native library file should be set.
+        /// </summary>
+        public static string NativeLibraryFileEmpty {
+            get {
+                return ResourceManager.GetString("NativeLibraryFileEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to open native library at the specified path.
+        /// </summary>
+        public static string NativeLibraryFileInvalid {
+            get {
+                return ResourceManager.GetString("NativeLibraryFileInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Native library file doesn&apos;t exist at the specified path.
+        /// </summary>
+        public static string NativeLibraryFileNotExist {
+            get {
+                return ResourceManager.GetString("NativeLibraryFileNotExist", resourceCulture);
             }
         }
         
@@ -769,6 +850,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string PinCodesFileIsEmpty {
             get {
                 return ResourceManager.GetString("PinCodesFileIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin codes file name should be set.
+        /// </summary>
+        public static string PinCodesFileNameEmpty {
+            get {
+                return ResourceManager.GetString("PinCodesFileNameEmpty", resourceCulture);
             }
         }
         
@@ -975,6 +1065,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Token label should be set.
+        /// </summary>
+        public static string TokenLabelEmpty {
+            get {
+                return ResourceManager.GetString("TokenLabelEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Can&apos;t change token label. Enter user PIN using -c.
         /// </summary>
         public static string TokenLabelPinError {
@@ -1119,6 +1218,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For -i argument should be set.
+        /// </summary>
+        public static string VolumeInfoEmpty {
+            get {
+                return ResourceManager.GetString("VolumeInfoEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error while getting volumes info.
         /// </summary>
         public static string VolumeInfoGettingFailed {
@@ -1165,7 +1273,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Next token... (Or press Ctrl+C).
+        ///   Looks up a localized string similar to Next token... (Or press &quot;q&quot;).
         /// </summary>
         public static string WaitingNextToken {
             get {

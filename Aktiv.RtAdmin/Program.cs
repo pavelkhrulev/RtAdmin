@@ -5,7 +5,10 @@ using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Aktiv.RtAdmin
 {
@@ -41,32 +44,31 @@ namespace Aktiv.RtAdmin
             try
             {
                 options = CommandLineParser.Parse(args);
+                _serviceProvider = Startup.Configure(options.LogFilePath, options.NativeLibraryPath);
             }
-            catch (AppMustBeClosedException)
+            catch (AppMustBeClosedException ex)
             {
-                return 0;
+                return ex.RetCode;
             }
-
-            _serviceProvider = Startup.Configure(options.LogFilePath, options.NativeLibraryPath);
 
             var core = _serviceProvider.GetService<TokenSlot>();
             var pinsStore = _serviceProvider.GetService<PinsStorage>();
             var configLinesStore = _serviceProvider.GetService<ConfigLinesStorage>();
             var logMessageBuilder = _serviceProvider.GetService<LogMessageBuilder>();
 
-            if (!string.IsNullOrWhiteSpace(options.PinFilePath))
-            {
-                pinsStore.Load(options.PinFilePath);
-            }
-
-            if (!string.IsNullOrWhiteSpace(options.ConfigurationFilePath))
-            {
-                configLinesStore.Load(options.ConfigurationFilePath);
-                return Main(configLinesStore.GetNext().Split(" "));
-            }
-
             try
             {
+                if (!string.IsNullOrWhiteSpace(options.PinFilePath))
+                {
+                    pinsStore.Load(options.PinFilePath);
+                }
+
+                if (!string.IsNullOrWhiteSpace(options.ConfigurationFilePath))
+                {
+                    configLinesStore.Load(options.ConfigurationFilePath);
+                    return Main(configLinesStore.GetNext().Trim().Split(" "));
+                }
+
                 var initialSlots = core.GetInitialSlots();
 
                 if (!initialSlots.Any())
@@ -78,16 +80,33 @@ namespace Aktiv.RtAdmin
                 {
                     if (!initialSlots.TryPop(out var slot))
                     {
-                        slot = core.WaitToken();
+                        var cts = new CancellationTokenSource();
+                        var token = cts.Token;
+
+                        var waitTokenTask = Task.Run(() =>
+                        {
+                            slot = core.WaitToken();
+                            cts.Cancel();
+                        });
+                        var waitExitKeyTask = Task.Run(() =>
+                        {
+                            while (Console.KeyAvailable)
+                            {
+                                Console.ReadKey(true);
+                            }
+
+                            while (Console.ReadKey(true).Key != ConsoleKey.Q && !token.IsCancellationRequested);
+                        });
+
+                        var completedTask = Task.WhenAny(waitTokenTask, waitExitKeyTask).Result;
+                        if (completedTask == waitExitKeyTask && !token.IsCancellationRequested)
+                        {
+                            throw new AppMustBeClosedException(0);
+                        }
                     }
 
                     var commandHandlerBuilder = _serviceProvider.GetService<CommandHandlerBuilder>()
                                                                 .ConfigureWith(slot, options);
-
-                    if (pinsStore.Initialized)
-                    {
-                        commandHandlerBuilder.WithPinsFromStore();
-                    }
 
                     foreach (var (key, value) in _optionsMapping)
                     {
@@ -125,6 +144,10 @@ namespace Aktiv.RtAdmin
             {
                 Console.Error.WriteLine(ex.Message);
                 _retCode = (int)ex.ReturnCode;
+            }
+            catch (AppMustBeClosedException ex)
+            {
+                return ex.RetCode;
             }
             catch (Exception ex)
             {

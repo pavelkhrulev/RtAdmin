@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Text.RegularExpressions;
 using Aktiv.RtAdmin.Properties;
 using Mono.Options;
 
@@ -18,38 +21,144 @@ namespace Aktiv.RtAdmin
             var shouldShowHelp = false;
             var shouldShowVersion = false;
             var showSetFormatOption = false;
+
+            var tokenLabelCp1251ShouldBeSet = false;
+            var tokenLabelUtf8ShouldBeSet = false;
+            var pinCodesFileShouldBeSet = false;
+            var volumeInfoParamShouldBeSet = false;
+            var excludedTokenShouldBeSet = false;
+            var nativeLibraryFileShouldBeSet = false;
+            var configurationFileShouldBeSet = false;
+
             var set = new OptionSet
             {
-                {"f", Resources.FormatTokenOption, v => { options.Format = v != null; }},
-                {"G=", Resources.GenerateRandomAdminPinOption, (uint v) => { options.AdminPinLength = v; }},
-                {"g=", Resources.GenerateRandomUserPinOption, (uint v) => { options.UserPinLength = v; }},
-                {"L=", Resources.TokenLabelCp1251Option, v => { options.TokenLabelCp1251 = v; }},
-                {"D=", Resources.TokenLabelUtf8Option, v => { options.TokenLabelUtf8 = v; }},
-                {"o=", Resources.OldAdminPinOption, v => { options.OldAdminPin = v; }},
-                {"c=", Resources.OldUserPinOption, v => { options.OldUserPin = v; }},
-                {"a=", Resources.AdminPinOption, v => { options.AdminPin = v; }},
-                {"u=", Resources.UserPinOption, v => { options.UserPin = v; }},
-                {"t", Resources.SetPin2ModeOption, v => { options.SetPin2Mode = v != null; }},
-                {"n=", Resources.ConfigurationFilePathOption, v => { options.ConfigurationFilePath = v; }},
-                {"l=", Resources.LogFilePathOption, v => { options.LogFilePath = v; }},
-                {"b=", Resources.PinFilePathOption, v => { options.PinFilePath = v; }},
-                {"z=", Resources.NativeLibraryPathOption, v => { options.NativeLibraryPath = v; }},
-                {"P", Resources.UnblockPinsOption, v => { options.UnblockPins = v != null; }},
-                {"q", Resources.OneIterationOnlyOption, v => { options.OneIterationOnly = v != null; }},
-                {"i=", Resources.VolumeInfoParamsOption, v => { options.VolumeInfoParams = v; }},
+                {"f", Resources.FormatTokenOption, v =>
+                {
+                    options.Format = v != null;
+                }},
+                {"G", Resources.GenerateRandomAdminPinOption, v =>
+                {
+                    currentParameter = "G";
+                    options.AdminPinLength = DefaultValues.RandomPinLength;
+                }},
+                {"g", Resources.GenerateRandomUserPinOption, v =>
+                {
+                    currentParameter = "g";
+                    options.UserPinLength = DefaultValues.RandomPinLength;
+                }},
+                {"L", Resources.TokenLabelCp1251Option, v =>
+                {
+                    currentParameter = "L";
+                    tokenLabelCp1251ShouldBeSet = true;
+                }},
+                {"D", Resources.TokenLabelUtf8Option, v =>
+                {
+                    currentParameter = "D";
+                    tokenLabelUtf8ShouldBeSet = true;
+                }},
+                {"o=", Resources.OldAdminPinOption, v =>
+                {
+                    options.OldAdminPin = v;
+                }},
+                {"c=", Resources.OldUserPinOption, v =>
+                {
+                    options.OldUserPin = v;
+                }},
 
-                {"M=", Resources.MinAdminPinLengthOption, (uint v) => { options.MinAdminPinLength = v; showSetFormatOption = true; }},
-                {"m=", Resources.MinUserPinLengthOption, (uint v) => { options.MinUserPinLength = v; showSetFormatOption = true; }},
-                {"R=", Resources.MaxAdminPinAttemptsOption, (uint v) => { options.MaxAdminPinAttempts = v; showSetFormatOption = true; }},
-                {"r=", Resources.MaxUserPinAttemptsOption, (uint v) => { options.MaxUserPinAttempts = v; showSetFormatOption = true; }},
-                {"p=", Resources.PinChangePolicyOption, (uint v) => { options.PinChangePolicy = v; showSetFormatOption = true; }},
+                {"a", Resources.AdminPinOption, v =>
+                {
+                    currentParameter = "a";
+                    options.AdminPin = DefaultValues.AdminPin;
+                }},
+                {"u", Resources.UserPinOption, v =>
+                {
+                    currentParameter = "u";
+                    options.UserPin = DefaultValues.UserPin;
+                }},
+
+                {"t", Resources.SetPin2ModeOption, v =>
+                {
+                    options.SetPin2Mode = v != null;
+                }},
+                {"n", Resources.ConfigurationFilePathOption, v =>
+                {
+                    configurationFileShouldBeSet = true;
+                    currentParameter = "n";
+                }},
+                {"l", Resources.LogFilePathOption, v =>
+                {
+                    currentParameter = "l";
+                    options.LogFilePath = DefaultValues.LogFilePath;
+                }},
+
+                {"b", Resources.PinFilePathOption, v =>
+                {
+                    currentParameter = "b";
+                    pinCodesFileShouldBeSet = true;
+                }},
+
+                {"z", Resources.NativeLibraryPathOption, v =>
+                {
+                    currentParameter = "z";
+                    nativeLibraryFileShouldBeSet = true;
+                }},
+                {"P", Resources.UnblockPinsOption, v =>
+                {
+                    options.UnblockPins = v != null;
+                }},
+                {"q", Resources.OneIterationOnlyOption, v =>
+                {
+                    options.OneIterationOnly = v != null;
+                }},
+                {"i", Resources.VolumeInfoParamsOption, v =>
+                {
+                    currentParameter = "i";
+                    volumeInfoParamShouldBeSet = true;
+                }},
+
+                {"M", Resources.MinAdminPinLengthOption, v =>
+                {
+                    currentParameter = "M";
+                    options.MinAdminPinLength = DefaultValues.MinAdminPinLength;
+                    showSetFormatOption = true;
+                }},
+                {"m", Resources.MinUserPinLengthOption, v =>
+                {
+                    currentParameter = "m";
+                    options.MinUserPinLength = DefaultValues.MinUserPinLength;
+                    showSetFormatOption = true;
+                }},
+                {"R", Resources.MaxAdminPinAttemptsOption, v =>
+                {
+                    currentParameter = "R";
+                    options.MaxAdminPinAttempts = DefaultValues.MaxAdminPinAttempts;
+                    showSetFormatOption = true;
+                }},
+                {"r", Resources.MaxUserPinAttemptsOption, v =>
+                {
+                    currentParameter = "r";
+                    options.MaxUserPinAttempts = DefaultValues.MaxUserPinAttempts;
+                    showSetFormatOption = true;
+                }},
+
+                {"p", Resources.PinChangePolicyOption, v =>
+                {
+                    currentParameter = "p";
+                    options.PinChangePolicy = (uint) DefaultValues.PinChangePolicy;
+                    showSetFormatOption = true;
+                }},
 
                 {"s", Resources.SmModeOption, v => currentParameter = "s"},
                 {"F", Resources.FormatVolumeParamsOption, v => currentParameter = "F"},
                 {"C", Resources.ChangeVolumeAttributesOption, v => currentParameter = "C"},
                 {"O", Resources.LoginWithLocalPinOption, v => currentParameter = "O"},
                 {"B", Resources.SetLocalPinOption, v => currentParameter = "B"},
-                {"E", Resources.ExcludedTokensOption, v => { currentParameter = "E"; showSetFormatOption = true; }},
+                {"E", Resources.ExcludedTokensOption, v => 
+                {
+                    currentParameter = "E";
+                    excludedTokenShouldBeSet = true;
+                    showSetFormatOption = true;
+                }},
 
                 {"U", Resources.Utf8Option, v => { options.UTF8InsteadOfcp1251 = v != null; }},
 
@@ -74,8 +183,68 @@ namespace Aktiv.RtAdmin
                             options.SetLocalPin.Add(v);
                             break;
                         case "E":
-                            options.ExcludedTokens.Add(v);
+                            ParseExcludedTokenOption(v, options);
                             break;
+
+                        case "g":
+                            options.UserPinLength = ParseUint(v, currentParameter);
+                            break;
+                        case "G":
+                            options.AdminPinLength = ParseUint(v, currentParameter);
+                            break;
+
+                        case "m":
+                            options.MinUserPinLength = ParseUint(v, currentParameter);
+                            break;
+                        case "M":
+                            options.MinAdminPinLength = ParseUint(v, currentParameter);
+                            break;
+
+                        case "r":
+                            options.MaxUserPinAttempts = ParseUint(v, currentParameter);
+                            break;
+                        case "R":
+                            options.MaxAdminPinAttempts = ParseUint(v, currentParameter);
+                            break;
+
+                        case "L":
+                            options.TokenLabelCp1251 = v;
+                            break;
+                        case "D":
+                            options.TokenLabelUtf8 = v;
+                            break;
+
+                        case "a":
+                            options.AdminPin = v;
+                            break;
+                        case "u":
+                            options.UserPin = v;
+                            break;
+
+                        case "b":
+                            options.PinFilePath = v;
+                            break;
+
+                        case "i":
+                            options.VolumeInfoParams = v;
+                            break;
+
+                        case "p":
+                            options.PinChangePolicy = ParseUint(v, currentParameter);
+                            break;
+
+                        case "l":
+                            options.LogFilePath = v;
+                            break;
+
+                        case "z":
+                            options.NativeLibraryPath = v;
+                            break;
+
+                        case "n":
+                            options.ConfigurationFilePath = v;
+                            break;
+
                         default:
                             extraOptions.Add(v);
                             break;
@@ -85,78 +254,82 @@ namespace Aktiv.RtAdmin
 
             if (!args.Any())
             {
-                ShowHelp(set);
+                ShowHelp(set, 0);
             }
 
             try
             {
                 set.Parse(args);
             }
-            catch (OptionException e) when (e.Message.Contains("missing required", StringComparison.OrdinalIgnoreCase))
+            catch (AppMustBeClosedException)
             {
-                switch (e.OptionName)
-                {
-                    case "-G":
-                        options.AdminPinLength = DefaultValues.RandomPinLength;
-                        break;
-                    case "-g":
-                        options.UserPinLength = DefaultValues.RandomPinLength;
-                        break;
-                    case "-a":
-                        options.AdminPin = DefaultValues.AdminPin;
-                        break;
-                    case "-u":
-                        options.UserPin = DefaultValues.UserPin;
-                        break;
-
-                    case "-M":
-                        options.MinAdminPinLength = DefaultValues.MinAdminPinLength;
-                        showSetFormatOption = true;
-                        break;
-                    case "-m":
-                        options.MinUserPinLength = DefaultValues.MinUserPinLength;
-                        showSetFormatOption = true;
-                        break;
-                    case "-R":
-                        options.MaxAdminPinAttempts = DefaultValues.MaxAdminPinAttempts;
-                        showSetFormatOption = true;
-                        break;
-                    case "-r":
-                        options.MaxUserPinAttempts = DefaultValues.MaxUserPinAttempts;
-                        showSetFormatOption = true;
-                        break;
-                    case "-p":
-                        options.PinChangePolicy = (uint) DefaultValues.PinChangePolicy;
-                        showSetFormatOption = true;
-                        break;
-
-                    case "-l":
-                        options.LogFilePath = DefaultValues.LogFilePath;
-                        break;
-                }
+                throw;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                ShowHelp(set);
+                ShowHelp(set, -1);
             }
 
             if (extraOptions.Any())
             {
                 Console.WriteLine($@"{Resources.IllegalOptions}: {string.Join(',', extraOptions)}");
-                ShowHelp(set);
+                ShowHelp(set, -1);
             }
 
             if (shouldShowHelp)
             {
-                ShowHelp(set);
+                ShowHelp(set, 0);
             }
 
             if (showSetFormatOption && !options.Format)
             {
                 Console.WriteLine(Resources.ShouldSetFormatOption);
+                throw new AppMustBeClosedException(-1);
+            }
 
-                throw new AppMustBeClosedException();
+            if ((tokenLabelUtf8ShouldBeSet && string.IsNullOrWhiteSpace(options.TokenLabelUtf8)) ||
+                (tokenLabelCp1251ShouldBeSet && string.IsNullOrWhiteSpace(options.TokenLabelCp1251)))
+            {
+                Console.WriteLine(Resources.TokenLabelEmpty);
+                throw new AppMustBeClosedException(-1);
+            }
+
+            if (pinCodesFileShouldBeSet && string.IsNullOrWhiteSpace(options.PinFilePath))
+            {
+                Console.WriteLine(Resources.PinCodesFileNameEmpty);
+                throw new AppMustBeClosedException(-1);
+            }
+
+            if (nativeLibraryFileShouldBeSet && string.IsNullOrWhiteSpace(options.NativeLibraryPath))
+            {
+                Console.WriteLine(Resources.NativeLibraryFileEmpty);
+                throw new AppMustBeClosedException(-1);
+            }
+
+            if (nativeLibraryFileShouldBeSet && !string.IsNullOrWhiteSpace(options.NativeLibraryPath) 
+                                             && !File.Exists(options.NativeLibraryPath))
+            {
+                Console.WriteLine(Resources.NativeLibraryFileNotExist);
+                throw new AppMustBeClosedException(-1);
+            }
+
+            if (configurationFileShouldBeSet && string.IsNullOrWhiteSpace(options.ConfigurationFilePath))
+            {
+                Console.WriteLine(Resources.ConfigurationFileEmpty);
+                throw new AppMustBeClosedException(-1);
+            }
+
+            if (volumeInfoParamShouldBeSet && string.IsNullOrWhiteSpace(options.VolumeInfoParams))
+            {
+                Console.WriteLine(Resources.VolumeInfoEmpty);
+                throw new AppMustBeClosedException(-1);
+            }
+
+            if (excludedTokenShouldBeSet && !options.ExcludedTokens.Any())
+            {
+                Console.WriteLine(Resources.ExcludedTokenSerialEmpty);
+                throw new AppMustBeClosedException(-1);
             }
 
             if (shouldShowVersion)
@@ -164,13 +337,52 @@ namespace Aktiv.RtAdmin
                 var executablePath = Process.GetCurrentProcess().MainModule.FileName;
                 Console.WriteLine($@"{executablePath} {FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion}");
 
-                throw new AppMustBeClosedException();
+                throw new AppMustBeClosedException(0);
             }
             
             return options;
         }
 
-        private static void ShowHelp(OptionSet optionSet)
+        private static uint ParseUint(string value, string option)
+        {
+            if (uint.TryParse(value, out var parsed))
+            {
+                return parsed;
+            }
+            else
+            {
+                Console.WriteLine(Resources.ArgumentMustBeIntegerType, option);
+                throw new AppMustBeClosedException(-1);
+            }
+        }
+
+        private static void ParseExcludedTokenOption(string value, CommandLineOptions options)
+        {
+            // Удаляем ведущие нули во введенном серийном номере токена
+            var sb = new StringBuilder();
+            if (value.StartsWith("0x"))
+            {
+                var trimmed = value.Substring(2).TrimStart('0');
+                sb.Append("0x");
+                sb.Append(trimmed);
+            }
+            else
+            {
+                sb.Append(value.TrimStart('0'));
+            }
+
+            if (Regex.Match(value, @"^[0-9]+$").Success || Regex.Match(value, @"0[x][0-9a-fA-F]+").Success)
+            {
+                options.ExcludedTokens.Add(sb.ToString());
+            }
+            else
+            {
+                Console.WriteLine(Resources.ExcludedTokenSerialEmpty);
+                throw new AppMustBeClosedException(-1);
+            }
+        }
+
+        private static void ShowHelp(OptionSet optionSet, int retCode)
         {
             var executablePath = Process.GetCurrentProcess().MainModule.FileName;
 
@@ -186,7 +398,7 @@ namespace Aktiv.RtAdmin
             Console.WriteLine(Resources.Options);
             optionSet.WriteOptionDescriptions(Console.Out);
 
-            throw new AppMustBeClosedException();
+            throw new AppMustBeClosedException(retCode);
         }
     }
 }

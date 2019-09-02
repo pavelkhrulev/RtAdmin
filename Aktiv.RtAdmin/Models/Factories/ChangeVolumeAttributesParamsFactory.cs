@@ -54,14 +54,20 @@ namespace Aktiv.RtAdmin
                 switch (volumeInfo.VolumeOwner)
                 {
                     case CKU.CKU_SO:
-                        ownerPin = runtimeTokenParams.NewAdminPin.EnteredByUser
-                            ? runtimeTokenParams.NewAdminPin.Value
-                            : runtimeTokenParams.OldAdminPin.Value;
+                        if (!runtimeTokenParams.OldAdminPin.EnteredByUser)
+                        {
+                            Console.WriteLine(Resources.DefaultAdminPinWillBeUsed);
+                        }
+
+                        ownerPin = runtimeTokenParams.OldAdminPin.Value;
                         break;
                     case CKU.CKU_USER:
-                        ownerPin = runtimeTokenParams.NewUserPin.EnteredByUser
-                            ? runtimeTokenParams.NewUserPin.Value
-                            : runtimeTokenParams.OldUserPin.Value;
+                        if (!runtimeTokenParams.OldUserPin.EnteredByUser)
+                        {
+                            Console.WriteLine(Resources.DefaultUserPinWillBeUsed);
+                        }
+
+                        ownerPin = runtimeTokenParams.OldUserPin.Value;
                         break;
                     default:
                         if (runtimeTokenParams.LocalUserPins == null)

@@ -22,13 +22,15 @@ namespace Aktiv.RtAdmin
         public void ValidatePinsLengthBeforeFormat()
         {
             if ((_runtimeTokenParams.NewAdminPin.EnteredByUser &&
-                 _runtimeTokenParams.NewAdminPin.Length < _commandLineOptions.MinAdminPinLength) ||
+                 (_runtimeTokenParams.NewAdminPin.Length < _commandLineOptions.MinAdminPinLength ||
+                  _runtimeTokenParams.NewAdminPin.Length > _runtimeTokenParams.MaxAdminPinLenFromToken)) ||
                 (_runtimeTokenParams.NewUserPin.EnteredByUser &&
-                _runtimeTokenParams.NewUserPin.Length < _commandLineOptions.MinUserPinLength))
+                _runtimeTokenParams.NewUserPin.Length < _commandLineOptions.MinUserPinLength ||
+                _runtimeTokenParams.NewUserPin.Length > _runtimeTokenParams.MaxUserPinLenFromToken))
             {
-                throw new ArgumentException(string.Format(Resources.PinLengthMismatchBeforeFormat,
-                    _runtimeTokenParams.MinAdminPinLenFromToken, _runtimeTokenParams.MaxAdminPinLenFromToken,
-                    _runtimeTokenParams.MinUserPinLenFromToken, _runtimeTokenParams.MaxUserPinLenFromToken));
+                throw new ArgumentException(string.Format(Resources.PinLengthMismatch,
+                    _commandLineOptions.MinAdminPinLength, _runtimeTokenParams.MaxAdminPinLenFromToken,
+                    _commandLineOptions.MinUserPinLength, _runtimeTokenParams.MaxUserPinLenFromToken));
             }
         }
 
