@@ -115,27 +115,11 @@ namespace Aktiv.RtAdmin
 
             _prerequisites.Enqueue(() =>
             {
-                if (_pinsStorage.Initialized)
-                {
-                    _runtimeTokenParams.NewUserPin = new PinCode(PinCodeOwner.User, _pinsStorage.GetNext());
-                    _runtimeTokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, _pinsStorage.GetNext());
-                }
-
-                try
+                ValidateNewPins(() =>
                 {
                     _validator.ValidateFormatTokenParams();
                     _validator.ValidatePinsLengthBeforeFormat();
-                }
-                catch (ArgumentException e)
-                {
-                    if (_pinsStorage.Initialized && _pinsStorage.CanGetNext)
-                    {
-                        Console.WriteLine(e.Message);
-                        throw new TokenMustBeChangedException();
-                    }
-
-                    throw;
-                }
+                });
             });
 
             _commands.Enqueue(() =>
@@ -332,7 +316,10 @@ namespace Aktiv.RtAdmin
                 }
             }
 
-            _prerequisites.Enqueue(_validator.ValidatePinsLengthBeforePinsChange);
+            _prerequisites.Enqueue(() =>
+            {
+                ValidateNewPins(() => _validator.ValidatePinsLengthBeforePinsChange());
+            });
 
             _commands.Enqueue(() =>
             {
@@ -366,6 +353,12 @@ namespace Aktiv.RtAdmin
                 if (_runtimeTokenParams.NewAdminPin.EnteredByUser)
                 {
                     ChangeAdminPin();
+                }
+
+                if (_pinsStorage.Initialized && !_pinsStorage.CanGetNext)
+                {
+                    Console.WriteLine(Resources.PinCodesFilePinsHaveEnded);
+                    throw new AppMustBeClosedException(0);
                 }
             });
 
@@ -624,6 +617,21 @@ namespace Aktiv.RtAdmin
             if (!_runtimeTokenParams.FlashMemoryAvailable)
             {
                 throw new InvalidOperationException(Resources.FlashMemoryNotAvailable);
+            }
+        }
+
+        private void ValidateNewPins(Action validationAction)
+        {
+            if (_pinsStorage.Initialized)
+            {
+                _runtimeTokenParams.NewUserPin = new PinCode(PinCodeOwner.User, _pinsStorage.GetNext());
+                _runtimeTokenParams.NewAdminPin = new PinCode(PinCodeOwner.Admin, _pinsStorage.GetNext());
+
+                validationAction();
+            }
+            else
+            {
+                validationAction();
             }
         }
 

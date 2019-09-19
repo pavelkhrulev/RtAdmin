@@ -340,7 +340,7 @@
     <value>user PIN</value>
   </data>
   <data name="PinCodesFileIsEmpty" xml:space="preserve">
-    <value>PIN-codes file file is empty</value>
+    <value>PIN-codes file is empty</value>
   </data>
   <data name="ActivationPasswordInvalidCharacterSet" xml:space="preserve">
     <value>Invalid character set for generation activation passwords. It must be "caps" or "digits"</value>
@@ -373,7 +373,7 @@
     <value>PIN length and allowed PIN length mismatch. Length must be in the range from 1 to 31; default: 6</value>
   </data>
   <data name="ExcludedTokensOption" xml:space="preserve">
-    <value>Excluded tokens while stream formatting [token ids in specified format: 0x46bc3390 or 932436970]. Use space as  serial numbers separator or use option -E for each serial number</value>
+    <value>Excluded tokens while stream formatting [token ids in specified format: 0x46bc3390 or 932436970]. Use space as serial numbers separator or use option -E for each serial number</value>
   </data>
   <data name="TokenLabelChangeFailed" xml:space="preserve">
     <value>Can't change token label</value>

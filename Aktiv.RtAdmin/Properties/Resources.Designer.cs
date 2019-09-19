@@ -361,7 +361,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excluded tokens while stream formatting [token ids in specified format: 0x46bc3390 or 932436970]. Use space as  serial numbers separator or use option -E for each serial number.
+        ///   Looks up a localized string similar to Excluded tokens while stream formatting [token ids in specified format: 0x46bc3390 or 932436970]. Use space as serial numbers separator or use option -E for each serial number.
         /// </summary>
         public static string ExcludedTokensOption {
             get {
@@ -845,7 +845,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PIN-codes file file is empty.
+        ///   Looks up a localized string similar to PIN-codes file is empty.
         /// </summary>
         public static string PinCodesFileIsEmpty {
             get {

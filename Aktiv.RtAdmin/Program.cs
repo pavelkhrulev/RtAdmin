@@ -16,6 +16,7 @@ namespace Aktiv.RtAdmin
     {
         private static IServiceProvider _serviceProvider;
         private static int _retCode;
+        private static bool _disposed;
 
         private static readonly Dictionary<Predicate<CommandLineOptions>, Action<CommandHandlerBuilder>> _optionsMapping =
             new Dictionary<Predicate<CommandLineOptions>, Action<CommandHandlerBuilder>>
@@ -85,8 +86,17 @@ namespace Aktiv.RtAdmin
 
                         var waitTokenTask = Task.Run(() =>
                         {
-                            slot = core.WaitToken();
-                            cts.Cancel();
+                            try
+                            {
+                                slot = core.WaitToken();
+                            }
+                            catch (Pkcs11Exception e) when (e.RV == CKR.CKR_CRYPTOKI_NOT_INITIALIZED)
+                            {
+                            }
+                            finally
+                            {
+                                cts.Cancel();
+                            }
                         });
                         var waitExitKeyTask = Task.Run(() =>
                         {
@@ -164,7 +174,7 @@ namespace Aktiv.RtAdmin
 
         private static void DisposeServices()
         {
-            if (_serviceProvider == null)
+            if (_disposed || _serviceProvider == null)
             {
                 return;
             }
@@ -176,6 +186,8 @@ namespace Aktiv.RtAdmin
             {
                 disposable.Dispose();
             }
+
+            _disposed = true;
         }
     }
 }
