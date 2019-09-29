@@ -24,8 +24,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aktiv.RtPkcs11Ecp.Natives" Version="1.1.0" />
-    <PackageReference Include="Aktiv.RutokenPkcs11Interop" Version="2.0.2" />
+    <PackageReference Include="Aktiv.RtPkcs11Ecp.Natives" Version="1.1.1" />
+    <PackageReference Include="Aktiv.RutokenPkcs11Interop" Version="2.0.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
