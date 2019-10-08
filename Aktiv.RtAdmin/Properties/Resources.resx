@@ -241,7 +241,7 @@
 [PIN: local PIN]</value>
   </data>
   <data name="SetPin2ModeOption" xml:space="preserve">
-    <value>Activate setting PIN2 code (on the screen) mode. Must be specified for PIN2 changing. If not specified, the default value is used</value>
+    <value>Activate setting PIN2-code (on the screen mode) for PINPad.</value>
   </data>
   <data name="SmModeOption" xml:space="preserve">
     <value>Set SM mode (only for Bluetooth token).

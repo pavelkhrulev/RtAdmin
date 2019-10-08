@@ -982,7 +982,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Activate setting PIN2 code (on the screen) mode. Must be specified for PIN2 changing. If not specified, the default value is used.
+        ///   Looks up a localized string similar to Activate setting PIN2-code (on the screen mode) for PINPad..
         /// </summary>
         public static string SetPin2ModeOption {
             get {

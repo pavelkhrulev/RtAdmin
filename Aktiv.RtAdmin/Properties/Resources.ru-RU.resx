@@ -241,7 +241,7 @@
 [PIN-код]</value>
   </data>
   <data name="SetPin2ModeOption" xml:space="preserve">
-    <value>Устанавливаемый PIN2-код для Рутокен PINPad (устанавливается на экране устройства). Если значение параметра не установлено, то будет использовано значение по умолчанию (выяснить?)</value>
+    <value>Активация установки PIN2-кода для Рутокен PINPad (устанавливается на экране устройства).</value>
   </data>
   <data name="SmModeOption" xml:space="preserve">
     <value>Установить SM mode (только для Bluetooth токена).
