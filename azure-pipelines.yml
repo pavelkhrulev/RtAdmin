@@ -128,3 +128,46 @@ jobs:
     inputs:
       artifactName: 'linux-x64'
       targetPath: '$(Build.StagingDirectory)'
+
+- job: 'linux_x86'
+  pool:
+    vmImage: ubuntu-16.04
+  steps:
+  - task: DotNetCoreInstaller@0
+    displayName: 'Use .NET Core sdk $(sdk_version)'
+    inputs:
+      version: $(sdk_version)
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: custom
+      projects: $(mainProjectPath)
+      custom: restore
+      arguments: '-r linux-x86'
+  
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build Release'
+    inputs:
+      projects: $(mainProjectPath)
+      arguments: '-r linux-x64 -c Release'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet publish'
+    inputs:
+      command: publish
+      projects: $(mainProjectPath)
+      arguments: '-c Release -r linux-x86 --self-contained -o $(Build.StagingDirectory)'
+      zipAfterPublish: false
+      publishWebProjects: false
+
+  - task: Bash@3
+    inputs:
+        targetType: 'inline'
+        script: 'chmod +x $(Build.StagingDirectory)/Aktiv.RtAdmin/rtadmin'
+      
+  - task: PublishPipelineArtifact@0
+    displayName: 'Publish Pipeline Artifact'
+    inputs:
+      artifactName: 'linux-x86'
+      targetPath: '$(Build.StagingDirectory)'
