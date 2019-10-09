@@ -150,7 +150,7 @@ jobs:
     displayName: 'dotnet build Release'
     inputs:
       projects: $(mainProjectPath)
-      arguments: '-r linux-x64 -c Release'
+      arguments: '-r linux-x86 -c Release'
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet publish'
