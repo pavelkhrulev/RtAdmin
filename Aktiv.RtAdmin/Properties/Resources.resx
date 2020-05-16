@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivationPasswordsWereGenerated" xml:space="preserve">
+    <value>Generate activation passwords passed</value>
+  </data>
+  <data name="AdminPinChangeError" xml:space="preserve">
+    <value>Enter {0}</value>
+  </data>
+  <data name="AdminPinOption" xml:space="preserve">
+    <value>Set Admin PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>
+  </data>
+  <data name="ChangeAdminPinOldPinError" xml:space="preserve">
+    <value>For changing admin PIN enter old admin PIN</value>
+  </data>
+  <data name="TokenLabelPinError" xml:space="preserve">
+    <value>Can't change token label. Enter user PIN using -c</value>
+  </data>
+  <data name="ChangeUserPinOldPinsError" xml:space="preserve">
+    <value>For changing user PIN enter old user or admin PIN</value>
+  </data>
+  <data name="ChangeVolumeAttributesOption" xml:space="preserve">
+    <value>Change volume attributes. For changing volume attributes volume owner PIN is used. If owner is user or admin while PIN isn't set, default PIN will be used. If owner is local user while local user PIN isn't set with -O option, error will be occured.
+[Volume id: (1 - 9)]
+[Access rights: (ro, rw, hi, cd)]
+[Change type: (p - permanent, t - temporary)]</value>
+  </data>
+  <data name="ConfigurationFilePathOption" xml:space="preserve">
+    <value>Configuration file path</value>
+  </data>
+  <data name="FormatTokenOption" xml:space="preserve">
+    <value>Format memory. If your device has built-in Flash memory you may specify Admin PIN, otherwise you may lose all data on it</value>
+  </data>
+  <data name="FormatTokenSuccess" xml:space="preserve">
+    <value>Formatting was successful</value>
+  </data>
+  <data name="FormatVolumeParamsOption" xml:space="preserve">
+    <value>Format volume. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence. For partition creation admin PIN is used. If it isn't set, default admin PIN will be used.
+[Volume id: (1 - 9)]
+[Volume size: volume size in MB]
+[Volume owner: (a - administrator, u - user, l3-l9 - local user)]
+[Access rights: (ro, rw, hi, cd)]</value>
+  </data>
+  <data name="GenerateRandomAdminPinOption" xml:space="preserve">
+    <value>Generate random Admin PIN code of specified length. If this command is used -a is ignored</value>
+  </data>
+  <data name="GenerateRandomUserPinOption" xml:space="preserve">
+    <value>Generate random User PIN code of specified length. If this command is used -u is ignored</value>
+  </data>
+  <data name="GeneratingActivationPasswords" xml:space="preserve">
+    <value>Generating activation password(s)</value>
+  </data>
+  <data name="IncorrectAdminPin" xml:space="preserve">
+    <value>Entered Admin PIN is incorrect</value>
+  </data>
+  <data name="IncorrectPin" xml:space="preserve">
+    <value>Entered PIN is incorrect</value>
+  </data>
+  <data name="PinCodesFileIncorrectLinesCount" xml:space="preserve">
+    <value>PIN-codes file contains incorrect number of PINs</value>
+  </data>
+  <data name="InitializedInfo" xml:space="preserve">
+    <value>Application was initialized</value>
+  </data>
+  <data name="LogFilePathOption" xml:space="preserve">
+    <value>Log file path</value>
+  </data>
+  <data name="LoginWithLocalPinOption" xml:space="preserve">
+    <value>PIN Login with local PIN. In order to use local user set his new PIN preliminarily.
+[Id: local PIN id (l3 - l9)]
+[PIN: local PIN]</value>
+  </data>
+  <data name="MaxAdminPinAttemptsOption" xml:space="preserve">
+    <value>Max PIN code attempts count for Admin PIN (count must be in the range from 3 to 10; default: 6)</value>
+  </data>
+  <data name="MaxUserPinAttemptsOption" xml:space="preserve">
+    <value>Max PIN code attempts count for User PIN (count must be in the range from 3 to 10; default: 6)</value>
+  </data>
+  <data name="MinAdminPinLengthOption" xml:space="preserve">
+    <value>Min Admin PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only)</value>
+  </data>
+  <data name="MinUserPinLengthOption" xml:space="preserve">
+    <value>Min User PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only)</value>
+  </data>
+  <data name="NativeLibraryPathOption" xml:space="preserve">
+    <value>Specify a native library to use</value>
+  </data>
+  <data name="OldAdminPinOption" xml:space="preserve">
+    <value>Old Admin PIN code. Must be specified for Admin PIN changing</value>
+  </data>
+  <data name="OldUserPinOption" xml:space="preserve">
+    <value>Old User PIN code. Must be specified for User PIN changing</value>
+  </data>
+  <data name="OneIterationOnlyOption" xml:space="preserve">
+    <value>Stop after one iteration</value>
+  </data>
+  <data name="PinChangedSuccess" xml:space="preserve">
+    <value>PIN changed successfully</value>
+  </data>
+  <data name="PinChangePolicyOption" xml:space="preserve">
+    <value>Set PIN change policy. Default value - 2.
+[(1 - administrator (SO) can change user PIN), (2 - user can change user PIN), (3 - both)]</value>
+  </data>
+  <data name="PinCodesFileNotFound" xml:space="preserve">
+    <value>PIN-codes file not found</value>
+  </data>
+  <data name="PinFilePathOption" xml:space="preserve">
+    <value>Load new PIN codes from specified file. Use ont PIN per line, \n is separator. -a -u -G -g commands are ignored</value>
+  </data>
+  <data name="PinLengthMismatch" xml:space="preserve">
+    <value>PIN length and allowed PIN length mismatch. Min admin PIN length: {0}, max admin PIN length: {1}, min user PIN length: {2}, max user PIN length: {3}</value>
+  </data>
+  <data name="PinCodesFilePinsHaveEnded" xml:space="preserve">
+    <value>PIN-codes from file have ended</value>
+  </data>
+  <data name="RandomAdminPinLengthMismatch" xml:space="preserve">
+    <value>New random Admin PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}</value>
+  </data>
+  <data name="RandomUserPinLengthMismatch" xml:space="preserve">
+    <value>New random User PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}</value>
+  </data>
+  <data name="SetLocalPinOption" xml:space="preserve">
+    <value>Set local PIN.
+[Id: local PIN id (l3 - l9)]
+[PIN: local PIN]</value>
+  </data>
+  <data name="SetPin2ModeOption" xml:space="preserve">
+    <value>Activate setting PIN2-code (on the screen mode) for PINPad.</value>
+  </data>
+  <data name="SmModeOption" xml:space="preserve">
+    <value>Set SM mode (only for Bluetooth token).
+[Passwords: (1 - optional password), (2 - 1 password), (3 - 6 passwords)] 
+[Mode: (caps - only capital letters), (digits - capital letters and digits)]</value>
+  </data>
+  <data name="TokenLabelChangeSuccess" xml:space="preserve">
+    <value>Token label changed successfully</value>
+  </data>
+  <data name="TokenLabelCp1251Option" xml:space="preserve">
+    <value>Use cp1251 for new device label</value>
+  </data>
+  <data name="TokenLabelUtf8Option" xml:space="preserve">
+    <value>Use UTF-8 for new device label</value>
+  </data>
+  <data name="UnblockPinsOption" xml:space="preserve">
+    <value>Unblock user and local PINs. You should use login with Admin PIN command to unblock user and local PINs</value>
+  </data>
+  <data name="UserPinChangePolicyError" xml:space="preserve">
+    <value>Enter {0} according to user PIN change policy on token</value>
+  </data>
+  <data name="UserPinOption" xml:space="preserve">
+    <value>Set User PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used</value>
+  </data>
+  <data name="Utf8Option" xml:space="preserve">
+    <value>Use UTF-8 instead of cp1251 in PIN codes</value>
+  </data>
+  <data name="VolumeInfoParamsOption" xml:space="preserve">
+    <value>Get volumes or drive info.
+[Parameter: (volume id: 1 - 9), (all volumes: a), (flash size: sz)]</value>
+  </data>
+  <data name="NewLocalPinSetSuccess" xml:space="preserve">
+    <value>Local PIN has been successfully set</value>
+  </data>
+  <data name="Pin2SetSuccess" xml:space="preserve">
+    <value>PIN2 PINPad set request has been successfully sent</value>
+  </data>
+  <data name="PinUnlockSuccess" xml:space="preserve">
+    <value>Unblock PIN passed</value>
+  </data>
+  <data name="WaitingNextToken" xml:space="preserve">
+    <value>Next token... (Or press "q")</value>
+  </data>
+  <data name="ConfigFileIsEmpty" xml:space="preserve">
+    <value>Config file is empty</value>
+  </data>
+  <data name="ConfigFileNotFound" xml:space="preserve">
+    <value>Config file not found</value>
+  </data>
+  <data name="FormatError" xml:space="preserve">
+    <value>Formatting error</value>
+  </data>
+  <data name="FormatFailed" xml:space="preserve">
+    <value>Format failed : {0} : {1} : SM mode = {2}</value>
+  </data>
+  <data name="FormatPassed" xml:space="preserve">
+    <value>Format passed : {0} : {1} : SM mode = {2}</value>
+  </data>
+  <data name="PKCS11Error" xml:space="preserve">
+    <value>Internal error: PKCS#11 library code:</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>Token Id</value>
+  </data>
+  <data name="TokenParamsNotSet" xml:space="preserve">
+    <value>Token params were not set</value>
+  </data>
+  <data name="UnhandledError" xml:space="preserve">
+    <value>Unhandled error:</value>
+  </data>
+  <data name="AdminPinOwner" xml:space="preserve">
+    <value>admin</value>
+  </data>
+  <data name="PinChangeByAdmin" xml:space="preserve">
+    <value>by admin</value>
+  </data>
+  <data name="PinChangeFailed" xml:space="preserve">
+    <value>{0} pin change failed</value>
+  </data>
+  <data name="PinChangePassed" xml:space="preserve">
+    <value>{0} pin change {1} passed : {2} : {3}</value>
+  </data>
+  <data name="UserPinOwner" xml:space="preserve">
+    <value>user</value>
+  </data>
+  <data name="AdminPin" xml:space="preserve">
+    <value>admin PIN</value>
+  </data>
+  <data name="ChangingPinError" xml:space="preserve">
+    <value>Changing PIN error</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="UserPin" xml:space="preserve">
+    <value>user PIN</value>
+  </data>
+  <data name="PinCodesFileIsEmpty" xml:space="preserve">
+    <value>PIN-codes file is empty</value>
+  </data>
+  <data name="ActivationPasswordInvalidCharacterSet" xml:space="preserve">
+    <value>Invalid character set for generation activation passwords. It must be "caps" or "digits"</value>
+  </data>
+  <data name="ActivationPasswordInvalidCommandParamsCount" xml:space="preserve">
+    <value>Invalid command params for generation activation passwords. It must be 2 command line params</value>
+  </data>
+  <data name="ActivationPasswordInvalidSmMode" xml:space="preserve">
+    <value>Invalid SM mode. It must be from 1 to 3</value>
+  </data>
+  <data name="ConfigFileLinesHaveEnded" xml:space="preserve">
+    <value>Config lines have ended</value>
+  </data>
+  <data name="InvalidMaxAdminPinRetryCount" xml:space="preserve">
+    <value>Invalid max Admin PIN retry count. It must be in the range from 3 to 10</value>
+  </data>
+  <data name="InvalidMaxUserPinRetryCount" xml:space="preserve">
+    <value>Invalid max User PIN retry count. It must be in the range from 1 to 10</value>
+  </data>
+  <data name="InvalidMinimalAdminPinLength" xml:space="preserve">
+    <value>Invalid minimal admin PIN length. It must be from 1 to 31 symbols</value>
+  </data>
+  <data name="InvalidMinimalUserPinLength" xml:space="preserve">
+    <value>Invalid minimal user PIN length. It must be from 1 to 31 symbols</value>
+  </data>
+  <data name="InvalidPolicyValue" xml:space="preserve">
+    <value>Invalid policy value. It must be from 1 to 3</value>
+  </data>
+  <data name="PinLengthMismatchBeforeFormat" xml:space="preserve">
+    <value>PIN length and allowed PIN length mismatch. Length must be in the range from 1 to 31; default: 6</value>
+  </data>
+  <data name="ExcludedTokensOption" xml:space="preserve">
+    <value>Excluded tokens while stream formatting [token ids in specified format: 0x46bc3390 or 932436970]. Use space as serial numbers separator or use option -E for each serial number</value>
+  </data>
+  <data name="TokenLabelChangeFailed" xml:space="preserve">
+    <value>Can't change token label</value>
+  </data>
+  <data name="PinGenerationError" xml:space="preserve">
+    <value>Can't generate pin. Change Token</value>
+  </data>
+  <data name="PinGenerationFailed" xml:space="preserve">
+    <value>Can't generate pin. This token was skipped</value>
+  </data>
+  <data name="ActivationPasswordsGenerationFailed" xml:space="preserve">
+    <value>Generate activation passwords failed</value>
+  </data>
+  <data name="NewLocalPinInvalidCommandParamsCount" xml:space="preserve">
+    <value>Invalid command params for using local PIN. It must be 2 command line params</value>
+  </data>
+  <data name="NewLocalPinInvalidOwnerId" xml:space="preserve">
+    <value>Invalid local user id</value>
+  </data>
+  <data name="NewLocalPinSetFailed" xml:space="preserve">
+    <value>Failed to set local PIN</value>
+  </data>
+  <data name="Pin2SetFailed" xml:space="preserve">
+    <value>Error while sending request for setting PIN2 PINPad</value>
+  </data>
+  <data name="PinUnlockFailed" xml:space="preserve">
+    <value>Unblock PIN failed</value>
+  </data>
+  <data name="DriveFormatVolumeCreateFailed" xml:space="preserve">
+    <value>Volume create failed</value>
+  </data>
+  <data name="DriveFormatVolumeCreateSuccess" xml:space="preserve">
+    <value>Volume create passed</value>
+  </data>
+  <data name="FlashMemoryNotAvailable" xml:space="preserve">
+    <value>Token has no flash memory</value>
+  </data>
+  <data name="VolumeAccessModeChangeFailed" xml:space="preserve">
+    <value>Volume access mode change failed</value>
+  </data>
+  <data name="VolumeAccessModeChangeSuccess" xml:space="preserve">
+    <value>Volume access mode change passed</value>
+  </data>
+  <data name="VolumeOwnersStoreNotSet" xml:space="preserve">
+    <value>Volume owners store is not set</value>
+  </data>
+  <data name="TotalDriveSize" xml:space="preserve">
+    <value>Total disk size</value>
+  </data>
+  <data name="TotalDriveSizeFailed" xml:space="preserve">
+    <value>Error while getting total disk size</value>
+  </data>
+  <data name="VolumeInfoGettingFailed" xml:space="preserve">
+    <value>Error while getting volumes info</value>
+  </data>
+  <data name="VolumeInfoInvalidVolumeId" xml:space="preserve">
+    <value>Invalid volume id</value>
+  </data>
+  <data name="VolumeInfoNotFound" xml:space="preserve">
+    <value>Volume with specified id not found</value>
+  </data>
+  <data name="IllegalOptions" xml:space="preserve">
+    <value>Illegal options</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options:</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Usage:</value>
+  </data>
+  <data name="ExampleChangeAdminPin" xml:space="preserve">
+    <value>change Admin PIN</value>
+  </data>
+  <data name="ExampleChangeAdminPinWithDefault" xml:space="preserve">
+    <value>change Admin PIN, use default new Admin PIN</value>
+  </data>
+  <data name="ExampleChangeUserPin" xml:space="preserve">
+    <value>change User PIN</value>
+  </data>
+  <data name="ExampleFormatWithAdminPinGeneration" xml:space="preserve">
+    <value>formatting token with generation Admin PIN with length 10 and default User PIN</value>
+  </data>
+  <data name="ExampleFormatWithDefaultPins" xml:space="preserve">
+    <value>formatting token with default PIN codes (Admin 87654321, User 12345678)</value>
+  </data>
+  <data name="Examples" xml:space="preserve">
+    <value>Examples:</value>
+  </data>
+  <data name="ShowHelp" xml:space="preserve">
+    <value>Show help message</value>
+  </data>
+  <data name="ShowVersion" xml:space="preserve">
+    <value>Show application version</value>
+  </data>
+  <data name="ChangeVolumeAttributesInvalidCommandParamsCount" xml:space="preserve">
+    <value>Invalid command params count for changing volume attributes. It must be 3</value>
+  </data>
+  <data name="ChangeVolumeAttributesInvalidPermanentState" xml:space="preserve">
+    <value>Invalid permanent state</value>
+  </data>
+  <data name="ChangeVolumeAttributesNeedSetLocalPin" xml:space="preserve">
+    <value>Need to set local user pin</value>
+  </data>
+  <data name="FormatDriveInvalidAccessMode" xml:space="preserve">
+    <value>Invalid access mode</value>
+  </data>
+  <data name="FormatDriveInvalidCommandParamsCount" xml:space="preserve">
+    <value>Invalid command params count for drive formatting. It must be 4</value>
+  </data>
+  <data name="FormatDriveInvalidVolumeSize" xml:space="preserve">
+    <value>Invalid volume size</value>
+  </data>
+  <data name="IncorrectOsVersion" xml:space="preserve">
+    <value>Incorrect OS version</value>
+  </data>
+  <data name="InvalidUserPinChangePolicy" xml:space="preserve">
+    <value>Invalid user pin change policy</value>
+  </data>
+  <data name="VolumeAttributesStoreNotSet" xml:space="preserve">
+    <value>Volume attributes store is not set</value>
+  </data>
+  <data name="ShouldSetFormatOption" xml:space="preserve">
+    <value>Need to set formatting option -f</value>
+  </data>
+  <data name="DefaultAdminPinWillBeUsed" xml:space="preserve">
+    <value>Default admin PIN will be used</value>
+  </data>
+  <data name="DefaultUserPinWillBeUsed" xml:space="preserve">
+    <value>Default user PIN will be used</value>
+  </data>
+  <data name="IncorrectVolumeOwnerPin" xml:space="preserve">
+    <value>Incorrect volume owner PIN</value>
+  </data>
+  <data name="PinCodesFileNameEmpty" xml:space="preserve">
+    <value>Pin codes file name should be set</value>
+  </data>
+  <data name="TokenLabelEmpty" xml:space="preserve">
+    <value>Token label should be set</value>
+  </data>
+  <data name="VolumeInfoEmpty" xml:space="preserve">
+    <value>For -i argument should be set</value>
+  </data>
+  <data name="ExcludedTokenSerialEmpty" xml:space="preserve">
+    <value>Excluded token serial number should be set in specified format (ex.: 0x46bc3390 or 932436970)</value>
+  </data>
+  <data name="ArgumentMustBeIntegerType" xml:space="preserve">
+    <value>Option "-{0}" argument should be a number</value>
+  </data>
+  <data name="ConfigurationFileEmpty" xml:space="preserve">
+    <value>Configuration file should be set</value>
+  </data>
+  <data name="NativeLibraryFileEmpty" xml:space="preserve">
+    <value>Native library file should be set</value>
+  </data>
+  <data name="NativeLibraryFileInvalid" xml:space="preserve">
+    <value>Unable to open native library at the specified path</value>
+  </data>
+  <data name="NativeLibraryFileNotExist" xml:space="preserve">
+    <value>Native library file doesn't exist at the specified path</value>
+  </data>
+</root>

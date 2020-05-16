@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivationPasswordsWereGenerated" xml:space="preserve">
+    <value>Пароли активации сгенерированы</value>
+  </data>
+  <data name="AdminPinChangeError" xml:space="preserve">
+    <value>Введите {0}</value>
+  </data>
+  <data name="AdminPinOption" xml:space="preserve">
+    <value>Устанавливаемый PIN-код администратора. Параметр должен использоваться при изменении PIN-кода администратора. Если значение параметра не установлен, то будет использовано значение по умолчанию (87654321)</value>
+  </data>
+  <data name="ChangeAdminPinOldPinError" xml:space="preserve">
+    <value>Для изменения PIN-кода администратора необходимо ввести текущий PIN-код администратора, используя параметр -o</value>
+  </data>
+  <data name="TokenLabelPinError" xml:space="preserve">
+    <value>Невозможно изменить имя токена. Введите PIN-код пользователя, используя параметр -c</value>
+  </data>
+  <data name="ChangeUserPinOldPinsError" xml:space="preserve">
+    <value>Для изменения PIN-кода пользователя необходимо ввести текущий PIN-код администратора или пользователя, используя параметр -o или -c</value>
+  </data>
+  <data name="ChangeVolumeAttributesOption" xml:space="preserve">
+    <value>Изменение прав доступа. Для изменения прав используется PIN-код владельца раздела. Если PIN-код не указан, а владельцем раздела является администратор или пользователь, то будет использован PIN-код по умолчанию. Если владельцем раздела является локальный пользователь, а его PIN-код не был указан с использованием команды -O, то произойдет ошибка.
+[идентификатор раздела (1-8)]
+[новые права доступа: ro, rw, hi, cd]
+[долговременность: p - постоянное изменение, t - временное]</value>
+  </data>
+  <data name="ConfigurationFilePathOption" xml:space="preserve">
+    <value>Путь к конфигурационному файлу</value>
+  </data>
+  <data name="FormatTokenOption" xml:space="preserve">
+    <value>Форматировать токен. Если устройство имеет встроенную флеш-память, вы можете установить PIN-код администратора, иначе данные могут быть утеряны</value>
+  </data>
+  <data name="FormatTokenSuccess" xml:space="preserve">
+    <value>Форматирование успешно завершено</value>
+  </data>
+  <data name="FormatVolumeParamsOption" xml:space="preserve">
+    <value>Разбиение Flash-памяти на разделы (форматирование). Форматирование удалит всю информацию с Flash-памяти. Сделайте копию важной информации - после форматирования ее будет невозможно восстановить.  Один параметр используется для одного раздела. Чтобы создать много разделов используется последовательность команд -F. Для создания раздела необходим PIN-код администратора. Если он не указан, то будет использован PIN-код по умолчанию.
+[идентификатор раздела (1-8)] 
+[размер в Мб] 
+[владелец: a - администратор, u - пользователь, l3-l9 - локальный пользователь]
+[права доступа: ro, rw, hi, cd]</value>
+  </data>
+  <data name="GenerateRandomAdminPinOption" xml:space="preserve">
+    <value>Генерировать PIN-код администратора установленной длины (8-32) (используется при форматировании). При использовании этого параметра параметр -u игнорируется</value>
+  </data>
+  <data name="GenerateRandomUserPinOption" xml:space="preserve">
+    <value>Генерировать PIN-код пользователя установленной длины (8-32) (используется при форматировании). При использовании этого параметра параметр -u игнорируется</value>
+  </data>
+  <data name="GeneratingActivationPasswords" xml:space="preserve">
+    <value>Генерация паролей активации</value>
+  </data>
+  <data name="IncorrectAdminPin" xml:space="preserve">
+    <value>Введен некорректный PIN-код администратора</value>
+  </data>
+  <data name="IncorrectPin" xml:space="preserve">
+    <value>Введен некорректный PIN-код</value>
+  </data>
+  <data name="PinCodesFileIncorrectLinesCount" xml:space="preserve">
+    <value>Файл содержит некорректное число PIN-кодов</value>
+  </data>
+  <data name="InitializedInfo" xml:space="preserve">
+    <value>Приложение инициализировано</value>
+  </data>
+  <data name="LogFilePathOption" xml:space="preserve">
+    <value>Путь к файлу лога</value>
+  </data>
+  <data name="LoginWithLocalPinOption" xml:space="preserve">
+    <value>Текущий PIN-код пользователя. Если PIN-код для данного пользователя не определен, текущий PIN-код указывать не требуется.
+[идентификатор локального пользователя (l3-l9)]
+[PIN-код]</value>
+  </data>
+  <data name="MaxAdminPinAttemptsOption" xml:space="preserve">
+    <value>Максимальное количество попыток ввода PIN-кода администратора (3-10; по умолчанию - 10)</value>
+  </data>
+  <data name="MaxUserPinAttemptsOption" xml:space="preserve">
+    <value>Максимальное количество попыток ввода PIN-кода пользователя (3-10; по умолчанию - 10)</value>
+  </data>
+  <data name="MinAdminPinLengthOption" xml:space="preserve">
+    <value>Минимальная длина PIN-кода администратора (6-31 для Рутокен ЭЦП и Рутокен Lite, 1 для Рутокен S)</value>
+  </data>
+  <data name="MinUserPinLengthOption" xml:space="preserve">
+    <value>Минимальная длина PIN-кода пользователя (6-31 для Рутокен ЭЦП и Рутокен Lite, 1 для Рутокен S)</value>
+  </data>
+  <data name="NativeLibraryPathOption" xml:space="preserve">
+    <value>Путь до используемой нативной библиотеки PKCS#11</value>
+  </data>
+  <data name="OldAdminPinOption" xml:space="preserve">
+    <value>Текущий PIN-код администратора. Параметр должен использоваться при изменении PIN-кода администратора</value>
+  </data>
+  <data name="OldUserPinOption" xml:space="preserve">
+    <value>Текущий PIN-код пользователя. Параметр должен использоваться при изменении PIN-кода пользователя</value>
+  </data>
+  <data name="OneIterationOnlyOption" xml:space="preserve">
+    <value>Ограничение количества выполняемых итераций до одной</value>
+  </data>
+  <data name="PinChangedSuccess" xml:space="preserve">
+    <value>PIN-код успешно изменен</value>
+  </data>
+  <data name="PinChangePolicyOption" xml:space="preserve">
+    <value>Политика смены PIN-кода пользователя (кто может менять PIN-код).
+[Политика: (1 – администратор), (2 – пользователь), (3 – пользователь и администратор)]</value>
+  </data>
+  <data name="PinCodesFileNotFound" xml:space="preserve">
+    <value>Файл, содержащий PIN-коды, не найден</value>
+  </data>
+  <data name="PinFilePathOption" xml:space="preserve">
+    <value>Загрузка значений пар PIN-кодов из файла, находящегося по пути, указанного в значении параметра. В файле каждому PIN-коду соответствует отдельная строка. При использовании данного параметра параметры -a -u -G -g игнорируются</value>
+  </data>
+  <data name="PinLengthMismatch" xml:space="preserve">
+    <value>Несоответствие длины введенного PIN-кода и разрешенной длины PIN-кода. Минимальная длина PIN-кода администратора: {0}, максимальная длина PIN-кода администратора: {1}, минимальная длина PIN-кода пользователя {2}, максимальная длина PIN-кода пользователя: {3}</value>
+  </data>
+  <data name="PinCodesFilePinsHaveEnded" xml:space="preserve">
+    <value>PIN-коды из файла закончились</value>
+  </data>
+  <data name="RandomAdminPinLengthMismatch" xml:space="preserve">
+    <value>Несоответствие длины запрашиваемого случайного PIN-кода администратора и разрешенной длины PIN-кода. Минимальная длина PIN-кода: {0}, максимальная длина PIN-кода: {1}</value>
+  </data>
+  <data name="RandomUserPinLengthMismatch" xml:space="preserve">
+    <value>Несоответствие длины запрашиваемого случайного PIN-кода пользователя и разрешенной длины PIN-кода. Минимальная длина PIN-кода: {0}, максимальная длина PIN-кода: {1}</value>
+  </data>
+  <data name="SetLocalPinOption" xml:space="preserve">
+    <value>Устанавливаемый PIN-код локального пользователя
+[идентификатор локального пользователя (l3-l9)]
+[PIN-код]</value>
+  </data>
+  <data name="SetPin2ModeOption" xml:space="preserve">
+    <value>Активация установки PIN2-кода для Рутокен PINPad (устанавливается на экране устройства).</value>
+  </data>
+  <data name="SmModeOption" xml:space="preserve">
+    <value>Установить SM mode (только для Bluetooth токена).
+[Пароли: (1 - опциональный пароль), (2 - 1 пароль), (3 - 6 паролей)] 
+[Режим: (caps - только заглавные буквы), (digits - заглавные буквы и цифры)]</value>
+  </data>
+  <data name="TokenLabelChangeSuccess" xml:space="preserve">
+    <value>Метка токена успешно изменена</value>
+  </data>
+  <data name="TokenLabelCp1251Option" xml:space="preserve">
+    <value>Установить метку токена в кодировке Windows-1251</value>
+  </data>
+  <data name="TokenLabelUtf8Option" xml:space="preserve">
+    <value>Установить метку токена в кодировке UTF-8</value>
+  </data>
+  <data name="UnblockPinsOption" xml:space="preserve">
+    <value>Разблокировать локальные PIN-коды и PIN-код пользователя. Для использования этого параметра необходим логин с текущим PIN-кодом администратора</value>
+  </data>
+  <data name="UserPinChangeError" xml:space="preserve">
+    <value>Введите {0} согласно политике изменения PIN-кода</value>
+  </data>
+  <data name="UserPinOption" xml:space="preserve">
+    <value>Устанавливаемый PIN-код пользователя. Параметр должен использоваться при изменении PIN-кода пользователя. Если значение параметра не установлено, то будет использовано значение по умолчанию (12345678)</value>
+  </data>
+  <data name="Utf8Option" xml:space="preserve">
+    <value>Конвертировать PIN-коды в UTF-8</value>
+  </data>
+  <data name="VolumeInfoParamsOption" xml:space="preserve">
+    <value>Получение информации о размере Flash-памяти и атрибутах разделов. 	
+[a - атрибуты всех разделов]
+[1-8 - атрибуты конкретного раздела]
+[sz - объем памяти]</value>
+  </data>
+  <data name="NewLocalPinSetSuccess" xml:space="preserve">
+    <value>PIN-код локального пользователя успешно установлен</value>
+  </data>
+  <data name="Pin2SetSuccess" xml:space="preserve">
+    <value>Запрос на установку PIN2 на PINPad отправлен</value>
+  </data>
+  <data name="PinUnlockSuccess" xml:space="preserve">
+    <value>PIN-код успешно разблокирован</value>
+  </data>
+  <data name="ConfigFileIsEmpty" xml:space="preserve">
+    <value>Конфигурационный файл пустой</value>
+  </data>
+  <data name="ConfigFileNotFound" xml:space="preserve">
+    <value>Конфигурационный файл не найден</value>
+  </data>
+  <data name="FormatError" xml:space="preserve">
+    <value>Ошибка при форматировании</value>
+  </data>
+  <data name="FormatFailed" xml:space="preserve">
+    <value>Форматирование закончено с ошибкой  : {0} : {1} : SM режим = {2}</value>
+  </data>
+  <data name="FormatPassed" xml:space="preserve">
+    <value>Форматирование закончено : {0} : {1} : SM режим = {2}</value>
+  </data>
+  <data name="PKCS11Error" xml:space="preserve">
+    <value>Внутренняя ошибка: PKCS#11 код ошибки:</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>Id токена</value>
+  </data>
+  <data name="TokenParamsNotSet" xml:space="preserve">
+    <value>Параметры токена не были установлены</value>
+  </data>
+  <data name="UnhandledError" xml:space="preserve">
+    <value>Непредвиденная ошибка:</value>
+  </data>
+  <data name="WaitingNextToken" xml:space="preserve">
+    <value>Ожидание следующего токена... (или нажмите "q" для выхода)</value>
+  </data>
+  <data name="AdminPinOwner" xml:space="preserve">
+    <value>Администраторский</value>
+  </data>
+  <data name="PinChangeByAdmin" xml:space="preserve">
+    <value>администратором</value>
+  </data>
+  <data name="PinChangeFailed" xml:space="preserve">
+    <value>{0} PIN-код не был изменен (ошибка)</value>
+  </data>
+  <data name="PinChangePassed" xml:space="preserve">
+    <value>{0} PIN-код изменен {1} : {2} : {3}</value>
+  </data>
+  <data name="UserPinOwner" xml:space="preserve">
+    <value>Пользовательский</value>
+  </data>
+  <data name="AdminPin" xml:space="preserve">
+    <value>PIN-код администратора</value>
+  </data>
+  <data name="ChangingPinError" xml:space="preserve">
+    <value>Ошибка при изменении PIN-кода</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>или</value>
+  </data>
+  <data name="UserPin" xml:space="preserve">
+    <value>PIN-код пользователя</value>
+  </data>
+  <data name="PinCodesFileIsEmpty" xml:space="preserve">
+    <value>Файл, содержащий PIN-коды, пустой</value>
+  </data>
+  <data name="ActivationPasswordInvalidCharacterSet" xml:space="preserve">
+    <value>Некорректный набор символов для генерации паролей активации. Значение должно быть "caps" или "digits"</value>
+  </data>
+  <data name="ActivationPasswordInvalidCommandParamsCount" xml:space="preserve">
+    <value>Некорректное число параметров командной строки для генерации паролей активации. Должно быть передано два параметра</value>
+  </data>
+  <data name="ActivationPasswordInvalidSmMode" xml:space="preserve">
+    <value>Некорректное значение режима SM. Значение должно быть в диапазоне от 1-го до 3-х</value>
+  </data>
+  <data name="ConfigFileLinesHaveEnded" xml:space="preserve">
+    <value>Строки конфигурации закончились</value>
+  </data>
+  <data name="InvalidMaxAdminPinRetryCount" xml:space="preserve">
+    <value>Некорректное максимальное количество попыток ввода PIN-кода администратора. Значение должно быть в диапазоне от 3-х до 10-ти</value>
+  </data>
+  <data name="InvalidMaxUserPinRetryCount" xml:space="preserve">
+    <value>Некорректное максимальное количество попыток ввода PIN-кода пользователя. Значение должно быть в диапазоне от 1-го до 10-ти</value>
+  </data>
+  <data name="InvalidMinimalAdminPinLength" xml:space="preserve">
+    <value>Некорректная минимальная длина PIN-кода администратора. Значение должно быть в диапазоне от 1-го до 31-го</value>
+  </data>
+  <data name="InvalidMinimalUserPinLength" xml:space="preserve">
+    <value>Некорректная минимальная длина PIN-кода пользователя. Значение должно быть в диапазоне от 1-го до 31-го</value>
+  </data>
+  <data name="InvalidPolicyValue" xml:space="preserve">
+    <value>Некорректное значение политики смены PIN-кода пользователя. Значение должно быть в диапазоне от 1-го до 3-х</value>
+  </data>
+  <data name="PinLengthMismatchBeforeFormat" xml:space="preserve">
+    <value>Несоответствие длины введенного PIN-кода и разрешенной длины PIN-кода. Длина PIN-кода должна быть в диапазоне от 1 до 31. По умолчанию минимальная длина - 6</value>
+  </data>
+  <data name="ExcludedTokensOption" xml:space="preserve">
+    <value>Исключенные токены при поточном форматировании [серийные номера токенов в формате: 0x46bc3390 или 932436970]. В качестве разделителя серийных номеров использовать пробел. Также можно использовать опцию -E на каждый серийный номер.</value>
+  </data>
+  <data name="TokenLabelChangeFailed" xml:space="preserve">
+    <value>Не удалось установить метку токена</value>
+  </data>
+  <data name="PinGenerationError" xml:space="preserve">
+    <value>Ошибка при генерации PIN-кода. Используйте другой токен</value>
+  </data>
+  <data name="PinGenerationFailed" xml:space="preserve">
+    <value>Не удалось сгенерировать PIN-код. Токен был пропущен</value>
+  </data>
+  <data name="ActivationPasswordsGenerationFailed" xml:space="preserve">
+    <value>Не удалось сгенерировать пароли активации</value>
+  </data>
+  <data name="NewLocalPinInvalidCommandParamsCount" xml:space="preserve">
+    <value>Некорректное число параметров командной строки для использования локального PIN-кода. Должно быть передано два параметра</value>
+  </data>
+  <data name="NewLocalPinInvalidOwnerId" xml:space="preserve">
+    <value>Неверный идентификатор локального пользователя</value>
+  </data>
+  <data name="NewLocalPinSetFailed" xml:space="preserve">
+    <value>Не удалось установить локальный PIN-код</value>
+  </data>
+  <data name="Pin2SetFailed" xml:space="preserve">
+    <value>Ошибка при отправке запроса на установку PIN2 на PINPad</value>
+  </data>
+  <data name="PinUnlockFailed" xml:space="preserve">
+    <value>Не удалось разблокировать PIN-код</value>
+  </data>
+  <data name="DriveFormatVolumeCreateFailed" xml:space="preserve">
+    <value>Не удалось создать раздел</value>
+  </data>
+  <data name="VolumeAccessModeChangeFailed" xml:space="preserve">
+    <value>Не удалось изменить права доступа на раздел</value>
+  </data>
+  <data name="VolumeAccessModeChangeSuccess" xml:space="preserve">
+    <value>Права доступа на раздел успешно изменены</value>
+  </data>
+  <data name="VolumeOwnersStoreNotSet" xml:space="preserve">
+    <value>Не установлено хранилище идентификаторов локальных пользователей</value>
+  </data>
+  <data name="FlashMemoryNotAvailable" xml:space="preserve">
+    <value>Токен не имеет флеш-памяти</value>
+  </data>
+  <data name="TotalDriveSize" xml:space="preserve">
+    <value>Общий объем памяти</value>
+  </data>
+  <data name="TotalDriveSizeFailed" xml:space="preserve">
+    <value>Не удалось получить общий объем памяти</value>
+  </data>
+  <data name="VolumeInfoGettingFailed" xml:space="preserve">
+    <value>Ошибка при получении информации о разделах</value>
+  </data>
+  <data name="VolumeInfoInvalidVolumeId" xml:space="preserve">
+    <value>Неверный id раздела</value>
+  </data>
+  <data name="VolumeInfoNotFound" xml:space="preserve">
+    <value>Раздел с заданным идентификатором не найден</value>
+  </data>
+  <data name="IllegalOptions" xml:space="preserve">
+    <value>Переданы недопустимые параметры</value>
+  </data>
+  <data name="ExampleChangeAdminPin" xml:space="preserve">
+    <value>изменить PIN-код администратора</value>
+  </data>
+  <data name="ExampleChangeAdminPinWithDefault" xml:space="preserve">
+    <value>изменить PIN-код администратора на PIN-код администратора по умолчанию</value>
+  </data>
+  <data name="ExampleChangeUserPin" xml:space="preserve">
+    <value>изменить PIN-код пользователя</value>
+  </data>
+  <data name="ExampleFormatWithAdminPinGeneration" xml:space="preserve">
+    <value>форматировать токен с генерацией PIN-кода администратора длиной 10 символов и PIN-кодом пользователя по умолчанию</value>
+  </data>
+  <data name="ExampleFormatWithDefaultPins" xml:space="preserve">
+    <value>форматировать токен с PIN-кодами по умолчанию (PIN-код администратора 87654321, PIN-код пользователя 12345678)</value>
+  </data>
+  <data name="Examples" xml:space="preserve">
+    <value>Примеры:</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Параметры:</value>
+  </data>
+  <data name="ShowHelp" xml:space="preserve">
+    <value>Показать возможные параметры и примеры</value>
+  </data>
+  <data name="ShowVersion" xml:space="preserve">
+    <value>Показать версию приложения</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Использование:</value>
+  </data>
+  <data name="ChangeVolumeAttributesInvalidCommandParamsCount" xml:space="preserve">
+    <value>Некорректное число параметров командной строки для изменения атрибутов раздела. Должно быть передано три параметра</value>
+  </data>
+  <data name="ChangeVolumeAttributesInvalidPermanentState" xml:space="preserve">
+    <value>Некорректный параметр долговременности изменений</value>
+  </data>
+  <data name="ChangeVolumeAttributesNeedSetLocalPin" xml:space="preserve">
+    <value>Необходимо установить PIN локального пользователя</value>
+  </data>
+  <data name="FormatDriveInvalidAccessMode" xml:space="preserve">
+    <value>Некорректные права доступа</value>
+  </data>
+  <data name="FormatDriveInvalidCommandParamsCount" xml:space="preserve">
+    <value>Некорректное число параметров командной строки для форматирования флеш-памяти. Должно быть передано четыре параметра</value>
+  </data>
+  <data name="FormatDriveInvalidVolumeSize" xml:space="preserve">
+    <value>Некорректный размер раздела</value>
+  </data>
+  <data name="IncorrectOsVersion" xml:space="preserve">
+    <value>Некорректная версия ОС</value>
+  </data>
+  <data name="InvalidUserPinChangePolicy" xml:space="preserve">
+    <value>Некорректная политика изменения PIN-кода пользователя</value>
+  </data>
+  <data name="VolumeAttributesStoreNotSet" xml:space="preserve">
+    <value>Не установлено хранилище аттрибутов разделов флеш-памяти</value>
+  </data>
+  <data name="ShouldSetFormatOption" xml:space="preserve">
+    <value>Необходимо установить параметр для форматирования токена -f</value>
+  </data>
+  <data name="DriveFormatVolumeCreateSuccess" xml:space="preserve">
+    <value>Успешно создан раздел</value>
+  </data>
+  <data name="UserPinChangePolicyError" xml:space="preserve">
+    <value>Введите {0} в соответствии с политикой изменения PIN-кода пользователя</value>
+  </data>
+  <data name="DefaultAdminPinWillBeUsed" xml:space="preserve">
+    <value>Будет использован PIN-код администратора по умолчанию</value>
+  </data>
+  <data name="DefaultUserPinWillBeUsed" xml:space="preserve">
+    <value>Будет использован PIN-код пользователя по умолчанию</value>
+  </data>
+  <data name="IncorrectVolumeOwnerPin" xml:space="preserve">
+    <value>Некорректный PIN-код владельца раздела</value>
+  </data>
+  <data name="PinCodesFileNameEmpty" xml:space="preserve">
+    <value>Имя файла, содержащего PIN-коды, должно быть установлено</value>
+  </data>
+  <data name="TokenLabelEmpty" xml:space="preserve">
+    <value>Метка токена должна быть установлена</value>
+  </data>
+  <data name="VolumeInfoEmpty" xml:space="preserve">
+    <value>Для опции -i должен быть указан аргумент</value>
+  </data>
+  <data name="ExcludedTokenSerialEmpty" xml:space="preserve">
+    <value>Серийный номер исключаемого токена должен быть установлен в ожидаемом формате (пр.: 0x46bc3390 или 932436970)</value>
+  </data>
+  <data name="ArgumentMustBeIntegerType" xml:space="preserve">
+    <value>Аргумент опции "-{0}" должен быть числом</value>
+  </data>
+  <data name="ConfigurationFileEmpty" xml:space="preserve">
+    <value>Файл конфигурации должен быть установлен</value>
+  </data>
+  <data name="NativeLibraryFileEmpty" xml:space="preserve">
+    <value>Файл нативной библиотеки должен быть установлен</value>
+  </data>
+  <data name="NativeLibraryFileInvalid" xml:space="preserve">
+    <value>Невозможно открыть нативную библиотеку по указанному пути</value>
+  </data>
+  <data name="NativeLibraryFileNotExist" xml:space="preserve">
+    <value>Файл нативной библиотеки не существует по указанному пути</value>
+  </data>
+</root>
