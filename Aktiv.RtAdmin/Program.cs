@@ -9,6 +9,9 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Aktiv.RtAdmin
 {
@@ -41,6 +44,8 @@ namespace Aktiv.RtAdmin
 
         static int Main(string[] args)
         {
+	    DllMap.Register(Assembly.GetAssembly(typeof(Pkcs11Uri)));
+
             CommandLineOptions options;
             try
             {
