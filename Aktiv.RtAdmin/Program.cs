@@ -44,7 +44,7 @@ namespace Aktiv.RtAdmin
 
         static int Main(string[] args)
         {
-	    DllMap.Register(Assembly.GetAssembly(typeof(Pkcs11Uri)));
+            DllMap.Register(Assembly.GetAssembly(typeof(Pkcs11Uri)));
 
             CommandLineOptions options;
             try
