@@ -1029,6 +1029,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get user and admin PINs from stdin if they value equal &quot;stdin&quot;.
+        /// </summary>
+        public static string StdinPinsOption {
+            get {
+                return ResourceManager.GetString("StdinPinsOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Token Id.
         /// </summary>
         public static string TokenId {

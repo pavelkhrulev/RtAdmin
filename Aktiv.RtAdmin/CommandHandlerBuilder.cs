@@ -150,7 +150,11 @@ namespace Aktiv.RtAdmin
                         _commandLineOptions.MaxAdminPinAttempts, _commandLineOptions.MaxUserPinAttempts, _runtimeTokenParams.SmMode);
 
                     Console.WriteLine(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatTokenSuccess));
-                    _logger.LogInformation(_logMessageBuilder.WithFormatResult(Resources.FormatPassed));
+                    
+                    if (!string.IsNullOrWhiteSpace(_commandLineOptions.PinFilePath))
+                    {
+                        _logger.LogInformation(_logMessageBuilder.WithFormatResult(Resources.FormatPassed));
+                    }
                 }
                 catch
                 {

@@ -266,6 +266,9 @@
   <data name="UserPinOption" xml:space="preserve">
     <value>Устанавливаемый PIN-код пользователя. Параметр должен использоваться при изменении PIN-кода пользователя. Если значение параметра не установлено, то будет использовано значение по умолчанию (12345678)</value>
   </data>
+  <data name="StdinPinsOption" xml:space="preserve">
+    <value>Берет значение PIN-кодов пользователя и администратора из стандартного потока ввода, если их значение равно "stdin"</value>
+  </data>
   <data name="Utf8Option" xml:space="preserve">
     <value>Конвертировать PIN-коды в UTF-8</value>
   </data>

@@ -32,6 +32,8 @@ namespace Aktiv.RtAdmin
 
         public string UserPin { get; set; }
 
+        public bool StdinPins { get; set; }
+
         public bool SetPin2Mode { get; set; }
 
         public string ConfigurationFilePath { get; set; }
