@@ -346,10 +346,10 @@ namespace Aktiv.RtAdmin
 
             if (options.StdinPins && !pinCodesFileShouldBeSet)
             {
-                if (options.OldUserPin == "stdin") options.OldUserPin = GetPasswordFromConsole("Old User PIN:");
-                if (options.UserPin == "stdin") options.UserPin = GetPasswordFromConsole("User PIN:");
-                if (options.OldAdminPin == "stdin") options.OldUserPin = GetPasswordFromConsole("Old Admin PIN:");
-                if (options.AdminPin == "stdin") options.AdminPin = GetPasswordFromConsole("Admin PIN:");
+                if (options.OldUserPin == "stdin") options.OldUserPin = GetPasswordFromConsole(Resources.OldUserPinPrompt);
+                if (options.UserPin == "stdin") options.UserPin = GetPasswordFromConsole(Resources.UserPinPrompt);
+                if (options.OldAdminPin == "stdin") options.OldAdminPin = GetPasswordFromConsole(Resources.OldAdminPinPrompt);
+                if (options.AdminPin == "stdin") options.AdminPin = GetPasswordFromConsole(Resources.AdminPinPrompt);
             }
 
             return options;

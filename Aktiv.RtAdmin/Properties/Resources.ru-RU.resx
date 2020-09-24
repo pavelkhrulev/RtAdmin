@@ -542,4 +542,16 @@
   <data name="NativeLibraryFileNotExist" xml:space="preserve">
     <value>Файл нативной библиотеки не существует по указанному пути</value>
   </data>
+  <data name="AdminPinPrompt" xml:space="preserve">
+    <value>Новый PIN-код администратора: </value>
+  </data>
+  <data name="OldAdminPinPrompt" xml:space="preserve">
+    <value>Текущий PIN-код администратора: </value>
+  </data>
+  <data name="OldUserPinPrompt" xml:space="preserve">
+    <value>Текущий PIN-код пользователя: </value>
+  </data>
+  <data name="UserPinPrompt" xml:space="preserve">
+    <value>Новый PIN-код пользователя: </value>
+  </data>
 </root>

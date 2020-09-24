@@ -151,7 +151,7 @@ namespace Aktiv.RtAdmin
 
                     Console.WriteLine(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatTokenSuccess));
                     
-                    if (!string.IsNullOrWhiteSpace(_commandLineOptions.PinFilePath))
+                    if (!_commandLineOptions.StdinPins)
                     {
                         _logger.LogInformation(_logMessageBuilder.WithFormatResult(Resources.FormatPassed));
                     }
@@ -159,7 +159,10 @@ namespace Aktiv.RtAdmin
                 catch
                 {
                     Console.Error.WriteLine(_logMessageBuilder.WithTokenIdSuffix(Resources.FormatError));
-                    _logger.LogError(_logMessageBuilder.WithFormatResult(Resources.FormatFailed));
+                    if (!_commandLineOptions.StdinPins)
+                    {
+                        _logger.LogError(_logMessageBuilder.WithFormatResult(Resources.FormatFailed));
+                    }
                     throw;
                 }
 
@@ -262,18 +265,26 @@ namespace Aktiv.RtAdmin
                         }
 
                         Console.WriteLine(Resources.PinChangedSuccess);
-                        _logger.LogInformation(_logMessageBuilder.WithTokenId(
+
+                        if (!_commandLineOptions.StdinPins)
+                        {
+                            _logger.LogInformation(_logMessageBuilder.WithTokenId(
                             string.Format(Resources.PinChangePassed, Resources.UserPinOwner,
                                 changeBy,
                                 ownerPinCode.Value,
                                 _runtimeTokenParams.NewUserPin.Value)));
+                        }
                     }
                     catch
                     {
                         Console.Error.WriteLine(Resources.ChangingPinError);
-                        _logger.LogError(_logMessageBuilder.WithTokenId(
-                                                   string.Format(Resources.PinChangeFailed, Resources.UserPinOwner)) +
-                                                   $" {changeBy} : {ownerPinCode.Value} : {_runtimeTokenParams.NewUserPin.Value}");
+
+                        if (!_commandLineOptions.StdinPins)
+                        {
+                            _logger.LogError(_logMessageBuilder.WithTokenId(
+                                                       string.Format(Resources.PinChangeFailed, Resources.UserPinOwner)) +
+                                                       $" {changeBy} : {ownerPinCode.Value} : {_runtimeTokenParams.NewUserPin.Value}");
+                        }
                         throw;
                     }
                 }

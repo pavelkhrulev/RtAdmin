@@ -537,4 +537,16 @@
   <data name="StdinPinsOption" xml:space="preserve">
     <value>Get user and admin PINs from stdin if they value equal "stdin"</value>
   </data>
+  <data name="AdminPinPrompt" xml:space="preserve">
+    <value>New Admin PIN:</value>
+  </data>
+  <data name="OldAdminPinPrompt" xml:space="preserve">
+    <value>Current Admin PIN: </value>
+  </data>
+  <data name="OldUserPinPrompt" xml:space="preserve">
+    <value>Current User PIN: </value>
+  </data>
+  <data name="UserPinPrompt" xml:space="preserve">
+    <value>New User PIN: </value>
+  </data>
 </root>
