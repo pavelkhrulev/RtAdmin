@@ -2,8 +2,8 @@
 {
     public enum UserPinChangePolicy : uint
     {
-        ByUser = 1,
-        ByAdmin = 2,
+        ByAdmin = 1,
+        ByUser = 2,
         ByUserOrAdmin = 3
     }
 }
