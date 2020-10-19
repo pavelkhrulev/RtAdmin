@@ -75,7 +75,10 @@ namespace Aktiv.RtAdmin
                     currentParameter = "u";
                     options.UserPin = DefaultValues.UserPin;
                 }},
-
+                {"I", Resources.StdinPinsOption, v =>
+                {
+                    options.StdinPins = v != null;
+                }},
                 {"t", Resources.SetPin2ModeOption, v =>
                 {
                     options.SetPin2Mode = v != null;
@@ -339,7 +342,16 @@ namespace Aktiv.RtAdmin
 
                 throw new AppMustBeClosedException(0);
             }
-            
+
+
+            if (options.StdinPins && !pinCodesFileShouldBeSet)
+            {
+                if (options.OldUserPin == "stdin") options.OldUserPin = GetPasswordFromConsole(Resources.OldUserPinPrompt);
+                if (options.UserPin == "stdin") options.UserPin = GetPasswordFromConsole(Resources.UserPinPrompt);
+                if (options.OldAdminPin == "stdin") options.OldAdminPin = GetPasswordFromConsole(Resources.OldAdminPinPrompt);
+                if (options.AdminPin == "stdin") options.AdminPin = GetPasswordFromConsole(Resources.AdminPinPrompt);
+            }
+
             return options;
         }
 
@@ -400,5 +412,35 @@ namespace Aktiv.RtAdmin
 
             throw new AppMustBeClosedException(retCode);
         }
+
+        public static string GetPasswordFromConsole(string displayMessage, char mask = '*')
+        {
+            Console.Write(displayMessage);
+
+            var sb = new StringBuilder();
+            ConsoleKeyInfo keyInfo;
+            while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Enter)
+            {
+                if (!char.IsControl(keyInfo.KeyChar))
+                {
+                    sb.Append(keyInfo.KeyChar);
+                    Console.Write(mask);
+                }
+                else if (keyInfo.Key == ConsoleKey.Backspace && sb.Length > 0)
+                {
+                    sb.Remove(sb.Length - 1, 1);
+
+                    if (Console.CursorLeft == 0)
+                    {
+                        Console.SetCursorPosition(Console.BufferWidth - 1, Console.CursorTop - 1);
+                        Console.Write(' ');
+                        Console.SetCursorPosition(Console.BufferWidth - 1, Console.CursorTop - 1);
+                    }
+                    else Console.Write("\b \b");
+                }
+            }
+            Console.WriteLine();
+            return sb.ToString();
+        } 
     }
 }

@@ -142,6 +142,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Admin PIN:.
+        /// </summary>
+        public static string AdminPinPrompt {
+            get {
+                return ResourceManager.GetString("AdminPinPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Option &quot;-{0}&quot; argument should be a number.
         /// </summary>
         public static string ArgumentMustBeIntegerType {
@@ -736,11 +745,29 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Admin PIN: .
+        /// </summary>
+        public static string OldAdminPinPrompt {
+            get {
+                return ResourceManager.GetString("OldAdminPinPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Old User PIN code. Must be specified for User PIN changing.
         /// </summary>
         public static string OldUserPinOption {
             get {
                 return ResourceManager.GetString("OldUserPinOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current User PIN: .
+        /// </summary>
+        public static string OldUserPinPrompt {
+            get {
+                return ResourceManager.GetString("OldUserPinPrompt", resourceCulture);
             }
         }
         
@@ -1029,6 +1056,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get user and admin PINs from stdin if they value equal &quot;stdin&quot;.
+        /// </summary>
+        public static string StdinPinsOption {
+            get {
+                return ResourceManager.GetString("StdinPinsOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Token Id.
         /// </summary>
         public static string TokenId {
@@ -1178,6 +1214,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string UserPinOwner {
             get {
                 return ResourceManager.GetString("UserPinOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New User PIN: .
+        /// </summary>
+        public static string UserPinPrompt {
+            get {
+                return ResourceManager.GetString("UserPinPrompt", resourceCulture);
             }
         }
         
