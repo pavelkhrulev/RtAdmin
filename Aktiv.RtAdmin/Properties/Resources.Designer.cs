@@ -998,6 +998,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Serial number should be specified.
+        /// </summary>
+        public static string SerialNumberEmpty {
+            get {
+                return ResourceManager.GetString("SerialNumberEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specify token serial number to use.
+        /// </summary>
+        public static string SerialNumberOption {
+            get {
+                return ResourceManager.GetString("SerialNumberOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set local PIN.
         ///[Id: local PIN id (l3 - l9)]
         ///[PIN: local PIN].

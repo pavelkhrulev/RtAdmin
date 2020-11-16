@@ -554,4 +554,10 @@
   <data name="UserPinPrompt" xml:space="preserve">
     <value>Новый PIN-код пользователя: </value>
   </data>
+  <data name="SerialNumberEmpty" xml:space="preserve">
+    <value>Серийный номер должен быть указан</value>
+  </data>
+  <data name="SerialNumberOption" xml:space="preserve">
+    <value>Серийный номер токена, к которому обрaщаются</value>
+  </data>
 </root>
