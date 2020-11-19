@@ -44,6 +44,8 @@ namespace Aktiv.RtAdmin
 
         public string NativeLibraryPath { get; set; }
 
+        public string SerialNumber { get; set; }
+
         public bool UnblockPins { get; set; }
 
         public bool OneIterationOnly { get; set; }

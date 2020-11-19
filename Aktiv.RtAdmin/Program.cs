@@ -120,6 +120,9 @@ namespace Aktiv.RtAdmin
                         }
                     }
 
+                    if (options.SerialNumber != null && !string.Equals(slot.GetTokenInfo().SerialNumber, options.SerialNumber, StringComparison.OrdinalIgnoreCase))
+                        continue;
+
                     var commandHandlerBuilder = _serviceProvider.GetService<CommandHandlerBuilder>()
                                                                 .ConfigureWith(slot, options);
 

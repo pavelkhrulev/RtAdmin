@@ -549,4 +549,10 @@
   <data name="UserPinPrompt" xml:space="preserve">
     <value>New User PIN: </value>
   </data>
+  <data name="SerialNumberEmpty" xml:space="preserve">
+    <value>Serial number should be specified</value>
+  </data>
+  <data name="SerialNumberOption" xml:space="preserve">
+    <value>Specify token serial number to use</value>
+  </data>
 </root>

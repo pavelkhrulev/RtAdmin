@@ -28,6 +28,7 @@ namespace Aktiv.RtAdmin
             var volumeInfoParamShouldBeSet = false;
             var excludedTokenShouldBeSet = false;
             var nativeLibraryFileShouldBeSet = false;
+            var serialNumberShouldBeSet = false;
             var configurationFileShouldBeSet = false;
 
             var set = new OptionSet
@@ -105,6 +106,15 @@ namespace Aktiv.RtAdmin
                     currentParameter = "z";
                     nativeLibraryFileShouldBeSet = true;
                 }},
+
+
+                {"S", Resources.SerialNumberOption, v =>
+                {
+                    currentParameter = "S";
+                    serialNumberShouldBeSet = true;
+                    options.SerialNumber = null;
+                }},
+
                 {"P", Resources.UnblockPinsOption, v =>
                 {
                     options.UnblockPins = v != null;
@@ -244,6 +254,10 @@ namespace Aktiv.RtAdmin
                             options.NativeLibraryPath = v;
                             break;
 
+                        case "S":
+                            options.SerialNumber = v;
+                            break;
+
                         case "n":
                             options.ConfigurationFilePath = v;
                             break;
@@ -314,6 +328,12 @@ namespace Aktiv.RtAdmin
                                              && !File.Exists(options.NativeLibraryPath))
             {
                 Console.WriteLine(Resources.NativeLibraryFileNotExist);
+                throw new AppMustBeClosedException(-1);
+            }
+
+            if (serialNumberShouldBeSet && string.IsNullOrWhiteSpace(options.SerialNumber))
+            {
+                Console.WriteLine(Resources.SerialNumberEmpty);
                 throw new AppMustBeClosedException(-1);
             }
 
