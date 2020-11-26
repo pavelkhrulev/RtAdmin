@@ -424,6 +424,15 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Extended PIN policy doesn&apos;t sutisfy token PIN policy.
+        /// </summary>
+        public static string ExtendedPinPolicyDoesntSutisfyTokenPinPolicy {
+            get {
+                return ResourceManager.GetString("ExtendedPinPolicyDoesntSutisfyTokenPinPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Token has no flash memory.
         /// </summary>
         public static string FlashMemoryNotAvailable {

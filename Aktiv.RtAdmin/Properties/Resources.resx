@@ -634,6 +634,9 @@
   <data name="SetExtendedPinPoliciesFailed" xml:space="preserve">
     <value>Setting extended PIN policies is failed</value>
   </data>
+  <data name="ExtendedPinPolicyDoesntSutisfyTokenPinPolicy" xml:space="preserve">
+    <value>Extended PIN policy doesn't sutisfy token PIN policy</value>
+  </data>
   <data name="GetExtendedPinPolicies" xml:space="preserve">
     <value>Getting extended PIN policies</value>
   </data>

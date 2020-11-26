@@ -669,7 +669,10 @@ namespace Aktiv.RtAdmin
                     _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.GetExtendedPinPolicies));
                     PinPolicy pinPolicy = PinPolicyWorker.GetPinPolicy(_slot);
 
-                    Console.WriteLine(Resources.MinPinLengthDesc, pinPolicy.MinPinLength);
+
+                    byte min_pin_length = Math.Max(pinPolicy.MinPinLength.GetValueOrDefault(), Convert.ToByte(_runtimeTokenParams.MinUserPinLenFromToken));
+
+                    Console.WriteLine(Resources.MinPinLengthDesc, min_pin_length);
                     Console.WriteLine(Resources.PinHistoryDepthDesc, pinPolicy.PinHistoryDepth);
                     Console.WriteLine(Resources.AllowDefaultPinUsageDesc, pinPolicy.AllowDefaultPinUsage);
                     Console.WriteLine(Resources.PinContainsDigitDesc, pinPolicy.PinContainsDigit);
@@ -693,6 +696,7 @@ namespace Aktiv.RtAdmin
         public CommandHandlerBuilder WithSetExtendedPinPolicy()
         {
             _prerequisites.Enqueue(CanUseExtendedPinPolicies);
+            _prerequisites.Enqueue(ExtendedPinPolicySatisfyTokenPinPolicy);
 
             _commands.Enqueue(() =>
             {
@@ -715,6 +719,16 @@ namespace Aktiv.RtAdmin
             if (!_runtimeTokenParams.ExtendedPinPoliciesAvailable)
             {
                 throw new InvalidOperationException(Resources.ExtendedPinPoliciesNotAvailable);
+            }
+        }
+
+        private void ExtendedPinPolicySatisfyTokenPinPolicy()
+        {
+            if (_commandLineOptions.PinPolicy.MinPinLength != null && 
+                (_commandLineOptions.PinPolicy.MinPinLength < _runtimeTokenParams.MinUserPinLenFromToken ||
+                 _commandLineOptions.PinPolicy.MinPinLength > _runtimeTokenParams.MaxUserPinLenFromToken))
+            {
+                throw new InvalidOperationException(Resources.ExtendedPinPolicyDoesntSutisfyTokenPinPolicy);
             }
         }
 
