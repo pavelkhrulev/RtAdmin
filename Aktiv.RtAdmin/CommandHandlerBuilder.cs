@@ -102,7 +102,13 @@ namespace Aktiv.RtAdmin
 
             _runtimeTokenParams.FlashMemoryAvailable = Convert.ToBoolean(tokenExtendedInfo.Flags & (uint) RutokenFlag.HasFlashDrive);
 
-            _runtimeTokenParams.ExtendedPinPoliciesAvailable = PinPolicyWorker.PinPolicySupports(_slot);
+            try
+            {
+                _runtimeTokenParams.ExtendedPinPoliciesAvailable = PinPolicyWorker.PinPolicySupports(_slot);
+            }
+            catch (Exception) {
+                _runtimeTokenParams.ExtendedPinPoliciesAvailable = false;
+            }
 
             return this;
         }
