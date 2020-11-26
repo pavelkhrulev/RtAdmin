@@ -625,4 +625,7 @@
   <data name="ShowExtendedPinPolicyOption" xml:space="preserve">
     <value>Show extended PIN policy option</value>
   </data>
+  <data name="ExtendedPinPoliciesNotAvailable" xml:space="preserve">
+    <value>Extended PIN policies not avaliable</value>
+  </data>
 </root>

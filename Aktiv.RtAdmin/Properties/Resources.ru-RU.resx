@@ -630,4 +630,7 @@
   <data name="ShowExtendedPinPolicyOption" xml:space="preserve">
     <value>Отображение текущей политики PIN-кодов</value>
   </data>
+  <data name="ExtendedPinPoliciesNotAvailable" xml:space="preserve">
+    <value>Расширенные политики PIN-кодов не доступны</value>
+  </data>
 </root>

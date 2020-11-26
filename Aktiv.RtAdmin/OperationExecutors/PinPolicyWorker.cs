@@ -22,7 +22,17 @@ namespace Aktiv.RtAdmin
         public static PinPolicy GetPinPolicy(Slot slot)
         {
             var session = slot.OpenSession(SessionType.ReadOnly);
-            return session.GetPinPolicy(CKU.CKU_USER);
+            var res = session.GetPinPolicy(CKU.CKU_USER);
+            session.CloseSession();
+            return res;
+        }
+
+        public static bool PinPolicySupports(Slot slot)
+        {
+            var session = slot.OpenSession(SessionType.ReadOnly);
+            var res = session.PinPolicySupports(CKU.CKU_USER);
+            session.CloseSession();
+            return res;
         }
     }
 }

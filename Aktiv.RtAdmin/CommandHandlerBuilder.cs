@@ -102,6 +102,8 @@ namespace Aktiv.RtAdmin
 
             _runtimeTokenParams.FlashMemoryAvailable = Convert.ToBoolean(tokenExtendedInfo.Flags & (uint) RutokenFlag.HasFlashDrive);
 
+            _runtimeTokenParams.ExtendedPinPoliciesAvailable = PinPolicyWorker.PinPolicySupports(_slot);
+
             return this;
         }
 
@@ -652,6 +654,8 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithShowExtendedPinPolicy()
         {
+            _prerequisites.Enqueue(CanUseExtendedPinPolicies);
+
             _commands.Enqueue(() =>
             {
                 try
@@ -680,6 +684,8 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithSetExtendedPinPolicy()
         {
+            _prerequisites.Enqueue(CanUseExtendedPinPolicies);
+
             _commands.Enqueue(() =>
             {
                 try
@@ -693,6 +699,14 @@ namespace Aktiv.RtAdmin
             });
 
             return this;
+        }
+
+        private void CanUseExtendedPinPolicies()
+        {
+            if (!_runtimeTokenParams.ExtendedPinPoliciesAvailable)
+            {
+                throw new InvalidOperationException(Resources.ExtendedPinPoliciesNotAvailable);
+            }
         }
 
         public void Execute()
