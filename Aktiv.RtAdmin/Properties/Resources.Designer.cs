@@ -1206,7 +1206,7 @@ namespace Aktiv.RtAdmin.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Set extended PIN policy option
-        ///[Usage: -ep (pin_policy_opt1)=(value1) -ep (pin_policy_opt2)=(value2) ... ].
+        ///[Usage: --set-expp (pin_policy_opt1) (value1) (pin_policy_opt2) (value2) ... ].
         /// </summary>
         public static string SetExtendedPinPolicyOption {
             get {

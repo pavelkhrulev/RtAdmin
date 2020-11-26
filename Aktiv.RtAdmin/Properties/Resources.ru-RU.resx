@@ -625,7 +625,7 @@
   </data>
   <data name="SetExtendedPinPolicyOption" xml:space="preserve">
     <value>Установка расширенных политик PIN-кодов
-[Использование: --expp (pin_policy_opt1)=(value1) --expp (pin_policy_opt2)=(value2) ... ]</value>
+[Использование: --set-expp (pin_policy_opt1) (value1) (pin_policy_opt2) (value2) ... ]</value>
   </data>
   <data name="ShowExtendedPinPolicyOption" xml:space="preserve">
     <value>Отображение текущей политики PIN-кодов</value>

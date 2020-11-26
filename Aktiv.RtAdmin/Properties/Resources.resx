@@ -620,7 +620,7 @@
   </data>
   <data name="SetExtendedPinPolicyOption" xml:space="preserve">
     <value>Set extended PIN policy option
-[Usage: -ep (pin_policy_opt1)=(value1) -ep (pin_policy_opt2)=(value2) ... ]</value>
+[Usage: --set-expp (pin_policy_opt1) (value1) (pin_policy_opt2) (value2) ... ]</value>
   </data>
   <data name="ShowExtendedPinPolicyOption" xml:space="preserve">
     <value>Show extended PIN policy option</value>

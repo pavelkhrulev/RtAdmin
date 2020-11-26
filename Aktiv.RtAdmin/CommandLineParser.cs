@@ -31,6 +31,7 @@ namespace Aktiv.RtAdmin
             var nativeLibraryFileShouldBeSet = false;
             var serialNumberShouldBeSet = false;
             var configurationFileShouldBeSet = false;
+            string? pinPolicyOpt = null;
 
             var set = new OptionSet
             {
@@ -174,7 +175,7 @@ namespace Aktiv.RtAdmin
                     showSetFormatOption = true;
                 }},
 
-                {"expp", GetSetExtendedPinPolicyUsage(), v => currentParameter="expp"},
+                {"set-expp", GetSetExtendedPinPolicyUsage(), v => currentParameter="set-expp"},
                 {"show-expp", Resources.ShowExtendedPinPolicyOption, v => {
                     options.ShowExtendedPinPolicy = v != null;
                 }},
@@ -268,22 +269,25 @@ namespace Aktiv.RtAdmin
                             options.ConfigurationFilePath = v;
                             break;
 
-                        case "expp":
-                            string[] pinPolicyArg = v.Split("=");
-                            if (pinPolicyArg.Length != 2) {
-                                Console.WriteLine(Resources.IncorrenctExtendedPinPolicyUsage);
-                                throw new Exception();
+                        case "set-expp":
+                             string opt;
+                            if (pinPolicyOpt == null) {
+                                pinPolicyOpt = v;
+                                break;
+                            } else {
+                                opt = pinPolicyOpt;
+                                pinPolicyOpt = null;
                             }
 
-                            if (pinPolicyArg[0] == Resources.MinPinLength) { options.PinPolicy.MinPinLength = Byte.Parse(pinPolicyArg[1]); break; }
-                            if (pinPolicyArg[0] == Resources.PinHistoryDepth) { options.PinPolicy.PinHistoryDepth = Byte.Parse(pinPolicyArg[1]); break; }
-                            if (pinPolicyArg[0] == Resources.AllowDefaultPinUsage) { options.PinPolicy.AllowDefaultPinUsage = Boolean.Parse(pinPolicyArg[1]); break; }
-                            if (pinPolicyArg[0] == Resources.PinContainsDigit) { options.PinPolicy.PinContainsDigit = Boolean.Parse(pinPolicyArg[1]); break; }
-                            if (pinPolicyArg[0] == Resources.PinContainsUpperLetter) { options.PinPolicy.PinContainsUpperLetter = Boolean.Parse(pinPolicyArg[1]); break; }
-                            if (pinPolicyArg[0] == Resources.PinContainsLowerLetter) { options.PinPolicy.PinContainsLowerLetter = Boolean.Parse(pinPolicyArg[1]); break; }
-                            if (pinPolicyArg[0] == Resources.PinContainsSpecChar) { options.PinPolicy.PinContainsSpecChar = Boolean.Parse(pinPolicyArg[1]); break; }
-                            if (pinPolicyArg[0] == Resources.RestrictOneCharPin) { options.PinPolicy.RestrictOneCharPin = Boolean.Parse(pinPolicyArg[1]); break; }
-                            if (pinPolicyArg[0] == Resources.RemovePinPolicyAfterFormat) { options.PinPolicy.RemovePinPolicyAfterFormat = Boolean.Parse(pinPolicyArg[1]); break; }
+                            if (opt == Resources.MinPinLength) { options.PinPolicy.MinPinLength = Byte.Parse(v); break; }
+                            if (opt == Resources.PinHistoryDepth) { options.PinPolicy.PinHistoryDepth = Byte.Parse(v); break; }
+                            if (opt == Resources.AllowDefaultPinUsage) { options.PinPolicy.AllowDefaultPinUsage = Boolean.Parse(v); break; }
+                            if (opt == Resources.PinContainsDigit) { options.PinPolicy.PinContainsDigit = Boolean.Parse(v); break; }
+                            if (opt == Resources.PinContainsUpperLetter) { options.PinPolicy.PinContainsUpperLetter = Boolean.Parse(v); break; }
+                            if (opt == Resources.PinContainsLowerLetter) { options.PinPolicy.PinContainsLowerLetter = Boolean.Parse(v); break; }
+                            if (opt == Resources.PinContainsSpecChar) { options.PinPolicy.PinContainsSpecChar = Boolean.Parse(v); break; }
+                            if (opt == Resources.RestrictOneCharPin) { options.PinPolicy.RestrictOneCharPin = Boolean.Parse(v); break; }
+                            if (opt == Resources.RemovePinPolicyAfterFormat) { options.PinPolicy.RemovePinPolicyAfterFormat = Boolean.Parse(v); break; }
                             
                             Console.WriteLine(Resources.IncorrenctExtendedPinPolicyUsage);
                                 throw new Exception();
