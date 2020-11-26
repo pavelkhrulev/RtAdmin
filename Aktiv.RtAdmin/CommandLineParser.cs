@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Aktiv.RtAdmin.Properties;
 using Mono.Options;
+using RutokenPkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
 {
@@ -173,6 +174,11 @@ namespace Aktiv.RtAdmin
                     showSetFormatOption = true;
                 }},
 
+                {"expp", GetSetExtendedPinPolicyUsage(), v => currentParameter="ep"},
+                {"show-expp", Resources.ShowExtendedPinPolicyOption, v => {
+                    options.ShowExtendedPinPolicy = v != null;
+                }},
+
                 {"U", Resources.Utf8Option, v => { options.UTF8InsteadOfcp1251 = v != null; }},
 
                 { "h|help", Resources.ShowHelp, h => shouldShowHelp = h != null },
@@ -261,6 +267,26 @@ namespace Aktiv.RtAdmin
                         case "n":
                             options.ConfigurationFilePath = v;
                             break;
+
+                        case "expp":
+                            string[] pinPolicyArg = v.Split("=");
+                            if (pinPolicyArg.Length != 2) {
+                                Console.WriteLine(Resources.IncorrenctExtendedPinPolicyUsage);
+                                throw new Exception();
+                            }
+
+                            if (pinPolicyArg[0] == Resources.MinPinLength) { options.PinPolicy.MinPinLength = Byte.Parse(pinPolicyArg[1]); break; }
+                            if (pinPolicyArg[0] == Resources.PinHistoryDepth) { options.PinPolicy.PinHistoryDepth = Byte.Parse(pinPolicyArg[1]); break; }
+                            if (pinPolicyArg[0] == Resources.AllowDefaultPinUsage) { options.PinPolicy.AllowDefaultPinUsage = Boolean.Parse(pinPolicyArg[1]); break; }
+                            if (pinPolicyArg[0] == Resources.PinContainsDigit) { options.PinPolicy.PinContainsDigit = Boolean.Parse(pinPolicyArg[1]); break; }
+                            if (pinPolicyArg[0] == Resources.PinContainsUpperLetter) { options.PinPolicy.PinContainsUpperLetter = Boolean.Parse(pinPolicyArg[1]); break; }
+                            if (pinPolicyArg[0] == Resources.PinContainsLowerLetter) { options.PinPolicy.PinContainsLowerLetter = Boolean.Parse(pinPolicyArg[1]); break; }
+                            if (pinPolicyArg[0] == Resources.PinContainsSpecChar) { options.PinPolicy.PinContainsSpecChar = Boolean.Parse(pinPolicyArg[1]); break; }
+                            if (pinPolicyArg[0] == Resources.RestrictOneCharPin) { options.PinPolicy.RestrictOneCharPin = Boolean.Parse(pinPolicyArg[1]); break; }
+                            if (pinPolicyArg[0] == Resources.RemovePinPolicyAfterFormat) { options.PinPolicy.RemovePinPolicyAfterFormat = Boolean.Parse(pinPolicyArg[1]); break; }
+                            
+                            Console.WriteLine(Resources.IncorrenctExtendedPinPolicyUsage);
+                                throw new Exception();
 
                         default:
                             extraOptions.Add(v);
@@ -431,6 +457,24 @@ namespace Aktiv.RtAdmin
             optionSet.WriteOptionDescriptions(Console.Out);
 
             throw new AppMustBeClosedException(retCode);
+        }
+
+        private static string GetSetExtendedPinPolicyUsage()
+        {
+            string usage = Resources.SetExtendedPinPolicyOption + "\n" +
+            "\npin_policy_opts:\n" +
+            Resources.MinPinLength + " -- " + Resources.MinPinLengthDesc + "\n" +
+            Resources.PinHistoryDepth + " -- " + Resources.PinHistoryDepthDesc + "\n" +
+            Resources.AllowDefaultPinUsage + " -- " + Resources.AllowDefaultPinUsageDesc + "\n" +
+            Resources.PinContainsDigit + " -- " + Resources.PinContainsDigitDesc + "\n" +
+            Resources.PinContainsUpperLetter + " -- " + Resources.PinContainsUpperLetterDesc + "\n" +
+            Resources.PinContainsLowerLetter + " -- " + Resources.PinContainsLowerLetterDesc + "\n" +
+            Resources.PinContainsSpecChar + " -- " + Resources.PinContainsSpecCharDesc + "\n" +
+            Resources.RestrictOneCharPin + " -- " + Resources.RestrictOneCharPinDesc + "\n" +
+            Resources.AllowChangePinPolicy + " -- " + Resources.AllowChangePinPolicyDesc + "\n" +
+            Resources.RemovePinPolicyAfterFormat + " -- " + Resources.RemovePinPolicyAfterFormatDesc + "\n";
+
+            return usage;
         }
 
         public static string GetPasswordFromConsole(string displayMessage, char mask = '*')

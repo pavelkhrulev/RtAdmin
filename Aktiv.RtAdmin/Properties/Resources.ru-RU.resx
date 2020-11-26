@@ -560,4 +560,74 @@
   <data name="SerialNumberOption" xml:space="preserve">
     <value>Серийный номер токена, к которому обрaщаются</value>
   </data>
+  <data name="AllowChangePinPolicy" xml:space="preserve">
+    <value>AllowChangePinPolicy</value>
+  </data>
+  <data name="AllowChangePinPolicyDesc" xml:space="preserve">
+    <value>Флаг, указывающий может ли PIN-код быть изменен Администратором(value: true,false)</value>
+  </data>
+  <data name="AllowDefaultPinUsage" xml:space="preserve">
+    <value>AllowDefaultPinUsage</value>
+  </data>
+  <data name="AllowDefaultPinUsageDesc" xml:space="preserve">
+    <value>Флаг, указывающий можно ли использовать PIN-код по умолчанию (value: true,false)</value>
+  </data>
+  <data name="IncorrenctExtendedPinPolicyUsage" xml:space="preserve">
+    <value>Направильная установка политик PIN-кодов</value>
+  </data>
+  <data name="MinPinLength" xml:space="preserve">
+    <value>MinPinLength</value>
+  </data>
+  <data name="MinPinLengthDesc" xml:space="preserve">
+    <value>Минимальная длина PIN-кода (value: 0-255)</value>
+  </data>
+  <data name="PinContainsDigit" xml:space="preserve">
+    <value>PinContainsDigit</value>
+  </data>
+  <data name="PinContainsDigitDesc" xml:space="preserve">
+    <value>Флаг, указывающий должен ли PIN-код содержать цифры (value: true,false)</value>
+  </data>
+  <data name="PinContainsLowerLetter" xml:space="preserve">
+    <value>PinContainsLowerLetter</value>
+  </data>
+  <data name="PinContainsLowerLetterDesc" xml:space="preserve">
+    <value>Флаг, указывающий должен ли PIN-код содержать строчные буквы (value: true,false)</value>
+  </data>
+  <data name="PinContainsSpecChar" xml:space="preserve">
+    <value>PinContainsSpecChar</value>
+  </data>
+  <data name="PinContainsSpecCharDesc" xml:space="preserve">
+    <value>Флаг, указывающий должен ли PIN-код содержать спец-символы (value: true,false)</value>
+  </data>
+  <data name="PinContainsUpperLetter" xml:space="preserve">
+    <value>PinContainsUpperLetter</value>
+  </data>
+  <data name="PinContainsUpperLetterDesc" xml:space="preserve">
+    <value>Флаг, указывающий должен ли PIN-код содержать заглавные буквы (value: true,false)</value>
+  </data>
+  <data name="PinHistoryDepth" xml:space="preserve">
+    <value>PinHistoryDepth</value>
+  </data>
+  <data name="PinHistoryDepthDesc" xml:space="preserve">
+    <value>Глубина запоминаемой истории PIN-кодов (value: 0-255)</value>
+  </data>
+  <data name="RemovePinPolicyAfterFormat" xml:space="preserve">
+    <value>RemovePinPolicyAfterFormat</value>
+  </data>
+  <data name="RemovePinPolicyAfterFormatDesc" xml:space="preserve">
+    <value>Флаг, указывающий будут ли политики PIN-кодов удалены после форматирования  (value: true,false)</value>
+  </data>
+  <data name="RestrictOneCharPin" xml:space="preserve">
+    <value>RestrictOneCharPin</value>
+  </data>
+  <data name="RestrictOneCharPinDesc" xml:space="preserve">
+    <value>Флаг, указывающий запрещен ли PIN-код из одного повторяющегося символа (value: true,false)</value>
+  </data>
+  <data name="SetExtendedPinPolicyOption" xml:space="preserve">
+    <value>Установка расширенных политик PIN-кодов
+[Использование: --expp (pin_policy_opt1)=(value1) --expp (pin_policy_opt2)=(value2) ... ]</value>
+  </data>
+  <data name="ShowExtendedPinPolicyOption" xml:space="preserve">
+    <value>Отображение текущей политики PIN-кодов</value>
+  </data>
 </root>

@@ -555,4 +555,74 @@
   <data name="SerialNumberOption" xml:space="preserve">
     <value>Specify token serial number to use</value>
   </data>
+  <data name="AllowChangePinPolicy" xml:space="preserve">
+    <value>AllowChangePinPolicy</value>
+  </data>
+  <data name="AllowChangePinPolicyDesc" xml:space="preserve">
+    <value>Flag indicating that the PIN could be changed by admin (value: true,false)</value>
+  </data>
+  <data name="AllowDefaultPinUsage" xml:space="preserve">
+    <value>AllowDefaultPinUsage</value>
+  </data>
+  <data name="AllowDefaultPinUsageDesc" xml:space="preserve">
+    <value>Flag indicating that the default PIN can be set (value: true,false)</value>
+  </data>
+  <data name="IncorrenctExtendedPinPolicyUsage" xml:space="preserve">
+    <value>Incorrect usage of extended PIN policy</value>
+  </data>
+  <data name="MinPinLength" xml:space="preserve">
+    <value>MinPinLength</value>
+  </data>
+  <data name="MinPinLengthDesc" xml:space="preserve">
+    <value>Minimal PIN length (value: 0-255)</value>
+  </data>
+  <data name="PinContainsDigit" xml:space="preserve">
+    <value>PinContainsDigit</value>
+  </data>
+  <data name="PinContainsDigitDesc" xml:space="preserve">
+    <value>Flag indicating that the PIN have to contain a digit (value: true,false)</value>
+  </data>
+  <data name="PinContainsLowerLetter" xml:space="preserve">
+    <value>PinContainsLowerLetter</value>
+  </data>
+  <data name="PinContainsLowerLetterDesc" xml:space="preserve">
+    <value>Flag indicating that the PIN have to contain a lowercase letter (value: true,false)</value>
+  </data>
+  <data name="PinContainsSpecChar" xml:space="preserve">
+    <value>PinContainsSpecChar</value>
+  </data>
+  <data name="PinContainsSpecCharDesc" xml:space="preserve">
+    <value>Flag indicating that the PIN have to contain a special char (value: true,false)</value>
+  </data>
+  <data name="PinContainsUpperLetter" xml:space="preserve">
+    <value>PinContainsUpperLetter</value>
+  </data>
+  <data name="PinContainsUpperLetterDesc" xml:space="preserve">
+    <value>Flag indicating that the PIN have to contain a uppercase letter (value: true,false)</value>
+  </data>
+  <data name="PinHistoryDepth" xml:space="preserve">
+    <value>PinHistoryDepth</value>
+  </data>
+  <data name="PinHistoryDepthDesc" xml:space="preserve">
+    <value>PIN history depth (value: 0-255)</value>
+  </data>
+  <data name="RemovePinPolicyAfterFormat" xml:space="preserve">
+    <value>RemovePinPolicyAfterFormat</value>
+  </data>
+  <data name="RemovePinPolicyAfterFormatDesc" xml:space="preserve">
+    <value>Flag indicating that the PIN policy will be removed after formatting (value: true,false)</value>
+  </data>
+  <data name="RestrictOneCharPin" xml:space="preserve">
+    <value>RestrictOneCharPin</value>
+  </data>
+  <data name="RestrictOneCharPinDesc" xml:space="preserve">
+    <value>Flag indicating that the PIN can't be repeated one char symbol (value: true,false)</value>
+  </data>
+  <data name="SetExtendedPinPolicyOption" xml:space="preserve">
+    <value>Set extended PIN policy option
+[Usage: -ep (pin_policy_opt1)=(value1) -ep (pin_policy_opt2)=(value2) ... ]</value>
+  </data>
+  <data name="ShowExtendedPinPolicyOption" xml:space="preserve">
+    <value>Show extended PIN policy option</value>
+  </data>
 </root>
