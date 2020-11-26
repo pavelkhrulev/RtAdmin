@@ -31,7 +31,8 @@ namespace Aktiv.RtAdmin
             var nativeLibraryFileShouldBeSet = false;
             var serialNumberShouldBeSet = false;
             var configurationFileShouldBeSet = false;
-            string? pinPolicyOpt = null;
+            var extendedPinPoliciesShouldBeSet = false;
+            string pinPolicyOpt = null;
 
             var set = new OptionSet
             {
@@ -175,7 +176,10 @@ namespace Aktiv.RtAdmin
                     showSetFormatOption = true;
                 }},
 
-                {"set-expp", GetSetExtendedPinPolicyUsage(), v => currentParameter="set-expp"},
+                {"set-expp", GetSetExtendedPinPolicyUsage(), v => {
+                    currentParameter="set-expp";
+                    extendedPinPoliciesShouldBeSet = true;
+                 }},
                 {"show-expp", Resources.ShowExtendedPinPolicyOption, v => {
                     options.ShowExtendedPinPolicy = v != null;
                 }},
@@ -290,7 +294,7 @@ namespace Aktiv.RtAdmin
                             if (opt == Resources.RemovePinPolicyAfterFormat) { options.PinPolicy.RemovePinPolicyAfterFormat = Boolean.Parse(v); break; }
                             
                             Console.WriteLine(Resources.IncorrenctExtendedPinPolicyUsage);
-                                throw new Exception();
+                                throw new AppMustBeClosedException(-1);
 
                         default:
                             extraOptions.Add(v);
@@ -393,13 +397,18 @@ namespace Aktiv.RtAdmin
                 throw new AppMustBeClosedException(0);
             }
 
-
             if (options.StdinPins && !pinCodesFileShouldBeSet)
             {
                 if (options.OldUserPin == "stdin") options.OldUserPin = GetPasswordFromConsole(Resources.OldUserPinPrompt);
                 if (options.UserPin == "stdin") options.UserPin = GetPasswordFromConsole(Resources.UserPinPrompt);
                 if (options.OldAdminPin == "stdin") options.OldAdminPin = GetPasswordFromConsole(Resources.OldAdminPinPrompt);
                 if (options.AdminPin == "stdin") options.AdminPin = GetPasswordFromConsole(Resources.AdminPinPrompt);
+            }
+
+            if (extendedPinPoliciesShouldBeSet && !options.PinPolicy || pinPolicyOpt != null)
+            {
+                Console.WriteLine(Resources.IncorrenctExtendedPinPolicyUsage);
+                throw new AppMustBeClosedException(-1);
             }
 
             return options;
