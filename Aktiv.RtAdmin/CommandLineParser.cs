@@ -174,7 +174,7 @@ namespace Aktiv.RtAdmin
                     showSetFormatOption = true;
                 }},
 
-                {"expp", GetSetExtendedPinPolicyUsage(), v => currentParameter="ep"},
+                {"expp", GetSetExtendedPinPolicyUsage(), v => currentParameter="expp"},
                 {"show-expp", Resources.ShowExtendedPinPolicyOption, v => {
                     options.ShowExtendedPinPolicy = v != null;
                 }},

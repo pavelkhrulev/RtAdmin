@@ -650,6 +650,51 @@ namespace Aktiv.RtAdmin
             }
         }
 
+        public CommandHandlerBuilder WithShowExtendedPinPolicy()
+        {
+            _commands.Enqueue(() =>
+            {
+                try
+                {
+                    PinPolicy pinPolicy = PinPolicyWorker.GetPinPolicy(_slot);
+
+                    Console.WriteLine("Min PIN Length: " + pinPolicy.MinPinLength);
+                    Console.WriteLine("PIN history depth: " + pinPolicy.PinHistoryDepth);
+                    Console.WriteLine("Allow default PIN-code usage: " + ((bool)pinPolicy.AllowDefaultPinUsage ? "true" : "false"));
+                    Console.WriteLine("PIN requeres digits: " + ((bool)pinPolicy.PinContainsDigit ? "true" : "false"));
+                    Console.WriteLine("PIN requeres uppercase chars: " + ((bool)pinPolicy.PinContainsUpperLetter ? "true" : "false"));
+                    Console.WriteLine("PIN requeres lowercase chars: " + ((bool)pinPolicy.PinContainsLowerLetter ? "true" : "false"));
+                    Console.WriteLine("PIN requeres spec chars: " + ((bool)pinPolicy.PinContainsSpecChar ? "true" : "false"));
+                    Console.WriteLine("PIN requeres different char usage: " + ((bool)pinPolicy.RestrictOneCharPin ? "true" : "false"));
+                    Console.WriteLine("PIN policy is modifiable by Admin: " + ((bool)pinPolicy.AllowChangePinPolicy ? "true" : "false"));
+                    Console.WriteLine("PIN policy will be deleted after formating: " + ((bool)pinPolicy.RemovePinPolicyAfterFormat ? "true" : "false"));
+                }
+                catch
+                {
+                    throw;
+                }
+            });
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithSetExtendedPinPolicy()
+        {
+            _commands.Enqueue(() =>
+            {
+                try
+                {
+                    PinPolicyWorker.SetPinPolicy(_slot, _runtimeTokenParams.OldAdminPin.Value, _commandLineOptions.PinPolicy);
+                }
+                catch
+                {
+                    throw;
+                }
+            });
+
+            return this;
+        }
+
         public void Execute()
         {
             foreach (var action in _prerequisites.Concat(_commands))

@@ -39,7 +39,9 @@ namespace Aktiv.RtAdmin
                 {options => options.LoginWithLocalPin.Any(), builder => builder.WithUsingLocalPin()},
                 {options => options.ChangeVolumeAttributes.Any(), builder => builder.WithChangeVolumeAttributes()},
                 {options => !string.IsNullOrWhiteSpace(options.VolumeInfoParams), builder => builder.WithShowVolumeInfoParams()},
-                {options => options.UnblockPins, builder => builder.WithPinsUnblock()}
+                {options => options.UnblockPins, builder => builder.WithPinsUnblock()},
+                {options => options.ShowExtendedPinPolicy, builder => builder.WithShowExtendedPinPolicy()},
+                {options => options.PinPolicy, builder => builder.WithSetExtendedPinPolicy()}
             };
 
         static int Main(string[] args)
