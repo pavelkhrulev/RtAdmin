@@ -628,4 +628,16 @@
   <data name="ExtendedPinPoliciesNotAvailable" xml:space="preserve">
     <value>Extended PIN policies not avaliable</value>
   </data>
+  <data name="GetExtendedPinPoliciesFailed" xml:space="preserve">
+    <value>Getting extended PIN policies is failed</value>
+  </data>
+  <data name="SetExtendedPinPoliciesFailed" xml:space="preserve">
+    <value>Setting extended PIN policies is failed</value>
+  </data>
+  <data name="GetExtendedPinPolicies" xml:space="preserve">
+    <value>Getting extended PIN policies</value>
+  </data>
+  <data name="SetExtendedPinPolicies" xml:space="preserve">
+    <value>Setting extended PIN policies</value>
+  </data>
 </root>

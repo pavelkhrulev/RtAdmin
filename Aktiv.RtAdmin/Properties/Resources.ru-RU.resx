@@ -633,4 +633,16 @@
   <data name="ExtendedPinPoliciesNotAvailable" xml:space="preserve">
     <value>Расширенные политики PIN-кодов не доступны</value>
   </data>
+  <data name="GetExtendedPinPoliciesFailed" xml:space="preserve">
+    <value>Получение расширенных политик PIN-кодов завершилось с ошибкой</value>
+  </data>
+  <data name="SetExtendedPinPoliciesFailed" xml:space="preserve">
+    <value>Установка расширенных политик PIN-кодов завершилась с ошибкой</value>
+  </data>
+  <data name="GetExtendedPinPolicies" xml:space="preserve">
+    <value>Получение расширенных политик PIN-кодов</value>
+  </data>
+  <data name="SetExtendedPinPolicies" xml:space="preserve">
+    <value>Установка расширенных политик PIN-кодов</value>
+  </data>
 </root>

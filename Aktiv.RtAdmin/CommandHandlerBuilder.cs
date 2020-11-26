@@ -666,6 +666,7 @@ namespace Aktiv.RtAdmin
             {
                 try
                 {
+                    _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.GetExtendedPinPolicies));
                     PinPolicy pinPolicy = PinPolicyWorker.GetPinPolicy(_slot);
 
                     Console.WriteLine(Resources.MinPinLengthDesc, pinPolicy.MinPinLength);
@@ -681,6 +682,7 @@ namespace Aktiv.RtAdmin
                 }
                 catch
                 {
+                    _logger.LogError(_logMessageBuilder.WithTokenId(Resources.GetExtendedPinPoliciesFailed));
                     throw;
                 }
             });
@@ -696,11 +698,12 @@ namespace Aktiv.RtAdmin
             {
                 try
                 {
+                    _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.SetExtendedPinPolicies));
                     PinPolicyWorker.SetPinPolicy(_slot, _runtimeTokenParams.OldAdminPin.Value, _commandLineOptions.PinPolicy);
                 }
                 catch
                 {
-                    throw;
+                    _logger.LogError(_logMessageBuilder.WithTokenId(Resources.SetExtendedPinPoliciesFailed));
                 }
             });
 

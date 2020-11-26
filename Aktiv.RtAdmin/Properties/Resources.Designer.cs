@@ -545,6 +545,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Getting extended PIN policies.
+        /// </summary>
+        public static string GetExtendedPinPolicies {
+            get {
+                return ResourceManager.GetString("GetExtendedPinPolicies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Getting extended PIN policies is failed.
+        /// </summary>
+        public static string GetExtendedPinPoliciesFailed {
+            get {
+                return ResourceManager.GetString("GetExtendedPinPoliciesFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Illegal options.
         /// </summary>
         public static string IllegalOptions {
@@ -1210,6 +1228,24 @@ namespace Aktiv.RtAdmin.Properties {
         public static string SerialNumberOption {
             get {
                 return ResourceManager.GetString("SerialNumberOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Setting extended PIN policies.
+        /// </summary>
+        public static string SetExtendedPinPolicies {
+            get {
+                return ResourceManager.GetString("SetExtendedPinPolicies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Setting extended PIN policies is failed.
+        /// </summary>
+        public static string SetExtendedPinPoliciesFailed {
+            get {
+                return ResourceManager.GetString("SetExtendedPinPoliciesFailed", resourceCulture);
             }
         }
         
