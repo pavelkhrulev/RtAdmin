@@ -658,16 +658,16 @@ namespace Aktiv.RtAdmin
                 {
                     PinPolicy pinPolicy = PinPolicyWorker.GetPinPolicy(_slot);
 
-                    Console.WriteLine("Min PIN Length: " + pinPolicy.MinPinLength);
-                    Console.WriteLine("PIN history depth: " + pinPolicy.PinHistoryDepth);
-                    Console.WriteLine("Allow default PIN-code usage: " + ((bool)pinPolicy.AllowDefaultPinUsage ? "true" : "false"));
-                    Console.WriteLine("PIN requeres digits: " + ((bool)pinPolicy.PinContainsDigit ? "true" : "false"));
-                    Console.WriteLine("PIN requeres uppercase chars: " + ((bool)pinPolicy.PinContainsUpperLetter ? "true" : "false"));
-                    Console.WriteLine("PIN requeres lowercase chars: " + ((bool)pinPolicy.PinContainsLowerLetter ? "true" : "false"));
-                    Console.WriteLine("PIN requeres spec chars: " + ((bool)pinPolicy.PinContainsSpecChar ? "true" : "false"));
-                    Console.WriteLine("PIN requeres different char usage: " + ((bool)pinPolicy.RestrictOneCharPin ? "true" : "false"));
-                    Console.WriteLine("PIN policy is modifiable by Admin: " + ((bool)pinPolicy.AllowChangePinPolicy ? "true" : "false"));
-                    Console.WriteLine("PIN policy will be deleted after formating: " + ((bool)pinPolicy.RemovePinPolicyAfterFormat ? "true" : "false"));
+                    Console.WriteLine(Resources.MinPinLengthDesc, pinPolicy.MinPinLength);
+                    Console.WriteLine(Resources.PinHistoryDepthDesc, pinPolicy.PinHistoryDepth);
+                    Console.WriteLine(Resources.AllowDefaultPinUsageDesc, pinPolicy.AllowDefaultPinUsage);
+                    Console.WriteLine(Resources.PinContainsDigitDesc, pinPolicy.PinContainsDigit);
+                    Console.WriteLine(Resources.PinContainsUpperLetterDesc, pinPolicy.PinContainsUpperLetter);
+                    Console.WriteLine(Resources.PinContainsLowerLetterDesc, pinPolicy.PinContainsLowerLetter);
+                    Console.WriteLine(Resources.PinContainsSpecCharDesc, pinPolicy.PinContainsSpecChar);
+                    Console.WriteLine(Resources.RestrictOneCharPinDesc, pinPolicy.RestrictOneCharPin);
+                    Console.WriteLine(Resources.AllowChangePinPolicyDesc, pinPolicy.AllowChangePinPolicy);
+                    Console.WriteLine(Resources.RemovePinPolicyAfterFormatDesc, pinPolicy.RemovePinPolicyAfterFormat);
                 }
                 catch
                 {

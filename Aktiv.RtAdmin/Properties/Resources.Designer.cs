@@ -160,7 +160,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Flag indicating that the PIN could be changed by admin (value: true,false).
+        ///   Ищет локализованную строку, похожую на PIN policy is modifiable by Admin: {0}.
         /// </summary>
         public static string AllowChangePinPolicyDesc {
             get {
@@ -178,7 +178,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Flag indicating that the default PIN can be set (value: true,false).
+        ///   Ищет локализованную строку, похожую на Allow default PIN-code usage: {0}.
         /// </summary>
         public static string AllowDefaultPinUsageDesc {
             get {
@@ -709,7 +709,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Minimal PIN length (value: 0-255).
+        ///   Ищет локализованную строку, похожую на Min PIN Length: {0}.
         /// </summary>
         public static string MinPinLengthDesc {
             get {
@@ -980,7 +980,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Flag indicating that the PIN have to contain a digit (value: true,false).
+        ///   Ищет локализованную строку, похожую на PIN requeres digits: {0}.
         /// </summary>
         public static string PinContainsDigitDesc {
             get {
@@ -998,7 +998,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Flag indicating that the PIN have to contain a lowercase letter (value: true,false).
+        ///   Ищет локализованную строку, похожую на PIN requeres lowercase chars: {0}.
         /// </summary>
         public static string PinContainsLowerLetterDesc {
             get {
@@ -1016,7 +1016,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Flag indicating that the PIN have to contain a special char (value: true,false).
+        ///   Ищет локализованную строку, похожую на PIN requeres spec. chars: {0}.
         /// </summary>
         public static string PinContainsSpecCharDesc {
             get {
@@ -1034,7 +1034,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Flag indicating that the PIN have to contain a uppercase letter (value: true,false).
+        ///   Ищет локализованную строку, похожую на PIN requeres uppercase chars: {0}.
         /// </summary>
         public static string PinContainsUpperLetterDesc {
             get {
@@ -1079,7 +1079,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN history depth (value: 0-255).
+        ///   Ищет локализованную строку, похожую на PIN history depth: {0}.
         /// </summary>
         public static string PinHistoryDepthDesc {
             get {
@@ -1160,7 +1160,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Flag indicating that the PIN policy will be removed after formatting (value: true,false).
+        ///   Ищет локализованную строку, похожую на PIN policy will be deleted after formating: {0}.
         /// </summary>
         public static string RemovePinPolicyAfterFormatDesc {
             get {
@@ -1178,7 +1178,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Flag indicating that the PIN can&apos;t be repeated one char symbol (value: true,false).
+        ///   Ищет локализованную строку, похожую на PIN requeres different char usage: {0}.
         /// </summary>
         public static string RestrictOneCharPinDesc {
             get {

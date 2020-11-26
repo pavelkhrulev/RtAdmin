@@ -467,16 +467,16 @@ namespace Aktiv.RtAdmin
         {
             string usage = Resources.SetExtendedPinPolicyOption + "\n" +
             "\npin_policy_opts:\n" +
-            Resources.MinPinLength + " -- " + Resources.MinPinLengthDesc + "\n" +
-            Resources.PinHistoryDepth + " -- " + Resources.PinHistoryDepthDesc + "\n" +
-            Resources.AllowDefaultPinUsage + " -- " + Resources.AllowDefaultPinUsageDesc + "\n" +
-            Resources.PinContainsDigit + " -- " + Resources.PinContainsDigitDesc + "\n" +
-            Resources.PinContainsUpperLetter + " -- " + Resources.PinContainsUpperLetterDesc + "\n" +
-            Resources.PinContainsLowerLetter + " -- " + Resources.PinContainsLowerLetterDesc + "\n" +
-            Resources.PinContainsSpecChar + " -- " + Resources.PinContainsSpecCharDesc + "\n" +
-            Resources.RestrictOneCharPin + " -- " + Resources.RestrictOneCharPinDesc + "\n" +
-            Resources.AllowChangePinPolicy + " -- " + Resources.AllowChangePinPolicyDesc + "\n" +
-            Resources.RemovePinPolicyAfterFormat + " -- " + Resources.RemovePinPolicyAfterFormatDesc + "\n";
+            Resources.MinPinLength + " -- " + String.Format(Resources.MinPinLengthDesc, "0-255") + "\n" +
+            Resources.PinHistoryDepth + " -- " + String.Format(Resources.PinHistoryDepthDesc, "0-255") + "\n" +
+            Resources.AllowDefaultPinUsage + " -- " + String.Format(Resources.AllowDefaultPinUsageDesc, "true, false") + "\n" +
+            Resources.PinContainsDigit + " -- " + String.Format(Resources.PinContainsDigitDesc, "true, false") + "\n" +
+            Resources.PinContainsUpperLetter + " -- " + String.Format(Resources.PinContainsUpperLetterDesc, "true, false") + "\n" +
+            Resources.PinContainsLowerLetter + " -- " + String.Format(Resources.PinContainsLowerLetterDesc, "true, false") + "\n" +
+            Resources.PinContainsSpecChar + " -- " + String.Format(Resources.PinContainsSpecCharDesc, "true, false") + "\n" +
+            Resources.RestrictOneCharPin + " -- " + String.Format(Resources.RestrictOneCharPinDesc, "true, false") + "\n" +
+            Resources.AllowChangePinPolicy + " -- " + String.Format(Resources.AllowChangePinPolicyDesc, "true, false") + "\n" +
+            Resources.RemovePinPolicyAfterFormat + " -- " + String.Format(Resources.RemovePinPolicyAfterFormatDesc, "true, false") + "\n";
 
             return usage;
         }
