@@ -564,7 +564,7 @@
     <value>AllowChangePinPolicy</value>
   </data>
   <data name="AllowChangePinPolicyDesc" xml:space="preserve">
-    <value>PIN-код можут быть изменен Администратором: {0}</value>
+    <value>PIN-код может быть изменен Администратором: {0}</value>
   </data>
   <data name="AllowDefaultPinUsage" xml:space="preserve">
     <value>AllowDefaultPinUsage</value>
