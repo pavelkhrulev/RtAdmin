@@ -61,7 +61,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid character set for generation activation passwords. It must be &quot;caps&quot; or &quot;digits&quot;.
+        ///   Looks up a localized string similar to Invalid character set for generation activation passwords. It must be &quot;caps&quot; or &quot;digits&quot;.
         /// </summary>
         public static string ActivationPasswordInvalidCharacterSet {
             get {
@@ -70,7 +70,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid command params for generation activation passwords. It must be 2 command line params.
+        ///   Looks up a localized string similar to Invalid command params for generation activation passwords. It must be 2 command line params.
         /// </summary>
         public static string ActivationPasswordInvalidCommandParamsCount {
             get {
@@ -79,7 +79,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid SM mode. It must be from 1 to 3.
+        ///   Looks up a localized string similar to Invalid SM mode. It must be from 1 to 3.
         /// </summary>
         public static string ActivationPasswordInvalidSmMode {
             get {
@@ -88,7 +88,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Generate activation passwords failed.
+        ///   Looks up a localized string similar to Generate activation passwords failed.
         /// </summary>
         public static string ActivationPasswordsGenerationFailed {
             get {
@@ -97,7 +97,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Generate activation passwords passed.
+        ///   Looks up a localized string similar to Generate activation passwords passed.
         /// </summary>
         public static string ActivationPasswordsWereGenerated {
             get {
@@ -106,7 +106,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на admin PIN.
+        ///   Looks up a localized string similar to admin PIN.
         /// </summary>
         public static string AdminPin {
             get {
@@ -115,7 +115,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Enter {0}.
+        ///   Looks up a localized string similar to Enter {0}.
         /// </summary>
         public static string AdminPinChangeError {
             get {
@@ -124,7 +124,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Set Admin PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used.
+        ///   Looks up a localized string similar to Set Admin PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used.
         /// </summary>
         public static string AdminPinOption {
             get {
@@ -133,7 +133,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на admin.
+        ///   Looks up a localized string similar to admin.
         /// </summary>
         public static string AdminPinOwner {
             get {
@@ -142,7 +142,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на New Admin PIN:.
+        ///   Looks up a localized string similar to New Admin PIN:.
         /// </summary>
         public static string AdminPinPrompt {
             get {
@@ -151,7 +151,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на AllowChangePinPolicy.
+        ///   Looks up a localized string similar to AllowChangePinPolicy.
         /// </summary>
         public static string AllowChangePinPolicy {
             get {
@@ -160,7 +160,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN policy is modifiable by Admin: {0}.
+        ///   Looks up a localized string similar to PIN policy is modifiable by Admin: {0}.
         /// </summary>
         public static string AllowChangePinPolicyDesc {
             get {
@@ -169,7 +169,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на AllowDefaultPinUsage.
+        ///   Looks up a localized string similar to AllowDefaultPinUsage.
         /// </summary>
         public static string AllowDefaultPinUsage {
             get {
@@ -178,7 +178,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Allow default PIN-code usage: {0}.
+        ///   Looks up a localized string similar to Allow default PIN-code usage: {0}.
         /// </summary>
         public static string AllowDefaultPinUsageDesc {
             get {
@@ -187,7 +187,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Option &quot;-{0}&quot; argument should be a number.
+        ///   Looks up a localized string similar to Option &quot;-{0}&quot; argument should be a number.
         /// </summary>
         public static string ArgumentMustBeIntegerType {
             get {
@@ -196,7 +196,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на For changing admin PIN enter old admin PIN.
+        ///   Looks up a localized string similar to For changing admin PIN enter old admin PIN.
         /// </summary>
         public static string ChangeAdminPinOldPinError {
             get {
@@ -205,7 +205,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на For changing user PIN enter old user or admin PIN.
+        ///   Looks up a localized string similar to For changing user PIN enter old user or admin PIN.
         /// </summary>
         public static string ChangeUserPinOldPinsError {
             get {
@@ -214,7 +214,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid command params count for changing volume attributes. It must be 3.
+        ///   Looks up a localized string similar to Invalid command params count for changing volume attributes. It must be 3.
         /// </summary>
         public static string ChangeVolumeAttributesInvalidCommandParamsCount {
             get {
@@ -223,7 +223,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid permanent state.
+        ///   Looks up a localized string similar to Invalid permanent state.
         /// </summary>
         public static string ChangeVolumeAttributesInvalidPermanentState {
             get {
@@ -232,7 +232,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Need to set local user pin.
+        ///   Looks up a localized string similar to Need to set local user pin.
         /// </summary>
         public static string ChangeVolumeAttributesNeedSetLocalPin {
             get {
@@ -241,7 +241,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Change volume attributes. For changing volume attributes volume owner PIN is used. If owner is user or admin while PIN isn&apos;t set, default PIN will be used. If owner is local user while local user PIN isn&apos;t set with -O option, error will be occured.
+        ///   Looks up a localized string similar to Change volume attributes. For changing volume attributes volume owner PIN is used. If owner is user or admin while PIN isn&apos;t set, default PIN will be used. If owner is local user while local user PIN isn&apos;t set with -O option, error will be occured.
         ///[Volume id: (1 - 9)]
         ///[Access rights: (ro, rw, hi, cd)]
         ///[Change type: (p - permanent, t - temporary)].
@@ -253,7 +253,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Changing PIN error.
+        ///   Looks up a localized string similar to Changing PIN error.
         /// </summary>
         public static string ChangingPinError {
             get {
@@ -262,7 +262,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Config file is empty.
+        ///   Looks up a localized string similar to Config file is empty.
         /// </summary>
         public static string ConfigFileIsEmpty {
             get {
@@ -271,7 +271,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Config lines have ended.
+        ///   Looks up a localized string similar to Config lines have ended.
         /// </summary>
         public static string ConfigFileLinesHaveEnded {
             get {
@@ -280,7 +280,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Config file not found.
+        ///   Looks up a localized string similar to Config file not found.
         /// </summary>
         public static string ConfigFileNotFound {
             get {
@@ -289,7 +289,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Configuration file should be set.
+        ///   Looks up a localized string similar to Configuration file should be set.
         /// </summary>
         public static string ConfigurationFileEmpty {
             get {
@@ -298,7 +298,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Configuration file path.
+        ///   Looks up a localized string similar to Configuration file path.
         /// </summary>
         public static string ConfigurationFilePathOption {
             get {
@@ -307,7 +307,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Default admin PIN will be used.
+        ///   Looks up a localized string similar to Default admin PIN will be used.
         /// </summary>
         public static string DefaultAdminPinWillBeUsed {
             get {
@@ -316,7 +316,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Default user PIN will be used.
+        ///   Looks up a localized string similar to Default user PIN will be used.
         /// </summary>
         public static string DefaultUserPinWillBeUsed {
             get {
@@ -325,7 +325,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Volume create failed.
+        ///   Looks up a localized string similar to Volume create failed.
         /// </summary>
         public static string DriveFormatVolumeCreateFailed {
             get {
@@ -334,7 +334,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Volume create passed.
+        ///   Looks up a localized string similar to Volume create passed.
         /// </summary>
         public static string DriveFormatVolumeCreateSuccess {
             get {
@@ -343,7 +343,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на change Admin PIN.
+        ///   Looks up a localized string similar to change Admin PIN.
         /// </summary>
         public static string ExampleChangeAdminPin {
             get {
@@ -352,7 +352,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на change Admin PIN, use default new Admin PIN.
+        ///   Looks up a localized string similar to change Admin PIN, use default new Admin PIN.
         /// </summary>
         public static string ExampleChangeAdminPinWithDefault {
             get {
@@ -361,7 +361,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на change User PIN.
+        ///   Looks up a localized string similar to change User PIN.
         /// </summary>
         public static string ExampleChangeUserPin {
             get {
@@ -370,7 +370,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на formatting token with generation Admin PIN with length 10 and default User PIN.
+        ///   Looks up a localized string similar to formatting token with generation Admin PIN with length 10 and default User PIN.
         /// </summary>
         public static string ExampleFormatWithAdminPinGeneration {
             get {
@@ -379,7 +379,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на formatting token with default PIN codes (Admin 87654321, User 12345678).
+        ///   Looks up a localized string similar to formatting token with default PIN codes (Admin 87654321, User 12345678).
         /// </summary>
         public static string ExampleFormatWithDefaultPins {
             get {
@@ -388,7 +388,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Examples:.
+        ///   Looks up a localized string similar to Examples:.
         /// </summary>
         public static string Examples {
             get {
@@ -397,7 +397,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Excluded token serial number should be set in specified format (ex.: 0x46bc3390 or 932436970).
+        ///   Looks up a localized string similar to Excluded token serial number should be set in specified format (ex.: 0x46bc3390 or 932436970).
         /// </summary>
         public static string ExcludedTokenSerialEmpty {
             get {
@@ -406,7 +406,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Excluded tokens while stream formatting [token ids in specified format: 0x46bc3390 or 932436970]. Use space as serial numbers separator or use option -E for each serial number.
+        ///   Looks up a localized string similar to Excluded tokens while stream formatting [token ids in specified format: 0x46bc3390 or 932436970]. Use space as serial numbers separator or use option -E for each serial number.
         /// </summary>
         public static string ExcludedTokensOption {
             get {
@@ -415,7 +415,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Extended PIN policies not avaliable.
+        ///   Looks up a localized string similar to Extended PIN policies not avaliable.
         /// </summary>
         public static string ExtendedPinPoliciesNotAvailable {
             get {
@@ -424,7 +424,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Extended PIN policy doesn&apos;t sutisfy token PIN policy.
+        ///   Looks up a localized string similar to Extended PIN policy doesn&apos;t sutisfy token PIN policy.
         /// </summary>
         public static string ExtendedPinPolicyDoesntSutisfyTokenPinPolicy {
             get {
@@ -433,7 +433,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Token has no flash memory.
+        ///   Looks up a localized string similar to Token has no flash memory.
         /// </summary>
         public static string FlashMemoryNotAvailable {
             get {
@@ -442,7 +442,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid access mode.
+        ///   Looks up a localized string similar to Invalid access mode.
         /// </summary>
         public static string FormatDriveInvalidAccessMode {
             get {
@@ -451,7 +451,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid command params count for drive formatting. It must be 4.
+        ///   Looks up a localized string similar to Invalid command params count for drive formatting. It must be 4.
         /// </summary>
         public static string FormatDriveInvalidCommandParamsCount {
             get {
@@ -460,7 +460,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid volume size.
+        ///   Looks up a localized string similar to Invalid volume size.
         /// </summary>
         public static string FormatDriveInvalidVolumeSize {
             get {
@@ -469,7 +469,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Formatting error.
+        ///   Looks up a localized string similar to Formatting error.
         /// </summary>
         public static string FormatError {
             get {
@@ -478,7 +478,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Format failed : {0} : {1} : SM mode = {2}.
+        ///   Looks up a localized string similar to Format failed : {0} : {1} : SM mode = {2}.
         /// </summary>
         public static string FormatFailed {
             get {
@@ -487,7 +487,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Format passed : {0} : {1} : SM mode = {2}.
+        ///   Looks up a localized string similar to Format passed : {0} : {1} : SM mode = {2}.
         /// </summary>
         public static string FormatPassed {
             get {
@@ -496,7 +496,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Format memory. If your device has built-in Flash memory you may specify Admin PIN, otherwise you may lose all data on it.
+        ///   Looks up a localized string similar to Format memory. If your device has built-in Flash memory you may specify Admin PIN, otherwise you may lose all data on it.
         /// </summary>
         public static string FormatTokenOption {
             get {
@@ -505,7 +505,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Formatting was successful.
+        ///   Looks up a localized string similar to Formatting was successful.
         /// </summary>
         public static string FormatTokenSuccess {
             get {
@@ -514,7 +514,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Format volume. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence. For partition creation admin PIN is used. If it isn&apos;t set, default admin PIN will be used.
+        ///   Looks up a localized string similar to Format volume. One command for one volume. To create multiple partitions, use the appropriate number of -F commands in sequence. For partition creation admin PIN is used. If it isn&apos;t set, default admin PIN will be used.
         ///[Volume id: (1 - 9)]
         ///[Volume size: volume size in MB]
         ///[Volume owner: (a - administrator, u - user, l3-l9 - local user)]
@@ -527,7 +527,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Generate random Admin PIN code of specified length. If this command is used -a is ignored.
+        ///   Looks up a localized string similar to Generate random Admin PIN code of specified length. If this command is used -a is ignored.
         /// </summary>
         public static string GenerateRandomAdminPinOption {
             get {
@@ -536,7 +536,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Generate random User PIN code of specified length. If this command is used -u is ignored.
+        ///   Looks up a localized string similar to Generate random User PIN code of specified length. If this command is used -u is ignored.
         /// </summary>
         public static string GenerateRandomUserPinOption {
             get {
@@ -545,7 +545,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Generating activation password(s).
+        ///   Looks up a localized string similar to Generating activation password(s).
         /// </summary>
         public static string GeneratingActivationPasswords {
             get {
@@ -554,7 +554,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Getting extended PIN policies.
+        ///   Looks up a localized string similar to Getting extended PIN policies.
         /// </summary>
         public static string GetExtendedPinPolicies {
             get {
@@ -563,7 +563,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Getting extended PIN policies is failed.
+        ///   Looks up a localized string similar to Getting extended PIN policies is failed.
         /// </summary>
         public static string GetExtendedPinPoliciesFailed {
             get {
@@ -572,7 +572,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Illegal options.
+        ///   Looks up a localized string similar to Illegal options.
         /// </summary>
         public static string IllegalOptions {
             get {
@@ -581,7 +581,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Entered Admin PIN is incorrect.
+        ///   Looks up a localized string similar to Entered Admin PIN is incorrect.
         /// </summary>
         public static string IncorrectAdminPin {
             get {
@@ -590,7 +590,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Incorrect OS version.
+        ///   Looks up a localized string similar to Incorrect OS version.
         /// </summary>
         public static string IncorrectOsVersion {
             get {
@@ -599,7 +599,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Entered PIN is incorrect.
+        ///   Looks up a localized string similar to Entered PIN is incorrect.
         /// </summary>
         public static string IncorrectPin {
             get {
@@ -608,7 +608,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Incorrect volume owner PIN.
+        ///   Looks up a localized string similar to Incorrect volume owner PIN.
         /// </summary>
         public static string IncorrectVolumeOwnerPin {
             get {
@@ -617,7 +617,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Incorrect usage of extended PIN policy.
+        ///   Looks up a localized string similar to Incorrect usage of extended PIN policy.
         /// </summary>
         public static string IncorrenctExtendedPinPolicyUsage {
             get {
@@ -626,7 +626,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Application was initialized.
+        ///   Looks up a localized string similar to Application was initialized.
         /// </summary>
         public static string InitializedInfo {
             get {
@@ -635,7 +635,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid max Admin PIN retry count. It must be in the range from 3 to 10.
+        ///   Looks up a localized string similar to Invalid max Admin PIN retry count. It must be in the range from 3 to 10.
         /// </summary>
         public static string InvalidMaxAdminPinRetryCount {
             get {
@@ -644,7 +644,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid max User PIN retry count. It must be in the range from 1 to 10.
+        ///   Looks up a localized string similar to Invalid max User PIN retry count. It must be in the range from 1 to 10.
         /// </summary>
         public static string InvalidMaxUserPinRetryCount {
             get {
@@ -653,7 +653,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid minimal admin PIN length. It must be from 1 to 31 symbols.
+        ///   Looks up a localized string similar to Invalid minimal admin PIN length. It must be from 1 to 31 symbols.
         /// </summary>
         public static string InvalidMinimalAdminPinLength {
             get {
@@ -662,7 +662,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid minimal user PIN length. It must be from 1 to 31 symbols.
+        ///   Looks up a localized string similar to Invalid minimal user PIN length. It must be from 1 to 31 symbols.
         /// </summary>
         public static string InvalidMinimalUserPinLength {
             get {
@@ -671,7 +671,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid policy value. It must be from 1 to 3.
+        ///   Looks up a localized string similar to Invalid policy value. It must be from 1 to 3.
         /// </summary>
         public static string InvalidPolicyValue {
             get {
@@ -680,7 +680,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid user pin change policy.
+        ///   Looks up a localized string similar to Invalid user pin change policy.
         /// </summary>
         public static string InvalidUserPinChangePolicy {
             get {
@@ -689,7 +689,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Log file path.
+        ///   Looks up a localized string similar to Log file path.
         /// </summary>
         public static string LogFilePathOption {
             get {
@@ -698,7 +698,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN Login with local PIN. In order to use local user set his new PIN preliminarily.
+        ///   Looks up a localized string similar to PIN Login with local PIN. In order to use local user set his new PIN preliminarily.
         ///[Id: local PIN id (l3 - l9)]
         ///[PIN: local PIN].
         /// </summary>
@@ -709,7 +709,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Max PIN code attempts count for Admin PIN (count must be in the range from 3 to 10; default: 6).
+        ///   Looks up a localized string similar to Max PIN code attempts count for Admin PIN (count must be in the range from 3 to 10; default: 6).
         /// </summary>
         public static string MaxAdminPinAttemptsOption {
             get {
@@ -718,7 +718,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Max PIN code attempts count for User PIN (count must be in the range from 3 to 10; default: 6).
+        ///   Looks up a localized string similar to Max PIN code attempts count for User PIN (count must be in the range from 3 to 10; default: 6).
         /// </summary>
         public static string MaxUserPinAttemptsOption {
             get {
@@ -727,7 +727,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Min Admin PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only).
+        ///   Looks up a localized string similar to Min Admin PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only).
         /// </summary>
         public static string MinAdminPinLengthOption {
             get {
@@ -736,7 +736,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на MinPinLength.
+        ///   Looks up a localized string similar to MinPinLength.
         /// </summary>
         public static string MinPinLength {
             get {
@@ -745,7 +745,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Min PIN Length: {0}.
+        ///   Looks up a localized string similar to Min PIN Length: {0}.
         /// </summary>
         public static string MinPinLengthDesc {
             get {
@@ -754,7 +754,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Min User PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only).
+        ///   Looks up a localized string similar to Min User PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only).
         /// </summary>
         public static string MinUserPinLengthOption {
             get {
@@ -763,7 +763,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Native library file should be set.
+        ///   Looks up a localized string similar to Native library file should be set.
         /// </summary>
         public static string NativeLibraryFileEmpty {
             get {
@@ -772,7 +772,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Unable to open native library at the specified path.
+        ///   Looks up a localized string similar to Unable to open native library at the specified path.
         /// </summary>
         public static string NativeLibraryFileInvalid {
             get {
@@ -781,7 +781,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Native library file doesn&apos;t exist at the specified path.
+        ///   Looks up a localized string similar to Native library file doesn&apos;t exist at the specified path.
         /// </summary>
         public static string NativeLibraryFileNotExist {
             get {
@@ -790,7 +790,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Specify a native library to use.
+        ///   Looks up a localized string similar to Specify a native library to use.
         /// </summary>
         public static string NativeLibraryPathOption {
             get {
@@ -799,7 +799,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid command params for using local PIN. It must be 2 command line params.
+        ///   Looks up a localized string similar to Invalid command params for using local PIN. It must be 2 command line params.
         /// </summary>
         public static string NewLocalPinInvalidCommandParamsCount {
             get {
@@ -808,7 +808,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid local user id.
+        ///   Looks up a localized string similar to Invalid local user id.
         /// </summary>
         public static string NewLocalPinInvalidOwnerId {
             get {
@@ -817,7 +817,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Failed to set local PIN.
+        ///   Looks up a localized string similar to Failed to set local PIN.
         /// </summary>
         public static string NewLocalPinSetFailed {
             get {
@@ -826,7 +826,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Local PIN has been successfully set.
+        ///   Looks up a localized string similar to Local PIN has been successfully set.
         /// </summary>
         public static string NewLocalPinSetSuccess {
             get {
@@ -835,7 +835,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Old Admin PIN code. Must be specified for Admin PIN changing.
+        ///   Looks up a localized string similar to Old Admin PIN code. Must be specified for Admin PIN changing.
         /// </summary>
         public static string OldAdminPinOption {
             get {
@@ -844,7 +844,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Current Admin PIN: .
+        ///   Looks up a localized string similar to Current Admin PIN: .
         /// </summary>
         public static string OldAdminPinPrompt {
             get {
@@ -853,7 +853,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Old User PIN code. Must be specified for User PIN changing.
+        ///   Looks up a localized string similar to Old User PIN code. Must be specified for User PIN changing.
         /// </summary>
         public static string OldUserPinOption {
             get {
@@ -862,7 +862,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Current User PIN: .
+        ///   Looks up a localized string similar to Current User PIN: .
         /// </summary>
         public static string OldUserPinPrompt {
             get {
@@ -871,7 +871,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Stop after one iteration.
+        ///   Looks up a localized string similar to Stop after one iteration.
         /// </summary>
         public static string OneIterationOnlyOption {
             get {
@@ -880,7 +880,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Options:.
+        ///   Looks up a localized string similar to Options:.
         /// </summary>
         public static string Options {
             get {
@@ -889,7 +889,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на or.
+        ///   Looks up a localized string similar to or.
         /// </summary>
         public static string Or {
             get {
@@ -898,7 +898,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Error while sending request for setting PIN2 PINPad.
+        ///   Looks up a localized string similar to Error while sending request for setting PIN2 PINPad.
         /// </summary>
         public static string Pin2SetFailed {
             get {
@@ -907,7 +907,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN2 PINPad set request has been successfully sent.
+        ///   Looks up a localized string similar to PIN2 PINPad set request has been successfully sent.
         /// </summary>
         public static string Pin2SetSuccess {
             get {
@@ -916,7 +916,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на by admin.
+        ///   Looks up a localized string similar to by admin.
         /// </summary>
         public static string PinChangeByAdmin {
             get {
@@ -925,7 +925,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN changed successfully.
+        ///   Looks up a localized string similar to PIN changed successfully.
         /// </summary>
         public static string PinChangedSuccess {
             get {
@@ -934,7 +934,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на {0} pin change failed.
+        ///   Looks up a localized string similar to {0} pin change failed.
         /// </summary>
         public static string PinChangeFailed {
             get {
@@ -943,7 +943,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на {0} pin change {1} passed : {2} : {3}.
+        ///   Looks up a localized string similar to {0} pin change {1} passed : {2} : {3}.
         /// </summary>
         public static string PinChangePassed {
             get {
@@ -952,7 +952,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Set PIN change policy. Default value - 2.
+        ///   Looks up a localized string similar to Set PIN change policy. Default value - 2.
         ///[(1 - administrator (SO) can change user PIN), (2 - user can change user PIN), (3 - both)].
         /// </summary>
         public static string PinChangePolicyOption {
@@ -962,7 +962,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN-codes file contains incorrect number of PINs.
+        ///   Looks up a localized string similar to PIN-codes file contains incorrect number of PINs.
         /// </summary>
         public static string PinCodesFileIncorrectLinesCount {
             get {
@@ -971,7 +971,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN-codes file is empty.
+        ///   Looks up a localized string similar to PIN-codes file is empty.
         /// </summary>
         public static string PinCodesFileIsEmpty {
             get {
@@ -980,7 +980,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Pin codes file name should be set.
+        ///   Looks up a localized string similar to Pin codes file name should be set.
         /// </summary>
         public static string PinCodesFileNameEmpty {
             get {
@@ -989,7 +989,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN-codes file not found.
+        ///   Looks up a localized string similar to PIN-codes file not found.
         /// </summary>
         public static string PinCodesFileNotFound {
             get {
@@ -998,7 +998,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN-codes from file have ended.
+        ///   Looks up a localized string similar to PIN-codes from file have ended.
         /// </summary>
         public static string PinCodesFilePinsHaveEnded {
             get {
@@ -1007,7 +1007,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PinContainsDigit.
+        ///   Looks up a localized string similar to PinContainsDigit.
         /// </summary>
         public static string PinContainsDigit {
             get {
@@ -1016,7 +1016,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN requeres digits: {0}.
+        ///   Looks up a localized string similar to PIN requeres digits: {0}.
         /// </summary>
         public static string PinContainsDigitDesc {
             get {
@@ -1025,7 +1025,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PinContainsLowerLetter.
+        ///   Looks up a localized string similar to PinContainsLowerLetter.
         /// </summary>
         public static string PinContainsLowerLetter {
             get {
@@ -1034,7 +1034,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN requeres lowercase chars: {0}.
+        ///   Looks up a localized string similar to PIN requeres lowercase chars: {0}.
         /// </summary>
         public static string PinContainsLowerLetterDesc {
             get {
@@ -1043,7 +1043,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PinContainsSpecChar.
+        ///   Looks up a localized string similar to PinContainsSpecChar.
         /// </summary>
         public static string PinContainsSpecChar {
             get {
@@ -1052,7 +1052,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN requeres spec. chars: {0}.
+        ///   Looks up a localized string similar to PIN requeres spec. chars: {0}.
         /// </summary>
         public static string PinContainsSpecCharDesc {
             get {
@@ -1061,7 +1061,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PinContainsUpperLetter.
+        ///   Looks up a localized string similar to PinContainsUpperLetter.
         /// </summary>
         public static string PinContainsUpperLetter {
             get {
@@ -1070,7 +1070,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN requeres uppercase chars: {0}.
+        ///   Looks up a localized string similar to PIN requeres uppercase chars: {0}.
         /// </summary>
         public static string PinContainsUpperLetterDesc {
             get {
@@ -1079,7 +1079,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Load new PIN codes from specified file. Use ont PIN per line, \n is separator. -a -u -G -g commands are ignored.
+        ///   Looks up a localized string similar to Load new PIN codes from specified file. Use ont PIN per line, \n is separator. -a -u -G -g commands are ignored.
         /// </summary>
         public static string PinFilePathOption {
             get {
@@ -1088,7 +1088,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Can&apos;t generate pin. Change Token.
+        ///   Looks up a localized string similar to Can&apos;t generate pin. Change Token.
         /// </summary>
         public static string PinGenerationError {
             get {
@@ -1097,7 +1097,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Can&apos;t generate pin. This token was skipped.
+        ///   Looks up a localized string similar to Can&apos;t generate pin. This token was skipped.
         /// </summary>
         public static string PinGenerationFailed {
             get {
@@ -1106,7 +1106,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PinHistoryDepth.
+        ///   Looks up a localized string similar to PinHistoryDepth.
         /// </summary>
         public static string PinHistoryDepth {
             get {
@@ -1115,7 +1115,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN history depth: {0}.
+        ///   Looks up a localized string similar to PIN history depth: {0}.
         /// </summary>
         public static string PinHistoryDepthDesc {
             get {
@@ -1124,7 +1124,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN length and allowed PIN length mismatch. Min admin PIN length: {0}, max admin PIN length: {1}, min user PIN length: {2}, max user PIN length: {3}.
+        ///   Looks up a localized string similar to PIN length and allowed PIN length mismatch. Min admin PIN length: {0}, max admin PIN length: {1}, min user PIN length: {2}, max user PIN length: {3}.
         /// </summary>
         public static string PinLengthMismatch {
             get {
@@ -1133,7 +1133,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN length and allowed PIN length mismatch. Length must be in the range from 1 to 31; default: 6.
+        ///   Looks up a localized string similar to PIN length and allowed PIN length mismatch. Length must be in the range from 1 to 31; default: 6.
         /// </summary>
         public static string PinLengthMismatchBeforeFormat {
             get {
@@ -1142,7 +1142,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Unblock PIN failed.
+        ///   Looks up a localized string similar to Unblock PIN failed.
         /// </summary>
         public static string PinUnlockFailed {
             get {
@@ -1151,7 +1151,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Unblock PIN passed.
+        ///   Looks up a localized string similar to Unblock PIN passed.
         /// </summary>
         public static string PinUnlockSuccess {
             get {
@@ -1160,7 +1160,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Internal error: PKCS#11 library code:.
+        ///   Looks up a localized string similar to Internal error: PKCS#11 library code:.
         /// </summary>
         public static string PKCS11Error {
             get {
@@ -1169,7 +1169,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на New random Admin PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}.
+        ///   Looks up a localized string similar to New random Admin PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}.
         /// </summary>
         public static string RandomAdminPinLengthMismatch {
             get {
@@ -1178,7 +1178,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на New random User PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}.
+        ///   Looks up a localized string similar to New random User PIN length and allowed PIN length mismatch, min PIN length: {0}, max PIN length: {1}.
         /// </summary>
         public static string RandomUserPinLengthMismatch {
             get {
@@ -1187,7 +1187,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на RemovePinPolicyAfterFormat.
+        ///   Looks up a localized string similar to RemovePinPolicyAfterFormat.
         /// </summary>
         public static string RemovePinPolicyAfterFormat {
             get {
@@ -1196,7 +1196,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN policy will be deleted after formating: {0}.
+        ///   Looks up a localized string similar to PIN policy will be deleted after formating: {0}.
         /// </summary>
         public static string RemovePinPolicyAfterFormatDesc {
             get {
@@ -1205,7 +1205,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на RestrictOneCharPin.
+        ///   Looks up a localized string similar to RestrictOneCharPin.
         /// </summary>
         public static string RestrictOneCharPin {
             get {
@@ -1214,7 +1214,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PIN requeres different char usage: {0}.
+        ///   Looks up a localized string similar to PIN requeres different char usage: {0}.
         /// </summary>
         public static string RestrictOneCharPinDesc {
             get {
@@ -1223,7 +1223,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Serial number should be specified.
+        ///   Looks up a localized string similar to Serial number should be specified.
         /// </summary>
         public static string SerialNumberEmpty {
             get {
@@ -1232,7 +1232,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Specify token serial number to use.
+        ///   Looks up a localized string similar to Specify token serial number to use.
         /// </summary>
         public static string SerialNumberOption {
             get {
@@ -1241,7 +1241,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Setting extended PIN policies.
+        ///   Looks up a localized string similar to Setting extended PIN policies.
         /// </summary>
         public static string SetExtendedPinPolicies {
             get {
@@ -1250,7 +1250,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Setting extended PIN policies is failed.
+        ///   Looks up a localized string similar to Setting extended PIN policies is failed.
         /// </summary>
         public static string SetExtendedPinPoliciesFailed {
             get {
@@ -1259,7 +1259,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Set extended PIN policy option
+        ///   Looks up a localized string similar to Set extended PIN policy option
         ///[Usage: --set-expp (pin_policy_opt1) (value1) (pin_policy_opt2) (value2) ... ].
         /// </summary>
         public static string SetExtendedPinPolicyOption {
@@ -1269,7 +1269,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Set local PIN.
+        ///   Looks up a localized string similar to Set local PIN.
         ///[Id: local PIN id (l3 - l9)]
         ///[PIN: local PIN].
         /// </summary>
@@ -1280,7 +1280,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Activate setting PIN2-code (on the screen mode) for PINPad..
+        ///   Looks up a localized string similar to Activate setting PIN2-code (on the screen mode) for PINPad..
         /// </summary>
         public static string SetPin2ModeOption {
             get {
@@ -1289,7 +1289,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Need to set formatting option -f.
+        ///   Looks up a localized string similar to Need to set formatting option -f.
         /// </summary>
         public static string ShouldSetFormatOption {
             get {
@@ -1298,7 +1298,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Show extended PIN policy option.
+        ///   Looks up a localized string similar to Show extended PIN policy option.
         /// </summary>
         public static string ShowExtendedPinPolicyOption {
             get {
@@ -1307,7 +1307,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Show help message.
+        ///   Looks up a localized string similar to Show help message.
         /// </summary>
         public static string ShowHelp {
             get {
@@ -1316,7 +1316,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Show application version.
+        ///   Looks up a localized string similar to Show application version.
         /// </summary>
         public static string ShowVersion {
             get {
@@ -1325,7 +1325,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Set SM mode (only for Bluetooth token).
+        ///   Looks up a localized string similar to Set SM mode (only for Bluetooth token).
         ///[Passwords: (1 - optional password), (2 - 1 password), (3 - 6 passwords)] 
         ///[Mode: (caps - only capital letters), (digits - capital letters and digits)].
         /// </summary>
@@ -1336,7 +1336,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Get user and admin PINs from stdin if they value equal &quot;stdin&quot;.
+        ///   Looks up a localized string similar to Get user and admin PINs from stdin if they value equal &quot;stdin&quot;.
         /// </summary>
         public static string StdinPinsOption {
             get {
@@ -1345,7 +1345,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Token Id.
+        ///   Looks up a localized string similar to Token Id.
         /// </summary>
         public static string TokenId {
             get {
@@ -1354,7 +1354,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Can&apos;t change token label.
+        ///   Looks up a localized string similar to Can&apos;t change token label.
         /// </summary>
         public static string TokenLabelChangeFailed {
             get {
@@ -1363,7 +1363,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Token label changed successfully.
+        ///   Looks up a localized string similar to Token label changed successfully.
         /// </summary>
         public static string TokenLabelChangeSuccess {
             get {
@@ -1372,7 +1372,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Use cp1251 for new device label.
+        ///   Looks up a localized string similar to Use cp1251 for new device label.
         /// </summary>
         public static string TokenLabelCp1251Option {
             get {
@@ -1381,7 +1381,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Token label should be set.
+        ///   Looks up a localized string similar to Token label should be set.
         /// </summary>
         public static string TokenLabelEmpty {
             get {
@@ -1390,7 +1390,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Can&apos;t change token label. Enter user PIN using -c.
+        ///   Looks up a localized string similar to Can&apos;t change token label. Enter user PIN using -c.
         /// </summary>
         public static string TokenLabelPinError {
             get {
@@ -1399,7 +1399,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Use UTF-8 for new device label.
+        ///   Looks up a localized string similar to Use UTF-8 for new device label.
         /// </summary>
         public static string TokenLabelUtf8Option {
             get {
@@ -1408,7 +1408,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Token params were not set.
+        ///   Looks up a localized string similar to Token params were not set.
         /// </summary>
         public static string TokenParamsNotSet {
             get {
@@ -1417,7 +1417,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Total disk size.
+        ///   Looks up a localized string similar to Total disk size.
         /// </summary>
         public static string TotalDriveSize {
             get {
@@ -1426,7 +1426,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Error while getting total disk size.
+        ///   Looks up a localized string similar to Error while getting total disk size.
         /// </summary>
         public static string TotalDriveSizeFailed {
             get {
@@ -1435,7 +1435,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Unblock user and local PINs. You should use login with Admin PIN command to unblock user and local PINs.
+        ///   Looks up a localized string similar to Unblock user and local PINs. You should use login with Admin PIN command to unblock user and local PINs.
         /// </summary>
         public static string UnblockPinsOption {
             get {
@@ -1444,7 +1444,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Unhandled error:.
+        ///   Looks up a localized string similar to Unhandled error:.
         /// </summary>
         public static string UnhandledError {
             get {
@@ -1453,7 +1453,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Usage:.
+        ///   Looks up a localized string similar to Usage:.
         /// </summary>
         public static string Usage {
             get {
@@ -1462,7 +1462,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на user PIN.
+        ///   Looks up a localized string similar to user PIN.
         /// </summary>
         public static string UserPin {
             get {
@@ -1471,7 +1471,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Enter {0} according to user PIN change policy on token.
+        ///   Looks up a localized string similar to Enter {0} according to user PIN change policy on token.
         /// </summary>
         public static string UserPinChangePolicyError {
             get {
@@ -1480,7 +1480,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Set User PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used.
+        ///   Looks up a localized string similar to Set User PIN code. Must be specified for Admin PIN changing. If not specified, the default value is used.
         /// </summary>
         public static string UserPinOption {
             get {
@@ -1489,7 +1489,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на user.
+        ///   Looks up a localized string similar to user.
         /// </summary>
         public static string UserPinOwner {
             get {
@@ -1498,7 +1498,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на New User PIN: .
+        ///   Looks up a localized string similar to New User PIN: .
         /// </summary>
         public static string UserPinPrompt {
             get {
@@ -1507,7 +1507,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Use UTF-8 instead of cp1251 in PIN codes.
+        ///   Looks up a localized string similar to Use UTF-8 instead of cp1251 in PIN codes.
         /// </summary>
         public static string Utf8Option {
             get {
@@ -1516,7 +1516,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Volume access mode change failed.
+        ///   Looks up a localized string similar to Volume access mode change failed.
         /// </summary>
         public static string VolumeAccessModeChangeFailed {
             get {
@@ -1525,7 +1525,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Volume access mode change passed.
+        ///   Looks up a localized string similar to Volume access mode change passed.
         /// </summary>
         public static string VolumeAccessModeChangeSuccess {
             get {
@@ -1534,7 +1534,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Volume attributes store is not set.
+        ///   Looks up a localized string similar to Volume attributes store is not set.
         /// </summary>
         public static string VolumeAttributesStoreNotSet {
             get {
@@ -1543,7 +1543,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на For -i argument should be set.
+        ///   Looks up a localized string similar to For -i argument should be set.
         /// </summary>
         public static string VolumeInfoEmpty {
             get {
@@ -1552,7 +1552,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Error while getting volumes info.
+        ///   Looks up a localized string similar to Error while getting volumes info.
         /// </summary>
         public static string VolumeInfoGettingFailed {
             get {
@@ -1561,7 +1561,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid volume id.
+        ///   Looks up a localized string similar to Invalid volume id.
         /// </summary>
         public static string VolumeInfoInvalidVolumeId {
             get {
@@ -1570,7 +1570,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Volume with specified id not found.
+        ///   Looks up a localized string similar to Volume with specified id not found.
         /// </summary>
         public static string VolumeInfoNotFound {
             get {
@@ -1579,7 +1579,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Get volumes or drive info.
+        ///   Looks up a localized string similar to Get volumes or drive info.
         ///[Parameter: (volume id: 1 - 9), (all volumes: a), (flash size: sz)].
         /// </summary>
         public static string VolumeInfoParamsOption {
@@ -1589,7 +1589,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Volume owners store is not set.
+        ///   Looks up a localized string similar to Volume owners store is not set.
         /// </summary>
         public static string VolumeOwnersStoreNotSet {
             get {
@@ -1598,7 +1598,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Next token... (Or press &quot;q&quot;).
+        ///   Looks up a localized string similar to Next token... (Or press &quot;q&quot;).
         /// </summary>
         public static string WaitingNextToken {
             get {
