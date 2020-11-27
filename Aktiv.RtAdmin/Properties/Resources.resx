@@ -193,10 +193,10 @@
     <value>Max PIN code attempts count for User PIN (count must be in the range from 3 to 10; default: 6)</value>
   </data>
   <data name="MinAdminPinLengthOption" xml:space="preserve">
-    <value>Min Admin PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only)</value>
+    <value>Min Admin PIN code length (length must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only)</value>
   </data>
   <data name="MinUserPinLengthOption" xml:space="preserve">
-    <value>Min User PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only)</value>
+    <value>Min User PIN code length (length must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only)</value>
   </data>
   <data name="NativeLibraryPathOption" xml:space="preserve">
     <value>Specify a native library to use</value>
@@ -221,7 +221,7 @@
     <value>PIN-codes file not found</value>
   </data>
   <data name="PinFilePathOption" xml:space="preserve">
-    <value>Load new PIN codes from specified file. Use ont PIN per line, \n is separator. -a -u -G -g commands are ignored</value>
+    <value>Load new PIN codes from specified file. Use not PIN per line, \n is separator. -a -u -G -g commands are ignored</value>
   </data>
   <data name="PinLengthMismatch" xml:space="preserve">
     <value>PIN length and allowed PIN length mismatch. Min admin PIN length: {0}, max admin PIN length: {1}, min user PIN length: {2}, max user PIN length: {3}</value>
@@ -559,7 +559,7 @@
     <value>AllowChangePinPolicy</value>
   </data>
   <data name="AllowChangePinPolicyDesc" xml:space="preserve">
-    <value>PIN policy is modifiable by Admin: {0}</value>
+    <value>Extended PIN policies is modifiable by Admin: {0}</value>
   </data>
   <data name="AllowDefaultPinUsage" xml:space="preserve">
     <value>AllowDefaultPinUsage</value>
@@ -568,7 +568,7 @@
     <value>Allow default PIN-code usage: {0}</value>
   </data>
   <data name="IncorrenctExtendedPinPolicyUsage" xml:space="preserve">
-    <value>Incorrect usage of extended PIN policy</value>
+    <value>Incorrect usage of extended PIN policies</value>
   </data>
   <data name="MinPinLength" xml:space="preserve">
     <value>MinPinLength</value>
@@ -580,25 +580,25 @@
     <value>PinContainsDigit</value>
   </data>
   <data name="PinContainsDigitDesc" xml:space="preserve">
-    <value>PIN requeres digits: {0}</value>
+    <value>PIN requires digits: {0}</value>
   </data>
   <data name="PinContainsLowerLetter" xml:space="preserve">
     <value>PinContainsLowerLetter</value>
   </data>
   <data name="PinContainsLowerLetterDesc" xml:space="preserve">
-    <value>PIN requeres lowercase chars: {0}</value>
+    <value>PIN requires lowercase letter: {0}</value>
   </data>
   <data name="PinContainsSpecChar" xml:space="preserve">
     <value>PinContainsSpecChar</value>
   </data>
   <data name="PinContainsSpecCharDesc" xml:space="preserve">
-    <value>PIN requeres spec. chars: {0}</value>
+    <value>PIN requires spec. chars: {0}</value>
   </data>
   <data name="PinContainsUpperLetter" xml:space="preserve">
     <value>PinContainsUpperLetter</value>
   </data>
   <data name="PinContainsUpperLetterDesc" xml:space="preserve">
-    <value>PIN requeres uppercase chars: {0}</value>
+    <value>PIN requires uppercase letter: {0}</value>
   </data>
   <data name="PinHistoryDepth" xml:space="preserve">
     <value>PinHistoryDepth</value>
@@ -610,32 +610,32 @@
     <value>RemovePinPolicyAfterFormat</value>
   </data>
   <data name="RemovePinPolicyAfterFormatDesc" xml:space="preserve">
-    <value>PIN policy will be deleted after formating: {0}</value>
+    <value>PIN policies will be deleted after format: {0}</value>
   </data>
   <data name="RestrictOneCharPin" xml:space="preserve">
     <value>RestrictOneCharPin</value>
   </data>
   <data name="RestrictOneCharPinDesc" xml:space="preserve">
-    <value>PIN requeres different char usage: {0}</value>
+    <value>PIN requires different char usage: {0}</value>
   </data>
   <data name="SetExtendedPinPolicyOption" xml:space="preserve">
-    <value>Set extended PIN policy option
+    <value>Set extended PIN policies
 [Usage: --set-expp (pin_policy_opt1) (value1) (pin_policy_opt2) (value2) ... ]</value>
   </data>
   <data name="ShowExtendedPinPolicyOption" xml:space="preserve">
-    <value>Show extended PIN policy option</value>
+    <value>Show extended PIN policies</value>
   </data>
   <data name="ExtendedPinPoliciesNotAvailable" xml:space="preserve">
-    <value>Extended PIN policies not avaliable</value>
+    <value>Extended PIN policies not available</value>
   </data>
   <data name="GetExtendedPinPoliciesFailed" xml:space="preserve">
-    <value>Getting extended PIN policies is failed</value>
+    <value>Getting extended PIN policies was failed</value>
   </data>
   <data name="SetExtendedPinPoliciesFailed" xml:space="preserve">
-    <value>Setting extended PIN policies is failed</value>
+    <value>Setting extended PIN policies was failed</value>
   </data>
-  <data name="ExtendedPinPolicyDoesntSutisfyTokenPinPolicy" xml:space="preserve">
-    <value>Extended PIN policy doesn't sutisfy token PIN policy</value>
+  <data name="ExtendedPinPolicyDoesntSatisfyTokenPinPolicy" xml:space="preserve">
+    <value>Extended PIN policies don't satisfy PIN policies specified during formatting</value>
   </data>
   <data name="GetExtendedPinPolicies" xml:space="preserve">
     <value>Getting extended PIN policies</value>

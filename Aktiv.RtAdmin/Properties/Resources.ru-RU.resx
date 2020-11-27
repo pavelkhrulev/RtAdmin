@@ -564,7 +564,7 @@
     <value>AllowChangePinPolicy</value>
   </data>
   <data name="AllowChangePinPolicyDesc" xml:space="preserve">
-    <value>PIN-код может быть изменен Администратором: {0}</value>
+    <value>Расширенные политики PIN-кодов могут быть изменены Администратором: {0}</value>
   </data>
   <data name="AllowDefaultPinUsage" xml:space="preserve">
     <value>AllowDefaultPinUsage</value>
@@ -573,7 +573,7 @@
     <value>Можно устанавливать PIN-код по умолчанию: {0}</value>
   </data>
   <data name="IncorrenctExtendedPinPolicyUsage" xml:space="preserve">
-    <value>Направильная установка политик PIN-кодов</value>
+    <value>Неправильная установка политик PIN-кодов</value>
   </data>
   <data name="MinPinLength" xml:space="preserve">
     <value>MinPinLength</value>
@@ -644,5 +644,8 @@
   </data>
   <data name="SetExtendedPinPolicies" xml:space="preserve">
     <value>Установка расширенных политик PIN-кодов</value>
+  </data>
+  <data name="ExtendedPinPolicyDoesntSatisfyTokenPinPolicy" xml:space="preserve">
+    <value>Расширенные политики PIN-кодов не соотвествуют политикам PIN-кодов указанных при форматировании</value>
   </data>
 </root>

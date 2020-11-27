@@ -728,7 +728,7 @@ namespace Aktiv.RtAdmin
                 (_commandLineOptions.PinPolicy.MinPinLength < _runtimeTokenParams.MinUserPinLenFromToken ||
                  _commandLineOptions.PinPolicy.MinPinLength > _runtimeTokenParams.MaxUserPinLenFromToken))
             {
-                throw new InvalidOperationException(Resources.ExtendedPinPolicyDoesntSutisfyTokenPinPolicy);
+                throw new InvalidOperationException(Resources.ExtendedPinPolicyDoesntSatisfyTokenPinPolicy);
             }
         }
 
