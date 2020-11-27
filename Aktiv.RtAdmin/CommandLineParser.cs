@@ -291,6 +291,7 @@ namespace Aktiv.RtAdmin
                             if (opt == Resources.PinContainsLowerLetter) { options.PinPolicy.PinContainsLowerLetter = Boolean.Parse(v); break; }
                             if (opt == Resources.PinContainsSpecChar) { options.PinPolicy.PinContainsSpecChar = Boolean.Parse(v); break; }
                             if (opt == Resources.RestrictOneCharPin) { options.PinPolicy.RestrictOneCharPin = Boolean.Parse(v); break; }
+                            if (opt == Resources.AllowChangePinPolicy) { options.PinPolicy.AllowChangePinPolicy = Boolean.Parse(v); break; }
                             if (opt == Resources.RemovePinPolicyAfterFormat) { options.PinPolicy.RemovePinPolicyAfterFormat = Boolean.Parse(v); break; }
                             
                             Console.WriteLine(Resources.IncorrenctExtendedPinPolicyUsage);
