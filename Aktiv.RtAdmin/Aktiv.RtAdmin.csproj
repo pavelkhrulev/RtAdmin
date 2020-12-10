@@ -52,12 +52,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="runtimes\$(Runtime)\native\$(NativeLibraryName)">
-      <Link>pkcs11NativeLib.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="dllmap.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
