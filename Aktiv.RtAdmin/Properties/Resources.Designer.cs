@@ -151,6 +151,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extended PIN policies is modifiable by Admin: {0}.
+        /// </summary>
+        public static string AllowChangePinPolicyDesc {
+            get {
+                return ResourceManager.GetString("AllowChangePinPolicyDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow default PIN-code usage: {0}.
+        /// </summary>
+        public static string AllowDefaultPinUsageDesc {
+            get {
+                return ResourceManager.GetString("AllowDefaultPinUsageDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Option &quot;-{0}&quot; argument should be a number.
         /// </summary>
         public static string ArgumentMustBeIntegerType {
@@ -379,6 +397,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extended PIN policies not available.
+        /// </summary>
+        public static string ExtendedPinPoliciesNotAvailable {
+            get {
+                return ResourceManager.GetString("ExtendedPinPoliciesNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended PIN policies don&apos;t satisfy PIN policies specified during formatting.
+        /// </summary>
+        public static string ExtendedPinPolicyDoesntSatisfyTokenPinPolicy {
+            get {
+                return ResourceManager.GetString("ExtendedPinPolicyDoesntSatisfyTokenPinPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Token has no flash memory.
         /// </summary>
         public static string FlashMemoryNotAvailable {
@@ -500,6 +536,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting extended PIN policies.
+        /// </summary>
+        public static string GetExtendedPinPolicies {
+            get {
+                return ResourceManager.GetString("GetExtendedPinPolicies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting extended PIN policies was failed.
+        /// </summary>
+        public static string GetExtendedPinPoliciesFailed {
+            get {
+                return ResourceManager.GetString("GetExtendedPinPoliciesFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Illegal options.
         /// </summary>
         public static string IllegalOptions {
@@ -514,6 +568,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string IncorrectAdminPin {
             get {
                 return ResourceManager.GetString("IncorrectAdminPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect usage of extended PIN policies.
+        /// </summary>
+        public static string IncorrectExtendedPinPolicyUsage {
+            get {
+                return ResourceManager.GetString("IncorrectExtendedPinPolicyUsage", resourceCulture);
             }
         }
         
@@ -646,7 +709,7 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Min Admin PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only).
+        ///   Looks up a localized string similar to Min Admin PIN code length (length must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only).
         /// </summary>
         public static string MinAdminPinLengthOption {
             get {
@@ -655,7 +718,16 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Min User PIN code length (len must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only).
+        ///   Looks up a localized string similar to Min PIN Length: {0}.
+        /// </summary>
+        public static string MinPinLengthDesc {
+            get {
+                return ResourceManager.GetString("MinPinLengthDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min User PIN code length (length must be in the range from 1 to 31; default: 6). Ignore for Rutoken S(use 1 only).
         /// </summary>
         public static string MinUserPinLengthOption {
             get {
@@ -908,7 +980,43 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Load new PIN codes from specified file. Use ont PIN per line, \n is separator. -a -u -G -g commands are ignored.
+        ///   Looks up a localized string similar to PIN requires digits: {0}.
+        /// </summary>
+        public static string PinContainsDigitDesc {
+            get {
+                return ResourceManager.GetString("PinContainsDigitDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN requires lowercase letter: {0}.
+        /// </summary>
+        public static string PinContainsLowerLetterDesc {
+            get {
+                return ResourceManager.GetString("PinContainsLowerLetterDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN requires spec. chars: {0}.
+        /// </summary>
+        public static string PinContainsSpecCharDesc {
+            get {
+                return ResourceManager.GetString("PinContainsSpecCharDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN requires uppercase letter: {0}.
+        /// </summary>
+        public static string PinContainsUpperLetterDesc {
+            get {
+                return ResourceManager.GetString("PinContainsUpperLetterDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load new PIN codes from specified file. Use not PIN per line, \n is separator. -a -u -G -g commands are ignored.
         /// </summary>
         public static string PinFilePathOption {
             get {
@@ -931,6 +1039,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string PinGenerationFailed {
             get {
                 return ResourceManager.GetString("PinGenerationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN history depth: {0}.
+        /// </summary>
+        public static string PinHistoryDepthDesc {
+            get {
+                return ResourceManager.GetString("PinHistoryDepthDesc", resourceCulture);
             }
         }
         
@@ -998,6 +1115,24 @@ namespace Aktiv.RtAdmin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PIN policies will be deleted after format: {0}.
+        /// </summary>
+        public static string RemovePinPolicyAfterFormatDesc {
+            get {
+                return ResourceManager.GetString("RemovePinPolicyAfterFormatDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN requires different char usage: {0}.
+        /// </summary>
+        public static string RestrictOneCharPinDesc {
+            get {
+                return ResourceManager.GetString("RestrictOneCharPinDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Serial number should be specified.
         /// </summary>
         public static string SerialNumberEmpty {
@@ -1012,6 +1147,34 @@ namespace Aktiv.RtAdmin.Properties {
         public static string SerialNumberOption {
             get {
                 return ResourceManager.GetString("SerialNumberOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting extended PIN policies.
+        /// </summary>
+        public static string SetExtendedPinPolicies {
+            get {
+                return ResourceManager.GetString("SetExtendedPinPolicies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting extended PIN policies was failed.
+        /// </summary>
+        public static string SetExtendedPinPoliciesFailed {
+            get {
+                return ResourceManager.GetString("SetExtendedPinPoliciesFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set extended PIN policies
+        ///[Usage: --set-expp (pin_policy_opt1) (value1) (pin_policy_opt2) (value2) ... ].
+        /// </summary>
+        public static string SetExtendedPinPolicyOption {
+            get {
+                return ResourceManager.GetString("SetExtendedPinPolicyOption", resourceCulture);
             }
         }
         
@@ -1041,6 +1204,15 @@ namespace Aktiv.RtAdmin.Properties {
         public static string ShouldSetFormatOption {
             get {
                 return ResourceManager.GetString("ShouldSetFormatOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show extended PIN policies.
+        /// </summary>
+        public static string ShowExtendedPinPolicyOption {
+            get {
+                return ResourceManager.GetString("ShowExtendedPinPolicyOption", resourceCulture);
             }
         }
         

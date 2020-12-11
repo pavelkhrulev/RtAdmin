@@ -560,4 +560,62 @@
   <data name="SerialNumberOption" xml:space="preserve">
     <value>Серийный номер токена, к которому обрaщаются</value>
   </data>
+  <data name="AllowChangePinPolicyDesc" xml:space="preserve">
+    <value>Расширенные политики PIN-кодов могут быть изменены Администратором: {0}</value>
+  </data>
+  <data name="AllowDefaultPinUsageDesc" xml:space="preserve">
+    <value>Можно устанавливать PIN-код по умолчанию: {0}</value>
+  </data>
+  <data name="IncorrectExtendedPinPolicyUsage" xml:space="preserve">
+    <value>Неправильная установка политик PIN-кодов</value>
+  </data>
+  <data name="MinPinLengthDesc" xml:space="preserve">
+    <value>Минимальная длина PIN-кода: {0}</value>
+  </data>
+  <data name="PinContainsDigitDesc" xml:space="preserve">
+    <value>PIN-код должен содержать цифры: {0}</value>
+  </data>
+  <data name="PinContainsLowerLetterDesc" xml:space="preserve">
+    <value>PIN-код должен содержать строчные буквы: {0}</value>
+  </data>
+  <data name="PinContainsSpecCharDesc" xml:space="preserve">
+    <value>PIN-код должен содержать спец. символы: {0}</value>
+  </data>
+  <data name="PinContainsUpperLetterDesc" xml:space="preserve">
+    <value>PIN-код должен содержать заглавные буквы: {0}</value>
+  </data>
+  <data name="PinHistoryDepthDesc" xml:space="preserve">
+    <value>Глубина запоминаемой истории PIN-кодов: {0}</value>
+  </data>
+  <data name="RemovePinPolicyAfterFormatDesc" xml:space="preserve">
+    <value>Политики PIN-кодов будут удалены после форматирования: {0}</value>
+  </data>
+  <data name="RestrictOneCharPinDesc" xml:space="preserve">
+    <value>Запрещать PIN-код из одного повторяющегося символа: {0}</value>
+  </data>
+  <data name="SetExtendedPinPolicyOption" xml:space="preserve">
+    <value>Установка расширенных политик PIN-кодов
+[Использование: --set-expp (pin_policy_opt1) (value1) (pin_policy_opt2) (value2) ... ]</value>
+  </data>
+  <data name="ShowExtendedPinPolicyOption" xml:space="preserve">
+    <value>Отображение текущей политики PIN-кодов</value>
+  </data>
+  <data name="ExtendedPinPoliciesNotAvailable" xml:space="preserve">
+    <value>Расширенные политики PIN-кодов не доступны</value>
+  </data>
+  <data name="GetExtendedPinPoliciesFailed" xml:space="preserve">
+    <value>Получение расширенных политик PIN-кодов завершилось с ошибкой</value>
+  </data>
+  <data name="SetExtendedPinPoliciesFailed" xml:space="preserve">
+    <value>Установка расширенных политик PIN-кодов завершилась с ошибкой</value>
+  </data>
+  <data name="GetExtendedPinPolicies" xml:space="preserve">
+    <value>Получение расширенных политик PIN-кодов</value>
+  </data>
+  <data name="SetExtendedPinPolicies" xml:space="preserve">
+    <value>Установка расширенных политик PIN-кодов</value>
+  </data>
+  <data name="ExtendedPinPolicyDoesntSatisfyTokenPinPolicy" xml:space="preserve">
+    <value>Расширенные политики PIN-кодов не соотвествуют политикам PIN-кодов указанных при форматировании</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using RutokenPkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
 {
@@ -12,6 +13,7 @@ namespace Aktiv.RtAdmin
             LoginWithLocalPin = new List<string>();
             SetLocalPin = new List<string>();
             ExcludedTokens = new List<string>();
+            PinPolicy = new PinPolicy();
         }
 
         public bool Format { get; set; }
@@ -61,6 +63,10 @@ namespace Aktiv.RtAdmin
         public ICollection<string> LoginWithLocalPin { get; }
 
         public ICollection<string> SetLocalPin { get; }
+
+        public PinPolicy PinPolicy { get; set; }
+
+        public bool ShowExtendedPinPolicy { get; set; }
 
         #region Format options
 

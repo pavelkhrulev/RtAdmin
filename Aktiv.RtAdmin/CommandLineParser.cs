@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Aktiv.RtAdmin.Properties;
 using Mono.Options;
+using RutokenPkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
 {
@@ -30,6 +31,8 @@ namespace Aktiv.RtAdmin
             var nativeLibraryFileShouldBeSet = false;
             var serialNumberShouldBeSet = false;
             var configurationFileShouldBeSet = false;
+            var extendedPinPoliciesShouldBeSet = false;
+            string pinPolicyOpt = null;
 
             var set = new OptionSet
             {
@@ -173,6 +176,14 @@ namespace Aktiv.RtAdmin
                     showSetFormatOption = true;
                 }},
 
+                {"set-expp", GetSetExtendedPinPolicyUsage(), v => {
+                    currentParameter="set-expp";
+                    extendedPinPoliciesShouldBeSet = true;
+                 }},
+                {"show-expp", Resources.ShowExtendedPinPolicyOption, v => {
+                    options.ShowExtendedPinPolicy = v != null;
+                }},
+
                 {"U", Resources.Utf8Option, v => { options.UTF8InsteadOfcp1251 = v != null; }},
 
                 { "h|help", Resources.ShowHelp, h => shouldShowHelp = h != null },
@@ -261,6 +272,30 @@ namespace Aktiv.RtAdmin
                         case "n":
                             options.ConfigurationFilePath = v;
                             break;
+
+                        case "set-expp":
+                             string opt;
+                            if (pinPolicyOpt == null) {
+                                pinPolicyOpt = v;
+                                break;
+                            } else {
+                                opt = pinPolicyOpt;
+                                pinPolicyOpt = null;
+                            }
+
+                            if (opt == PinPolicyWithNames.MinPinLengthName) { options.PinPolicy.MinPinLength = Byte.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinHistoryDepthName) { options.PinPolicy.PinHistoryDepth = Byte.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.AllowDefaultPinUsageName) { options.PinPolicy.AllowDefaultPinUsage = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinContainsDigitName) { options.PinPolicy.PinContainsDigit = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinContainsUpperLetterName) { options.PinPolicy.PinContainsUpperLetter = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinContainsLowerLetterName) { options.PinPolicy.PinContainsLowerLetter = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinContainsSpecCharName) { options.PinPolicy.PinContainsSpecChar = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.RestrictOneCharPinName) { options.PinPolicy.RestrictOneCharPin = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.AllowChangePinPolicyName) { options.PinPolicy.AllowChangePinPolicy = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.RemovePinPolicyAfterFormatName) { options.PinPolicy.RemovePinPolicyAfterFormat = Boolean.Parse(v); break; }
+                            
+                            Console.WriteLine(Resources.IncorrectExtendedPinPolicyUsage);
+                                throw new AppMustBeClosedException(-1);
 
                         default:
                             extraOptions.Add(v);
@@ -363,13 +398,18 @@ namespace Aktiv.RtAdmin
                 throw new AppMustBeClosedException(0);
             }
 
-
             if (options.StdinPins && !pinCodesFileShouldBeSet)
             {
                 if (options.OldUserPin == "stdin") options.OldUserPin = GetPasswordFromConsole(Resources.OldUserPinPrompt);
                 if (options.UserPin == "stdin") options.UserPin = GetPasswordFromConsole(Resources.UserPinPrompt);
                 if (options.OldAdminPin == "stdin") options.OldAdminPin = GetPasswordFromConsole(Resources.OldAdminPinPrompt);
                 if (options.AdminPin == "stdin") options.AdminPin = GetPasswordFromConsole(Resources.AdminPinPrompt);
+            }
+
+            if (extendedPinPoliciesShouldBeSet && !options.PinPolicy || pinPolicyOpt != null)
+            {
+                Console.WriteLine(Resources.IncorrectExtendedPinPolicyUsage);
+                throw new AppMustBeClosedException(-1);
             }
 
             return options;
@@ -431,6 +471,24 @@ namespace Aktiv.RtAdmin
             optionSet.WriteOptionDescriptions(Console.Out);
 
             throw new AppMustBeClosedException(retCode);
+        }
+
+        private static string GetSetExtendedPinPolicyUsage()
+        {
+            string usage = Resources.SetExtendedPinPolicyOption + "\n" +
+            "\npin_policy_opts:\n" +
+            PinPolicyWithNames.MinPinLengthName + " -- " + String.Format(Resources.MinPinLengthDesc, "0-255") + "\n" +
+            PinPolicyWithNames.PinHistoryDepthName + " -- " + String.Format(Resources.PinHistoryDepthDesc, "0-255") + "\n" +
+            PinPolicyWithNames.AllowDefaultPinUsageName + " -- " + String.Format(Resources.AllowDefaultPinUsageDesc, "true, false") + "\n" +
+            PinPolicyWithNames.PinContainsDigitName + " -- " + String.Format(Resources.PinContainsDigitDesc, "true, false") + "\n" +
+            PinPolicyWithNames.PinContainsUpperLetterName + " -- " + String.Format(Resources.PinContainsUpperLetterDesc, "true, false") + "\n" +
+            PinPolicyWithNames.PinContainsLowerLetterName + " -- " + String.Format(Resources.PinContainsLowerLetterDesc, "true, false") + "\n" +
+            PinPolicyWithNames.PinContainsSpecCharName + " -- " + String.Format(Resources.PinContainsSpecCharDesc, "true, false") + "\n" +
+            PinPolicyWithNames.RestrictOneCharPinName + " -- " + String.Format(Resources.RestrictOneCharPinDesc, "true, false") + "\n" +
+            PinPolicyWithNames.AllowChangePinPolicyName + " -- " + String.Format(Resources.AllowChangePinPolicyDesc, "true, false") + "\n" +
+            PinPolicyWithNames.RemovePinPolicyAfterFormatName + " -- " + String.Format(Resources.RemovePinPolicyAfterFormatDesc, "true, false") + "\n";
+
+            return usage;
         }
 
         public static string GetPasswordFromConsole(string displayMessage, char mask = '*')

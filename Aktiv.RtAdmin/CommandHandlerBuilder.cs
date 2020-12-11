@@ -102,6 +102,14 @@ namespace Aktiv.RtAdmin
 
             _runtimeTokenParams.FlashMemoryAvailable = Convert.ToBoolean(tokenExtendedInfo.Flags & (uint) RutokenFlag.HasFlashDrive);
 
+            try
+            {
+                _runtimeTokenParams.ExtendedPinPoliciesAvailable = PinPolicyWorker.PinPolicySupports(_slot);
+            }
+            catch (Exception) {
+                _runtimeTokenParams.ExtendedPinPoliciesAvailable = false;
+            }
+
             return this;
         }
 
@@ -627,6 +635,7 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
+        // TODO move to CommandLineOptionsValidator
         private void CanUseFlashMemoryOperation()
         {
             if (!_runtimeTokenParams.FlashMemoryAvailable)
@@ -648,6 +657,62 @@ namespace Aktiv.RtAdmin
             {
                 validationAction();
             }
+        }
+
+        public CommandHandlerBuilder WithShowExtendedPinPolicy()
+        {
+            _prerequisites.Enqueue(_validator.CanUseExtendedPinPolicies);
+
+            _commands.Enqueue(() =>
+            {
+                try
+                {
+                    _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.GetExtendedPinPolicies));
+                    PinPolicy pinPolicy = PinPolicyWorker.GetPinPolicy(_slot);
+
+
+                    byte MinPinLength = Math.Max(pinPolicy.MinPinLength.GetValueOrDefault(), Convert.ToByte(_runtimeTokenParams.MinUserPinLenFromToken));
+
+                    Console.WriteLine(Resources.MinPinLengthDesc, MinPinLength);
+                    Console.WriteLine(Resources.PinHistoryDepthDesc, pinPolicy.PinHistoryDepth);
+                    Console.WriteLine(Resources.AllowDefaultPinUsageDesc, pinPolicy.AllowDefaultPinUsage);
+                    Console.WriteLine(Resources.PinContainsDigitDesc, pinPolicy.PinContainsDigit);
+                    Console.WriteLine(Resources.PinContainsUpperLetterDesc, pinPolicy.PinContainsUpperLetter);
+                    Console.WriteLine(Resources.PinContainsLowerLetterDesc, pinPolicy.PinContainsLowerLetter);
+                    Console.WriteLine(Resources.PinContainsSpecCharDesc, pinPolicy.PinContainsSpecChar);
+                    Console.WriteLine(Resources.RestrictOneCharPinDesc, pinPolicy.RestrictOneCharPin);
+                    Console.WriteLine(Resources.AllowChangePinPolicyDesc, pinPolicy.AllowChangePinPolicy);
+                    Console.WriteLine(Resources.RemovePinPolicyAfterFormatDesc, pinPolicy.RemovePinPolicyAfterFormat);
+                }
+                catch
+                {
+                    _logger.LogError(_logMessageBuilder.WithTokenId(Resources.GetExtendedPinPoliciesFailed));
+                    throw;
+                }
+            });
+
+            return this;
+        }
+
+        public CommandHandlerBuilder WithSetExtendedPinPolicy()
+        {
+            _prerequisites.Enqueue(_validator.CanUseExtendedPinPolicies);
+            _prerequisites.Enqueue(_validator.ExtendedPinPolicySatisfyTokenPinPolicy);
+
+            _commands.Enqueue(() =>
+            {
+                try
+                {
+                    _logger.LogInformation(_logMessageBuilder.WithTokenId(Resources.SetExtendedPinPolicies));
+                    PinPolicyWorker.SetPinPolicy(_slot, _runtimeTokenParams.OldAdminPin.Value, _commandLineOptions.PinPolicy);
+                }
+                catch
+                {
+                    _logger.LogError(_logMessageBuilder.WithTokenId(Resources.SetExtendedPinPoliciesFailed));
+                }
+            });
+
+            return this;
         }
 
         public void Execute()
