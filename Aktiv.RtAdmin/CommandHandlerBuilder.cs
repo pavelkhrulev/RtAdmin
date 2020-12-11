@@ -670,9 +670,9 @@ namespace Aktiv.RtAdmin
                     PinPolicy pinPolicy = PinPolicyWorker.GetPinPolicy(_slot);
 
 
-                    byte min_pin_length = Math.Max(pinPolicy.MinPinLength.GetValueOrDefault(), Convert.ToByte(_runtimeTokenParams.MinUserPinLenFromToken));
+                    byte MinPinLength = Math.Max(pinPolicy.MinPinLength.GetValueOrDefault(), Convert.ToByte(_runtimeTokenParams.MinUserPinLenFromToken));
 
-                    Console.WriteLine(Resources.MinPinLengthDesc, min_pin_length);
+                    Console.WriteLine(Resources.MinPinLengthDesc, MinPinLength);
                     Console.WriteLine(Resources.PinHistoryDepthDesc, pinPolicy.PinHistoryDepth);
                     Console.WriteLine(Resources.AllowDefaultPinUsageDesc, pinPolicy.AllowDefaultPinUsage);
                     Console.WriteLine(Resources.PinContainsDigitDesc, pinPolicy.PinContainsDigit);
