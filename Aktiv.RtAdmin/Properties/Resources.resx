@@ -555,65 +555,35 @@
   <data name="SerialNumberOption" xml:space="preserve">
     <value>Specify token serial number to use</value>
   </data>
-  <data name="AllowChangePinPolicy" xml:space="preserve">
-    <value>AllowChangePinPolicy</value>
-  </data>
   <data name="AllowChangePinPolicyDesc" xml:space="preserve">
     <value>Extended PIN policies is modifiable by Admin: {0}</value>
-  </data>
-  <data name="AllowDefaultPinUsage" xml:space="preserve">
-    <value>AllowDefaultPinUsage</value>
   </data>
   <data name="AllowDefaultPinUsageDesc" xml:space="preserve">
     <value>Allow default PIN-code usage: {0}</value>
   </data>
-  <data name="IncorrenctExtendedPinPolicyUsage" xml:space="preserve">
+  <data name="IncorrectExtendedPinPolicyUsage" xml:space="preserve">
     <value>Incorrect usage of extended PIN policies</value>
-  </data>
-  <data name="MinPinLength" xml:space="preserve">
-    <value>MinPinLength</value>
   </data>
   <data name="MinPinLengthDesc" xml:space="preserve">
     <value>Min PIN Length: {0}</value>
   </data>
-  <data name="PinContainsDigit" xml:space="preserve">
-    <value>PinContainsDigit</value>
-  </data>
   <data name="PinContainsDigitDesc" xml:space="preserve">
     <value>PIN requires digits: {0}</value>
-  </data>
-  <data name="PinContainsLowerLetter" xml:space="preserve">
-    <value>PinContainsLowerLetter</value>
   </data>
   <data name="PinContainsLowerLetterDesc" xml:space="preserve">
     <value>PIN requires lowercase letter: {0}</value>
   </data>
-  <data name="PinContainsSpecChar" xml:space="preserve">
-    <value>PinContainsSpecChar</value>
-  </data>
   <data name="PinContainsSpecCharDesc" xml:space="preserve">
     <value>PIN requires spec. chars: {0}</value>
-  </data>
-  <data name="PinContainsUpperLetter" xml:space="preserve">
-    <value>PinContainsUpperLetter</value>
   </data>
   <data name="PinContainsUpperLetterDesc" xml:space="preserve">
     <value>PIN requires uppercase letter: {0}</value>
   </data>
-  <data name="PinHistoryDepth" xml:space="preserve">
-    <value>PinHistoryDepth</value>
-  </data>
   <data name="PinHistoryDepthDesc" xml:space="preserve">
     <value>PIN history depth: {0}</value>
   </data>
-  <data name="RemovePinPolicyAfterFormat" xml:space="preserve">
-    <value>RemovePinPolicyAfterFormat</value>
-  </data>
   <data name="RemovePinPolicyAfterFormatDesc" xml:space="preserve">
     <value>PIN policies will be deleted after format: {0}</value>
-  </data>
-  <data name="RestrictOneCharPin" xml:space="preserve">
-    <value>RestrictOneCharPin</value>
   </data>
   <data name="RestrictOneCharPinDesc" xml:space="preserve">
     <value>PIN requires different char usage: {0}</value>

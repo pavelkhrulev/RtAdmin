@@ -566,7 +566,7 @@
   <data name="AllowDefaultPinUsageDesc" xml:space="preserve">
     <value>Можно устанавливать PIN-код по умолчанию: {0}</value>
   </data>
-  <data name="IncorrenctExtendedPinPolicyUsage" xml:space="preserve">
+  <data name="IncorrectExtendedPinPolicyUsage" xml:space="preserve">
     <value>Неправильная установка политик PIN-кодов</value>
   </data>
   <data name="MinPinLengthDesc" xml:space="preserve">

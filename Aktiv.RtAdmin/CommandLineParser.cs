@@ -283,18 +283,18 @@ namespace Aktiv.RtAdmin
                                 pinPolicyOpt = null;
                             }
 
-                            if (opt == Resources.MinPinLength) { options.PinPolicy.MinPinLength = Byte.Parse(v); break; }
-                            if (opt == Resources.PinHistoryDepth) { options.PinPolicy.PinHistoryDepth = Byte.Parse(v); break; }
-                            if (opt == Resources.AllowDefaultPinUsage) { options.PinPolicy.AllowDefaultPinUsage = Boolean.Parse(v); break; }
-                            if (opt == Resources.PinContainsDigit) { options.PinPolicy.PinContainsDigit = Boolean.Parse(v); break; }
-                            if (opt == Resources.PinContainsUpperLetter) { options.PinPolicy.PinContainsUpperLetter = Boolean.Parse(v); break; }
-                            if (opt == Resources.PinContainsLowerLetter) { options.PinPolicy.PinContainsLowerLetter = Boolean.Parse(v); break; }
-                            if (opt == Resources.PinContainsSpecChar) { options.PinPolicy.PinContainsSpecChar = Boolean.Parse(v); break; }
-                            if (opt == Resources.RestrictOneCharPin) { options.PinPolicy.RestrictOneCharPin = Boolean.Parse(v); break; }
-                            if (opt == Resources.AllowChangePinPolicy) { options.PinPolicy.AllowChangePinPolicy = Boolean.Parse(v); break; }
-                            if (opt == Resources.RemovePinPolicyAfterFormat) { options.PinPolicy.RemovePinPolicyAfterFormat = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.MinPinLengthName) { options.PinPolicy.MinPinLength = Byte.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinHistoryDepthName) { options.PinPolicy.PinHistoryDepth = Byte.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.AllowDefaultPinUsageName) { options.PinPolicy.AllowDefaultPinUsage = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinContainsDigitName) { options.PinPolicy.PinContainsDigit = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinContainsUpperLetterName) { options.PinPolicy.PinContainsUpperLetter = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinContainsLowerLetterName) { options.PinPolicy.PinContainsLowerLetter = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.PinContainsSpecCharName) { options.PinPolicy.PinContainsSpecChar = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.RestrictOneCharPinName) { options.PinPolicy.RestrictOneCharPin = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.AllowChangePinPolicyName) { options.PinPolicy.AllowChangePinPolicy = Boolean.Parse(v); break; }
+                            if (opt == PinPolicyWithNames.RemovePinPolicyAfterFormatName) { options.PinPolicy.RemovePinPolicyAfterFormat = Boolean.Parse(v); break; }
                             
-                            Console.WriteLine(Resources.IncorrenctExtendedPinPolicyUsage);
+                            Console.WriteLine(Resources.IncorrectExtendedPinPolicyUsage);
                                 throw new AppMustBeClosedException(-1);
 
                         default:
@@ -408,7 +408,7 @@ namespace Aktiv.RtAdmin
 
             if (extendedPinPoliciesShouldBeSet && !options.PinPolicy || pinPolicyOpt != null)
             {
-                Console.WriteLine(Resources.IncorrenctExtendedPinPolicyUsage);
+                Console.WriteLine(Resources.IncorrectExtendedPinPolicyUsage);
                 throw new AppMustBeClosedException(-1);
             }
 
@@ -477,16 +477,16 @@ namespace Aktiv.RtAdmin
         {
             string usage = Resources.SetExtendedPinPolicyOption + "\n" +
             "\npin_policy_opts:\n" +
-            Resources.MinPinLength + " -- " + String.Format(Resources.MinPinLengthDesc, "0-255") + "\n" +
-            Resources.PinHistoryDepth + " -- " + String.Format(Resources.PinHistoryDepthDesc, "0-255") + "\n" +
-            Resources.AllowDefaultPinUsage + " -- " + String.Format(Resources.AllowDefaultPinUsageDesc, "true, false") + "\n" +
-            Resources.PinContainsDigit + " -- " + String.Format(Resources.PinContainsDigitDesc, "true, false") + "\n" +
-            Resources.PinContainsUpperLetter + " -- " + String.Format(Resources.PinContainsUpperLetterDesc, "true, false") + "\n" +
-            Resources.PinContainsLowerLetter + " -- " + String.Format(Resources.PinContainsLowerLetterDesc, "true, false") + "\n" +
-            Resources.PinContainsSpecChar + " -- " + String.Format(Resources.PinContainsSpecCharDesc, "true, false") + "\n" +
-            Resources.RestrictOneCharPin + " -- " + String.Format(Resources.RestrictOneCharPinDesc, "true, false") + "\n" +
-            Resources.AllowChangePinPolicy + " -- " + String.Format(Resources.AllowChangePinPolicyDesc, "true, false") + "\n" +
-            Resources.RemovePinPolicyAfterFormat + " -- " + String.Format(Resources.RemovePinPolicyAfterFormatDesc, "true, false") + "\n";
+            PinPolicyWithNames.MinPinLengthName + " -- " + String.Format(Resources.MinPinLengthDesc, "0-255") + "\n" +
+            PinPolicyWithNames.PinHistoryDepthName + " -- " + String.Format(Resources.PinHistoryDepthDesc, "0-255") + "\n" +
+            PinPolicyWithNames.AllowDefaultPinUsageName + " -- " + String.Format(Resources.AllowDefaultPinUsageDesc, "true, false") + "\n" +
+            PinPolicyWithNames.PinContainsDigitName + " -- " + String.Format(Resources.PinContainsDigitDesc, "true, false") + "\n" +
+            PinPolicyWithNames.PinContainsUpperLetterName + " -- " + String.Format(Resources.PinContainsUpperLetterDesc, "true, false") + "\n" +
+            PinPolicyWithNames.PinContainsLowerLetterName + " -- " + String.Format(Resources.PinContainsLowerLetterDesc, "true, false") + "\n" +
+            PinPolicyWithNames.PinContainsSpecCharName + " -- " + String.Format(Resources.PinContainsSpecCharDesc, "true, false") + "\n" +
+            PinPolicyWithNames.RestrictOneCharPinName + " -- " + String.Format(Resources.RestrictOneCharPinDesc, "true, false") + "\n" +
+            PinPolicyWithNames.AllowChangePinPolicyName + " -- " + String.Format(Resources.AllowChangePinPolicyDesc, "true, false") + "\n" +
+            PinPolicyWithNames.RemovePinPolicyAfterFormatName + " -- " + String.Format(Resources.RemovePinPolicyAfterFormatDesc, "true, false") + "\n";
 
             return usage;
         }
