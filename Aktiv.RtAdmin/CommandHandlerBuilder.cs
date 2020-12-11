@@ -660,7 +660,7 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithShowExtendedPinPolicy()
         {
-            _prerequisites.Enqueue(CanUseExtendedPinPolicies);
+            _prerequisites.Enqueue(_validator.CanUseExtendedPinPolicies);
 
             _commands.Enqueue(() =>
             {
@@ -695,8 +695,8 @@ namespace Aktiv.RtAdmin
 
         public CommandHandlerBuilder WithSetExtendedPinPolicy()
         {
-            _prerequisites.Enqueue(CanUseExtendedPinPolicies);
-            _prerequisites.Enqueue(ExtendedPinPolicySatisfyTokenPinPolicy);
+            _prerequisites.Enqueue(_validator.CanUseExtendedPinPolicies);
+            _prerequisites.Enqueue(_validator.ExtendedPinPolicySatisfyTokenPinPolicy);
 
             _commands.Enqueue(() =>
             {
@@ -712,24 +712,6 @@ namespace Aktiv.RtAdmin
             });
 
             return this;
-        }
-
-        private void CanUseExtendedPinPolicies()
-        {
-            if (!_runtimeTokenParams.ExtendedPinPoliciesAvailable)
-            {
-                throw new InvalidOperationException(Resources.ExtendedPinPoliciesNotAvailable);
-            }
-        }
-
-        private void ExtendedPinPolicySatisfyTokenPinPolicy()
-        {
-            if (_commandLineOptions.PinPolicy.MinPinLength != null && 
-                (_commandLineOptions.PinPolicy.MinPinLength < _runtimeTokenParams.MinUserPinLenFromToken ||
-                 _commandLineOptions.PinPolicy.MinPinLength > _runtimeTokenParams.MaxUserPinLenFromToken))
-            {
-                throw new InvalidOperationException(Resources.ExtendedPinPolicyDoesntSatisfyTokenPinPolicy);
-            }
         }
 
         public void Execute()

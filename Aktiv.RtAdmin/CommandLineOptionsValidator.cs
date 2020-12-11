@@ -175,5 +175,23 @@ namespace Aktiv.RtAdmin
 
             _runtimeTokenParams.SmMode = smMode;
         }
+
+        public void CanUseExtendedPinPolicies()
+        {
+            if (!_runtimeTokenParams.ExtendedPinPoliciesAvailable)
+            {
+                throw new InvalidOperationException(Resources.ExtendedPinPoliciesNotAvailable);
+            }
+        }
+
+        public void ExtendedPinPolicySatisfyTokenPinPolicy()
+        {
+            if (_commandLineOptions.PinPolicy.MinPinLength != null &&
+                (_commandLineOptions.PinPolicy.MinPinLength < _runtimeTokenParams.MinUserPinLenFromToken ||
+                 _commandLineOptions.PinPolicy.MinPinLength > _runtimeTokenParams.MaxUserPinLenFromToken))
+            {
+                throw new InvalidOperationException(Resources.ExtendedPinPolicyDoesntSatisfyTokenPinPolicy);
+            }
+        }
     }
 }
