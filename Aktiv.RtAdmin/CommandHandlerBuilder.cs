@@ -635,6 +635,7 @@ namespace Aktiv.RtAdmin
             return this;
         }
 
+        // TODO move to CommandLineOptionsValidator
         private void CanUseFlashMemoryOperation()
         {
             if (!_runtimeTokenParams.FlashMemoryAvailable)
