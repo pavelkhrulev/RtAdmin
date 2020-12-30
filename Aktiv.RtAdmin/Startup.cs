@@ -66,8 +66,7 @@ namespace Aktiv.RtAdmin
 
             return new ServiceCollection()
                 .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
-                .AddSingleton(s => factory)
-                .AddSingleton(s => factory.RutokenPkcs11LibraryFactory.LoadPkcs11Library(factory, nativeLibraryPathIsUse, AppType.MultiThreaded))
+                .AddSingleton<IRutokenPkcs11Library>(s => factory.RutokenPkcs11LibraryFactory.LoadRutokenPkcs11Library(factory, nativeLibraryPathIsUse, AppType.MultiThreaded))
                 .AddSingleton<PinsStorage>()
                 .AddSingleton<ConfigLinesStorage>()
                 .AddSingleton<VolumeOwnersStore>()

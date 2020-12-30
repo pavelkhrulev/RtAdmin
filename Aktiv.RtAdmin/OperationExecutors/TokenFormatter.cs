@@ -2,6 +2,7 @@
 using Net.Pkcs11Interop.Common;
 using Net.RutokenPkcs11Interop.Common;
 using Net.RutokenPkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.HighLevelAPI.Factories;
 using System.Collections.Generic;
 
 namespace Aktiv.RtAdmin
@@ -14,7 +15,8 @@ namespace Aktiv.RtAdmin
             uint minAdminPinLength, uint minUserPinLength, uint maxAdminAttempts, uint maxUserAttempts, 
             uint smMode)
         {
-            var rutokenInitParam = new RutokenInitParam(
+            var factory = new RutokenInitParamFactory();
+            var rutokenInitParam = factory.Create(
                 newAdminPin, newUserPin,
                 tokenLabel,
                 new List<RutokenFlag> { policy },
