@@ -1,6 +1,6 @@
 ﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
-using RutokenPkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 using System;
 
 namespace Aktiv.RtAdmin
@@ -62,7 +62,7 @@ namespace Aktiv.RtAdmin
             return string.Format(Resources.UserPinChangePolicyError, policyDescription);
         }
 
-        public string WithVolumeInfo(VolumeInfoExtended volumeInfo, 
+        public string WithVolumeInfo(IVolumeInfoExtended volumeInfo, 
             bool withPassedMark = true)
         {
             var passedMark = withPassedMark ? 

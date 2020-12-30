@@ -2,27 +2,28 @@
 using Net.Pkcs11Interop.HighLevelAPI;
 using System.Collections.Generic;
 using System.Linq;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
     public class TokenSlot
     {
-        private readonly Pkcs11 _pkcs11;
+        private readonly IRutokenPkcs11Library _pkcs11;
 
-        public TokenSlot(Pkcs11 pkcs11)
+        public TokenSlot(IRutokenPkcs11Library pkcs11)
         {
             _pkcs11 = pkcs11;
         }
 
-        public Stack<Slot> GetInitialSlots() => new Stack<Slot>(_pkcs11.GetSlotList(SlotsType.WithTokenPresent));
+        public Stack<IRutokenSlot> GetInitialSlots() => new Stack<IRutokenSlot>(_pkcs11.GetRutokenSlotList(SlotsType.WithTokenPresent));
 
-        public Slot WaitToken()
+        public IRutokenSlot WaitToken()
         {
-            Slot slot;
+            IRutokenSlot slot;
             do
             {
                 _pkcs11.WaitForSlotEvent(WaitType.Blocking, out _, out var slotId);
-                slot = _pkcs11.GetSlotList(SlotsType.WithTokenPresent)
+                slot = _pkcs11.GetRutokenSlotList(SlotsType.WithTokenPresent)
                               .SingleOrDefault(x => x.SlotId == slotId);
             }
             while (slot == null);

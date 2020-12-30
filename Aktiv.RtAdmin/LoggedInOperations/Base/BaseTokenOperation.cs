@@ -1,14 +1,14 @@
 ﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
-using Net.Pkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
     public abstract class BaseTokenOperation<T> where T : BaseTokenOperationParams
     {
-        public void Invoke(Slot slot, T operationParams)
+        public void Invoke(IRutokenSlot slot, T operationParams)
         {
-            using var session = slot.OpenSession(SessionType.ReadWrite);
+            using var session = slot.OpenRutokenSession(SessionType.ReadWrite);
 
             try
             {
@@ -29,6 +29,6 @@ namespace Aktiv.RtAdmin
             }
         }
 
-        protected abstract void Payload(Session session, T operationParams);
+        protected abstract void Payload(IRutokenSession session, T operationParams);
     }
 }

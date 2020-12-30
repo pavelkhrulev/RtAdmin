@@ -1,5 +1,5 @@
 ﻿using Aktiv.RtAdmin.Properties;
-using RutokenPkcs11Interop.Common;
+using Net.RutokenPkcs11Interop.Common;
 using System;
 using System.Linq;
 

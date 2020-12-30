@@ -6,7 +6,8 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Aktiv.RtAdmin.Properties;
-using RutokenPkcs11Interop;
+using Net.RutokenPkcs11Interop;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
@@ -46,9 +47,11 @@ namespace Aktiv.RtAdmin
                     Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
                     GetNativeLibraryName());
 
+            RutokenPkcs11InteropFactories factory;
             try
             {
-                using (_ = new Pkcs11(nativeLibraryPathIsUse, AppType.MultiThreaded)) ;
+                factory = new RutokenPkcs11InteropFactories();
+                using (_ = factory.RutokenPkcs11LibraryFactory.LoadPkcs11Library(factory, nativeLibraryPathIsUse, AppType.MultiThreaded));
             }
             catch (UnmanagedException)
             {
@@ -63,7 +66,8 @@ namespace Aktiv.RtAdmin
 
             return new ServiceCollection()
                 .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
-                .AddSingleton(s => new Pkcs11(nativeLibraryPathIsUse, AppType.MultiThreaded))
+                .AddSingleton(s => factory)
+                .AddSingleton(s => factory.RutokenPkcs11LibraryFactory.LoadPkcs11Library(factory, nativeLibraryPathIsUse, AppType.MultiThreaded))
                 .AddSingleton<PinsStorage>()
                 .AddSingleton<ConfigLinesStorage>()
                 .AddSingleton<VolumeOwnersStore>()

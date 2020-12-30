@@ -1,4 +1,4 @@
-﻿using RutokenPkcs11Interop.Common;
+﻿using Net.RutokenPkcs11Interop.Common;
 using System.Collections.Generic;
 
 namespace Aktiv.RtAdmin

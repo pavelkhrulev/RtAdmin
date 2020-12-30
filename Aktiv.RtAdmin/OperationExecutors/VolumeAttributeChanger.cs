@@ -1,13 +1,12 @@
 ﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
-using Net.Pkcs11Interop.HighLevelAPI;
-using RutokenPkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
     public static class VolumeAttributeChanger
     {
-        public static void Change(Slot slot, 
+        public static void Change(IRutokenSlot slot, 
             ChangeVolumeAttributesParams volumeAttributes)
         {
             try

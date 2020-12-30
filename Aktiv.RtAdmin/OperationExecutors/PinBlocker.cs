@@ -1,6 +1,6 @@
 ﻿using Net.Pkcs11Interop.Common;
-using Net.Pkcs11Interop.HighLevelAPI;
-using RutokenPkcs11Interop.Common;
+using Net.RutokenPkcs11Interop.Common;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
@@ -11,7 +11,7 @@ namespace Aktiv.RtAdmin
         private const string _wrongPin2 = "-234567890123456789012345678901";
         private const string _wrongPin2_RutokenS = "-234567890123456";
 
-        public static void Block(Slot slot, RutokenType tokenType)
+        public static void Block(IRutokenSlot slot, RutokenType tokenType)
         {
             using var session = slot.OpenSession(SessionType.ReadWrite);
 

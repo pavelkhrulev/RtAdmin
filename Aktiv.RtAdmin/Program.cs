@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
@@ -184,7 +185,7 @@ namespace Aktiv.RtAdmin
                 return;
             }
 
-            var pkcs11 = _serviceProvider.GetService<Pkcs11>();
+            var pkcs11 = _serviceProvider.GetService<IRutokenPkcs11Library>();
             pkcs11.Dispose();
 
             if (_serviceProvider is IDisposable disposable)

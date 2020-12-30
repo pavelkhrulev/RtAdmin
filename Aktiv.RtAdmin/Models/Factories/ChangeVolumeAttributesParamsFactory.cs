@@ -1,6 +1,6 @@
 ﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
-using RutokenPkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace Aktiv.RtAdmin
         public static IEnumerable<ChangeVolumeAttributesParams> Create(
             VolumeAttributesStore volumeAttributesStore,
             IEnumerable<string> changeParams,
-            IEnumerable<VolumeInfoExtended> volumeInfos,
+            IEnumerable<IVolumeInfoExtended> volumeInfos,
             RuntimeTokenParams runtimeTokenParams)
         {
             var changeParamsList = changeParams.ToList();

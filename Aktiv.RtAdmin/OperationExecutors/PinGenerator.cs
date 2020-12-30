@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Net.Pkcs11Interop.Common;
-using Net.Pkcs11Interop.HighLevelAPI;
-using RutokenPkcs11Interop.Common;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.Common;
 
 namespace Aktiv.RtAdmin
 {
@@ -18,7 +18,7 @@ namespace Aktiv.RtAdmin
             0x75, 0x76, 0x77, 0x78, 0x79, 0x7A
         };
 
-        public static string Generate(Slot slot, RutokenType tokenType, uint pinLength)
+        public static string Generate(IRutokenSlot slot, RutokenType tokenType, uint pinLength)
         {
             using var session = slot.OpenSession(SessionType.ReadOnly);
 

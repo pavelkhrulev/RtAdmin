@@ -1,13 +1,12 @@
 ﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
-using Net.Pkcs11Interop.HighLevelAPI;
-using RutokenPkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
     public static class PinChanger
     {
-        public static void Change<TOperation>(Slot slot,
+        public static void Change<TOperation>(IRutokenSlot slot,
             string oldPin, string newPin, CKU loginType) where TOperation : BaseTokenOperation<PinChangeOperationParams>, new()
         {
             new TOperation().Invoke(slot, new PinChangeOperationParams
@@ -18,7 +17,7 @@ namespace Aktiv.RtAdmin
             });
         }
 
-        public static void ChangeLocalPin(Slot slot,
+        public static void ChangeLocalPin(IRutokenSlot slot,
             string userPin, string localPin, uint localPinId)
         {
             try
@@ -31,7 +30,7 @@ namespace Aktiv.RtAdmin
             }
         }
 
-        public static void ChangePin2(Slot slot, uint pinId)
+        public static void ChangePin2(IRutokenSlot slot, uint pinId)
         {
             try
             {

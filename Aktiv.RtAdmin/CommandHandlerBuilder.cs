@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Logging;
 using Net.Pkcs11Interop.Common;
 using Net.Pkcs11Interop.HighLevelAPI;
-using RutokenPkcs11Interop.Common;
-using RutokenPkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.Common;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace Aktiv.RtAdmin
         private readonly ConcurrentQueue<Action> _prerequisites;
         private readonly LogMessageBuilder _logMessageBuilder;
 
-        private Slot _slot;
+        private IRutokenSlot _slot;
         private CommandLineOptions _commandLineOptions;
         private CommandLineOptionsValidator _validator;
 
@@ -42,7 +42,7 @@ namespace Aktiv.RtAdmin
             _prerequisites = new ConcurrentQueue<Action>();
         }
 
-        public CommandHandlerBuilder ConfigureWith(Slot slot, CommandLineOptions options)
+        public CommandHandlerBuilder ConfigureWith(IRutokenSlot slot, CommandLineOptions options)
         {
             _slot = slot;
             _commandLineOptions = options;

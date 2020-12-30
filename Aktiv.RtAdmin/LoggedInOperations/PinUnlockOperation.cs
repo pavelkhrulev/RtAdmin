@@ -1,11 +1,10 @@
-﻿using Net.Pkcs11Interop.HighLevelAPI;
-using RutokenPkcs11Interop.HighLevelAPI;
+﻿using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
     public class PinUnlockOperation : BaseTokenOperation<BaseTokenOperationParams>
     {
-        protected override void Payload(Session session, BaseTokenOperationParams operationParams) =>
+        protected override void Payload(IRutokenSession session, BaseTokenOperationParams operationParams) =>
             session.UnblockUserPIN();
     }
 }

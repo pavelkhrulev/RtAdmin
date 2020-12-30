@@ -1,11 +1,10 @@
-﻿using Net.Pkcs11Interop.HighLevelAPI;
-using RutokenPkcs11Interop.HighLevelAPI;
+﻿using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
     public class SetTokenNameOperation : BaseTokenOperation<SetTokenNameOperationParams>
     {
-        protected override void Payload(Session session, SetTokenNameOperationParams operationParams) =>
+        protected override void Payload(IRutokenSession session, SetTokenNameOperationParams operationParams) =>
             session.SetTokenName(operationParams.TokenName);
     }
 }

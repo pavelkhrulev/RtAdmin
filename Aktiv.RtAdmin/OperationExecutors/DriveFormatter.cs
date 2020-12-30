@@ -1,14 +1,13 @@
 ﻿using Aktiv.RtAdmin.Properties;
 using Net.Pkcs11Interop.Common;
-using Net.Pkcs11Interop.HighLevelAPI;
-using RutokenPkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 using System.Collections.Generic;
 
 namespace Aktiv.RtAdmin
 {
     public static class DriveFormatter
     {
-        public static void Format(Slot slot, string adminPin, IEnumerable<VolumeFormatInfoExtended> volumeInfos)
+        public static void Format(IRutokenSlot slot, string adminPin, IEnumerable<IVolumeFormatInfoExtended> volumeInfos)
         {
             try
             {

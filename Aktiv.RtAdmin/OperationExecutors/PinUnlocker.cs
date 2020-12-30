@@ -1,11 +1,11 @@
 ﻿using Net.Pkcs11Interop.Common;
-using Net.Pkcs11Interop.HighLevelAPI;
+using Net.RutokenPkcs11Interop.HighLevelAPI;
 
 namespace Aktiv.RtAdmin
 {
     public static class PinUnlocker
     {
-        public static void Unlock(Slot slot, string adminPin)
+        public static void Unlock(IRutokenSlot slot, string adminPin)
         {
             new PinUnlockOperation().Invoke(slot, new BaseTokenOperationParams
             {
