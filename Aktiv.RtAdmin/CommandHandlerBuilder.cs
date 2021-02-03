@@ -521,7 +521,7 @@ namespace Aktiv.RtAdmin
                     }
 
                     DriveFormatter.Format(_slot, _runtimeTokenParams.OldAdminPin.Value,
-                        volumeInfos.Select(x => (IVolumeFormatInfoExtended)x));
+                        volumeInfos.Select(x => x.ToVolumeFormatInfoExtended()));
 
                     foreach (var volumeInfo in volumeInfos)
                     {

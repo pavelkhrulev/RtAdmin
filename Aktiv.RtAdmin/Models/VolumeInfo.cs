@@ -12,10 +12,10 @@ namespace Aktiv.RtAdmin
         public FlashAccessMode AccessMode { get; set; }
         public uint Owner { get; set; }
 
-        public IVolumeFormatInfoExtended ToVolumeFormatInfoExtended(IVolumeInfo volumeInfo)
+        public IVolumeFormatInfoExtended ToVolumeFormatInfoExtended()
         {
             var factory = new VolumeFormatInfoExtendedFactory();
-            return factory.Create(volumeInfo.VolumeSize, volumeInfo.AccessMode, (CKU)volumeInfo.VolumeOwner, 0);
+            return factory.Create(Size, AccessMode, (CKU)Owner, 0);
         }
     }
 }
