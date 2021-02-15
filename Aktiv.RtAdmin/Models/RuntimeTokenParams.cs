@@ -44,5 +44,7 @@ namespace Aktiv.RtAdmin
         public uint LocalIdToCreate { get; set; }
 
         public bool FlashMemoryAvailable { get; set; }
+
+        public bool ExtendedPinPoliciesAvailable { get; set; }
     }
 }
