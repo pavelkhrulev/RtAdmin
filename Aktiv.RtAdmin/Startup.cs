@@ -44,7 +44,7 @@ namespace Aktiv.RtAdmin
                                          File.Exists(nativeLibraryPath)
                 ? nativeLibraryPath
                 : Path.Combine(
-                    Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+                    System.AppContext.BaseDirectory,
                     GetNativeLibraryName());
 
             RutokenPkcs11InteropFactories factory;
@@ -81,10 +81,7 @@ namespace Aktiv.RtAdmin
 
         private static string GetNativeLibraryName()
         {
-#if DEBUG
-            return Settings.RutokenEcpDllDefaultPath;
-#else
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+	    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 return "rtpkcs11ecp.dll";
             }
@@ -94,11 +91,10 @@ namespace Aktiv.RtAdmin
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                return "librtpkcs11ecp.dylib";
+                return "rtpkcs11ecp.framework/rtpkcs11ecp";
             }
 
             throw new InvalidOperationException(Resources.IncorrectOsVersion);
-#endif
         }
     }
 }

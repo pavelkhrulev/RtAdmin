@@ -393,7 +393,7 @@ namespace Aktiv.RtAdmin
             if (shouldShowVersion)
             {
                 var executablePath = Process.GetCurrentProcess().MainModule.FileName;
-                Console.WriteLine($@"{executablePath} {FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion}");
+                Console.WriteLine($@"{Assembly.GetEntryAssembly().GetName().Version}");
 
                 throw new AppMustBeClosedException(0);
             }
