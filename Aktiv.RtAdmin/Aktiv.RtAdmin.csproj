@@ -7,9 +7,9 @@
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishTrimmed>true</PublishTrimmed>
     <PublishSingleFile>true</PublishSingleFile>
-    <AssemblyVersion>2.2.0</AssemblyVersion>
-    <FileVersion>2.2.0</FileVersion>
-    <Version>2.2.0</Version>
+    <AssemblyVersion>2.3.0</AssemblyVersion>
+    <FileVersion>2.3.0</FileVersion>
+    <Version>2.3.0</Version>
     <Copyright>(C) Aktiv Co., 2020</Copyright>
     <Description>Утилита rtAdmin предназначена для автоматизации процедур форматирования и администрирования устройств Рутокен: смены метки токена, PIN-кодов и их параметров, управления разделами Flash-памяти.</Description>
     <PackageId>rtAdmin</PackageId>
@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aktiv.RtPkcs11Ecp.Natives" Version="2.1.1.1" />
+    <PackageReference Include="RutokenPkcs11Natives" Version="2.1.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.6" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.6" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.6" />
